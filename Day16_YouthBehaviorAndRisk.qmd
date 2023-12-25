@@ -1,0 +1,47 @@
+---
+title: "Youth Behavior and Risk"
+author: "Me, Analyst"
+date: today
+date-format: medium
+format: html
+theme: cerulean
+---
+
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+```
+
+### Overview
+
+In this notebook, we'll develop and test claims on multiple proportions. In particular, we'll test a *Goodness of Fit* claim and also a claim about *dependence/independence*. I had planned to use the Youth Risk Behavioral Surveillance System data for this, but we can use the Minnesota Police Use of Force data instead if we prefer.
+
+## Our Data Set
+
+We'll decide on our data set and read it in below.
+
+```{r}
+#Read in our chosen data set using this code cell...
+
+```
+
+We'll describe our data set briefly below.
+
+### Our Research Questions and Hypotheses
+
+We'll define our research questions and hypotheses below.
+
+### Statistical Inference
+
+We'll conduct our inference here.
+
+```{r}
+#We'll use this code cell (and perhaps some others) for conducting our analysis and making inference...
+```
+
+***
+
+## Summary
+
+We'll summarize the work we've done here.

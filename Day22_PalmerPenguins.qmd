@@ -1,0 +1,44 @@
+---
+title: "Youth Behavior and Risk"
+author: "Me, Analyst"
+date: today
+date-format: medium
+format: html
+theme: cerulean
+---
+
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+```
+
+### Overview
+
+In this notebook, we'll develop and test claims on multiple population means. In particular, we'll test *Analysis of Variance* (ANOVA) to test whether body measurements differ across three different species of penguin.
+
+## Our Data Set
+
+```{r message = FALSE, warning = FALSE}
+penguins <- read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv")
+```
+
+We'll describe our data set briefly below.
+
+### Our Research Questions and Hypotheses
+
+We'll define our research questions and hypotheses below.
+
+### Statistical Inference
+
+We'll conduct our inference here.
+
+```{r}
+#We'll use this code cell (and perhaps some others) for conducting our analysis and making inference...
+```
+
+***
+
+## Summary
+
+We'll summarize the work we've done here.

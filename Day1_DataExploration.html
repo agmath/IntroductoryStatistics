@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Me, Analyst">
+
+<title>Day 1: Data Exploration</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Day1_DataExploration_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Day1_DataExploration_files/libs/quarto-html/quarto.js"></script>
+<script src="Day1_DataExploration_files/libs/quarto-html/popper.min.js"></script>
+<script src="Day1_DataExploration_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Day1_DataExploration_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Day1_DataExploration_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Day1_DataExploration_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Day1_DataExploration_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Day1_DataExploration_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Day1_DataExploration_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="Day1_DataExploration_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="Day1_DataExploration_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 1: Data Exploration</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Me, Analyst </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Dec 24, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview" class="level3">
+<h3 class="anchored" data-anchor-id="overview">Overview</h3>
+<p>In this notebook, we’ll explore a couple of data sets that Richard McElreath uses in his popular textbook, Statistical Rethinking. The <code>wafflehouse</code> data set includes state-by-state information including populations, marriage and divorce rates, Waffle House counts, and more. The <code>metal</code> data set includes country level measurements on population, happiness, and number of metal bands originating from the corresponding country. I’ve set up this notebook to read in the data and draw a couple of pictures – feel free to mess around and make changes.</p>
+<p>Don’t worry about breaking the notebook or writing code that doesn’t work. These things will happen – you’ll learn about how to use R to analyze data, draw pictures, and more over the course of our semester together. For now, you might stick to changing the variables included in a plot, or changing the plot type – you can <a href="https://ggplot2.tidyverse.org/reference/#geoms">find different available plotting layers here</a>. If you’d like to try something more adventurous…go for it!</p>
+<p>Before you move on, add yourself as the <code>author</code> to this notebook, by changing the <code>author:</code> line in the header at the top of this document. Once you’ve done that, click the blue <code>Render</code> arrow to generated a beautiful version of this notebook in HTML – it will open in the lower-right pane of the RStudio window. Later, if you’d like, you can check out the <a href="https://quarto.org/docs/output-formats/html-themes.html">available document themes</a> and change the <code>theme:</code> to use your favorite option. You’ll notice the changes in your <code>rendered</code> document. Move on for now.</p>
+</section>
+<section id="waffle-house-data" class="level2">
+<h2 class="anchored" data-anchor-id="waffle-house-data">Waffle House Data</h2>
+<p>Let’s take a look at the first few rows of the data set and inspect the variables available below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wafflehouse <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-hover table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Location</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Loc</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">MedianAgeMarriage</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Marriage</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Marriage SE</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Divorce</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Divorce SE</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">WaffleHouses</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">South</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Slaves1860</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population1860</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PropSlaves1860</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alabama</td>
+<td style="text-align: left;">AL</td>
+<td style="text-align: right;">4.78</td>
+<td style="text-align: right;">25.3</td>
+<td style="text-align: right;">20.2</td>
+<td style="text-align: right;">1.27</td>
+<td style="text-align: right;">12.7</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: left;">Southern State</td>
+<td style="text-align: right;">435080</td>
+<td style="text-align: right;">964201</td>
+<td style="text-align: right;">0.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alaska</td>
+<td style="text-align: left;">AK</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">25.2</td>
+<td style="text-align: right;">26.0</td>
+<td style="text-align: right;">2.93</td>
+<td style="text-align: right;">12.5</td>
+<td style="text-align: right;">2.05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Other State</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Arizona</td>
+<td style="text-align: left;">AZ</td>
+<td style="text-align: right;">6.33</td>
+<td style="text-align: right;">25.8</td>
+<td style="text-align: right;">20.3</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">Other State</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arkansas</td>
+<td style="text-align: left;">AR</td>
+<td style="text-align: right;">2.92</td>
+<td style="text-align: right;">24.3</td>
+<td style="text-align: right;">26.4</td>
+<td style="text-align: right;">1.70</td>
+<td style="text-align: right;">13.5</td>
+<td style="text-align: right;">1.22</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: left;">Southern State</td>
+<td style="text-align: right;">111115</td>
+<td style="text-align: right;">435450</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">California</td>
+<td style="text-align: left;">CA</td>
+<td style="text-align: right;">37.25</td>
+<td style="text-align: right;">26.8</td>
+<td style="text-align: right;">19.1</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Other State</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">379994</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">CO</td>
+<td style="text-align: right;">5.03</td>
+<td style="text-align: right;">25.7</td>
+<td style="text-align: right;">23.5</td>
+<td style="text-align: right;">1.24</td>
+<td style="text-align: right;">11.6</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Other State</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">34277</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>In McElreath’s text, he looks at the relationship between divorce rates and number of Waffle Houses per capita. The plot below is set to examine divorce rates and raw Waffle House count.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wafflehouse <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> WaffleHouses, <span class="at">y =</span> Divorce)) <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> WaffleHouses, <span class="at">y =</span> Divorce, <span class="at">label =</span> Loc, <span class="at">color =</span> South), </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="fl">0.75</span>, <span class="at">hjust =</span> <span class="fl">1.25</span>, <span class="at">vjust =</span> <span class="fl">1.25</span>) <span class="sc">+</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Divorce Rate and Waffle House Count"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Waffle House Count"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Divorce Rate"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Type of State"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day1_DataExploration_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol type="1">
+<li>Create a new copy of the plot to reproduce McElreath’s plot by replacing <code>x = WaffleHouses</code> with <code>x = WaffleHouses/Population</code></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>WaffleHouses</code> and <code>Population</code> are both columns in the <code>wafflehouse</code> data frame (table).</p>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Change the plot title and axis labels to more accurately describe your updated plot.</li>
+<li>Provide your interpretation of the resulting image – what do you see?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Copy and Update the Plotting Code Here...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Provide your own interpretation here…</p>
+<section id="additional-waffle-house-data-explorations" class="level4">
+<h4 class="anchored" data-anchor-id="additional-waffle-house-data-explorations">Additional Waffle House Data Explorations</h4>
+<p>If you are finding this data set to be interesting, try making some additional explorations here!</p>
+</section>
+</section>
+<section id="metal-and-happiness-data" class="level2">
+<h2 class="anchored" data-anchor-id="metal-and-happiness-data">Metal and Happiness Data</h2>
+<p>Similar to the Waffle House data set, let’s begin by taking a look at the first few rows of the <code>metal</code> data frame and identifying the variables available to us.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>metal <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-hover table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Territory</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Bands</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Happiness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">37466414</td>
+<td style="text-align: right;">2.404</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3088385</td>
+<td style="text-align: right;">5.199</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Algeria</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">43576691</td>
+<td style="text-align: right;">5.122</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Andorra</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">85645</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Angola</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">33642646</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Argentina</td>
+<td style="text-align: right;">1907</td>
+<td style="text-align: right;">45864941</td>
+<td style="text-align: right;">5.967</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>I wonder what the distribution of metal bands in a country is like! The plot below looks at the distribution of raw count of metal <code>Bands</code> per country. It includes two visualizations – a density plot and a boxplot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>metal <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> Bands),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> <span class="st">"purple"</span>) <span class="sc">+</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Bands, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.0005</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> <span class="st">"purple"</span>, <span class="at">width =</span> <span class="fl">0.0005</span>) <span class="sc">+</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Metal Bands per Country"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of Metal Bands"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 29 rows containing non-finite values (`stat_density()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 29 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day1_DataExploration_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The plot above isn’t quite “fair” – why not? Adjust the plot so that, rather than plotting pure metal band counts, you are plotting metal bands per capita. You can do this similarly to the way that we updated the Waffle House plot above. You’ll benefit by changing the <code>y</code> value and <code>width</code> on the boxplot to somthing around -1000 and 1000, respectively. Adjust the title and axis labels as well.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Update the plot here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>Happiness</code> column is an interesting one! I wonder if large countries are happy. The plot below is set up to answer this question.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>metal <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Population, <span class="at">y =</span> Happiness)) <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Happiness and Population"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Population"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Happiness Rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 57 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day1_DataExploration_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now try plotting the <code>Happiness</code> against the number of metal bands per capita in the code cell below. What do you notice?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add your plot here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="additional-metal-explorations" class="level4">
+<h4 class="anchored" data-anchor-id="additional-metal-explorations">Additional Metal Explorations</h4>
+<p>If you found the <code>metal</code> data set interesting, feel free to include additional explorations below.</p>
+<hr>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this notebook, we explored a couple of data sets and discovered some interesting findings! It is probably clear that these findings are coincidental, and that there are hidden variables which are driving the phenomena we saw. The field of statistics gives us the tools to determine whether phenomena are coincidental, present only in our observed sample data, or are likely to be descriptive of a population-level insight/effect.</p>
+<p>We’ll start our semester by learning how to describe observed sample data (descriptive statistics), and then move to using our observed sample data to better understand the populations that our samples are representative of (inferential statistics). Along the way, we’ll work with real data sets whenever possible, and we’ll learn about how we can use R to conduct our analyses. Don’t worry if the code from today was all brand new to you and you’re still confused by it – that’s expected and we’ll learn R from scratch during our time together.</p>
+<p>If you were able to do any of the following with today’s notebook, then you are <em>ahead</em> of where I expected.</p>
+<ul>
+<li>Changed an axis label or plot title</li>
+<li>Changed the color of part of a plot</li>
+<li>Swapped out a variable used in a plot</li>
+</ul>
+<p>If you experienced any of the following, then you are exactly where you should be.</p>
+<ul>
+<li>Thought – <em>oh, that’s interesting</em>…</li>
+<li>Wondered <em>what if</em>… or <em>why</em>…</li>
+<li>Wrote/changed code that didn’t work or didn’t do what you thought it would</li>
+</ul>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps…</h2>
+<p>Our journey into Statistics and R starts now. Please complete the interactive notebook titled <code>Topic 1: An Introduction to Data and Sampling</code> prior to our next class meeting.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

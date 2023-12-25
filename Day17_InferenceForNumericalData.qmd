@@ -1,0 +1,56 @@
+---
+title: "Inference for Categorical Data"
+author: "Me, Analyst"
+date: today
+date-format: medium
+format: html
+theme: cerulean
+---
+
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+
+#data <- read_csv("data/...")
+```
+
+### Overview
+
+In this notebook, we'll have an opportunity to explore inference on numerical variables. Similar to our previous notebooks, I didn't want to *choose* all of the contexts that we worked in this semester, so I'm providing several new options here. I have the following data sets loaded into this Posit.Cloud workspace that we could choose to investigate.
+
++ A dataset on Giant Gourds is available here[`"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-19/pumpkins.csv"`](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-19/pumpkins.csv).
++ `piracy.csv` contains data on US Senators and Representatives and lobying donations they received associated with the SOPA (Stop Online Piracy Act) and PIPA (Protect Intellectual Property Act) bills that were presented in 2011 and 2012.
++ A dataset on Diwali Sales is available here[`"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-14/diwali_sales_data.csv"`](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-14/diwali_sales_data.csv). Diwali is the Festival of Lights in the Hindu Culture.
++ `swim.csv` contains lap times for swimmers wearing swimsuits and wetsuits.
+
+We'll decide on our dataset *and* the research questions together in class. The only requirements are that we should have (i) a research question that asks about a single population proportion, and (ii) a research question that asks about a comparison of proportions across two sub-populations.
+
+## Our Data Set
+
+We'll decide on our data set and read it in below.
+
+```{r}
+#Read in our chosen data set using this code cell...
+
+```
+
+We'll describe our data set briefly below.
+
+### Our Research Questions and Hypotheses
+
+We'll define our research questions and hypotheses below.
+
+### Statistical Inference
+
+We'll conduct our inference here.
+
+```{r}
+#We'll use this code cell (and perhaps some others) for conducting our analysis and making inference...
+```
+
+***
+
+## Summary
+
+We'll summarize the work we've done here.

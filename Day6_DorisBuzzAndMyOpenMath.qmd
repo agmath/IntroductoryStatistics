@@ -1,0 +1,51 @@
+---
+title: "Discrete Probability: Doris and Buzz, and Some MyOpenMath Problems"
+author: "Me, Analyst"
+date: today
+date-format: medium
+format: html
+theme: cerulean
+---
+
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+```
+
+### Overview
+
+In this notebook, we'll explore discrete probability and gain a first insight into how statistical inference might work. We'll look at the likelihood of observed data under a particular hypothesis. We'll begin with the story of Doris and Buzz -- two captive dolphins and an experiment they participated in. After working through an analysis of the Doris and Buzz experiment, we'll move on and work a few additional example problems on discrete probability from MyOpenMath.
+
+### Doris and Buzz
+
+Doris and Buzz were two captive dolphins who participated in an experiment in the 1960s. The two dolphins lived in a shared tank. A researcher, Dr. Jarvis Bastian, was interested in whether dolphins could engage in abstract communication. He designed a multi-year experiment, during which he would train the dolphins to engage in specific behaviors involving a light and buttons. Each dolphin had access to a light and two buttons in its semi-shared enclosure. Any time the light was turned on, if the dolphin hit the button on the right, it would receive some fish to eat. Any time the light blinked, if the dolphon hit the button on the left, it would receive the fish reward as well. Dr. Bastian continued with this "training" until Doris and Buzz could consistently earn their fish reward -- they had learned how the stimulus-response-reward system worked!
+
+At this point, a barrier was placed in the tank, separating Doris and Buzz. The experiment was now changed.
++ If Doris' light turned on and Buzz hit the right button, then the dolphins would receive the fish reward.
++ If Doris' light blinked and Buzz hit the button on the left, then the dolphins would receive the fish reward.
+
+Could the dolphins communicate the status of the light between one another and trigger the correct response to earn the fish reward? Over a set of 16 trials, Buzz chose the correct button 15 times.
+
+Do/should we believe that the dolphins were able to communicate the abstract ideas of the status of the light and the appropriate button to push to receive their reward? How can we use probability to help us decide?
+
+**Discussion and Analysis:** We'll have a discussion and conduct an analysis to help us answer this question during class.
+
+```{r}
+#Use this code cell to help you in your analysis of the Doris and Buzz scenario...
+
+```
+
+#### A Follow-Up on Doris and Buzz
+
+I'll tell you about an attempt by Dr. Bastian to recreate the results of the experiment above, with the same dolphins. This follow-up experiment consisted of 28 trials.
+
+## Additional Example Problems from MyOpenMath
+
+Spending significant time on *interesting* problems is useful, but we'll still need regular practice. We'll use this section of our notebook to explore and answer some example problems from our MyOpenMath course shell.
+
+***
+
+## Summary
+
+We'll summarize the work we've done here.

@@ -1,0 +1,30 @@
+---
+title: "Working with the Normal Distribution"
+author: "Me, Analyst"
+date: today
+date-format: medium
+format: html
+theme: cerulean
+---
+
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+```
+
+### Overview
+
+In this notebook, we'll practice working with the *Normal Distribution*. The Normal Distribution is one of many distributions which can be used to describe probabilities associated with observed values from continuous random variables. The Normal Distribution does not describe the likelihood of observed values from all continuous random variables -- for example, weights are not generally normally distributed, and waiting times at an Emergency Room aren't either. Under the right conditions, however, an understanding of the Normal Distribution can help us analyze all sorts of scenarios.
+
+Getting comfortable with navigating and utilizing the normal distribution will be critical to your success in the remainder of this course. Spend the necessary time now (and reach out for help as you need it) -- you'll be doing "future you" a great service!
+
+## Example Problems from MyOpenMath
+
+We'll use this section of our notebook to explore and answer some example problems from our MyOpenMath course shell.
+
+***
+
+## Summary
+
+We'll summarize the work we've done here.

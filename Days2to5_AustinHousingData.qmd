@@ -1,0 +1,58 @@
+---
+title: "Descriptive Statistics: Austin Zillow Data"
+author: "Me, Analyst"
+date: today
+date-format: medium
+format: html
+theme: cerulean
+---
+
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+
+austin <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/master/data/classification/austin_zillow_data.csv")
+```
+
+### Overview
+
+Over the course of the next several class meetings, we'll use what we learn about descriptive statistics to analyze data on properties from the greater Austin, TX region, listed for sale on [Zillow](https://www.zillow.com/). Each of the interactive notebooks you complete in preparation for our class meetings will help us with part of the analysis.
+
++ `Topic 1: An Introduction to Data and Sampling`
+
+  + This notebook will prepare us to look at our data set and to identify variables as *numerical*, *categorical*, *unique identifiers*, and more.
+
++ `Topic 2: An Introduction to R`
+
+  + This notebook will give us a foundation for using R to interact with our data.
+
++ `Topic 3: Descriptive Statistics for Numerical and Categorical Data`
+
+  + This notebook will provide us with the tools we'll need to compute summary statistics on our *numerical* and *categorical* columns.
+
++ `Topic 4: Data Visualization and a Grammar of Graphics`
+
+  + This notebook gives us data visualization and data-based story-telling superpowers. We'll use `ggplot2` to display visual representations of our data -- providing a more full picture than summary statistics alone.
+  
+:::{.callout-important}
+Even after completing these notebooks, you won't be an expert in using R to analyze your data. Expect to encounter errors and do your best to not be frustrated by them. If you encounter errors that you can't troubleshoot, post them (along with an explanation of what you are trying to do) to Slack. You may also try using your favorite LLM, such as ChatGPT to help you troubleshoot code -- just be aware, that these LLMs were not built for programming, so they often provide broken code back. In my experience, ChatGPT is pretty excellent at finding missing or misplaced commas, though!
+:::
+
+### About the Austin Zillow Data Set
+
+We'll fill in a *data dictionary* here by using the knowledge we gain from the `Topic 1`  and `Topic 2`notebooks. 
+
+### An Initial Exploration Through Summary Statistics
+
+Using the knowledge we gain from the `Topic 3` notebook, we'll compute some summary statistics so that we better understand our data.
+
+### Visualizing the Austin Zillow Data
+
+We'll use skills from the `Topic 4` notebook here to gain real insights into the Zillow Data, and begin to "tell the story" of what features are most closely associated with property values in and around Austin, TX.
+
+***
+
+## Summary
+
+We'll summarize the work we've done here.

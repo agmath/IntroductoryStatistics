@@ -1,0 +1,68 @@
+Datasets to Use:
+
+Final List:
+
++ (1) Student Form Data, Waffle Houses and Divorce Rates, Metal Bands and Happiness (https://github.com/rmcelreath/rethinking/tree/master/data)
++ (2 - 5) Austin Zillow (on my GitHub)
++ (6) Doris and Buzz? MOM Problems
++ (7) MOM Problems
++ (8, 9) Lab Days
++ (10, 11) Exams, Practical is Mammal Sleep or Lemurs?
++ (12) Ames Lab
++ (13, 14) Use of Force (tasers versus firearms), Wound Cleaning
++ (15) Lab
++ (16) Youth Behavior and Risk
++ (17) Giant Pumpkins, SOPA/PIPA, babies, Diwali Sales, NCAA Sport Budgets
++ (18 - 20) Notebook Problems and See above
++ (21) Lab
++ (22) Giant Pumpkins, Babies, Palmer Penguins, Frog Eggs, SOPA/PIPA
++ (23, 24) Exams, Practical is...???
++ (25) Linear Regression Lab
++ (26, 27) Discussions and Review
++ (28, 29) Final Exams
+
+
+Full List of Reasonable/Interesting Data Sets
+
+Palmer Penguins
+
+babies - [birthweight, gestation, mother's age, smoking status](https://www.openintro.org/data/index.php?data=babies)
+
+Giant Pumpkins - (https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-10-19/readme.md)
+
+fatal police shootings - (https://www.openintro.org/data/index.php?data=fatal_police_shootings)
+
+maternal investment in frogs - [all numeric](https://www.openintro.org/data/index.php?data=frog)
+
+loans from Lending Club - [55 variables](https://www.openintro.org/data/index.php?data=loans_full_schema)
+
+MN Police Use of Force Data - (https://www.openintro.org/data/index.php?data=mn_police_use_of_force)
+
+Medial Temporal Lobe Data - (https://www.openintro.org/data/index.php?data=mn_police_use_of_force)
+
+Pierce County, WA house sales - (https://www.openintro.org/data/index.php?data=pierce_county_house_sales)
+
+PIPA/SOPA Lobbying Money and Voting - (https://www.openintro.org/data/index.php?data=piracy)
+
+Prevention of Renal and Vascualar End Stage Disease - (https://www.openintro.org/data/index.php?data=prevend)
+
+Swim Velocities, Paired T-test - (https://www.openintro.org/data/index.php?data=swim)
+
+Wound Cleaning, 2-sample proportion - (https://www.openintro.org/data/index.php?data=wound)
+
+Contagiousness of Yawning, 2-sample proportion - (https://www.openintro.org/data/index.php?data=yawn)
+
+Youth Behavior and Risk - (https://www.openintro.org/data/index.php?data=yrbss)
+
+US Egg Production, 3 sample mean - (https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-04-11/readme.md)
+
+Ecological Portal Project - (https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-02/readme.md)
+
+Scurvy, all categorical, some ordered - (https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-07-25/readme.md)
+
+Taylor Swift - (https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-10-17/readme.md)
+
+Diwali Sales - (https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-14/readme.md)
+
+Collegiate Sport Budgets - (https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-29/readme.md)
+
