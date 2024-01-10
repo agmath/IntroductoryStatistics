@@ -22,6 +22,7 @@ In this notebook, we'll explore discrete probability and gain a first insight in
 Doris and Buzz were two captive dolphins who participated in an experiment in the 1960s. The two dolphins lived in a shared tank. A researcher, Dr. Jarvis Bastian, was interested in whether dolphins could engage in abstract communication. He designed a multi-year experiment, during which he would train the dolphins to engage in specific behaviors involving a light and buttons. Each dolphin had access to a light and two buttons in its semi-shared enclosure. Any time the light was turned on, if the dolphin hit the button on the right, it would receive some fish to eat. Any time the light blinked, if the dolphon hit the button on the left, it would receive the fish reward as well. Dr. Bastian continued with this "training" until Doris and Buzz could consistently earn their fish reward -- they had learned how the stimulus-response-reward system worked!
 
 At this point, a barrier was placed in the tank, separating Doris and Buzz. The experiment was now changed.
+
 + If Doris' light turned on and Buzz hit the right button, then the dolphins would receive the fish reward.
 + If Doris' light blinked and Buzz hit the button on the left, then the dolphins would receive the fish reward.
 
