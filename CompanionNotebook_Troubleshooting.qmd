@@ -1,0 +1,43 @@
+---
+title: "Companion Notebook Troubleshooting"
+author: "Adam Gilbert"
+format: html
+theme: flatly
+---
+
+# The following are troubleshooting tips
+
+## Troubleshooting
+
+**PROBLEM -- Notebooks Crashing on Re-Launch:** Some notebooks will crash when users start the notebook, close out, and then return to complete the notebook at later time. This is caused by a RAM overflow because all exercise chunks attempt to run at once. Most notebooks permit stopping and restarting without issue -- the current offenders are the Topic 13, Topic 16, and Topic 17 notebooks.
+
+  + If you are on a paid-tier account, use the settings gear icon in the top-right of the Posit Cloud page and click on the *resources* tab. Change the RAM settings to either 1.5GB or 2GB and then relaunch the notebook. 
+  
+    + Once you are done with the notebook, use the *Resources* tab after clicking the settings gear icon to change your alotted RAM back to 1GB. Otherwise, your work in Posit Cloud will consume your access hours more rapidly than necessary.
+    
+  + If you are on a free-tiered account, you'll need to delete the HTML file associated with the notebook. Unfortunately, this will also wipe out your progress on the notebook.
+  
+    i. In the Files tab of the lower-right pane of RStudio, click the two dots next to the green up arrow to move up one level in the file system.
+    ii. Click the "lib" folder to enter that directory.
+    iii. Click the "x86_..." folder to enter that directory.
+    iv. Click the "4.x" folder to enter the directory corresponding to the current R version (mine is labeled "4.3" at the time of writing this document).
+    v. Click the "AppliedStatsInteractive" folder to enter it.
+    vi. Click the "tutorials" folder to enter it.
+    vii. Click on the name of the folder corresponding to the notebook you are trying to run.
+    viii. Check the box next to the HTML file. Make sure that only the HTML file is checked off.
+    ix. Click the delete button and confirm that you want to delete that one file.
+    x. Click the translucent blue cube icon at the top-right corner of the File tab in the bottom-right pane. This will bring you back to the main project directory.
+    xi. Use the *Session* menu at the top of the RStudio window and select to *Restart R*.
+    xii. Use the *Tutorials* tab in the top-right pane of RStudio to launch the tutorial notebook.
+    
+> **Note:** If this still doesn't work, follow the steps above again, but delete both the HTML file and the directory `XX_NotebookName_files`, leaving only the Rmd file. Once this is done, you can rebuild the notebook from the tutorials pane.
+    
+***
+
+**PROBLEM -- Notebooks Other than Topic 13, Topic 16, and Topic 17 are crashing or becoming unresponsive. I can see the notebook, but there is a gray sheen laid over it.**
+
+  + This has sometimes happened to me when I "pop-out" the notebooks from the *Tutorials* tab in the top-right pane of RStudio. As long as you work on the notebook from within the *Tutorials* tab, then this freezing should not happen. 
+  
+    + If you are a paid-tier user, you can increase the RAM, which will allow the notebook to be "popped-out" without a RAM overflow issue.
+    + Anytime you increase your RAM, remember to decrease it back down when you are done. Increasing the RAM results in an hour of use-time counting as more than one hour against your available "compute time". For example, changing the RAM to 2GB results in each hour of use time consuming 1.5 "compute hours".
+    

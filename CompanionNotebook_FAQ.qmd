@@ -1,0 +1,65 @@
+---
+title: "Companion Notebook FAQ"
+author: "Adam Gilbert"
+format: html
+theme: flatly
+---
+
+# The following are answers to Frequently Asked Questions
+
+## FAQ
+
+**QUESTION 1.** -- Can I, or my students make changes to these files? 
+
+  + Yes! The files you see here are in a copied workspace specific to your account. Everyone can (and should) make changes freely and independently of one another. You can also upload, create, and save new files as well. This space is yours!
+
+***
+
+**QUESTION 2.** -- Is it possible to download files out of Posit Cloud?
+
+  + Yes! Use the Files tab in the lower-right pane of RStudio. Check off the files you want to download and then use the More button (gear icon) and choose *Export*. If you export multiple files, they'll be zipped and you'll need to unzip them on your computer. If you prefer, you can download a single file at a time to avoid the need to unzip.
+
+***
+
+**QUESTION 3.** -- Is it possible to assign these notebooks and obtain a graded result for each student?
+
+  + Yes! Below are the steps to do it.
+  
+    i. Students generate the hash code at the end of their notebook, using the *Generate* button.
+    ii. Have students copy the hash code using the clipboard icon at the top-right of the output cell containing the generated hash code.
+    iii. Copy the contents of [this grading folder from Google Drive](https://drive.google.com/drive/folders/1zj2yvJyRFgXmwaqWGkUkbIRXTwj3Jpip?usp=sharing). You'll find an R script and a Google Form in that folder.
+    iv. The grading script contains instructions for use in lines 1 - 30.
+  
+***
+
+**QUESTION 4.** -- Is it possible to install these notebooks into a local R installation so that I don't need to use Posit Cloud?
+
+  + Yes! Follow the steps below, assuming that you already have R and RStudio installed.
+  
+    i. Open RStudio
+    ii. Install the "remotes" package using: install.packages("remotes")
+    iii. Install the "AppliedStatsInteractive" package using: remotes::install_github("agmath/AppliedStatsInteractive")
+    iv. Install Colin Rundel's learnrhash package using: remotes::install_github("rundel/learnrhash")
+    v. You should now have the notebooks installed and accessible via your *Tutorial* pane in RStudio.
+  
+***
+
+**QUESTION 5.** -- Is it possible to contribute to this project?
+
+  + Yes! You can file issues and pull requests at [the AppliedStatsInteractive GitHub repo](https://github.com/agmath/AppliedStatsInteractive)
+  + I'm still quite a novice GitHub user, so please bear with me.
+  
+***
+
+**QUESTION 6.** -- Can I make changes to these notebooks to better suit my own class?
+
+  + Yes! Follow the steps below, assuming that you already have R, RStudio, and git connected to RStudio: 
+  
+    i. Fork [the AppliedStatsInteractive GitHub Repository](https://github.com/agmath/AppliedStatsInteractive).
+    ii. Create a new RProject from your cloned copy of the repo. Do this from RStudio by going to File -> New Project, choosing from Version Control, using git, and paste the URL to your forked version of the repository in the *Repository URL* field.
+    iii. All of the notebooks are contained in the "inst\tutorials\" subdirectory. Each notebook has its own folder. Edit the corresponding Rmd file and use the green "Run Document" button to build the updated tutorial with your changes.
+    iv. Use the git tab to *commit* and *push* changes to your repository.
+    v. Have your students install your version of the notebooks using: remotes::install_github("YOUR_GitHub_Username/AppliedStatsInteractive")
+    vi. They may also need to install Colin Rundel's learnrhash package separately, using: remotes::install_github("rundel/learnrhash")
+    vii. Once these steps are completed, your students should be able to launch your tutorials from the *Tutorials* tab of the top-right pane in RStudio.
+
