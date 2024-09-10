@@ -1,0 +1,121 @@
+---
+title: "Intro to R with Austin Housing Data"
+format: 
+  revealjs:
+    incremental: true
+    fontsize: 24pt
+date: today
+date-format: long
+theme: sky
+---
+
+```{r}
+library(tidyverse)
+library(countdown)
+
+austin <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/master/data/classification/austin_zillow_data.csv")
+```
+
+## Review of Quarto
+
+. . . 
+
+We work in Quarto documents, which allow a mixture of code and text in a single document
+
+. . . 
+
+Quarto documents consist largely of the following components
+
+1. The YAML header governs global document properties and appears at the top of the document between *code fences* (`---`)
+2. Code chunks begin and end with triple backticks (see below), creating sections of the document over a *grey background*
+3. Sections of the document over a white background are just text cells and you can type freely there -- if you want to try some markdown to format your text, then you are free to do so!
+
+. . .
+
+An example of a code chunk
+
+```{{r}}
+#Code goes here...
+
+```
+
+## YAML Overview
+
+. . .
+
+We'll use very simple YAML headers in this course, but you are welcome to explore more complex document customization if you like. 
+
+. . .
+
+Our YAML header will generally look like the following:
+
+```{r}
+#| echo: true
+#| eval: false
+
+---
+title: "Notebook Title"
+author: "Your Name"
+format: html
+date: today
+date-format: long
+theme: flatly
+---
+```
+
+. . . 
+
+You can actually just use the `title`, `author`, and `format` settings if you prefer.
+
++ **Options for `format`:** We'll use `html` by default, but you can use `docx` to output a Word Document or `pdf` to output a PDF file
++ **Options for `theme`:** You can [find the available document themes here](https://quarto.org/docs/output-formats/html-themes.html)
+
+## Basic Markdown Overview
+
+. . . 
+
+Markdown formatting in this course is optional, but using markdown can make your documents look quite nice. The following are the most common pieces of markdown you might find use for.
+
++ Headings are built using the *hashtag* symbol (\#) -- more hashtags means a lower-level (smaller font) heading
++ We can surround text by a single asterisk to make that text italics -- for example \*italic text\* formats as *italic text*
++ We can surround text by double asterisks to make that text bold -- for example \*\*bold text\*\* formats as **bold text**
++ We can surround text by backticks to format that text as "code" -- for example \`code\` formats as `code`
++ Bulleted lists, like this one can be made by starting each line with a "+" sign (you'll need an empty line preceeding the list)
++ Numbered lists are the same as bulleted lists, but you just start each line with a number
+
+## Review of R So Far
+
+. . . 
+
+Within a Quarto Document, R code is run inside of a code chunk like the one below:
+
+```{{r}}
+
+````
+
++ By default, R can do basic calculations
+
+  + We load libraries to enable specialized functionality -- for example, by running `library(tidyverse)` in a code chunk
+
++ We store items in variables using the arrow operator -- for example, by running `x <- 2` in a code chunk
+
+  + We can print out the contents of an object/variable just by calling its name -- for example running `x` would print out `2`
+
++ We can read data from a *csv* file using `read_csv("path_to_file")`
+
+  + Don't forget to store the result into a variable if you want to use the data later!
+
+
+## Reminder of the Austin, TX Housing Data
+
+A *data dictionary* appears below:
+
++ `id` is a row number (unique identifier)
++ `description` is a free-form text field, describing the property (unique identifier)
++ `city`, `homeType`, `hasSpa`, and `priceRange` are all categorical variables
++ `latitude`, `longitude`, `lotSizeSqFt`, `avgSchoolRating`, and `MedianStudentsPerTeacher` are all numerical variables
++ `garageSpaces`, `yearBuilt`, `numOfPatioAndPorchFeatures`, `numOfBathrooms`, and `numOfBedrooms` could be treated as either numerical or categorical variables
+
+  + We get to choose how to treat them
+
+## Student Activity, Part I
