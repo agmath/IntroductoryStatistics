@@ -3,7 +3,7 @@ title: "Intro to R with Austin Housing Data"
 format: 
   revealjs:
     incremental: true
-    fontsize: 24pt
+    fontsize: 20pt
 date: today
 date-format: long
 theme: sky
