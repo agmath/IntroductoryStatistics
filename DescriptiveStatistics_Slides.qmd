@@ -1,0 +1,410 @@
+---
+title: "Descriptive Statistics with R and the Austin Housing Data"
+format: 
+  revealjs:
+    incremental: true
+    fontsize: 20pt
+date: today
+date-format: long
+theme: sky
+---
+
+```{r}
+library(tidyverse)
+library(countdown)
+library(kableExtra)
+
+austin <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/master/data/classification/austin_zillow_data.csv")
+```
+
+## The Highlights
+
++ The `summarize()` Function
++ Summary Statistics for Numerical Variables
+
+  + Missing Values (`NA`) are Contagious
++ Summary Statistics for Categorical Variables
++ Summary Statistics by Group with `group_by()` and `summarize()`
+
+## The `summarize()` Function
+
+. . . 
+
+We can use the `summarize()` function to calculate summary statistics
+
+. . . 
+
+```{r}
+#| echo: true
+#| eval: false
+
+data %>%
+  summarize(
+    name1 = expression,
+    name2 = expression,
+    ...
+  )
+```
+
+. . . 
+
+We'll be reminded of some summary statistics for numerical variables on the next slide
+
+## Summary Statistics for Numerical Variables
+
+. . . 
+
+**Measures of Center:** 
+
++ Mean: `mean(col_name)`
++ Median: `median(col_name)`
+
+. . . 
+
+**Measures of Spread:** 
+
++ Standard Deviation: `sd(col_name)`
++ Inter-Quartile Range: `IQR(col_name)`
+
+. . . 
+
+**Additional Measures:**
+
++ Minimum: `min(col_name)`
++ Maximum: `max(col_name)`
++ Quantiles/Percentiles: `quantile(col_name, probs)`
+
+## Try It!
+
+$\bigstar$ Open our `Day2to5_AustinHousingData.qmd` file and find the answers to several of the questions we asked last time. While our questions from last class were all about *averages* try using some of the other functions to gain deeper understanding of our numeric variables.
+
+. . . 
+
+**For Example:**
+
+```{r}
+#| echo: true
+#| eval: false
+
+austin %>%
+  summarize(
+    avg_lotSize = mean(lotSizeSqFt),
+    median_lotSize = median(lotSizeSqFt),
+    sd_lotSize = sd(lotSizeSqFt)
+  )
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+austin %>%
+  summarize(
+    min_lotSize = min(lotSizeSqFt),
+    avg_lotSize = mean(lotSizeSqFt),
+    median_lotSize = median(lotSizeSqFt),
+    max_lotSize = max(lotSizeSqFt),
+    sd_lotSize = sd(lotSizeSqFt)
+  ) %>%
+  kable() %>%
+  kable_styling()
+```
+
+. . . 
+
+While you are doing this, do "future you" a favor by keeping your notebook organized, each code chunk to one pipeline, and write descriptive text before each code chunk. 
+
+```{r}
+countdown(minutes = 5)
+```
+
+## Warning: Missing Values are *Contagious*
+
+. . . 
+
+Our Austin, TX Zillow data has no missing values. 
+
+. . . 
+
+What happens if we try to compute numerical summaries with a data set that contains missing values?
+
+. . .
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+nobs <- 10
+
+missing_df <- tibble(
+  var1 = rnorm(nobs, 25, 3),
+  var2 = sample(c(NA, NA, runif(nobs - 2, 10, 20)), nobs)
+)
+
+missing_df %>%
+  kable() %>%
+  kable_styling()
+```
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    acg_var2 = mean(var2)
+  )
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    acg_var2 = mean(var2)
+  ) %>%
+  kable() %>%
+  kable_styling()
+```
+
+:::
+
+::::
+
+## Warning: Missing Values are *Contagious*
+
+Our Austin, TX Zillow data has no missing values. 
+
+What happens if we try to compute numerical summaries with a data set that contains missing values?
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+missing_df %>%
+  kable() %>%
+  kable_styling()
+```
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2)
+  )
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2)
+  ) %>%
+  kable() %>%
+  kable_styling()
+```
+
+```{r}
+#| echo: true
+#| eval: false
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2, na.rm = TRUE)
+  )
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2, na.rm = TRUE)
+  ) %>%
+  kable() %>%
+  kable_styling()
+```
+
+:::
+
+::::
+
+. . . 
+
+We can use `na.rm = TRUE` as an argument to our summary functions to *remove missing values from the calculation*
+
+## Summary Statistics for Categorical Variables
+
+. . . 
+
+We generally summarize categorical variables with using *counts*
+
++ A *frequency table* shows raw counts of each category
+  + We use `count()`, which doesn't require `summarize()` for this
+
+. . . 
+
+**For Example:**
+
+```{r}
+#| echo: true
+#| eval: false
+
+austin %>%
+  count(city)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+austin %>%
+  count(city) %>%
+  kable() %>%
+  kable_styling()
+```
+
+## Summary Statistics for Categorical Variables
+
+We generally summarize categorical variables with using *counts*
+
+:::{.nonincremental}
+
++ A *frequency table* shows raw counts of each category
+  + We use `count()`, which doesn't require `summarize()` for this
+
+:::
+
++ A *relative frequency table* shows proportions for each category
+  + We need to `mutate()` relative frequencies after calculating the counts for each level
+
+. . .
+
+**For Example:**
+
+```{r}
+#| echo: true
+#| eval: false
+
+austin %>%
+  count(city) %>%
+  mutate(rel_freq = n/sum(n))
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+austin %>%
+  count(city) %>%
+  mutate(rel_freq = n/sum(n)) %>%
+  kable() %>%
+  kable_styling()
+```
+
+## Try It!
+
+$\bigstar$ Continue adding to your notebook by calculating frequencies and relative frequencies for several categorical variables. As a reminder, there were some variables in our data set that we said could be treated as numerical *or* categorical. For these variables, compare the insights you obtain from numerical summary statistics versus counts.
+
+. . . 
+
+Again, do "future you" a favor by keeping your notebook organized and narrated. 
+
+```{r}
+countdown(minutes = 7)
+```
+
+## Grouped Summaries
+
+. . . 
+
+All of our techniques so far allow us to analyse a single variable at a time, across the entire data set.
+
+. . .
+
+What if we are interested in potential associations between variables?
+
+. . . 
+
+We can use `group_by()` followed by `summarise()` to obtain one set of summary statistics per group
+
+. . . 
+
+**For Example:** Is there an association between `city` and number of bedrooms (`numOfBedrooms`)?
+
+```{r}
+#| echo: true
+#| eval: false
+
+austin %>%
+  group_by(city) %>%
+  summarize(
+    avg_bedrooms = mean(numOfBedrooms)
+  )
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+austin %>%
+  group_by(city) %>%
+  summarize(
+    num_homes = n(),
+    avg_bedrooms = mean(numOfBedrooms)
+  ) %>%
+  kable() %>%
+  kable_styling()
+```
+
+## Try It!
+
+$\bigstar$ Use `group_by()` and `summarize()` to answer some of our questions about associations between variables.
+
+. . .
+
+**Warning:** Make sure you are grouping by categorical variables -- grouping by a numeric variable with lots of observed levels is ill-advised
+
+. . . 
+
+As you've done, continue to do "future you" a favor by keeping your notebook organized and narrated. 
+
+```{r}
+countdown(minutes = 10)
+```
+
+## Summary
+
++ We can use `summarize()` to compute summary statistics
+  + We pass summarize the names of the resulting columns and how they should be calculated
++ We can use `count()` to build a frequency table for levels of a categorical variable
+  + To compute relative frequencies, we use `mutate(rel_freq = n/sum(n))` to build the relative frequency column
++ We can use `group_by()` and then `summarize()` to calculate summary statistics for groups defined by a categorical variable
+
+. . . 
+
+**Next Time:** Data Visualization
+
+**Homework:** Complete the Topic 4 notebook and submit the hash code using the Google Form at least 30 minutes before the start of Thursday's class
