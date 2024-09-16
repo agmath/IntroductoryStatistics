@@ -21,8 +21,8 @@ austin <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/ma
 
 + The `summarize()` Function
 + Summary Statistics for Numerical Variables
-
   + Missing Values (`NA`) are Contagious
++ Using `mutate()` to construct new variables
 + Summary Statistics for Categorical Variables
 + Summary Statistics by Group with `group_by()` and `summarize()`
 
@@ -73,10 +73,11 @@ We'll be reminded of some summary statistics for numerical variables on the next
 + Minimum: `min(col_name)`
 + Maximum: `max(col_name)`
 + Quantiles/Percentiles: `quantile(col_name, probs)`
+  + **Note:** `probs` is the argument for the percentile(s) you wish to obtain
 
 ## Try It!
 
-$\bigstar$ Open our `Day2to5_AustinHousingData.qmd` file and find the answers to several of the questions we asked last time. While our questions from last class were all about *averages* try using some of the other functions to gain deeper understanding of our numeric variables.
+$\bigstar$ Open our `Day2to5_AustinHousingData.qmd` file and find the answers to several of the questions we asked last time (posted to Slack). While our questions from last class were all about *averages* try using some of the other functions to gain deeper understanding of our numeric variables.
 
 . . . 
 
@@ -158,7 +159,7 @@ missing_df %>%
 missing_df %>%
   summarize(
     avg_var1 = mean(var1),
-    acg_var2 = mean(var2)
+    avg_var2 = mean(var2)
   )
 ```
 
@@ -169,7 +170,7 @@ missing_df %>%
 missing_df %>%
   summarize(
     avg_var1 = mean(var1),
-    acg_var2 = mean(var2)
+    avg_var2 = mean(var2)
   ) %>%
   kable() %>%
   kable_styling()
@@ -251,9 +252,117 @@ missing_df %>%
 
 ::::
 
+## Warning: Missing Values are *Contagious*
+
+Our Austin, TX Zillow data has no missing values. 
+
+What happens if we try to compute numerical summaries with a data set that contains missing values?
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+missing_df %>%
+  kable() %>%
+  kable_styling()
+```
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2)
+  )
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2)
+  ) %>%
+  kable() %>%
+  kable_styling()
+```
+
+```{r}
+#| echo: true
+#| eval: false
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2, na.rm = TRUE)
+  )
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+missing_df %>%
+  summarize(
+    avg_var1 = mean(var1),
+    avg_var2 = mean(var2, na.rm = TRUE)
+  ) %>%
+  kable() %>%
+  kable_styling()
+```
+
+We use `na.rm = TRUE` to *remove missing values from the calculation*
+
+:::
+
+::::
+
+## What if I Don't Have the Variable I Want?
+
 . . . 
 
-We can use `na.rm = TRUE` as an argument to our summary functions to *remove missing values from the calculation*
+The data we have generally limits the questions we can ask and answer
+
+. . . 
+
+Sometimes we can construct new variables from existing variables though
+
+. . . 
+
+**For Example:** One of our questions from our previous class meeting was about the number of bathrooms per bedroom in a home. While we don't have a `bathrooms_per_br` column, we can construct one using the `numOfBathrooms` and `numOfBedrooms` columns.
+
+```{r}
+#| echo: true
+#| eval: false
+
+austin %>%
+  mutate(bathrooms_per_br = numOfBathrooms / numOfBedrooms)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+austin %>%
+  mutate(bathrooms_per_br = numOfBathrooms / numOfBedrooms) %>%
+  select(homeType, numOfBedrooms, numOfBathrooms, bathrooms_per_br) %>%
+  head() %>%
+  kable() %>%
+  kable_styling(font_size = 16)
+```
+
+. . .
+
+$\bigstar$ Starting with the code to create `bathrooms_per_br`, compute the average number of bathrooms per bedroom for properties in our sample.
 
 ## Summary Statistics for Categorical Variables
 
@@ -283,10 +392,12 @@ austin %>%
 austin %>%
   count(city) %>%
   kable() %>%
-  kable_styling()
+  kable_styling(font_size = 18)
 ```
 
 ## Summary Statistics for Categorical Variables
+
+::::{style="font-size: 75%;"}
 
 We generally summarize categorical variables with using *counts*
 
@@ -299,6 +410,8 @@ We generally summarize categorical variables with using *counts*
 
 + A *relative frequency table* shows proportions for each category
   + We need to `mutate()` relative frequencies after calculating the counts for each level
+
+::::
 
 . . .
 
@@ -321,7 +434,7 @@ austin %>%
   count(city) %>%
   mutate(rel_freq = n/sum(n)) %>%
   kable() %>%
-  kable_styling()
+  kable_styling(font_size = 18)
 ```
 
 ## Try It!
@@ -354,6 +467,10 @@ We can use `group_by()` followed by `summarise()` to obtain one set of summary s
 
 **For Example:** Is there an association between `city` and number of bedrooms (`numOfBedrooms`)?
 
+::::{.columns}
+
+:::{.column width="50%"}
+
 ```{r}
 #| echo: true
 #| eval: false
@@ -364,6 +481,10 @@ austin %>%
     avg_bedrooms = mean(numOfBedrooms)
   )
 ```
+
+:::
+
+:::{.column width="50%"}
 
 ```{r}
 #| echo: false
@@ -376,8 +497,12 @@ austin %>%
     avg_bedrooms = mean(numOfBedrooms)
   ) %>%
   kable() %>%
-  kable_styling()
+  kable_styling(font_size = 18)
 ```
+
+:::
+
+::::
 
 ## Try It!
 

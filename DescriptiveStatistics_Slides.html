@@ -10,7 +10,7 @@
 <link href="DescriptiveStatistics_Slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.43">
 
-  <meta name="dcterms.date" content="2024-09-15">
+  <meta name="dcterms.date" content="2024-09-16">
   <title>Descriptive Statistics with R and the Austin Housing Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -400,18 +400,19 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">September 15, 2024</p>
+  <p class="date">September 16, 2024</p>
 </section>
 <section id="the-highlights" class="slide level2">
 <h2>The Highlights</h2>
 <ul>
-<li class="fragment"><p>The <code>summarize()</code> Function</p></li>
-<li class="fragment"><p>Summary Statistics for Numerical Variables</p>
+<li class="fragment">The <code>summarize()</code> Function</li>
+<li class="fragment">Summary Statistics for Numerical Variables
 <ul>
 <li class="fragment">Missing Values (<code>NA</code>) are Contagious</li>
 </ul></li>
-<li class="fragment"><p>Summary Statistics for Categorical Variables</p></li>
-<li class="fragment"><p>Summary Statistics by Group with <code>group_by()</code> and <code>summarize()</code></p></li>
+<li class="fragment">Using <code>mutate()</code> to construct new variables</li>
+<li class="fragment">Summary Statistics for Categorical Variables</li>
+<li class="fragment">Summary Statistics by Group with <code>group_by()</code> and <code>summarize()</code></li>
 </ul>
 </section>
 <section id="the-summarize-function" class="slide level2">
@@ -454,13 +455,16 @@
 <ul>
 <li class="fragment">Minimum: <code>min(col_name)</code></li>
 <li class="fragment">Maximum: <code>max(col_name)</code></li>
-<li class="fragment">Quantiles/Percentiles: <code>quantile(col_name, probs)</code></li>
+<li class="fragment">Quantiles/Percentiles: <code>quantile(col_name, probs)</code>
+<ul>
+<li class="fragment"><strong>Note:</strong> <code>probs</code> is the argument for the percentile(s) you wish to obtain</li>
+</ul></li>
 </ul>
 </div>
 </section>
 <section id="try-it" class="slide level2">
 <h2>Try It!</h2>
-<p><span class="math inline">\(\bigstar\)</span> Open our <code>Day2to5_AustinHousingData.qmd</code> file and find the answers to several of the questions we asked last time. While our questions from last class were all about <em>averages</em> try using some of the other functions to gain deeper understanding of our numeric variables.</p>
+<p><span class="math inline">\(\bigstar\)</span> Open our <code>Day2to5_AustinHousingData.qmd</code> file and find the answers to several of the questions we asked last time (posted to Slack). While our questions from last class were all about <em>averages</em> try using some of the other functions to gain deeper understanding of our numeric variables.</p>
 <div class="fragment">
 <p><strong>For Example:</strong></p>
 <div class="cell">
@@ -502,7 +506,7 @@
 <p>While you are doing this, do “future you” a favor by keeping your notebook organized, each code chunk to one pipeline, and write descriptive text before each code chunk.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ba792a1e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_c5c41d94" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -532,43 +536,43 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">22.37027</td>
-<td style="text-align: right;">18.60335</td>
+<td style="text-align: right;">23.29265</td>
+<td style="text-align: right;">10.83647</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">29.04060</td>
-<td style="text-align: right;">17.67186</td>
+<td style="text-align: right;">26.66060</td>
+<td style="text-align: right;">15.20252</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">23.90093</td>
-<td style="text-align: right;">10.38402</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25.30311</td>
-<td style="text-align: right;">17.01443</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">27.32647</td>
-<td style="text-align: right;">19.65946</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">22.81504</td>
+<td style="text-align: right;">26.13309</td>
 <td style="text-align: right;">NA</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">22.15542</td>
-<td style="text-align: right;">11.39092</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">26.89514</td>
-<td style="text-align: right;">13.41815</td>
+<td style="text-align: right;">25.70069</td>
+<td style="text-align: right;">13.52328</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">20.37461</td>
-<td style="text-align: right;">15.57055</td>
+<td style="text-align: right;">19.07883</td>
+<td style="text-align: right;">15.46630</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">22.82089</td>
+<td style="text-align: right;">27.74035</td>
+<td style="text-align: right;">14.41281</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.17816</td>
+<td style="text-align: right;">17.00389</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.42456</td>
+<td style="text-align: right;">14.53529</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28.95521</td>
+<td style="text-align: right;">13.66709</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.78997</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -582,7 +586,7 @@
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>missing_df <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href=""></a>  <span class="fu">summarize</span>(</span>
 <span id="cb3-3"><a href=""></a>    <span class="at">avg_var1 =</span> <span class="fu">mean</span>(var1),</span>
-<span id="cb3-4"><a href=""></a>    <span class="at">acg_var2 =</span> <span class="fu">mean</span>(var2)</span>
+<span id="cb3-4"><a href=""></a>    <span class="at">avg_var2 =</span> <span class="fu">mean</span>(var2)</span>
 <span id="cb3-5"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
@@ -591,12 +595,12 @@
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">avg_var1</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">acg_var2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">avg_var2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">24.30025</td>
+<td style="text-align: right;">25.99541</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -626,43 +630,43 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">22.37027</td>
-<td style="text-align: right;">18.60335</td>
+<td style="text-align: right;">23.29265</td>
+<td style="text-align: right;">10.83647</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">29.04060</td>
-<td style="text-align: right;">17.67186</td>
+<td style="text-align: right;">26.66060</td>
+<td style="text-align: right;">15.20252</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">23.90093</td>
-<td style="text-align: right;">10.38402</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25.30311</td>
-<td style="text-align: right;">17.01443</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">27.32647</td>
-<td style="text-align: right;">19.65946</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">22.81504</td>
+<td style="text-align: right;">26.13309</td>
 <td style="text-align: right;">NA</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">22.15542</td>
-<td style="text-align: right;">11.39092</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">26.89514</td>
-<td style="text-align: right;">13.41815</td>
+<td style="text-align: right;">25.70069</td>
+<td style="text-align: right;">13.52328</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">20.37461</td>
-<td style="text-align: right;">15.57055</td>
+<td style="text-align: right;">19.07883</td>
+<td style="text-align: right;">15.46630</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">22.82089</td>
+<td style="text-align: right;">27.74035</td>
+<td style="text-align: right;">14.41281</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.17816</td>
+<td style="text-align: right;">17.00389</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.42456</td>
+<td style="text-align: right;">14.53529</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28.95521</td>
+<td style="text-align: right;">13.66709</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.78997</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -690,7 +694,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">24.30025</td>
+<td style="text-align: right;">25.99541</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -717,8 +721,8 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">24.30025</td>
-<td style="text-align: right;">15.46409</td>
+<td style="text-align: right;">25.99541</td>
+<td style="text-align: right;">14.33096</td>
 </tr>
 </tbody>
 </table>
@@ -728,8 +732,199 @@
 </div>
 </div>
 </div>
+</section>
+<section id="warning-missing-values-are-contagious-2" class="slide level2">
+<h2>Warning: Missing Values are <em>Contagious</em></h2>
+<p>Our Austin, TX Zillow data has no missing values.</p>
+<p>What happens if we try to compute numerical summaries with a data set that contains missing values?</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">var1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">var2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">23.29265</td>
+<td style="text-align: right;">10.83647</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26.66060</td>
+<td style="text-align: right;">15.20252</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">26.13309</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.70069</td>
+<td style="text-align: right;">13.52328</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.07883</td>
+<td style="text-align: right;">15.46630</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">27.74035</td>
+<td style="text-align: right;">14.41281</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25.17816</td>
+<td style="text-align: right;">17.00389</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.42456</td>
+<td style="text-align: right;">14.53529</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28.95521</td>
+<td style="text-align: right;">13.66709</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31.78997</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>missing_df <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href=""></a>  <span class="fu">summarize</span>(</span>
+<span id="cb6-3"><a href=""></a>    <span class="at">avg_var1 =</span> <span class="fu">mean</span>(var1),</span>
+<span id="cb6-4"><a href=""></a>    <span class="at">avg_var2 =</span> <span class="fu">mean</span>(var2)</span>
+<span id="cb6-5"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">avg_var1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">avg_var2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">25.99541</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>missing_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href=""></a>  <span class="fu">summarize</span>(</span>
+<span id="cb7-3"><a href=""></a>    <span class="at">avg_var1 =</span> <span class="fu">mean</span>(var1),</span>
+<span id="cb7-4"><a href=""></a>    <span class="at">avg_var2 =</span> <span class="fu">mean</span>(var2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-5"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">avg_var1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">avg_var2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">25.99541</td>
+<td style="text-align: right;">14.33096</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>We use <code>na.rm = TRUE</code> to <em>remove missing values from the calculation</em></p>
+</div>
+</div>
+</section>
+<section id="what-if-i-dont-have-the-variable-i-want" class="slide level2">
+<h2>What if I Don’t Have the Variable I Want?</h2>
 <div class="fragment">
-<p>We can use <code>na.rm = TRUE</code> as an argument to our summary functions to <em>remove missing values from the calculation</em></p>
+<p>The data we have generally limits the questions we can ask and answer</p>
+</div>
+<div class="fragment">
+<p>Sometimes we can construct new variables from existing variables though</p>
+</div>
+<div class="fragment">
+<p><strong>For Example:</strong> One of our questions from our previous class meeting was about the number of bathrooms per bedroom in a home. While we don’t have a <code>bathrooms_per_br</code> column, we can construct one using the <code>numOfBathrooms</code> and <code>numOfBedrooms</code> columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>austin <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">bathrooms_per_br =</span> numOfBathrooms <span class="sc">/</span> numOfBedrooms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">homeType</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">numOfBedrooms</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">numOfBathrooms</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bathrooms_per_br</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Single Family</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.5000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Single Family</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Multiple Occupancy</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.6666667</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Single Family</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Single Family</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.8000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Condo</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.6666667</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\bigstar\)</span> Starting with the code to create <code>bathrooms_per_br</code>, compute the average number of bathrooms per bedroom for properties in our sample.</p>
 </div>
 </section>
 <section id="summary-statistics-for-categorical-variables" class="slide level2">
@@ -746,12 +941,12 @@
 <div class="fragment">
 <p><strong>For Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>austin <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href=""></a>  <span class="fu">count</span>(city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>austin <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href=""></a>  <span class="fu">count</span>(city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">city</th>
@@ -797,6 +992,7 @@
 </section>
 <section id="summary-statistics-for-categorical-variables-1" class="slide level2">
 <h2>Summary Statistics for Categorical Variables</h2>
+<div style="font-size: 75%;">
 <p>We generally summarize categorical variables with using <em>counts</em></p>
 <div>
 <ul>
@@ -812,16 +1008,17 @@
 <li class="fragment">We need to <code>mutate()</code> relative frequencies after calculating the counts for each level</li>
 </ul></li>
 </ul>
+</div>
 <div class="fragment">
 <p><strong>For Example:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>austin <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href=""></a>  <span class="fu">count</span>(city) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>austin <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href=""></a>  <span class="fu">count</span>(city) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">city</th>
@@ -880,7 +1077,7 @@
 <p>Again, do “future you” a favor by keeping your notebook organized and narrated.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4f787b0a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_01c2e005" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -901,16 +1098,19 @@
 </div>
 <div class="fragment">
 <p><strong>For Example:</strong> Is there an association between <code>city</code> and number of bedrooms (<code>numOfBedrooms</code>)?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>austin <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href=""></a>  <span class="fu">group_by</span>(city) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href=""></a>  <span class="fu">summarize</span>(</span>
-<span id="cb8-4"><a href=""></a>    <span class="at">avg_bedrooms =</span> <span class="fu">mean</span>(numOfBedrooms)</span>
-<span id="cb8-5"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>austin <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href=""></a>  <span class="fu">group_by</span>(city) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href=""></a>  <span class="fu">summarize</span>(</span>
+<span id="cb11-4"><a href=""></a>    <span class="at">avg_bedrooms =</span> <span class="fu">mean</span>(numOfBedrooms)</span>
+<span id="cb11-5"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">city</th>
@@ -961,6 +1161,8 @@
 </div>
 </div>
 </div>
+</div>
+</div>
 </section>
 <section id="try-it-2" class="slide level2">
 <h2>Try It!</h2>
@@ -972,7 +1174,7 @@
 <p>As you’ve done, continue to do “future you” a favor by keeping your notebook organized and narrated.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_eeea9ddc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_68b12940" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
