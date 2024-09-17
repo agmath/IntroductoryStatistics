@@ -9,6 +9,19 @@ theme: flatly
 
 ## Troubleshooting
 
+**PROBLEM -- The Notebooks Have Disappeared:** This problem has randomly impacted a few of my students recently (Fall 2024). The fix is to reinstall the notebooks by running each of the following, one at a time, in the console.
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("remotes")
+remotes::install_github("agmath/AppliedStatsInteractive")
+remotes::install_github("rundel/learnrhash")
+```
+
+After running these commands, the notebooks will repopulate in the *Tutorials* tab.
+
 **PROBLEM -- Notebooks Crashing on Re-Launch:** Some notebooks will crash when users start the notebook, close out, and then return to complete the notebook at later time. This is caused by a RAM overflow because all exercise chunks attempt to run at once. Most notebooks permit stopping and restarting without issue -- the current offenders are the Topic 13, Topic 16, and Topic 17 notebooks.
 
   + If you are on a paid-tier account, use the settings gear icon in the top-right of the Posit Cloud page and click on the *resources* tab. Change the RAM settings to either 1.5GB or 2GB and then relaunch the notebook. 
