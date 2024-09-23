@@ -1,0 +1,645 @@
+---
+title: "Discrete Probability"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 22pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+
+theme_set(theme_bw(base_size = 20))
+```
+
+## The Highlights
+
++ Computing with R: Warmup Problems
++ A *very* quick review  
+  + Binomial Experiments
+  + The Binomial Distribution
+  + Expected Value and Standard Deviation
++ **Examples:** Binomial or Not?
++ Review of R functionality for probabilities and the Binomial Distribution  
+  + `pbinom()` 
+  + `dbinom()`
++ **Examples:** Calculating Probabilities
+
+## Computing with R
+
+. . . 
+
+We've been focused on working with data frames recently
+
+. . . 
+
+Let's remember how to use R for basic calculations 
+
+. . . 
+
+**Example:** Consider the small data set: 54, 98, 72, 81, 89, 85, 78, 84. Use R functionality to compute each of the following.
+
+:::{.nonincremental}
+
++ the *mean*
++ the *median*
++ the *standard deviation*
++ the *interquartile range*
+
+:::
+
+```{r}
+countdown(minutes = 2)
+```
+
+## Computing with R
+
+We've been focused on working with data frames recently
+
+Let's remember how to use R for basic calculations 
+
+**Example:** Consider the small data set: 54, 98, 72, 81, 89, 85, 78, 84. Use R functionality to compute each of the following.
+
+:::{.nonincremental}
+
++ the *mean*
++ the *median*
++ the *standard deviation*
++ the *interquartile range*
+
+:::
+
+::::{.columns}
+
+:::{.column width="60%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+my_data <- c(54, 98, 72, 81, 89, 85, 78, 84)
+
+mean(my_data)
+median(my_data)
+sd(my_data)
+IQR(my_data)
+```
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+#| echo: false
+#| eval: true 
+
+my_data <- c(54, 98, 72, 81, 89, 85, 78, 84)
+
+mean(my_data)
+median(my_data)
+sd(my_data)
+IQR(my_data)
+```
+
+:::
+
+::::
+
+## A Note on this Deck
+
+. . . 
+
+This slide deck contains a detailed overview of binomial experiments and the binomial distribution. 
+
+. . . 
+
+We'll run through these *very* quickly during our in-class discussion since you've already spent time learning about these foundational ideas in the interactive notebook.
+
+. . . 
+
+If you have questions about the definitions of *binomial experiments* or the *binomial distribution* during or after our discussions of these example problems, refer back to these review slides and visit me in office hours.
+
+## Binomial Experiments
+
+. . .
+
+A *binomial experiment* is a statistical experiment that:
+
+  + Consists of a fixed number of independent trials
+  + Each trial has two possible outcomes, often called **success** or **failure** for convenience
+  + The probability of success is the same for each trial
+
+. . . 
+
+The key characteristics to identify are:
+
+1. The number of trials, $n$
+2. The outcomes -- What is meant by *success*? What is meant by *failure*?
+3. The probability of success, $p$
+4. The number of *successes* we are interested in, $k$ 
+
+## The Binomial Distribution
+
+. . . 
+
+The number of successes in a binomial experiment is a *random variable*, $X$
+
+. . . 
+
+The number of successful outcomes, $X$, follows a *binomial distribution* with parameters $n$ (trials) and $p$ (success probability) and we write
+  
+$$X \sim \text{Binomial}\left(n, p\right)$$
+
+. . . 
+
+Mathematically, the probability of observing exactly $k$ successes out of $n$ trials in a binomial experiment with success probability $p$ is given by
+
+$$\mathbb{P}\left[X = k\right] = \binom{n}{k} p^k \left(1 - p\right)^{n - k}$$
+
+Where $\displaystyle{\binom{n}{k} = \frac{n!}{k!\left(n -k\right)!}}$ is the number of ways to choose the $k$ successful trials out of the $n$ total trials
+
+## The Binomial Distribution
+
+$$\mathbb{P}\left[X = k\right] = \binom{n}{k}\cdot p^k\cdot\left(1 - p\right)^{n - k}$$
+
+. . . 
+
+Below are examples of binomial distributions
+
+. . . 
+
+```{r}
+p1 <- ggplot() + 
+  geom_col(aes(x = 0:10, dbinom(0:10, 10, 0.5))) + 
+  labs(
+    x = "n = 10, p = 0.5",
+    y = ""
+  )
+
+p2 <- ggplot() + 
+  geom_col(aes(x = 0:100, dbinom(0:100, 100, 0.5))) + 
+  labs(
+    x = "n = 100, p = 0.5",
+    y = ""
+  )
+
+p3 <- ggplot() + 
+  geom_col(aes(x = 0:10, dbinom(0:10, 10, 0.1))) + 
+  labs(
+    x = "n = 10, p = 0.1",
+    y = ""
+  )
+
+p4 <- ggplot() + 
+  geom_col(aes(x = 0:100, dbinom(0:100, 100, 0.1))) + 
+  labs(
+    x = "n = 100, p = 0.1",
+    y = ""
+  )
+
+(p1 + p2) / (p3 + p4)
+```
+
+## Expected Value and Standard Deviation
+
+. . . 
+
+On the previous slide, we saw that the *center* and *spread* of the binomial distribution depend on the values of $n$ and $p$
+
+. . . 
+
+**Expected Value (mean/center):** For a binomial distribution with $n$ trials and success probability $p$, the expected number of successes, $\mathbb{E}\left[X\right]$, is $n\cdot p$
+
++ For example, the binomial distribution with success probability 0.5 and 100 trials (the top-right plot on the previous slide), the expected number of successes is $\mathbb{E}\left[X\right] = 100\cdot\left(0.5\right) = 50$
+
+. . . 
+
+$\bigstar$ **Try It!** Find the expected number of successes in a binomial experiment with 50 trials and probability of success 0.25.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Expected Value and Standard Deviation
+
+On the previous slide, we saw that the *center* and *spread* of the binomial distribution depend on the values of $n$ and $p$
+
+**Standard Deviation (spread):** For a binomial distribution with $n$ trials and success probability $p$, the standard deviation of the number of successes, $\text{sd}\left(X\right)$, is $\sqrt{n\cdot p\cdot\left(1 - p\right)}$
+
++ Again, for example, the binomial distribution with success probability 0.5 and 100 trials (the top-right plot on the previous slide), the standard deviation in the number of successes is $\text{sd}\left(X\right) = \sqrt{100\cdot\left(0.5\right)\cdot\left(1 - 0.5\right)} = 5$
+
+. . . 
+
+$\bigstar$ **Try It!** Find the standard deviation in number of successes in a binomial experiment with 50 trials and probability of success 0.25.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Example Problems: Binomial or Not?
+
+. . . 
+
+For each of the following example scenarios, determine whether they can be modeled as binomial experiments or not.
+
+. . .
+
+**Scenario:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Example Problems: Binomial or Not?
+
+For each of the following example scenarios, determine whether they can be modeled as binomial experiments or not.
+
+**Scenario:** A researcher surveys students one by one, asking if they agree with a policy. The researcher continues until exactly 50 students say they agree with the policy.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Example Problems: Binomial or Not?
+
+For each of the following example scenarios, determine whether they can be modeled as binomial experiments or not.
+
+**Scenario:** You are measuring the time until a machine fails. Each machine’s lifespan is recorded, but failures occur at unpredictable times based on complex factors such as wear and tear.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Example Problems: Binomial or Not?
+
+For each of the following example scenarios, determine whether they can be modeled as binomial experiments or not.
+
+**Scenario:** A factory has a defect rate of 3% in the products it manufactures. Inspectors randomly select and evaluate 100 products.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Example Problems: Binomial or Not?
+
+For each of the following example scenarios, determine whether they can be modeled as binomial experiments or not.
+
+**Scenario:** A botanist finds that a certain species of plant successfully grows 60% of the time under controlled greenhouse conditions. The botanist plants 25 seeds.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Example Problems: Binomial or Not?
+
+For each of the following example scenarios, determine whether they can be modeled as binomial experiments or not.
+
+**Scenario:** In a classroom, groups of 5 students vote on whether to select a particular project topic. We count the number of "*yes*" votes. The students in the group discuss the topic before voting.
+
+```{r}
+countdown(minutes = 0, seconds = 30)
+```
+
+## Ask Me Two Questions
+
+. . .
+
+Before we move forward, ask me two questions...
+
+## Calculating Probabilities with the Binomial Distribution
+
+. . . 
+
+As a reminder, the binomial distribution for $n$ trials and a success probability $p$ is given by 
+
+$$\mathbb{P}\left[X = k\right] = \binom{n}{k}\cdot p^k\cdot\left(1 - p\right)^{n - k}$$
+
+. . . 
+
+We have two *helper-functions* in R that we can use to compute probabilities using the binomial distribution without manually evaluating this formula.
+
++ $\mathbb{P}\left[X = k\right] \approx \text{dbinom}\left(k, n, p\right)$
++ $\mathbb{P}\left[X \leq k\right] \approx \text{pbinom}\left(k, n, p\right)$
+
+## A Completed Example (Part I)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
++ Find the probability that exactly 40 of the individuals have been in at least one car accident.
+
+. . . 
+
+Notice that $n = 48$, $p = 0.77$, and $k = 40$.
+
+. . .
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~0,~1,~2,~\cdots,~39,~40,~41,~\cdots,~48$$
+
+## A Completed Example (Part I)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that **<font color="blue">exactly 40</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = 40$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~0,~1,~2,~\cdots,~39,~\color{blue}{~\boxed{40}~},~41,~\cdots,~48$$
+
+. . . 
+
+```{r}
+#| echo: true
+#| eval: true
+
+dbinom(40, 48, 0.77)
+```
+
+
+## A Completed Example (Part II)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
++ Find the probability at most 30 of the individuals have been in at least one car accident.
+
+. . .
+
+Notice that $n = 48$, $p = 0.77$, and $k = 30$.
+
+. . .
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~0,~1,~2,~\cdots,~29,~30,~31,~\cdots,~48$$
+
+## A Completed Example (Part II)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability **<font color="blue">at most 30</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = 30$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~\color{blue}{\boxed{~0,~1,~2,~\cdots,~29,~30~}},~31,~\cdots,~48$$
+
+. . . 
+
+```{r}
+#| echo: true
+#| eval: true
+
+pbinom(30, 48, 0.77)
+```
+
+## A Completed Example (Part III)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
++ Find the probability that more than 35 of the individuals have been in at least one car accident.
+
+. . . 
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+. . .
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~0,~1,~2,~\cdots,~34,~35,~36,~\cdots,~48$$
+
+## A Completed Example (Part III)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that **<font color="blue">more than 35</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~0,~1,~2,~\cdots,~34,~35,~\color{blue}{\boxed{~36,~\cdots,~48~}}$$
+
+## A Completed Example (Part III)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that **<font color="blue">more than 35</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~\color{red}{\boxed{~0,~1,~2,~\cdots,~34,~35~}},~\color{blue}{\boxed{~36,~\cdots,~48~}}$$
+
+## A Completed Example (Part III)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that **<font color="blue">more than 35</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~\color{black}{~\boxed{\color{red}{\boxed{~0,~1,~2,~\cdots,~34,~35~}},~\color{blue}{\boxed{~36,~\cdots,~48~}}~}}$$
+
+We should start with "*everything*" (a probability of 1) and remove the probability that at most 35 individuals have been in at least one car accident.
+
+## A Completed Example (Part III)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that more than 35 of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~\color{black}{~\boxed{~\color{red}{\boxed{~0,~1,~2,~\cdots,~34,~35~}},~\color{blue}{\boxed{~36,~\cdots,~48~}}~}}$$
+
+::::{.columns}
+
+:::{.column width="35%"}
+
+```{r}
+#| echo: true
+#| eval: true
+
+1 - pbinom(35, 48, 0.77)
+```
+
+:::
+
+:::{.column width="65%"}
+
+We'll use this strategy of starting with a probability that is "*too big*" and removing the probability of the events we don't want, often.
+
+:::
+
+::::
+
+## A Completed Example (Part IV)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
++ Find the probability that at least 35 but less than 42 of the individuals have been in at least one car accident.
+
+. . . 
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+. . .
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~0,~1,~2,~\cdots,~34,~35,~36,~\cdots,~41,~42,~43,~\cdots,~48~$$
+
+## A Completed Example (Part IV)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that at least 35 but **<font color="black">less than 42</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~\color{black}{\boxed{~0,~1,~2,~\cdots,~34,~35,~36,~\cdots,~41}},~42,~43,~\cdots,~48~$$
+
+## A Completed Example (Part IV)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that **<font color="blue">at least 35 but less than 42</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~\color{black}{\boxed{~0,~1,~2,~\cdots,~34,~\color{blue}{\boxed{~35,~36,~\cdots,~41}~}~}},~42,~43,~\cdots,~48~$$
+
+
+## A Completed Example (Part IV)
+
+**Example:** It is estimated that 77% of people have been in at least one car accident in their lives. Researchers asked 48 randomly selected individuals whether they have ever been in a car accident. 
+
+:::{.nonincremental}
+
++ Find the probability that **<font color="blue">at least 35 but less than 42</font>** of the individuals have been in at least one car accident.
+
+:::
+
+Notice that $n = 48$, $p = 0.77$, and $k = ??$.
+
+**Draw a Picture:** It really helps...
+
+$$X~\text{(successes)}:~\color{black}{\boxed{\color{red}{\boxed{~0,~1,~2,~\cdots,~34~}},~\color{blue}{\boxed{~35,~36,~\cdots,~41}~}~}},~42,~43,~\cdots,~48~$$
+
+. . . 
+
+We should start with the probability that *at most 41* individuals have been in at least one car accident and then remove the probability that *at most 34* individuals have been in at least one car accident.
+
+. . .
+
+::::{.columns}
+
+:::{.column width="60%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+pbinom(41, 48, 0.77) - pbinom(34, 48, 0.77)
+```
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+#| echo: false
+#| eval: true
+
+pbinom(41, 48, 0.77) - pbinom(34, 48, 0.77)
+```
+
+:::
+
+::::
+
+## Try It, Example 1
+
+**Scenario:** A factory has a defect rate of 3% in the products it manufactures. Inspectors randomly select 100 products.
+
+i. What is the probability that exactly 5 products have defects?
+ii. What is the probability that at most 5 products have defects?
+iii. What is the probability that at least 5 products have defects?
+
+## Try It, Example 2
+
+**Scenario:** A botanist finds that a certain species of plant successfully grows 60% of the time under controlled greenhouse conditions. The botanist plants 25 seeds.
+
+i. What is the probability that exactly 20 of the seeds grow?
+ii. What is the probability that fewer than 20 of the seeds grow?
+iii. What is the probability that at least 17 and no more than 21 of the seeds grow?
+iv. What is the probability that more than 20 of the seeds grow?
+
+## Summary
+
++ **Binomial Experiments** involve a fixed number of independent trials ($n$), two possible outcomes for each trial, and a constant probability of "*success*" ($p$).
++ The **Binomial Distribution** is a probability distribution that models the number of successful outcomes in these experiments.
++ We can calculate probabilities associated with counts of successful outcomes using the binomial distribution $\displaystyle{\mathbb{P}\left[X = k\right] = \binom{n}{k}\cdot p^k\cdot\left(1 - p\right)^{n - k}}$.  
+  + We can also use R functionality to avoid having to compute this by hand!
+  + $\mathbb{P}\left[X = k\right] \approx \text{dbinom}\left(k, n, p\right)$
+  + $\mathbb{P}\left[X \leq k\right] \approx \text{pbinom}\left(k, n, p\right)$
+  + Don't try to memorize how to apply this functionality in different scenarios -- just draw pictures and use the picture to guide you.
+
+
+
+
+
