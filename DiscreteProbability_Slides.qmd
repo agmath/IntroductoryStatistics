@@ -632,7 +632,7 @@ iv. What is the probability that more than 20 of the seeds grow?
 ## Summary
 
 + **Binomial Experiments** involve a fixed number of independent trials ($n$), two possible outcomes for each trial, and a constant probability of "*success*" ($p$).
-+ The **Binomial Distribution** is a probability distribution that models the number of successful outcomes in these experiments.
++ The **Binomial Distribution** is a probability distribution over the number of successful outcomes in these experiments.
 + We can calculate probabilities associated with counts of successful outcomes using the binomial distribution $\displaystyle{\mathbb{P}\left[X = k\right] = \binom{n}{k}\cdot p^k\cdot\left(1 - p\right)^{n - k}}$.  
   + We can also use R functionality to avoid having to compute this by hand!
   + $\mathbb{P}\left[X = k\right] \approx \text{dbinom}\left(k, n, p\right)$
@@ -641,7 +641,7 @@ iv. What is the probability that more than 20 of the seeds grow?
 
 ## Next Time...
 
-<center><br/><br/> The Normal Distribution</center>
+<center><br/> The Normal Distribution</center>
 
 
 
