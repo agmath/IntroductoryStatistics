@@ -1,5 +1,5 @@
 ---
-title: "Discrete Probability"
+title: "Discrete Probability: The Binomial Distribution"
 author: Dr. Gilbert
 format: revealjs
 date: today
@@ -327,7 +327,20 @@ $$\mathbb{P}\left[X = k\right] = \binom{n}{k}\cdot p^k\cdot\left(1 - p\right)^{n
 We have two *helper-functions* in R that we can use to compute probabilities using the binomial distribution without manually evaluating this formula.
 
 + $\mathbb{P}\left[X = k\right] \approx \text{dbinom}\left(k, n, p\right)$
+
+. . .
+
+$$X~\text{(successes)}:~0,~1,~2,~\cdots,~k - 1,~\color{blue}{\boxed{k}},~k+1,~\cdots,~n - 1, n$$
+
 + $\mathbb{P}\left[X \leq k\right] \approx \text{pbinom}\left(k, n, p\right)$
+
+. . .
+
+$$X~\text{(successes)}:~\color{blue}{\boxed{0,~1,~2,~\cdots,~k - 1,~k}},~k+1,~\cdots,~n - 1, n$$
+
+. . . 
+
+**On Drawing Pictures:** Drawing pictures, like those above, to model problems in statistics is probably the best favor that you can do for yourself. Students who commit to drawing pictures early on never regret it.
 
 ## A Completed Example (Part I)
 
