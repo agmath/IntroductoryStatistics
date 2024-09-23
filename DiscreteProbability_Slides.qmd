@@ -314,7 +314,7 @@ countdown(minutes = 0, seconds = 30)
 
 Before we move forward, ask me two questions...
 
-## Calculating Probabilities with the Binomial Distribution
+## Calculating Probabilities with the Binomial Distribution {.smaller}
 
 . . . 
 
