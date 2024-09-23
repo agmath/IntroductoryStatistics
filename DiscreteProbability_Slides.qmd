@@ -639,7 +639,9 @@ iv. What is the probability that more than 20 of the seeds grow?
   + $\mathbb{P}\left[X \leq k\right] \approx \text{pbinom}\left(k, n, p\right)$
   + Don't try to memorize how to apply this functionality in different scenarios -- just draw pictures and use the picture to guide you.
 
+## Next Time...
 
+<center><br/><br/> The Normal Distribution</center>
 
 
 
