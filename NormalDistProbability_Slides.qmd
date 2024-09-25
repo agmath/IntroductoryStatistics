@@ -1,0 +1,520 @@
+---
+title: "Probability and the Normal Distribution"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 22pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+
+theme_set(theme_bw(base_size = 32))
+```
+
+## The Highlights
+
++ The Normal Distribution  
+  + Examples of Normal Distributions
+  + Center (mean: $\mu$)
+  + Spread (standard deviation: $\sigma$)
++ Probabilities and the Normal Distribution (areas) 
+  + Visual Representations of Probabilities
+  + Normal Distribution is Symmetric
+  + Why the Probability of an Exact, Singular Outcome is 0
++ **Examples:** Normal, Binomial, or Neither
++ Review of R functionality for probabilities and percentiles/quantiles with the Normal Distribution  
+  + `pnorm()` 
+  + `qnorm()`
++ **Examples:** Working with the Normal Distribution
+
+## The Normal Distribution
+
+. . .
+
+```{r}
+x <- seq(-3.5, 3.5, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x, y = dnorm(x)),
+            color = "black",
+            lwd = 1.5) + 
+  labs(
+    title = "A Normal Distribution",
+    x = "x",
+    y = ""
+  )
+```
+
+. . . 
+
+A normal distribution is a bell-shaped distribution which is parameterized (determined) by a mean $\mu$ and standard deviation $\sigma$
+
+. . . 
+
+The normal distribution with mean $\mu$ and standard deviation $\sigma$ is denoted by $N\left(\mu,~\sigma\right)$ and has probability density function
+
+. . .
+
+$$p\left(x\right) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{\left(x - \mu\right)^2}{2\sigma^2}}$$
+
+. . .
+
+Luckily, we don't evaluate or work with this by hand either!
+
+## Examples of Normal Distributions
+
+```{r}
+#| fig.height: 3
+
+mu1 <- 0
+sigma1 <- 1
+mu2 <- 1
+sigma2 <- 0.3
+mu3 <- -1
+sigma3 <- 2
+
+x1 <- seq(-8, 6, length.out = 1000)
+x2 <- seq(-8, 6, length.out = 1000)
+x3 <- seq(-8, 6, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x1, y = dnorm(x1, mu1, sigma1)),
+            color = "black",
+            lwd = 1.5,
+            alpha = 0.75) +
+  geom_line(aes(x = x2, y = dnorm(x2, mu2, sigma2)),
+            color = "purple",
+            lwd = 1.5,
+            alpha = 0.75) +
+  geom_line(aes(x = x3, y = dnorm(x3, mu3, sigma3)),
+            color = "darkgreen",
+            lwd = 1.5,
+            alpha = 0.75) + 
+  labs(
+    title = "Three Normal Distributions",
+    x = "x",
+    y = ""
+  )
+```
+
+. . .
+
+The **black** distribution has $\mu = 0$ and $\sigma = 1$
+
+. . .
+
+The **<font color=purple>purple</font>** distribution has $\mu = 1$ and $\sigma = 0.3$
+
+. . . 
+
+The **<font color=green>green</font>** distribution has $\mu = -1$ and $\sigma = 2$
+
+. . .
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x, y = dnorm(x)),
+            lwd = 1.5) + 
+  labs(
+    title = "The Standard Normal Distribution",
+    x = "Z",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+The **black** distribution, $N\left(\mu = 0,~\sigma = 1\right)$, is a special distribution called the *standard normal distribution* and we often use $z$ to denote its "support" values.
+
+:::
+
+::::
+
+## The Center of the Normal Distribution
+
+. . . 
+
+All of the distributions below have standard deviation $\sigma = 2$ but they have different means ($\mu$)
+
+. . . 
+
+```{r}
+#| fig.height: 4
+
+x1 <- seq(-10, 10, length.out = 1000)
+mu1 <- 0
+mu2 <- 2
+mu3 <- -7
+
+ggplot() + 
+  geom_point(aes(x = x1, y = dnorm(x1, mean = mu1, sd = 1)),
+             color = "purple") + 
+  geom_point(aes(x = x1, y = dnorm(x1, mean = mu2, sd = 1)),
+             color = "darkgreen") + 
+  geom_point(aes(x = x1, y = dnorm(x1, mean = mu3, sd = 1)),
+             color = "orange") + 
+  labs(
+    title = "Normal Distributions with Different Means",
+    x = "x",
+    y = ""
+  )
+```
+
+. . . 
+
+The mean of the **<font color=purple>purple</font>** distribution is $\mu = 0$
+
+. . .
+
+The mean of the **<font color=green>green</font>** distribution is $\mu = 2$
+
+. . .
+
+The mean of the **<font color=orange>orange</font>** distribution is $\mu = -7$
+
+## The Spread of the Normal Distribution
+
+. . . 
+
+All of the distributions below have mean $\mu = 0$ but they have different standard deviations ($\sigma$)
+
+. . . 
+
+```{r}
+#| fig.height: 4
+
+x1 <- seq(-15, 15, length.out = 1000)
+sd1 <- 1.5
+sd2 <- 3
+sd3 <- 5
+
+ggplot() + 
+  geom_point(aes(x = x1, y = dnorm(x1, mean = 0, sd = sd1)),
+             color = "purple") + 
+  geom_point(aes(x = x1, y = dnorm(x1, mean = 0, sd = sd2)),
+             color = "darkgreen") + 
+  geom_point(aes(x = x1, y = dnorm(x1, mean = 0, sd = sd3)),
+             color = "orange") + 
+  labs(
+    title = "Normal Distributions with Different Standard Deviations",
+    x = "x",
+    y = ""
+  )
+```
+
+. . . 
+
+The standard deviation of the **<font color=purple>purple</font>** distribution is $\sigma = 1.5$
+
+. . .
+
+The standard deviation of the **<font color=green>green</font>** distribution is $\sigma = 3$
+
+. . .
+
+The standard deviation of the **<font color=orange>orange</font>** distribution is $\sigma = 5$
+
+## Probabilities and the Normal Distribution
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="60%"}
+
+Probabilities of outcomes from random variables described by a normal distribution are *areas* under the corresponding normal curve.
+
+The picture to the right shows $\mathbb{P}\left[Z \geq z^*\right]$
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+x <- seq(-3.5, 3.5, length.out = 1000)
+x_fill <- seq(1, 3.5, length.out = 500)
+
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill)),
+              fill = "purple",
+              alpha = 0.5) + 
+  geom_line(aes(x = x, y = dnorm(x)),
+            lwd = 1.5) + 
+  scale_x_continuous(breaks = c(-2, 0, 1, 2), labels = c(-2, 0, "z*", 2)) +
+  labs(
+    x = "Z",
+    y = ""
+  )
+
+```
+
+:::
+
+::::
+
+. . . 
+
+**Note:** It is also worth knowing that the Normal Distribution is *symmetric*
+
+::::{.columns}
+
+:::{.column width="45%"}
+
+```{r}
+x <- seq(-3.5, 3.5, length.out = 1000)
+x_fill <- seq(-3.5, -1, length.out = 500)
+
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill)),
+              fill = "purple",
+              alpha = 0.5) + 
+  geom_line(aes(x = x, y = dnorm(x)),
+            lwd = 1.5) + 
+  scale_x_continuous(breaks = c(-2, -1, 0, 2), labels = c(-2, "-z*", 0, 2)) +
+  labs(
+    title = "P[Z < -z*]",
+    x = "Z",
+    y = ""
+  )
+
+```
+
+:::
+
+:::{.column width="10%"}
+
+<br/> <br/> is the same as... 
+
+:::
+
+:::{.column width="45%"}
+
+```{r}
+x <- seq(-3.5, 3.5, length.out = 1000)
+x_fill <- seq(1, 3.5, length.out = 500)
+
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill)),
+              fill = "purple",
+              alpha = 0.5) + 
+  geom_line(aes(x = x, y = dnorm(x)),
+            lwd = 1.5) + 
+  scale_x_continuous(breaks = c(-2, 0, 1, 2), labels = c(-2, 0, "z*", 2)) +
+  labs(
+    title = "P[Z > z*]",
+    x = "Z",
+    y = ""
+  )
+
+```
+
+:::
+
+::::
+
+## Probability of an Exact, Singular Outcome is 0
+
+. . . 
+
+**Question:** What is the probability that a randomly selected adult male from the United States is exactly 72 inches (6 feet) tall?
+
+. . .
+
+::::{.columns}
+
+:::{.column width="50%}
+
+```{r}
+mu <- 69
+sigma <- 3
+
+heights <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+ggplot() +
+  geom_ribbon(aes(x = c(71.95, 72, 72.05),
+                  ymin = 0,
+                  ymax = dnorm(c(71.95, 72, 72.05), mean = mu, sd = sigma)),
+              fill = "purple") + 
+  geom_line(aes(x = heights,
+                y = dnorm(heights, mean = mu, sd = sigma)),
+            lwd = 1.5) +
+  labs(
+    x = "Height (in.)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+Since probabilities are areas under the curve and we can approximate this region by a rectangle, we can use the formula for the area of a rectangle to approximate this probability! What's the area of a rectangle with 0 width?
+
+:::
+
+::::
+
+. . . 
+
+If we want to estimate probabilities, we'll need to ask questions about ranges of values.
+
+1. What is the probability that an adult male in the US is less than 72 inches tall?
+2. ...at least 72 inches tall?
+3. ...between 71.5 and 72.5 inches tall?
+
+## Normal, Binomial, or Neither
+
+. . . 
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+. . .
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** You roll a fair six-sided die repeatedly until a six appears, and you want to know how many rolls it takes.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** A factory has a 2% defect rate. Each day, 200 items are produced, and the number of defective items is counted.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** The weight of apples grown in an orchard is approximately normally distributed with a mean of 150 grams and a standard deviation of 20 grams.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** A region typically experiences 5 minor earthquakes per year. You are interested in the number of earthquakes in the next year.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** The number of cars passing through a toll booth in a 10-minute period is recorded. On average, 50 cars pass through every 10 minutes.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** The lifespan of a certain smartphone battery is approximately normally distributed with a mean of 18 months and a standard deviation of 3 months.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** A teacher gives a test to 30 students and knows that 80% of the students usually pass. The teacher is interested in the number of students who will pass this time.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** The time until a particular brand of light bulb fails is recorded. The failure times do not follow a normal pattern but tend to follow a long-tailed distribution.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** In a survey, you ask 200 randomly selected people whether they plan to vote in an upcoming election. Historically, 55% of people vote.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** The daily temperature in a city during the summer months is approximately normally distributed with a mean of 85°F and a standard deviation of 5°F.
+
+## Normal, Binomial, or Neither
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** A social media influencer posts a new photo, and the number of likes received over the next 24 hours is recorded. The number of likes does not seem to follow any regular or predictable pattern.
+
+## Normal, Binomial, or Neither?
+
+Determine whether each of the following scenarios involve a *random variable* that can be modeled by a normal distribution or not.
+
+**Scenario:** The distance run by professional athletes in a 30-minute endurance test is normally distributed with a mean of 5 kilometers and a standard deviation of 0.3 kilometers.
+
+## Review of R Functionality for the Normal Distribution
+
+. . . 
+
+Assume that $X\sim N\left(\mu = \text{mu}, \sigma = \text{sigma}\right)$. 
+
+. . .
+
+That is, the random variable $X$ is *normally distributed with mean $\text{mu}$ and standard deviation $\text{sigma}$*.
+
+. . .
+
+Since $\mathbb{P}\left[X = k\right] = 0$ (that is, *the probability that the random variable $X$ takes on the value $k$ exactly, is 0*), we will not make use of any `dnorm()` function
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="60%"}
+
+The probability that $X$ takes on a value *less than* (or *less than or equal to*) $k$ is $\mathbb{P}\left[X < k\right] \approx$ `pbinom(k, mean = mu, sd = sigma)`
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+x <- seq(-3.5, 3.5, length.out = 1000)
+x_fill <- seq(-3.5, 1.25, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill)),
+              fill = "purple",
+              alpha = 0.5) + 
+  geom_line(aes(x = x, y = dnorm(x)),
+            lwd = 1.5) + 
+  scale_x_continuous(breaks = c(-2, 0, 1.25, 2), labels = c(-2, 0, "k", 2)) + 
+  labs(
+    x = "X",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+
+
+
+## Next Time...
+
+<center><br/> Discrete Probability and Simulation Lab</center>
+
+
+
