@@ -462,7 +462,7 @@ Determine whether each of the following scenarios involve a *random variable* th
 
 **Scenario:** The distance run by professional athletes in a 30-minute endurance test is normally distributed with a mean of 5 kilometers and a standard deviation of 0.3 kilometers.
 
-## Review of R Functionality for the Normal Distribution
+## Review of R Functionality for the Normal Distribution (Finding Probabilities; `pnorm()`)
 
 . . . 
 
@@ -474,7 +474,7 @@ That is, the random variable $X$ is *normally distributed with mean $\text{mu}$ 
 
 . . .
 
-Since $\mathbb{P}\left[X = k\right] = 0$ (that is, *the probability that the random variable $X$ takes on the value $k$ exactly, is 0*), we will not make use of any `dnorm()` function
+Since $\mathbb{P}\left[X = k\right] = 0$ (that is, *the probability that the random variable $X$ takes on the value $k$ exactly, is 0*), we will **not** make use of any `dnorm()` function
 
 . . . 
 
@@ -482,7 +482,7 @@ Since $\mathbb{P}\left[X = k\right] = 0$ (that is, *the probability that the ran
 
 :::{.column width="60%"}
 
-The probability that $X$ takes on a value *less than* (or *less than or equal to*) $k$ is $\mathbb{P}\left[X < k\right] \approx$ `pbinom(k, mean = mu, sd = sigma)`
+The probability that $X$ takes on a value *less than or equal to* (or just *less than*) $k$ is $\mathbb{P}\left[X \leq k\right] \approx$ `pbinom(k, mean = mu, sd = sigma)`
 
 :::
 
@@ -498,6 +498,7 @@ ggplot() +
               alpha = 0.5) + 
   geom_line(aes(x = x, y = dnorm(x)),
             lwd = 1.5) + 
+  geom_text(aes(x = -0.2, y = 0.15, label = "?"), size = 18) + 
   scale_x_continuous(breaks = c(-2, 0, 1.25, 2), labels = c(-2, 0, "k", 2)) + 
   labs(
     x = "X",
@@ -508,6 +509,1059 @@ ggplot() +
 :::
 
 ::::
+
+. . . 
+
+In cases where we want to find $\mathbb{P}\left[x \geq k\right]$, $\mathbb{P}\left[k_1 \leq X\leq k_2\right]$, and others, we'll need to...
+
+. . . 
+
+**Strategy:** Draw a picture and let your picture tell you how to use `pnorm()`
+
+## Review of R Functionality for the Normal Distribution (Finding Percentiles; `qnorm()`)
+
+Assume that $X\sim N\left(\mu = \text{mu}, \sigma = \text{sigma}\right)$. 
+
+That is, the random variable $X$ is *normally distributed with mean $\text{mu}$ and standard deviation $\text{sigma}$*.
+
+. . . 
+
+In addition to computing probabilities, we can compute percentiles/quantiles (cut-off or boundary values)
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="55%"}
+
+The boundary value $k^*$ such that $\mathbb{P}\left[X \leq k^*\right] = p$ is given by <br/> `qnorm(p, mean = mu, sd = sigma)`
+
+**Note:** $p$ must be the area to the LEFT of the boundary value your are looking for
+
+:::
+
+:::{.column width="45%"}
+
+```{r}
+x <- seq(-3.5, 3.5, length.out = 1000)
+x_fill <- seq(-3.5, 0.5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill)),
+              fill = "purple",
+              alpha = 0.5) + 
+  geom_line(aes(x = x, y = dnorm(x)),
+            lwd = 1.5) + 
+  geom_text(aes(x = -0.4, y = 0.15, label = "p"), size = 16) + 
+  scale_x_continuous(breaks = c(-2, 0, 0.5, 2), labels = c(-2, 0, "?", 2)) +
+  labs(
+    x = "X",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Before We Try, Some Advice
+
+1. Don't "memorize" anything beyond...  
+  + the normal distribution is bell-shaped and centered at its mean
+  + use `pnorm()` if you have a boundary value(s) and need to find a probability
+  + use `qnorm()` if you have a probability/area and need to find a boundary value
+2. Draw a picture!
+3. Estimate your answer before computing it  
+  + If it is a probability, is it more or less than 0.5?
+  + If it is a boundary value, should it be more than the average or less?
+4. Use your picture to guide your strategy for finding the answer
+5. Check your answer against your estimate/expectation
+
+## Examples: Working with the Normal Distribution
+
+. . . 
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
++ What is the probability that a randomly selected runner finishes the marathon in less than 4 hours?
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(mu - 3.5*sigma, 4, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 4),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincemental}
+
++ What is the probability that a randomly selected runner finishes the marathon in less than 4 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(mu - 3.5*sigma, 4, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 4),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+How big should our answer be?
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon in less than 4 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(mu - 3.5*sigma, 4, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 4),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+We're looking for a probability and it should be less than 0.5
+
+:::
+
+::::
+
+. . . 
+
+Since we have our boundary value and we are looking for a probability, let's use `pnorm()`
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+pnorm(4, 4.5, 0.75)
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| eval: true
+
+pnorm(4, 4.5, 0.75)
+```
+
+:::
+
+::::
+
+. . . 
+
+**Answer:** There is about a 25.25% chance that a randomly selected marathon runner finished the marathon in under 4 hours.
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
++ What is the probability that a randomly selected runner finishes the marathon in 3 and a half hours or more?
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3.5, mu + 3.5*sigma, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3.5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon in 3 and a half hours or more?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3.5, mu + 3.5*sigma, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3.5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+How big should our answer be?
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon in 3 and a half hours or more?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3.5, mu + 3.5*sigma, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3.5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+
+```
+
+:::
+
+:::{.column width="60%"}
+
+We're looking for a probability and it should be more than 0.5.
+
+:::
+
+::::
+
+. . .
+
+Since we have our boundary value and we are looking for a probability, let's use `pnorm()`
+
+. . .
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+1 - pnorm(3.5, 4.5, 0.75)
+
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| eval: true
+
+1 - pnorm(3.5, 4.5, 0.75)
+```
+
+:::
+
+::::
+
+. . .
+
+**Answer:** There is about a 90.88% chance that a randomly selected marathon runner finished the marathon in 3 and a half hours or more.
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
++ What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+How big should our answer be?
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
+
+:::
+
+::::
+
+. . . 
+
+Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+
+. . . 
+
+But How?
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
+
+:::
+
+::::
+
+. . . 
+
+Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+x_big <- seq(mu - 3.5*sigma, 5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_ribbon(aes(x = x_big, ymin = 0, ymax = dnorm(x_big, mean = mu, sd = sigma)),
+              fill = "darkgreen",
+              alpha = 0.9) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    subtitle = "pnorm(5, 4.5, 0.75) is Too Big!",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+x_big <- seq(mu - 3.5*sigma, 5, length.out = 500)
+x_small <- seq(mu - 3.5*sigma, 3, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_ribbon(aes(x = x_small, ymin = 0, ymax = dnorm(x_small, mean = mu, sd = sigma)),
+              fill = "red",
+              alpha = 0.9) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    subtitle = "pnorm(3, 4.5, 0.75), We Don't Want That!",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
+
+:::
+
+::::
+
+. . . 
+
+Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+
+::::{.columns}
+
+:::{.column width="25%"}
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+x_big <- seq(mu - 3.5*sigma, 5, length.out = 500)
+x_small <- seq(mu - 3.5*sigma, 3, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_ribbon(aes(x = x_big, ymin = 0, ymax = dnorm(x_big, mean = mu, sd = sigma)),
+              fill = "darkgreen",
+              alpha = 0.9) +
+  geom_ribbon(aes(x = x_small, ymin = 0, ymax = dnorm(x_small, mean = mu, sd = sigma)),
+              fill = "red",
+              alpha = 0.9) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    subtitle = "Green minus Red is Purple!",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="25%"}
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
+
+:::
+
+::::
+
+. . . 
+
+Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+x_big <- seq(mu - 3.5*sigma, 5, length.out = 500)
+x_small <- seq(mu - 3.5*sigma, 3, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_ribbon(aes(x = x_big, ymin = 0, ymax = dnorm(x_big, mean = mu, sd = sigma)),
+              fill = "darkgreen",
+              alpha = 0.9) +
+  geom_ribbon(aes(x = x_small, ymin = 0, ymax = dnorm(x_small, mean = mu, sd = sigma)),
+              fill = "red",
+              alpha = 0.9) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  geom_vline(aes(xintercept = 3),
+             linetype = "dashed") + 
+  geom_vline(aes(xintercept = 5),
+             linetype = "dashed") + 
+  labs(
+    subtitle = "Green minus Red is Purple!",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| echo: true
+#| eval: true
+
+pnorm(5, 4.5, 0.75) - pnorm(3, 4.5, 0.75)
+```
+
+**Answer:** There is about a 72.48% chance that a randomly selected marathon runner finished the marathon between 3 and 5 hours.
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
++ At what finishing time do the slowest 20% of runners finish the marathon?
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+ggplot() + 
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+Where are the slowest 20% of runners on this distribution?
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ At what finishing time do the slowest 20% of runners finish the marathon?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+slow_20 <- qnorm(0.8, mu, sigma)
+x_fill <- seq(slow_20, mu + 3.5*sigma, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mu, sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+Where are the slowest 20% of runners on this distribution?
+
+There they are! They have the longest finishing times. How long should we expect?
+
+:::
+
+::::
+
+. . . 
+
+This time, we know the size of that purple area and we are trying to find the *boundary value* between it and the unshaded portion of the distribution
+
+. . . 
+
+This will be the minimum finishing time for falling into the slowest 20% of runners
+
+. . . 
+
+We should use `qnorm()` in this scenario
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ At what finishing time do the slowest 20% of runners finish the marathon?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+slow_20 <- qnorm(0.8, mu, sigma)
+x_fill <- seq(mu - 3.5*sigma, slow_20, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mu, sigma)),
+              fill = "purple",
+              alpha = 0.5) +
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="60%"}
+
+Where are the slowest 20% of runners on this distribution?
+
+There they are! They have the longest finishing times. How long should we expect?
+
+`qnorm()` requires the area to the left of the boundary value. How big is that area?
+
+:::
+
+::::
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+#| echo: true
+#| eval: true
+
+qnorm(0.80, 4.5, 0.75)
+```
+
+:::
+
+:::{.column width="60%"}
+
+**Answer:** The slowest 20% of runners finish in about 5.13 hours (almost 5 hours and 8 minutes) or longer.
+
+:::
+
+::::
+
+
+
+
+
+
+
+
 
 
 
