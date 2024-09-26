@@ -91,7 +91,7 @@ $$p\left(x\right) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{\left(x - \mu\right)^
 
 . . .
 
-Luckily, we don't evaluate or work with this by hand either!
+Luckily, like the binomial distribution, we don't evaluate or work with this distribution by hand either!
 
 ## Examples of Normal Distributions
 
@@ -178,6 +178,8 @@ ggplot() +
 
 The **black** distribution, $N\left(\mu = 0,~\sigma = 1\right)$, is a special distribution called the *standard normal distribution* and we often use $z$ to denote its "support" values.
 
+We'll encounter this distribution quite often throughout our course.
+
 :::
 
 ::::
@@ -226,17 +228,13 @@ ggplot() +
 
 ::::
 
++ The mean of the **<font color=purple>purple</font>** distribution is $\mu = 0$
++ The mean of the **<font color=green>green</font>** distribution is $\mu = 2$
++ The mean of the **<font color=orange>orange</font>** distribution is $\mu = -7$
+
 . . . 
 
-The mean of the **<font color=purple>purple</font>** distribution is $\mu = 0$
-
-. . .
-
-The mean of the **<font color=green>green</font>** distribution is $\mu = 2$
-
-. . .
-
-The mean of the **<font color=orange>orange</font>** distribution is $\mu = -7$
+**Note:** All three distributions have the same shape, but are shifted so that their peak is at their mean.
 
 ## The Spread of the Normal Distribution
 
@@ -282,17 +280,13 @@ ggplot() +
 
 ::::
 
++ The standard deviation of the **<font color=purple>purple</font>** distribution is $\sigma = 1.5$
++ The standard deviation of the **<font color=green>green</font>** distribution is $\sigma = 3$
++ The standard deviation of the **<font color=orange>orange</font>** distribution is $\sigma = 5$
+
 . . . 
 
-The standard deviation of the **<font color=purple>purple</font>** distribution is $\sigma = 1.5$
-
-. . .
-
-The standard deviation of the **<font color=green>green</font>** distribution is $\sigma = 3$
-
-. . .
-
-The standard deviation of the **<font color=orange>orange</font>** distribution is $\sigma = 5$
+**Note:** All of these distributions have the same center, but their width (and height too) change depending on their standard deviation.
 
 ## Probabilities and the Normal Distribution
 
@@ -304,7 +298,7 @@ The standard deviation of the **<font color=orange>orange</font>** distribution 
 
 Probabilities of outcomes from random variables described by a normal distribution are *areas* under the corresponding normal curve.
 
-The picture to the right shows $\mathbb{P}\left[Z \geq z^*\right]$
+The picture to the right shows $\mathbb{P}\left[X \geq k\right]$
 
 :::
 
@@ -321,9 +315,9 @@ ggplot() +
               alpha = 0.5) + 
   geom_line(aes(x = x, y = dnorm(x)),
             lwd = 1.5) + 
-  scale_x_continuous(breaks = c(-2, 0, 1, 2), labels = c(-2, 0, "z*", 2)) +
+  scale_x_continuous(breaks = c(0, 1), labels = c("μ", "k")) +
   labs(
-    x = "Z",
+    x = "X",
     y = ""
   )
 
@@ -352,10 +346,10 @@ ggplot() +
               alpha = 0.5) + 
   geom_line(aes(x = x, y = dnorm(x)),
             lwd = 1.5) + 
-  scale_x_continuous(breaks = c(-2, -1, 0, 2), labels = c(-2, "-z*", 0, 2)) +
+  scale_x_continuous(breaks = c(-1, 0), labels = c("μ-k", "μ")) +
   labs(
-    title = "P[Z < -z*]",
-    x = "Z",
+    title = "P[X < μ - k]",
+    x = "X",
     y = ""
   )
 
@@ -382,10 +376,10 @@ ggplot() +
               alpha = 0.5) + 
   geom_line(aes(x = x, y = dnorm(x)),
             lwd = 1.5) + 
-  scale_x_continuous(breaks = c(-2, 0, 1, 2), labels = c(-2, 0, "z*", 2)) +
+  scale_x_continuous(breaks = c(0, 1), labels = c("μ", "μ + k")) +
   labs(
-    title = "P[Z > z*]",
-    x = "Z",
+    title = "P[X > μ + k]",
+    x = "X",
     y = ""
   )
 
@@ -394,6 +388,10 @@ ggplot() +
 :::
 
 ::::
+
+. . . 
+
+**Note:** If $\mu = 0$, then this relationship simplifies to $\mathbb{P}\left[X < -k\right] = \mathbb{P}\left[X > k\right]$ -- but be careful, this is *only* true when $\mu = 0$.
 
 ## Probability of an Exact, Singular Outcome is 0
 
@@ -436,6 +434,10 @@ Since probabilities are areas under the curve and we can approximate this region
 :::
 
 ::::
+
+. . . 
+
+**Note:** For this reason, $\mathbb{P}\left[X \leq k\right] = \mathbb{P}\left[X < k\right]$ and $\mathbb{P}\left[X \geq k\right] = \mathbb{P}\left[X > k\right]$.
 
 . . . 
 
@@ -651,6 +653,41 @@ ggplot() +
 + What is the probability that a randomly selected runner finishes the marathon in less than 4 hours?
 
 . . . 
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(mu - 3.5*sigma, 4, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon in less than 4 hours?
+
+:::
 
 ::::{.columns}
 
