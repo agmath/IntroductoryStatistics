@@ -6,7 +6,7 @@ date: today
 date-format: long
 theme: serif
 incremental: true
-fontsize: 22pt
+fontsize: 20pt
 ---
 
 ```{r global-options, include=FALSE}
@@ -18,6 +18,13 @@ library(countdown)
 options(kable_styling_bootstrap_options = c("hover", "striped"))
 
 theme_set(theme_bw(base_size = 32))
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
 ```
 
 ## The Highlights
@@ -40,6 +47,14 @@ theme_set(theme_bw(base_size = 32))
 
 . . .
 
+::::{.columns}
+
+:::{.column width="25%"}
+
+:::
+
+:::{.column width="50%"}
+
 ```{r}
 x <- seq(-3.5, 3.5, length.out = 500)
 
@@ -53,6 +68,14 @@ ggplot() +
     y = ""
   )
 ```
+
+:::
+
+:::{.column width="25%"}
+
+:::
+
+::::
 
 . . . 
 
@@ -72,9 +95,15 @@ Luckily, we don't evaluate or work with this by hand either!
 
 ## Examples of Normal Distributions
 
-```{r}
-#| fig.height: 3
+::::{.columns}
 
+:::{.column width="25%"}
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
 mu1 <- 0
 sigma1 <- 1
 mu2 <- 1
@@ -105,6 +134,14 @@ ggplot() +
     y = ""
   )
 ```
+
+:::
+
+:::{.column width="25%"}
+
+:::
+
+::::
 
 . . .
 
@@ -153,9 +190,15 @@ All of the distributions below have standard deviation $\sigma = 2$ but they hav
 
 . . . 
 
-```{r}
-#| fig.height: 4
+::::{.columns}
 
+:::{.column width="25%"}
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
 x1 <- seq(-10, 10, length.out = 1000)
 mu1 <- 0
 mu2 <- 2
@@ -169,11 +212,19 @@ ggplot() +
   geom_point(aes(x = x1, y = dnorm(x1, mean = mu3, sd = 1)),
              color = "orange") + 
   labs(
-    title = "Normal Distributions with Different Means",
+    subtitle = "Normal Distributions with Different Means",
     x = "x",
     y = ""
   )
 ```
+
+:::
+
+:::{.column width="25%"}
+
+:::
+
+::::
 
 . . . 
 
@@ -195,9 +246,15 @@ All of the distributions below have mean $\mu = 0$ but they have different stand
 
 . . . 
 
-```{r}
-#| fig.height: 4
+::::{.columns}
 
+:::{.column width="25%"}
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
 x1 <- seq(-15, 15, length.out = 1000)
 sd1 <- 1.5
 sd2 <- 3
@@ -211,11 +268,19 @@ ggplot() +
   geom_point(aes(x = x1, y = dnorm(x1, mean = 0, sd = sd3)),
              color = "orange") + 
   labs(
-    title = "Normal Distributions with Different Standard Deviations",
+    subtitle = "Normals with Different Standard Deviations",
     x = "x",
     y = ""
   )
 ```
+
+:::
+
+:::{.column width="25%"}
+
+:::
+
+::::
 
 . . . 
 
@@ -482,7 +547,7 @@ Since $\mathbb{P}\left[X = k\right] = 0$ (that is, *the probability that the ran
 
 :::{.column width="60%"}
 
-The probability that $X$ takes on a value *less than or equal to* (or just *less than*) $k$ is $\mathbb{P}\left[X \leq k\right] \approx$ `pbinom(k, mean = mu, sd = sigma)`
+The probability that $X$ takes on a value *less than or equal to* (or just *less than*) $k$ is $\mathbb{P}\left[X \leq k\right] \approx$ `pnorm(k, mean = mu, sd = sigma)`
 
 :::
 
@@ -567,13 +632,13 @@ ggplot() +
 ## Before We Try, Some Advice
 
 1. Don't "memorize" anything beyond...  
-  + the normal distribution is bell-shaped and centered at its mean
-  + use `pnorm()` if you have a boundary value(s) and need to find a probability
-  + use `qnorm()` if you have a probability/area and need to find a boundary value
+    + the normal distribution is bell-shaped and centered at its mean
+    + use `pnorm()` if you have a boundary value(s) and need *to find a probability*
+    + use `qnorm()` if you have a probability/area and need *to find a boundary value*
 2. Draw a picture!
 3. Estimate your answer before computing it  
-  + If it is a probability, is it more or less than 0.5?
-  + If it is a boundary value, should it be more than the average or less?
+    + If it is a probability, is it more or less than 0.5?
+    + If it is a boundary value, should it be more than the average or less?
 4. Use your picture to guide your strategy for finding the answer
 5. Check your answer against your estimate/expectation
 
@@ -621,7 +686,7 @@ ggplot() +
 
 **Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
 
-:::{.nonincemental}
+:::{.nonincremental}
 
 + What is the probability that a randomly selected runner finishes the marathon in less than 4 hours?
 
@@ -1051,7 +1116,7 @@ It's tough to tell, but something near 0.5 seems reasonable -- nothing too close
 
 . . . 
 
-Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+Since we have our boundary values, let's use `pnorm()` to find probability.
 
 . . . 
 
@@ -1105,13 +1170,11 @@ It's tough to tell, but something near 0.5 seems reasonable -- nothing too close
 
 ::::
 
-. . . 
-
-Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+Since we have our boundary values, let's use `pnorm()` to find probability.
 
 ::::{.columns}
 
-:::{.column width="50%"}
+:::{.column width="40%"}
 
 ```{r}
 mu <- 4.5
@@ -1144,7 +1207,11 @@ ggplot() +
 
 :::
 
-:::{.column width="50%"}
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="40%"}
 
 ```{r}
 mu <- 4.5
@@ -1228,17 +1295,15 @@ It's tough to tell, but something near 0.5 seems reasonable -- nothing too close
 
 ::::
 
-. . . 
-
-Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+Since we have our boundary values, let's use `pnorm()` to find probability.
 
 ::::{.columns}
 
-:::{.column width="25%"}
+:::{.column width="30%"}
 
 :::
 
-:::{.column width="50%"}
+:::{.column width="40%"}
 
 ```{r}
 mu <- 4.5
@@ -1275,7 +1340,7 @@ ggplot() +
 
 :::
 
-:::{.column width="25%"}
+:::{.column width="30%"}
 
 :::
 
@@ -1329,9 +1394,7 @@ It's tough to tell, but something near 0.5 seems reasonable -- nothing too close
 
 ::::
 
-. . . 
-
-Since we have our boundary values, and we are looking for a probability, let's use `pnorm()`.
+Since we have our boundary values, let's use `pnorm()` to find probability.
 
 ::::{.columns}
 
@@ -1555,16 +1618,45 @@ qnorm(0.80, 4.5, 0.75)
 
 ::::
 
+## Examples: Working with the Normal (*or* Binomial?) Distributions
 
+. . . 
 
+Complete the following examples, but be careful -- you'll need to decide whether to use the binomial distribution (and `dbinom()` or `pbinom()`) or the normal distribution (and `pnorm()` or `qnorm()`)
 
+. . . 
 
+**Scenario:** The weight of apples grown in an orchard is approximately normally distributed with a mean of 150 grams and a standard deviation of 20 grams.
 
++ What is the probability that a randomly selected apple weighs less than 100 grams?
++ What is the probability that a randomly selected apple weighs more that 175 grams?
++ What is the probability that a randomly selected apple weighs between 160 and 195 grams?
++ What is the cutoff for the lightest 5% of apples?
++ What is the cutoff for the heaviest 1% of apples?
 
+## Examples: Working with the Normal (*or* Binomial?) Distributions
 
+**Scenario:** In a survey, you ask 200 randomly selected people whether they plan to vote in an upcoming election. Historically, 55% of people vote.
 
++ What is the probability that fewer than 85 people are planning on voting?
++ What is the probability that at least 125 people are planning on voting?
 
+## Examples: Working with the Normal (*or* Binomial?) Distributions
 
+**Scenario:** The lifespan of a certain smartphone battery is approximately normally distributed with a mean of 18 months and a standard deviation of 3 months.
+
++ What is the probability that a battery has a lifespan exceeding 2 years (24 months)?
++ What is the probability that a battery has a lifespan between 16 months and 2 years?
++ The manufacturer wants to put a warranty on their batteries, but they want to replace no more than 3% of batteries via warranty. What is the cutoff for the lifespan of these shortest lasting batteries?
+
+## Examples: Working with the Normal (*or* Binomial?) Distributions
+
+**Scenario:** The daily temperature in a city during the summer months is approximately normally distributed with a mean of 85°F and a standard deviation of 5°F.
+
++ What is the probability of the temperature being below 65°F?
++ What is the probability of the temperature being above 93°F?
++ What is the probability of the temperature being between 75°F and 83°F?
++ What is the cutoff for the warmest 5% of days?
 
 ## Next Time...
 
