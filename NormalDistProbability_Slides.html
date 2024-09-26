@@ -977,8 +977,6 @@ code.sourceCode {
 </div>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
-<p>How big should our answer be?</p>
 </div>
 </div>
 </section>
@@ -997,6 +995,30 @@ code.sourceCode {
 <div>
 <figure>
 <p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>How big should our answer be?</p>
+</div>
+</div>
+</section>
+<section id="examples-working-with-the-normal-distribution-7" class="slide level2">
+<h2>Examples: Working with the Normal Distribution</h2>
+<p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
+<div>
+<ul>
+<li>What is the probability that a randomly selected runner finishes the marathon in 3 and a half hours or more?</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1027,7 +1049,7 @@ code.sourceCode {
 <p><strong>Answer:</strong> There is about a 90.88% chance that a randomly selected marathon runner finished the marathon in 3 and a half hours or more.</p>
 </div>
 </section>
-<section id="examples-working-with-the-normal-distribution-7" class="slide level2">
+<section id="examples-working-with-the-normal-distribution-8" class="slide level2">
 <h2>Examples: Working with the Normal Distribution</h2>
 <p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
 <ul>
@@ -1040,36 +1062,12 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="examples-working-with-the-normal-distribution-8" class="slide level2">
-<h2>Examples: Working with the Normal Distribution</h2>
-<p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
-<div>
-<ul>
-<li>What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?</li>
-</ul>
-</div>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
-<p>How big should our answer be?</p>
+</div>
 </div>
 </div>
 </section>
@@ -1092,15 +1090,7 @@ code.sourceCode {
 </div>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
-<p>It’s tough to tell, but something near 0.5 seems reasonable – nothing too close to 0 or too close to 1 should be expected.</p>
 </div>
-</div>
-<div class="fragment">
-<p>Since we have our boundary values, let’s use <code>pnorm()</code> to find probability.</p>
-</div>
-<div class="fragment">
-<p>But How?</p>
 </div>
 </section>
 <section id="examples-working-with-the-normal-distribution-10" class="slide level2">
@@ -1123,33 +1113,7 @@ code.sourceCode {
 </div>
 </div>
 </div><div class="column" style="width:60%;">
-<p>It’s tough to tell, but something near 0.5 seems reasonable – nothing too close to 0 or too close to 1 should be expected.</p>
-</div>
-</div>
-<p>Since we have our boundary values, let’s use <code>pnorm()</code> to find probability.</p>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:20%;">
-
-</div><div class="column" style="width:40%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>How big should our answer be?</p>
 </div>
 </div>
 </section>
@@ -1167,18 +1131,60 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
+<p>How big should our answer be?</p>
+<p>It’s tough to tell, but something near 0.5 seems reasonable – nothing too close to 0 or too close to 1 should be expected.</p>
+</div>
+</div>
+<div class="fragment">
+<p>Since we have our boundary values, let’s use <code>pnorm()</code> to find probability.</p>
+</div>
+<div class="fragment">
+<p>But How?</p>
+</div>
+</section>
+<section id="examples-working-with-the-normal-distribution-12" class="slide level2">
+<h2>Examples: Working with the Normal Distribution</h2>
+<p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
+<div>
+<ul>
+<li>What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>How big should our answer be?</p>
 <p>It’s tough to tell, but something near 0.5 seems reasonable – nothing too close to 0 or too close to 1 should be expected.</p>
 </div>
 </div>
 <p>Since we have our boundary values, let’s use <code>pnorm()</code> to find probability.</p>
 <div class="columns">
-<div class="column" style="width:30%;">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:20%;">
 
 </div><div class="column" style="width:40%;">
 <div class="cell">
@@ -1190,12 +1196,10 @@ code.sourceCode {
 </div>
 </div>
 </div>
-</div><div class="column" style="width:30%;">
-
 </div>
 </div>
 </section>
-<section id="examples-working-with-the-normal-distribution-12" class="slide level2">
+<section id="examples-working-with-the-normal-distribution-13" class="slide level2">
 <h2>Examples: Working with the Normal Distribution</h2>
 <p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
 <div>
@@ -1215,6 +1219,50 @@ code.sourceCode {
 </div>
 </div>
 </div><div class="column" style="width:60%;">
+<p>How big should our answer be?</p>
+<p>It’s tough to tell, but something near 0.5 seems reasonable – nothing too close to 0 or too close to 1 should be expected.</p>
+</div>
+</div>
+<p>Since we have our boundary values, let’s use <code>pnorm()</code> to find probability.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+
+</div>
+</div>
+</section>
+<section id="examples-working-with-the-normal-distribution-14" class="slide level2">
+<h2>Examples: Working with the Normal Distribution</h2>
+<p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
+<div>
+<ul>
+<li>What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>How big should our answer be?</p>
 <p>It’s tough to tell, but something near 0.5 seems reasonable – nothing too close to 0 or too close to 1 should be expected.</p>
 </div>
 </div>
@@ -1225,7 +1273,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1241,7 +1289,7 @@ code.sourceCode {
 </div>
 </div>
 </section>
-<section id="examples-working-with-the-normal-distribution-13" class="slide level2">
+<section id="examples-working-with-the-normal-distribution-15" class="slide level2">
 <h2>Examples: Working with the Normal Distribution</h2>
 <p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
 <ul>
@@ -1254,7 +1302,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1265,7 +1313,7 @@ code.sourceCode {
 </div>
 </div>
 </section>
-<section id="examples-working-with-the-normal-distribution-14" class="slide level2">
+<section id="examples-working-with-the-normal-distribution-16" class="slide level2">
 <h2>Examples: Working with the Normal Distribution</h2>
 <p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
 <div>
@@ -1279,7 +1327,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1299,7 +1347,7 @@ code.sourceCode {
 <p>We should use <code>qnorm()</code> in this scenario</p>
 </div>
 </section>
-<section id="examples-working-with-the-normal-distribution-15" class="slide level2">
+<section id="examples-working-with-the-normal-distribution-17" class="slide level2">
 <h2>Examples: Working with the Normal Distribution</h2>
 <p><strong>Scenario:</strong> The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.</p>
 <div>
@@ -1313,7 +1361,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+<p><img data-src="NormalDistProbability_Slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
 </figure>
 </div>
 </div>

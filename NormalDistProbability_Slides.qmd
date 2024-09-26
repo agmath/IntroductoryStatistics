@@ -867,6 +867,41 @@ x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
 x_fill <- seq(3.5, mu + 3.5*sigma, length.out = 500)
 
 ggplot() + 
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon in 3 and a half hours or more?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3.5, mu + 3.5*sigma, length.out = 500)
+
+ggplot() + 
   geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
               fill = "purple",
               alpha = 0.5) +
@@ -1035,6 +1070,41 @@ x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
 x_fill <- seq(3, 5, length.out = 500)
 
 ggplot() + 
+  geom_line(aes(x = x, y = dnorm(x, mean = mu, sd = sigma)),
+            lwd = 1.5) + 
+  labs(
+    title = "Distribution of Marathon Times",
+    x = "Finishing Times (hours)",
+    y = ""
+  )
+```
+
+:::
+
+::::
+
+## Examples: Working with the Normal Distribution
+
+**Scenario:** The time it takes runners to complete a marathon is approximately normally distributed with a mean of 4.5 hours and a standard deviation of 0.75 hours.
+
+:::{.nonincremental}
+
++ What is the probability that a randomly selected runner finishes the marathon between 3 hours and 5 hours?
+
+:::
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+mu <- 4.5
+sigma <- 0.75
+x <- seq(mu - 3.5*sigma, mu + 3.5*sigma, length.out = 1000)
+
+x_fill <- seq(3, 5, length.out = 500)
+
+ggplot() + 
   geom_ribbon(aes(x = x_fill, ymin = 0, ymax = dnorm(x_fill, mean = mu, sd = sigma)),
               fill = "purple",
               alpha = 0.5) +
@@ -1145,6 +1215,8 @@ ggplot() +
 
 :::{.column width="60%"}
 
+How big should our answer be?
+
 It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
 
 :::
@@ -1200,6 +1272,8 @@ ggplot() +
 :::
 
 :::{.column width="60%"}
+
+How big should our answer be?
 
 It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
 
@@ -1326,6 +1400,8 @@ ggplot() +
 
 :::{.column width="60%"}
 
+How big should our answer be?
+
 It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
 
 :::
@@ -1424,6 +1500,8 @@ ggplot() +
 :::
 
 :::{.column width="60%"}
+
+How big should our answer be?
 
 It's tough to tell, but something near 0.5 seems reasonable -- nothing too close to 0 or too close to 1 should be expected.
 
