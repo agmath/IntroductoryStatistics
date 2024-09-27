@@ -107,13 +107,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>The following are troubleshooting tips</h1>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
-<p><strong>PROBLEM – The Notebooks Have Disappeared:</strong> This problem has randomly impacted a few of my students recently (Fall 2024). The fix is to reinstall the notebooks by running each of the following, one at a time, in the console.</p>
+<p><strong>PROBLEM – The Notebooks Have Disappeared:</strong> This problem has randomly impacted a few of my students recently (Fall 2024), as Posit upgrades to <code>R 4.4.1</code>. You can get the tutorials back by using the drop-down in the top-right corner of the RStudio window to switch from <code>R 4.4.1</code> back to <code>R 4.3.3</code>. Perhaps a better fix is to reinstall the notebooks by running each of the following, one at a time, in the console.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"agmath/AppliedStatsInteractive"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rundel/learnrhash"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>After running these commands, the notebooks will repopulate in the <em>Tutorials</em> tab.</p>
+<p>I’ve installed the notebooks on <code>R 4.4.1</code> at the original template, so any new copies made beyond September 2024 should not experience this problem.</p>
 <p><strong>PROBLEM – Notebooks Crashing on Re-Launch:</strong> Some notebooks will crash when users start the notebook, close out, and then return to complete the notebook at later time. This is caused by a RAM overflow because all exercise chunks attempt to run at once. Most notebooks permit stopping and restarting without issue – the current offenders are the Topic 13, Topic 16, and Topic 17 notebooks.</p>
 <ul>
 <li><p>If you are on a paid-tier account, use the settings gear icon in the top-right of the Posit Cloud page and click on the <em>resources</em> tab. Change the RAM settings to either 1.5GB or 2GB and then relaunch the notebook.</p>
