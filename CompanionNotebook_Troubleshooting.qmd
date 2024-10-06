@@ -26,6 +26,8 @@ I've installed the notebooks on `R 4.4.1` at the original template, so any new c
 
 **PROBLEM -- Notebooks Crashing on Re-Launch:** Some notebooks will crash when users start the notebook, close out, and then return to complete the notebook at later time. This is caused by a RAM overflow because all exercise chunks attempt to run at once. Most notebooks permit stopping and restarting without issue -- the current offenders are the Topic 13, Topic 16, and Topic 17 notebooks.
 
+  + **Update:** I’m in the process of splitting the longer notebooks into smaller, more manageable components. So far, I’ve completed this for Topic 6 and Topic 16. To access these new versions, run `remotes::install_github("agmath/AppliedStatsInteractive")` in your console. If you're prompted to update any additional packages, just type 1 and press enter to proceed with the updates. If you are using my grading script, it doesn't accommodate these shorter notebooks yet -- I will get to it as soon as possible.
+
   + If you are on a paid-tier account, use the settings gear icon in the top-right of the Posit Cloud page and click on the *resources* tab. Change the RAM settings to either 1.5GB or 2GB and then relaunch the notebook. 
   
     + Once you are done with the notebook, use the *Resources* tab after clicking the settings gear icon to change your alotted RAM back to 1GB. Otherwise, your work in Posit Cloud will consume your access hours more rapidly than necessary.
