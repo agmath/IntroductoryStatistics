@@ -1,0 +1,1242 @@
+---
+title: "Inference with Categorical Data"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 20pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+options(scipen = 999)
+
+theme_set(theme_bw(base_size = 32))
+
+pop_prop <- 0.86
+num_obs <- 17
+new_obs <- 113
+num_samps <- 100
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+```
+
+## The Highlights
+
++ Reminder on probability with the normal distribution
++ Review of means versus proportions
++ Sampling from a population (working with a Population Distribution)
++ Drawing Multiple Observations (Collecting a Sample)
+
+  + **Intuition:** Can we calculate probability in the same way?
+
++ What is the Sampling Distribution?
+
+  + A few examples with means and proportions
+  + When is a sampling distribution normal?
+
++ Central Limit Theorem
+
+  + CLT for means and CLT for proportions
+  + **Examples:** Probabilities associated with random samples summarized by means or proportions
+  + **Examples:** What goes wrong if we ignore assumptions?
+  
++ Summary
+
+## Probability and the Normal Distribution (A Reminder)
+
+. . .
+
+A normal distribution is defined by its mean ($\mu$) and standard deviation ($\sigma$)
+
++ The mean, $\mu$, is the center of the distribution
++ The standard deviation, $\sigma$, governs the spread of the distribution -- a larger $\sigma$ means a wider distribution, while a smaller $\sigma$ means a more narrow distribution
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(30, 70, length.out = 500)
+mu <- 50
+sigma1 <- 8
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma1)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 8)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+sigma2 <- 3
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma2)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 3)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+::::
+
+. . . 
+
+Probabilities associated with values far away from the mean are larger in the distribution on the left than they are in the distribution on the right.
+
+## Probability and the Normal Distribution (A Reminder)
+
+Probabilities associated with values far away from the mean are larger in the distribution on the left than they are in the distribution on the right.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(30, 70, length.out = 500)
+x_vals_shade <- seq(30, 45, length.out = 500)
+mu <- 50
+sigma1 <- 8
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade,
+                               mean = mu,
+                               sd = sigma1)),
+              fill = "purple",
+              alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma1)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 8)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+sigma2 <- 3
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade,
+                               mean = mu,
+                               sd = sigma2)),
+              fill = "purple",
+              alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma2)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 3)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+::::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X < 45\right] \approx ...$
+
+:::
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X < 45\right] \approx ...$
+
+:::
+
+::::
+
+. . .
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+`pnorm(45, 50, 8)` $\approx$ `r round(pnorm(45, 50, 8), 4)`
+
+:::
+
+:::{.column width="50%"}
+
+`pnorm(45, 50, 3)` $\approx$ `r round(pnorm(45, 50, 3), 4)`
+
+:::
+
+::::
+
+## Probability and the Normal Distribution (A Reminder)
+
+Probabilities associated with values far away from the mean are larger in the distribution on the left than they are in the distribution on the right.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(30, 70, length.out = 500)
+x_vals_shade <- seq(60, 70, length.out = 500)
+mu <- 50
+sigma1 <- 8
+
+ggplot() + 
+  # geom_ribbon(aes(x = x_vals_shade, 
+  #                 ymin = 0,
+  #                 ymax = dnorm(x_vals_shade,
+  #                              mean = mu,
+  #                              sd = sigma1)),
+  #             fill = "purple",
+  #             alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma1)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 8)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+sigma2 <- 3
+
+ggplot() + 
+  # geom_ribbon(aes(x = x_vals_shade, 
+  #                 ymin = 0,
+  #                 ymax = dnorm(x_vals_shade,
+  #                              mean = mu,
+  #                              sd = sigma2)),
+  #             fill = "purple",
+  #             alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma2)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 3)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+::::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X \geq 60\right] \approx ...$
+
+:::
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X \geq 60\right] \approx ...$
+
+:::
+
+::::
+
+## Probability and the Normal Distribution (A Reminder)
+
+Probabilities associated with values far away from the mean are larger in the distribution on the left than they are in the distribution on the right.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(30, 70, length.out = 500)
+x_vals_shade <- seq(60, 70, length.out = 500)
+mu <- 50
+sigma1 <- 8
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade,
+                               mean = mu,
+                               sd = sigma1)),
+              fill = "purple",
+              alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma1)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 8)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+sigma2 <- 3
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade,
+                               mean = mu,
+                               sd = sigma2)),
+              fill = "purple",
+              alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma2)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 3)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+::::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X \geq 60\right] \approx ...$
+
+:::
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X \geq 60\right] \approx ...$
+
+:::
+
+::::
+
+. . .
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+`1 - pnorm(60, 50, 8)` $\approx$ `r round(1 - pnorm(60, 50, 8), 4)`
+
+:::
+
+:::{.column width="50%"}
+
+`1 - pnorm(60, 50, 3)` $\approx$ `r round(1 - pnorm(60, 50, 3), 4)`
+
+:::
+
+::::
+
+## Means versus Proportions (Review)
+
+. . . 
+
+We use *means* to summarize numerical data
+
++ Result from questions that have numerical responses like 
+
+  + "*How many hours a day are you focused on looking at a screen?*"
+  + "*What is the white blood cell count in this blood sample?*"
+  + "*How many rushing yards did the running back gain?*"
+
+. . .
+
+We use *proportions* to summarize categorical data
+
++ Result from questions questions that have a categorical response like 
+
+  + "*Do you intend to vote in the next presidential election?*"
+  + "*Is the result of the game a win, loss, or draw?*"
+  + "*Is the median family income in this neighborhood at or below \$30,000, between \$30,001 and \$58,020, between \$58,021 and \$94,000, between \$94,001 and \$153,000, or greater than \$153,000?*" [^1]
+  
+. . . 
+
+[^1]: Thresholds from the [2022 Income in the United States report](https://www.census.gov/content/dam/Census/library/publications/2023/demo/p60-279.pdf) by the US Census Bureau as reported in a 2024 [Yahoo Finance article](https://finance.yahoo.com/news/income-fall-americas-lower-middle-122100515.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAHaCCSGV7RKr3gzJIWaDngcSWoTkwGRhvsQgEDoqsEsml0JpEDR8ixwEGCDaO6OkfI-LV_3_bHzPBLDxpQfLe7TY1-MozpHvO3dua3guZ8ujXsvSr7wb1o8BcYuQ_DzHMmzHPfYTqBZUPCg1lsKuSLPa-qW_sksD9N3PKBxS253d).
+
+## A Note on Proportions and the Binomial Distribution
+
+We use *proportions* to summarize categorical data
+
+:::{.nonincremental}
+
++ Result from questions questions that have a categorical response like 
+
+  + "*Do you intend to vote in the next presidential election?*"
+  + "*Is the result of the game a win, loss, or draw?*"
+  + "*Is the median family income in this neighborhood at or below \$30,000, between \$30,001 and \$58,020, between \$58,021 and \$94,000, between \$94,001 and \$153,000, or greater than \$153,000?*" [^1]
+
+:::
+  
+. . . 
+
+**Note:** All of the above questions can be analysed with a binomial distribution as long as we classify one level (category) as a *success* and group the others together as *failure*.
+
+[^1]: Thresholds from the [2022 Income in the United States report](https://www.census.gov/content/dam/Census/library/publications/2023/demo/p60-279.pdf) by the US Census Bureau as reported in a 2024 [Yahoo Finance article](https://finance.yahoo.com/news/income-fall-americas-lower-middle-122100515.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAHaCCSGV7RKr3gzJIWaDngcSWoTkwGRhvsQgEDoqsEsml0JpEDR8ixwEGCDaO6OkfI-LV_3_bHzPBLDxpQfLe7TY1-MozpHvO3dua3guZ8ujXsvSr7wb1o8BcYuQ_DzHMmzHPfYTqBZUPCg1lsKuSLPa-qW_sksD9N3PKBxS253d).
+
+## Sampling One Observation at a Time (Population Distribution)
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. Find the probability that a launched pumpkin exceeds 2000ft.
+
+:::
+
+:::{.column width="50%"}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5WxPoU7sf9E?si=TxjOWnUNCvE2Dkgm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+:::
+
+::::
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1050, 2550, length.out = 500)
+x_vals_shade <- seq(2000, 2550, length.out = 500)
+
+ggplot() + 
+  # geom_ribbon(aes(x = x_vals_shade, 
+  #                 ymin = 0,
+  #                 ymax = dnorm(x_vals_shade,
+  #                              mean = 1800,
+  #                              sd = 250)),
+  #             fill = "orange",
+  #             alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250))) + 
+  labs(
+    title = "Pumpkin Trebuchet Launch Distribution",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Sampling One Observation at a Time (Population Distribution)
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. Find the probability that a launched pumpkin exceeds 2000ft.
+
+:::
+
+:::{.column width="50%"}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5WxPoU7sf9E?si=TxjOWnUNCvE2Dkgm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+:::
+
+::::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1050, 2550, length.out = 500)
+x_vals_shade <- seq(2000, 2550, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade,
+                               mean = 1800,
+                               sd = 250)),
+              fill = "#FF7518") +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "Pumpkin Trebuchet Launch Distribution",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X > 2000\right] \approx ...$
+
+:::
+
+::::
+
+## Sampling One Observation at a Time (Population Distribution)
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. Find the probability that a launched pumpkin exceeds 2000ft.
+
+:::
+
+:::{.column width="50%"}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5WxPoU7sf9E?si=TxjOWnUNCvE2Dkgm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+:::
+
+::::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1050, 2550, length.out = 500)
+x_vals_shade <- seq(2000, 2550, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade,
+                               mean = 1800,
+                               sd = 250)),
+              fill = "#FF7518") +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "Pumpkin Trebuchet Launch Distribution",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X > 2000\right] \approx ...$
+
+`1 - pnorm(2000, mean = 1800, sd = 250)` $\approx$ `r 1 - pnorm(2000, mean = 1800, sd = 250)`
+:::
+
+::::
+
+## A Confident Team...
+
+. . . 
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+. . . 
+
+**Question 1:** Should it be the same as the probability that a single launch exceeds 2,028ft?
+
+. . . 
+
+**Question 2:** What needs to happen for a collection of launches to average 2,028ft?
+
++ What if one of the twelve launches was a relatively short, but not unexpected, launch of say 1700ft?
+
+## A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Let's simulate the launches of 12 randomly selected 10lb pumpkins...
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Let's simulate the launches of 12 randomly selected 10lb pumpkins... The simulated launch distances appear below and the launches, along their average launch distance are shown by the vertical lines on the graph to the right.
+
+```{r}
+sim_launches <- rnorm(12, 1800, 250)
+
+avg_launch_1 <- mean(sim_launches)
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) + 
+  geom_vline(aes(xintercept = sim_launches),
+             alpha = 0.75) + 
+  geom_vline(xintercept = avg_launch_1,
+             color = "#FF7518",
+             lwd = 1.75) +
+  labs(
+    title = "Pumpkin Trebuchet Launch",
+    subtitle= "(Population Distribution, Simulated Launches, \n and Average Launch Distance)",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+## A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Let's simulate another set of launches of 12 randomly selected 10lb pumpkins... The simulated launch distances appear below and the launches, along their average launch distance and the average launch distance from our first set of launches are shown on the graph to the right.
+
+```{r}
+sim_launches <- rnorm(12, 1800, 250)
+
+avg_launch_2 <- mean(sim_launches)
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) + 
+  geom_vline(aes(xintercept = sim_launches),
+             alpha = 0.75) + 
+  geom_vline(xintercept = avg_launch_1,
+             color = "#FF7518",
+             lwd = 1.75) +
+    geom_vline(xintercept = avg_launch_2,
+             color = "#FF7518",
+             lwd = 1.75) +
+  labs(
+    title = "Pumpkin Trebuchet Launch",
+    subtitle= "(Population Distribution, Simulated Launches, \n and Average Launch Distance)",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+## A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Okay -- we see how this is working, but it's going slowly. Let's simulate 50,000 collections of launches of 12 randomly selected 10lb pumpkins.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) + 
+  geom_vline(xintercept = avg_launch_1,
+             color = "#FF7518",
+             lwd = 1.75) +
+    geom_vline(xintercept = avg_launch_2,
+             color = "#FF7518",
+             lwd = 1.75) +
+  labs(
+    title = "Pumpkin Trebuchet Launch",
+    subtitle= "(Population Distribution, Simulated Launches, \n and Average Launch Distance)",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+## A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Okay -- we see how this is working, but it's going slowly. Let's simulate 50,000 collections of launches of 12 randomly selected 10lb pumpkins.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+pumpkin_sim <- rep(NA, 5e3)
+for(i in 1:5e3){
+  launches <- rnorm(12, mean = 1800, sd = 250)
+  pumpkin_sim[i] <- mean(launches)
+}
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) + 
+  geom_vline(aes(xintercept = pumpkin_sim),
+             color = "#FF7518") +
+  labs(
+    title = "Pumpkin Trebuchet Launch, \nand Average Launch Distances",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+## A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Okay -- we see how this is working, but it's going slowly. Let's simulate 50,000 collections of launches of 12 randomly selected 10lb pumpkins.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) + 
+  geom_histogram(aes(x = pumpkin_sim,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "#FF7518",
+                 alpha = 0.9) + 
+  geom_density(aes(x = pumpkin_sim),
+               color = "black",
+               fill = "#FF7518",
+               alpha = 0.75) +
+  labs(
+    title = "Pumpkin Trebuchet Launch",
+    subtitle= "(Distribution of Averages Over 12 Launches\n -- The Sampling Distribution)",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+## A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Okay -- we see how this is working, but it's going slowly. Let's simulate 50,000 collections of launches of 12 randomly selected 10lb pumpkins.
+
+An average launch distance of 2,028ft is at the green vertical line.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) + 
+  geom_histogram(aes(x = pumpkin_sim,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "#FF7518",
+                 alpha = 0.9) + 
+  geom_density(aes(x = pumpkin_sim),
+               color = "black",
+               fill = "#FF7518",
+               alpha = 0.75) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Pumpkin Trebuchet Launch",
+    subtitle= "(Distribution of Averages Over 12 Launches\n -- The Sampling Distribution)",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+. . . 
+
+**Takeaway:** The distribution of averages of 12 launches is much more narrow than the population distribution. The probability of averaging a distance of at least 2,028ft is much lower than the probability of a single launch being at least 2,028ft.
+
+. . . 
+
+We'll come back and finish this problem soon, but first we need a detour to talk about this new, more narrow distribution.
+
+## What is the Sampling Distribution
+
+. . . 
+
+The *sampling distribution* is a theoretical distribution of summary statistics resulting from samples of the same size.
+
++ The distribution of all average launch distances from twelve launches of 10lb pumpkins from a trebuchet.
++ The distribution of all sample proportions from collections of 100 likely voters asked whether they favor increasing the state's mandatory judicial retirement age from 70 to 75.
+
+. . . 
+
+Let's take a look at some hypothetical population and corresponding sampling distributions.
+
+## Hypothetical Population and Sampling Distributions for Means
+
+. . .
+
+*Flimps*, *flomps*, and *flumps* are [fictitious] numerical variables whose population distributions appear below and with corresponding sampling distributions to the right.
+
+. . .
+
+```{r}
+nsims <- 5e3
+x_ff <- seq(0, 1, length.out = 500)
+x_flomps <- seq(0, 5, length.out = 500)
+
+
+p1 <- ggplot() + 
+  geom_ribbon(aes(x = x_ff,
+                  ymin = 0,
+                  ymax = dexp(x_ff, 10)),
+              color = "black",
+              fill = "purple",
+              alpha = 0.75) + 
+  labs(
+    title = "Population of Flimps",
+    x = "Flimp"
+  ) + 
+  theme_bw(base_size = 12)
+
+p2 <- ggplot() + 
+  geom_ribbon(aes(x = 5 - x_flomps,
+                  ymin = 0,
+                  ymax = df(x_flomps, 5, 2)),
+              color = "black",
+              fill = "purple",
+              alpha = 0.75) + 
+  labs(
+    title = "Population of Flomps",
+    x = "Flomp"
+  ) + 
+  theme_bw(base_size = 12)
+
+p3 <- ggplot() + 
+  geom_ribbon(aes(x = x_ff,
+                  ymin = 0,
+                  ymax = dbeta(x_ff, 2, 2)),
+              color = "black",
+              fill = "purple",
+              alpha = 0.75) + 
+  labs(
+    title = "Population of Flumps",
+    x = "Flump"
+  ) + 
+  theme_bw(base_size = 12)
+
+sampling_dist <- tibble(
+  id = 1:nsims,
+  s3_flimps = NA,
+  s3_flomps = NA,
+  s3_flumps = NA,
+  s15_flimps = NA,
+  s15_flomps = NA,
+  s15_flumps = NA,
+  s30_flimps = NA,
+  s30_flomps = NA,
+  s30_flumps = NA
+)  
+  
+for(i in 1:nsims){
+  s3_flimp <- rexp(3, 10)
+  s3_flomp <- rf(3, 5, 2)
+  for(j in 1:3){
+    if(s3_flomp[j] > 5){
+      s3_flomp[j] <- runif(1, 1, 5)
+    }
+  }
+  s3_flump <- rbeta(3, 2, 2)
+  s15_flimp <- rexp(15, 10)
+  s15_flomp <- rf(15, 5, 2)
+  for(j in 1:15){
+    if(s15_flomp[j] > 5){
+      s15_flomp[j] <- runif(1, 1, 5)
+    }
+  }
+  s15_flump <- rbeta(15, 2, 2)
+  s30_flimp <- rexp(30, 10)
+  s30_flomp <- rf(30, 5, 2)
+  for(j in 1:30){
+    if(s30_flomp[j] > 5){
+      s30_flomp[j] <- runif(1, 1, 5)
+    }
+  }
+  s30_flump <- rbeta(30, 2, 2)
+  
+  sampling_dist[i, "s3_flimps"] <- mean(s3_flimp)
+  sampling_dist[i, "s3_flomps"] <- mean(5 - s3_flomp)
+  sampling_dist[i, "s3_flumps"] <- mean(s3_flump)
+  sampling_dist[i, "s15_flimps"] <- mean(s15_flimp)
+  sampling_dist[i, "s15_flomps"] <- mean(5 - s15_flomp)
+  sampling_dist[i, "s15_flumps"] <- mean(s15_flump)
+  sampling_dist[i, "s30_flimps"] <- mean(s30_flimp)
+  sampling_dist[i, "s30_flomps"] <- mean(5 - s30_flomp)
+  sampling_dist[i, "s30_flumps"] <- mean(s30_flump)
+}  
+
+p4 <- sampling_dist %>%
+  pivot_longer(cols = -id) %>%
+  rename(type = name) %>%
+  mutate(type = factor(type, levels = c("s3_flimps", "s15_flimps", "s30_flimps",
+                                        "s3_flomps", "s15_flomps", "s30_flomps",
+                                        "s3_flumps", "s15_flumps", "s30_flumps"))) %>%
+  ggplot() + 
+  geom_histogram(aes(x = value,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "purple",
+                 alpha = 0.9) + 
+  geom_density(aes(x = value),
+               fill = "purple",
+               alpha = 0.75) +
+  facet_wrap(~type, ncol = 3,
+             scales = "free") + 
+  theme_bw(base_size = 12)
+
+(p1 / p2 / p3) | p4
+```
+
+Sampling distributions are shown for samples of three observations (`s3_*`), fifteen observations (`s15_*`), and thirty observations (`s30_*`).
+
+## Hypothetical Population and Sampling Distributions for Proportions
+
+. . .
+
+Similarly, *grimps*, *gromps*, and *grumps* are [fictitious] categorical variables for which we can define success and failure. The sampling distributions for proportion corresponding to a successful outcome appears below.
+
+. . .
+
+```{r}
+prop1 <- 0.1
+prop2 <- 0.25
+prop3 <- 0.4
+s1 <- 10
+s2 <- 30
+s3 <- 50
+s4 <- 100
+
+gr_sim_df <- tibble(
+  id = 1:nsims,
+  s10_grimps = rbinom(nsims, s1, prop1)/s1,
+  s30_grimps = rbinom(nsims, s2, prop1)/s2,
+  s50_grimps = rbinom(nsims, s3, prop1)/s3,
+  s100_grimps = rbinom(nsims, s4, prop1)/s4,
+  s10_gromps = rbinom(nsims, s1, prop2)/s1,
+  s30_gromps = rbinom(nsims, s2, prop2)/s2,
+  s50_gromps = rbinom(nsims, s3, prop2)/s3,
+  s100_gromps = rbinom(nsims, s4, prop2)/s4,
+  s10_grumps = rbinom(nsims, s1, prop3)/s1,
+  s30_grumps = rbinom(nsims, s2, prop3)/s2,
+  s50_grumps = rbinom(nsims, s3, prop3)/s3,
+  s100_grumps = rbinom(nsims, s4, prop3)/s4,
+) %>%
+  pivot_longer(-id) %>%
+  mutate(name = factor(name, levels = 
+                         c("s10_grimps", "s30_grimps", "s50_grimps", "s100_grimps",
+                           "s10_gromps", "s30_gromps", "s50_gromps", "s100_gromps",
+                           "s10_grumps", "s30_grumps", "s50_grumps", "s100_grumps")))
+
+p5 <- gr_sim_df %>%
+  ggplot() +
+  geom_histogram(aes(x = value, y = after_stat(density)),
+                 color = "black",
+                 alpha = 0.9,
+                 fill = "#2FA71C") + 
+  geom_density(aes(x = value),
+               fill = "#2FA71C",
+               alpha = 0.75) +
+  labs(x = "Proportion") +
+  facet_wrap(~name, ncol = 4,
+             scales = "free") + 
+  theme_bw(base_size = 12)
+
+p5
+```
+
+Sampling distributions this time are shown for samples of ten observations (`s10_*`), thirty observations (`s30_*`), fifty observations (`s50_*`), and one hundred observations (`s100_*`).
+
+## When is a Sampling Distribution Normal?
+
+. . . 
+
+**Important:** Bringing back our sampling distributions for *flimps*, *flomps*, and *flumps* (numerical variables) we see that the more skewed the population distribution, the larger the sample size required before the sampling distribution is well-approximated by a normal distribution.
+
+```{r}
+(p1 / p2 / p3) | p4
+```
+
+. . . 
+
+Some people/books recommend $n\geq 30$, but I advocate against this *rule of thumb* because of the slightly maintained skew we see in the top two rows of plots. 
+
+## When is a Sampling Distribution Normal?
+
+. . . 
+
+**Important:** Bringing back our sampling distributions for *grimps*, *gromps*, and *grumps* (binary categorical variables) we see that the presence of skew is related to the population proportion and the sample size.
+
+```{r}
+p5
+```
+
+. . . 
+
+As a **rule of thumb**, the sampling distribution for the population proportion is nearly normal as long as $n\cdot p\geq 10$ and $n\cdot\left(1 - p\right) \geq 10$. That is, we *expect at least 10 successes and at least 10 failures*.
+
+. . . 
+
+This is sometimes called the *success-failure condition*.
+
+## The Good News...
+
+<br/>
+<br/>
+<br/>
+
+. . . 
+
+<center/> We can use the normal distribution as a model for the Sampling Distribution as long as our sample sizes are *large enough* to overcome any skew in the population distribution (for numerical variables), or large enough that the success-failure condition is satisfied (for binary categorical variables). </center>
+
+<br/>
+
+. . . 
+
+**The Punchline:** We can use our familiar `pnorm()` and `qnorm()` functionality when working with Sampling Distributions$^*$
+
+## The Central Limit Theorem
+
+. . .
+
+**Central Limit Theorem (CLT):** The *Sampling Distribution* of the mean (average of averages or average of proportions) is approximately normally distributed as long as the sample sizes are *large enough*.
+
+<br/>
+
+. . . 
+
+The **mean** of the sampling distribution is...
+
++ equal to the population mean ($\mu$) for numerical variables
++ equal to the population proportion ($p$) for binary categorical variables
+
+. . . 
+
+The *standard deviation* of the sampling distribution is called the *standard error* and is denoted by $S_E$...
+
++ The **standard error** for the sampling distribution of means is $\boxed{~\displaystyle{S_E = \sigma / \sqrt{n}}~}$, where $\sigma$ is the population standard deviation
++ The **standard error** for the sampling distribution of proportions is $\boxed{~\displaystyle{S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}}~}$ where $p$ is the population proportion (or an estimate for it).
+
+## The Central Limit Theorem (Restated)
+
+<br/>
+
+. . .
+
+**CLT for Means:** For large enough sample sizes ($n$), the *sampling distribution of the mean* is well-approximated by $\displaystyle{N\left(\mu,~S_E = \sigma /\sqrt{n}\right)}$
+
+. . .
+
+> *Note*. Recall that $\displaystyle{N\left(\mu,~S_E = \sigma /\sqrt{n}\right)}$ means the "normal distribution centered at $\mu$ and with spread (standard deviation/standared error) described by $\displaystyle{\sigma/\sqrt{n}}$"
+
+<br/>
+<br/>
+
+. . . 
+
+**CLT for Proportions:** For large enough sample sizes ($n$), the *sampling distribution of the proportion* is well-approximated by $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+
+. . .
+
+> *Note*. Similarly, $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$ means the "normal distribution centered at $p$ and with spread (standard deviation/standared error) described by $\displaystyle{\sqrt{\frac{p\left(1 - p\right)}{n}}}$"
+
+## Back to Pumpkin Launching!
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft.
+
+## Next Time...
+
+<center><br/> Inference on Categorical Data</center>
+
+
+
