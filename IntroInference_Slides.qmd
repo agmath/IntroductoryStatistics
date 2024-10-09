@@ -1510,13 +1510,189 @@ You'll need to decide which version of the Central Limit Theorem (means or propo
 
 You'll even need to determine whether the Central Limit Theorem applies and you can *safely* use the normal distribution to model the sampling distribution.
 
-## Completed Example: Voting Propensity
+## Completed Example: On-Time Package Delivery
+
+
 
 ## Completed Example: Voting Propensity II
 
-## Completed Example: A Numerical Example
+## Completed Example: What's the Buzz About Honey? {.smaller}
 
-...find a good context...
+**Senario:** Beekeepers agree that the amount of honey collected from a typical hive over the summer is approximately normally distributed with a mean of 50 pounds and a standard deviation of 8 pounds. A beekeeper overseeing several locations monitors production at a particular site. At the end of the season, the beekeeper measures honey production from 15 randomly selected hives and observes an average of 47 pounds of honey per hive. What is the probability that a random sample of 15 hives would average 47 pounds or less of honey production?
+
+1. The population distribution of honey production is approximately normal, so we can assume the sampling distribution will also be normal.
+
+2. Honey production is a numerical variable, so the sampling distribution of the mean honey production from 15 hives is $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 50, S_E = 8/\sqrt{15}\right)}$.
+
+. . .
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(40, 60, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 50, 8/sqrt(15))),
+            color = "black",
+            lwd = 1.5) +
+  labs(
+    title = "Sampling Distribution for 15 Hives",
+    x = "Average Honey Production (lbs)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Completed Example: What's the Buzz About Honey? {.smaller}
+
+**Senario:** Beekeepers have found that the amount of honey collected from a typical hive over the summer is approximately normally distributed with a mean of 50 pounds and a standard deviation of 8 pounds. A beekeeper overseeing several locations is monitoring their production at a particular site. At the end of the season, the beekeeper measures honey production from 15 randomly selected hives at that site and observes an average of 47 pounds of honey per hive. What is the probability that a random sample of 15 hives would average 47 pounds or less of honey production?
+
+:::{.nonincremental}
+
+1. The population distribution of honey production is approximately normal, so we can assume the sampling distribution will also be normal.
+
+2. Honey production is a numerical variable, so the sampling distribution of the mean honey production from 15 hives is $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 50, S_E = 8/\sqrt{15}\right)}$.
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals_shade <- seq(40, 47, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 50, 8/sqrt(15))),
+              fill = "#CC8F00") +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 50, 8/sqrt(15))),
+            color = "black",
+            lwd = 1.5) +
+  labs(
+    title = "Sampling Distribution for 15 Hives",
+    x = "Average Honey Production (lbs)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average honey production of 47 pounds or less is...
+
+:::
+
+::::
+
+## Completed Example: What's the Buzz About Honey? {.smaller}
+
+**Senario:** Beekeepers have found that the amount of honey collected from a typical hive over the summer is approximately normally distributed with a mean of 50 pounds and a standard deviation of 8 pounds. A beekeeper overseeing several locations is monitoring their production at a particular site. At the end of the season, the beekeeper measures honey production from 15 randomly selected hives at that site and observes an average of 47 pounds of honey per hive. What is the probability that a random sample of 15 hives would average 47 pounds or less of honey production?
+
+:::{.nonincremental}
+
+1. The population distribution of honey production is approximately normal, so we can assume the sampling distribution will also be normal.
+
+2. Honey production is a numerical variable, so the sampling distribution of the mean honey production from 15 hives is $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 50, S_E = 8/\sqrt{15}\right)}$.
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 50, 8/sqrt(15))),
+              fill = "#CC8F00") +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 50, 8/sqrt(15))),
+            color = "black",
+            lwd = 1.5) +
+  labs(
+    title = "Sampling Distribution for 15 Hives",
+    x = "Average Honey Production (lbs)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average honey production of 47 pounds or less is...
+
+`pnorm(47, 50, 8/sqrt(15))` $\approx$ `r round(pnorm(47, 50, 8/sqrt(15)), 4)`
+
+:::
+
+::::
+
+## Completed Example: What's the Buzz About Honey? {.smaller}
+
+**Senario:** Beekeepers have found that the amount of honey collected from a typical hive over the summer is approximately normally distributed with a mean of 50 pounds and a standard deviation of 8 pounds. A beekeeper overseeing several locations is monitoring their production at a particular site. At the end of the season, the beekeeper measures honey production from 15 randomly selected hives at that site and observes an average of 47 pounds of honey per hive. What is the probability that a random sample of 15 hives would average 47 pounds or less of honey production?
+
+:::{.nonincremental}
+
+1. The population distribution of honey production is approximately normal, so we can assume the sampling distribution will also be normal.
+
+2. Honey production is a numerical variable, so the sampling distribution of the mean honey production from 15 hives is $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 50, S_E = 8/\sqrt{15}\right)}$.
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 50, 8/sqrt(15))),
+              fill = "#CC8F00") +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 50, 8/sqrt(15))),
+            color = "black",
+            lwd = 1.5) +
+  labs(
+    title = "Sampling Distribution for 15 Hives",
+    x = "Average Honey Production (lbs)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+
+```
+
+:::
+
+:::{.column width="50%"}
+
+A 7.32% chance of observing a result as bad as they observed means that such an average is not totally unexpected, but they may want to investigate the environment around this site to see if there are abnormal conditions impacting honey production.
+
+:::
+
+::::
 
 ## Several Additional Interesting Contexts...
 
