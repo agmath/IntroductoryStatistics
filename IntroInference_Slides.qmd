@@ -1489,6 +1489,37 @@ Their trebuchet is likely much stronger than the average trebuchet!
 
 ::::
 
+## More Examples
+
+<br/>
+<br/>
+
+. . . 
+
+Over the next few slides, I have two additional completely worked out examples and then several for you to try on your own.
+
+<br/>
+
+. . . 
+
+You'll need to decide which version of the Central Limit Theorem (means or proportions) to apply in each scenario.
+
+<br/>
+
+. . . 
+
+You'll even need to determine whether the Central Limit Theorem applies and you can *safely* use the normal distribution to model the sampling distribution.
+
+## Completed Example: Voting Propensity
+
+## Completed Example: Voting Propensity II
+
+## Completed Example: A Numerical Example
+
+...find a good context...
+
+## Several Additional Interesting Contexts...
+
 ## Next Time...
 
 <center><br/> Inference on Categorical Data</center>
