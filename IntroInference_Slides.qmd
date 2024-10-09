@@ -20,6 +20,8 @@ options(scipen = 999)
 
 theme_set(theme_bw(base_size = 32))
 
+set.seed(123)
+
 pop_prop <- 0.86
 num_obs <- 17
 new_obs <- 113
@@ -1232,7 +1234,260 @@ The *standard deviation* of the sampling distribution is called the *standard er
 
 ## Back to Pumpkin Launching!
 
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft.
+. . .
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+. . .
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  # geom_line(aes(x = x_vals,
+  #               y = dnorm(x_vals, 
+  #                         mean = 1800,
+  #                         sd = 250)),
+  #           color = "black",
+  #           lwd = 1.25,
+  #           alpha = 0.75) + 
+  geom_histogram(aes(x = pumpkin_sim,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "#FF7518",
+                 alpha = 0.25) + 
+  geom_density(aes(x = pumpkin_sim),
+               color = "black",
+               fill = "#FF7518",
+               alpha = 0.1) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  # geom_vline(xintercept = 2028,
+  #            color = "#2FA71C",
+  #            lwd = 1.75,
+  #            linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Back to Pumpkin Launching!
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Back to Pumpkin Launching!
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average launch distance of at least 2,028ft is...
+
+:::
+
+::::
+
+## Back to Pumpkin Launching!
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average launch distance of at least 2,028ft is...
+
+`1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
+
+:::
+
+::::
+
+## Back to Pumpkin Launching!
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average launch distance of at least 2,028ft is...
+
+`1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
+
+Their trebuchet is likely much stronger than the average trebuchet!
+:::
+
+::::
 
 ## Next Time...
 
