@@ -135,6 +135,75 @@ mu <- 50
 sigma1 <- 8
 
 ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma1)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 8)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+sigma2 <- 3
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals,
+                          mean = mu,
+                          sd = sigma2)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "N(μ = 50, σ = 3)",
+    x = "Observed Values",
+    y = "Density"
+  )
+```
+
+:::
+
+::::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X < 45\right] \approx ...$
+
+:::
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X < 45\right] \approx ...$
+
+:::
+
+::::
+
+## Probability and the Normal Distribution (A Reminder)
+
+Probabilities associated with values far away from the mean are larger in the distribution on the left than they are in the distribution on the right.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(30, 70, length.out = 500)
+x_vals_shade <- seq(30, 45, length.out = 500)
+mu <- 50
+sigma1 <- 8
+
+ggplot() + 
   geom_ribbon(aes(x = x_vals_shade, 
                   ymin = 0,
                   ymax = dnorm(x_vals_shade,
@@ -963,6 +1032,14 @@ Let's take a look at some hypothetical population and corresponding sampling dis
 
 . . .
 
+::::{.columns}
+
+:::{.column width="10%"}
+
+:::
+
+:::{.column width="80%"}
+
 ```{r}
 nsims <- 5e3
 x_ff <- seq(0, 1, length.out = 500)
@@ -1080,6 +1157,14 @@ p4 <- sampling_dist %>%
 (p1 / p2 / p3) | p4
 ```
 
+:::
+
+:::{.column width="10%"}
+
+:::
+
+::::
+
 Sampling distributions are shown for samples of three observations (`s3_*`), fifteen observations (`s15_*`), and thirty observations (`s30_*`).
 
 ## Hypothetical Population and Sampling Distributions for Proportions
@@ -1089,6 +1174,14 @@ Sampling distributions are shown for samples of three observations (`s3_*`), fif
 Similarly, *grimps*, *gromps*, and *grumps* are [fictitious] categorical variables for which we can define success and failure. The sampling distributions for proportion corresponding to a successful outcome appears below.
 
 . . .
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
 
 ```{r}
 prop1 <- 0.1
@@ -1132,14 +1225,22 @@ p5 <- gr_sim_df %>%
   labs(x = "Proportion") +
   facet_wrap(~name, ncol = 4,
              scales = "free") + 
-  theme_bw(base_size = 12)
+  theme_bw(base_size = 14)
 
 p5
 ```
 
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
 Sampling distributions this time are shown for samples of ten observations (`s10_*`), thirty observations (`s30_*`), fifty observations (`s50_*`), and one hundred observations (`s100_*`).
 
-## When is a Sampling Distribution Normal?
+## When is a Sampling Distribution Normal? {.smaller}
 
 . . . 
 
@@ -1153,7 +1254,7 @@ Sampling distributions this time are shown for samples of ten observations (`s10
 
 Some people/books recommend $n\geq 30$, but I advocate against this *rule of thumb* because of the slightly maintained skew we see in the top two rows of plots. 
 
-## When is a Sampling Distribution Normal?
+## When is a Sampling Distribution Normal? {.smaller}
 
 . . . 
 
@@ -1193,8 +1294,6 @@ This is sometimes called the *success-failure condition*.
 
 **Central Limit Theorem (CLT):** The *Sampling Distribution* of the mean (average of averages or average of proportions) is approximately normally distributed as long as the sample sizes are *large enough*.
 
-<br/>
-
 . . . 
 
 The **mean** of the sampling distribution is...
@@ -1211,8 +1310,6 @@ The *standard deviation* of the sampling distribution is called the *standard er
 
 ## The Central Limit Theorem (Restated)
 
-<br/>
-
 . . .
 
 **CLT for Means:** For large enough sample sizes ($n$), the *sampling distribution of the mean* is well-approximated by $\displaystyle{N\left(\mu,~S_E = \sigma /\sqrt{n}\right)}$
@@ -1221,7 +1318,6 @@ The *standard deviation* of the sampling distribution is called the *standard er
 
 > *Note*. Recall that $\displaystyle{N\left(\mu,~S_E = \sigma /\sqrt{n}\right)}$ means the "normal distribution centered at $\mu$ and with spread (standard deviation/standared error) described by $\displaystyle{\sigma/\sqrt{n}}$"
 
-<br/>
 <br/>
 
 . . . 
@@ -1232,7 +1328,7 @@ The *standard deviation* of the sampling distribution is called the *standard er
 
 > *Note*. Similarly, $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$ means the "normal distribution centered at $p$ and with spread (standard deviation/standared error) described by $\displaystyle{\sqrt{\frac{p\left(1 - p\right)}{n}}}$"
 
-## Back to Pumpkin Launching!
+## Back to Pumpkin Launching! {.smaller}
 
 . . .
 
@@ -1245,6 +1341,60 @@ The *standard deviation* of the sampling distribution is called the *standard er
 3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
 
 . . .
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  # geom_line(aes(x = x_vals,
+  #               y = dnorm(x_vals, 
+  #                         mean = 1800,
+  #                         sd = 250)),
+  #           color = "black",
+  #           lwd = 1.25,
+  #           alpha = 0.75) + 
+  geom_histogram(aes(x = pumpkin_sim,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "#FF7518",
+                 alpha = 0.9) + 
+  geom_density(aes(x = pumpkin_sim),
+               color = "black",
+               fill = "#FF7518",
+               alpha = 0.75) +
+  labs(
+    title = "Distribution of Simulated Launch Averages",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Back to Pumpkin Launching! {.smaller}
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
 
 ::::{.columns}
 
@@ -1294,7 +1444,7 @@ ggplot() +
 
 ::::
 
-## Back to Pumpkin Launching!
+## Back to Pumpkin Launching! {.smaller}
 
 **Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
@@ -1340,55 +1490,7 @@ ggplot() +
 
 ::::
 
-## Back to Pumpkin Launching!
-
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
-
-:::{.nonincremental}
-
-1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
-
-2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
-
-3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
-
-:::
-
-::::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-x_vals <- seq(1500, 2100, length.out = 500)
-
-ggplot() + 
-  geom_line(aes(x = x_vals,
-                y = dnorm(x_vals, 1800, 250/sqrt(12))),
-            color = "black",
-            lwd = 1.5) +
-  geom_vline(xintercept = 2028,
-             color = "#2FA71C",
-             lwd = 1.75,
-             linestyle = "dashed") +
-  labs(
-    title = "Sampling Distribution for 12 Launches",
-    x = "Average Launch Distance (ft)",
-    y = "Density"
-  ) + 
-  theme_bw(base_size = 24)
-```
-
-:::
-
-:::{.column width="50%"}
-
-The probability of an average launch distance of at least 2,028ft is...
-
-:::
-
-::::
-
-## Back to Pumpkin Launching!
+## Back to Pumpkin Launching! {.smaller}
 
 **Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
@@ -1432,13 +1534,11 @@ ggplot() +
 
 The probability of an average launch distance of at least 2,028ft is...
 
-`1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
-
 :::
 
 ::::
 
-## Back to Pumpkin Launching!
+## Back to Pumpkin Launching! {.smaller}
 
 **Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
@@ -1484,7 +1584,111 @@ The probability of an average launch distance of at least 2,028ft is...
 
 `1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
 
-Their trebuchet is likely much stronger than the average trebuchet!
+:::
+
+::::
+
+## Back to Pumpkin Launching! {.smaller}
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average launch distance of at least 2,028ft is...
+
+`1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
+
+This team's trebuchet is likely much stronger than the average trebuchet!
+:::
+
+::::
+
+## Back to Pumpkin Launching! {.smaller}
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average launch distance of at least 2,028ft is...
+
+`1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
+
+This team's trebuchet is likely much stronger than the average trebuchet!
+
+> **FYI:** The current world record is a launch of 4,091ft by [a trebuchet named "*Chunk Norris*" and captained by Mike Powers of Bedford, NH!](https://www.punkinchunkin.com/registeredmachines/chunk-norris/)
+
 :::
 
 ::::
@@ -1510,11 +1714,276 @@ You'll need to decide which version of the Central Limit Theorem (means or propo
 
 You'll even need to determine whether the Central Limit Theorem applies and you can *safely* use the normal distribution to model the sampling distribution.
 
-## Completed Example: On-Time Package Delivery
+## Completed Example: On-Time Package Delivery {.smaller}
 
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. To investigate, they randomly sample 150 recent package deliveries. Out of these, 132 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that  88% or fewer packages arrive on time in a random sample of 150 deliveries.
 
+::::{.columns}
 
-## Completed Example: Voting Propensity II
+:::{.column width="45%"}
+
+1. Notice here that the variable of interest is a <br/>proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) & = & 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}$
+
+3. Since the *success-failure condition* is not satisfied here, the Central Limit Theorem does not apply and we cannot use the normal model to approximate the distribution for this problem.
+
+:::
+
+:::{.column width="10%"}
+
+:::
+
+:::{.column width="45%"}
+
+:::
+
+::::
+
+## Completed Example: On-Time Package Delivery {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. To investigate, they randomly sample 150 recent package deliveries. Out of these, 132 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that  88% or fewer packages arrive on time in a random sample of 150 deliveries.
+
+:::::{.columns}
+
+::::{.column width="45%"}
+
+:::{.nonincremental}
+
+1. Notice here that the variable of interest is a proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) & = & 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}$
+
+3. Since the *success-failure condition* is not satisfied here, the Central Limit Theorem does not apply and we cannot use the normal model to approximate the distribution for this problem.
+
+:::
+
+::::
+
+::::{.column width="10%"}
+
+::::
+
+::::{.column width="45%"}
+
+We'll stop here since our focus is on applying the Central Limit Theorem. We could, however, still complete it using our old friends the binomial distribution and `pbinom()`. 
+
+> **FYI:** The answer is approximately `r round(pbinom(132, 150, 0.97), 6)` -- can you figure out why?
+
+::::
+
+:::::
+
+## Completed Example: On-Time Package Delivery II {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.
+
+::::{.columns}
+
+:::{.column width="45%"}
+
+1. Again the variable of interest is a proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \not\geq 10~\checkmark \end{array}$
+
+3. The *success-failure condition* is satisfied, so the CLT says that the samplind distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Completed Example: On-Time Package Delivery II {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.
+
+:::::{.columns}
+
+::::{.column width="45%"}
+
+:::{.nonincremental}
+
+1. Again the variable of interest is a proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
+
+3. The *success-failure condition* is satisfied, so the CLT says that the sampling distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+```{r}
+x_vals <- seq(0.9, 1, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals, 
+                y = dnorm(x_vals, 0.97, sqrt((0.97*0.03/500))))) + 
+  labs(
+    title = "Sampling Distribution of On-time \nDelivery Proportions (n = 500)",
+    x = "Proportion",
+    y = "Density"
+  )
+```
+
+::::
+
+:::::
+
+## Completed Example: On-Time Package Delivery II {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.
+
+:::::{.columns}
+
+::::{.column width="45%"}
+
+:::{.nonincremental}
+
+1. Again the variable of interest is a proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
+
+3. The *success-failure condition* is satisfied, so the CLT says that the sampling distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+```{r}
+x_vals_shade <- seq(0.9, 0.95, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0.97, sqrt(0.97*0.03/500))),
+              fill = "#146EB4") +
+  geom_line(aes(x = x_vals, 
+                y = dnorm(x_vals, 0.97, sqrt((0.97*0.03/500))))) + 
+  labs(
+    title = "Sampling Distribution of On-time \nDelivery Proportions (n = 500)",
+    x = "Proportion",
+    y = "Density"
+  )
+```
+
+The probability of observing 95% or lower on-time package delivery proportions is...
+
+::::
+
+:::::
+
+## Completed Example: On-Time Package Delivery II {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.
+
+:::::{.columns}
+
+::::{.column width="45%"}
+
+:::{.nonincremental}
+
+1. Again the variable of interest is a proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
+
+3. The *success-failure condition* is satisfied, so the CLT says that the sampling distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+```{r}
+x_vals_shade <- seq(0.9, 0.95, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0.97, sqrt(0.97*0.03/500))),
+              fill = "#146EB4") +
+  geom_line(aes(x = x_vals, 
+                y = dnorm(x_vals, 0.97, sqrt((0.97*0.03/500))))) + 
+  labs(
+    title = "Sampling Distribution of On-time \nDelivery Proportions (n = 500)",
+    x = "Proportion",
+    y = "Density"
+  )
+```
+
+The probability of observing 95% or lower on-time package delivery proportions is...
+
+`S_E <- sqrt((0.97*0.03)/500)` <br/>
+`pnorm(0.95, 0.97, S_E)` $\approx$ `r round(pnorm(0.95, 0.97, sqrt((0.97*0.03)/500)), 4)`
+
+::::
+
+:::::
+
+## Completed Example: On-Time Package Delivery II {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.
+
+:::::{.columns}
+
+::::{.column width="45%"}
+
+:::{.nonincremental}
+
+1. Again the variable of interest is a proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
+
+3. The *success-failure condition* is satisfied, so the CLT says that the sampling distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+```{r}
+x_vals_shade <- seq(0.9, 0.95, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0.97, sqrt(0.97*0.03/500))),
+              fill = "#146EB4") +
+  geom_line(aes(x = x_vals, 
+                y = dnorm(x_vals, 0.97, sqrt((0.97*0.03/500))))) + 
+  labs(
+    title = "Sampling Distribution of On-time \nDelivery Proportions (n = 500)",
+    x = "Proportion",
+    y = "Density"
+  )
+```
+
+The probability of observing 95% or lower on-time package delivery proportions is...
+
+`S_E <- sqrt((0.97*0.03)/500)` <br/>
+`pnorm(0.95, 0.97, S_E)` $\approx$ `r round(pnorm(0.95, 0.97, sqrt((0.97*0.03)/500)), 4)`
+
+With such a low likelihood of observing only 95% on-time delivery, perhaps this distribution center is underperforming.
+
+::::
+
+:::::
 
 ## Completed Example: What's the Buzz About Honey? {.smaller}
 

@@ -445,15 +445,6 @@ code.sourceCode {
 <p><span class="math inline">\(\mathbb{P}\left[X &lt; 45\right] \approx ...\)</span></p>
 </div>
 </div>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><code>pnorm(45, 50, 8)</code> <span class="math inline">\(\approx\)</span> 0.266</p>
-</div><div class="column" style="width:50%;">
-<p><code>pnorm(45, 50, 3)</code> <span class="math inline">\(\approx\)</span> 0.0478</p>
-</div>
-</div>
-</div>
 </section>
 <section id="probability-and-the-normal-distribution-a-reminder-2" class="slide level2">
 <h2>Probability and the Normal Distribution (A Reminder)</h2>
@@ -483,9 +474,18 @@ code.sourceCode {
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="math inline">\(\mathbb{P}\left[X \geq 60\right] \approx ...\)</span></p>
+<p><span class="math inline">\(\mathbb{P}\left[X &lt; 45\right] \approx ...\)</span></p>
 </div><div class="column" style="width:50%;">
-<p><span class="math inline">\(\mathbb{P}\left[X \geq 60\right] \approx ...\)</span></p>
+<p><span class="math inline">\(\mathbb{P}\left[X &lt; 45\right] \approx ...\)</span></p>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><code>pnorm(45, 50, 8)</code> <span class="math inline">\(\approx\)</span> 0.266</p>
+</div><div class="column" style="width:50%;">
+<p><code>pnorm(45, 50, 3)</code> <span class="math inline">\(\approx\)</span> 0.0478</p>
+</div>
 </div>
 </div>
 </section>
@@ -509,6 +509,40 @@ code.sourceCode {
 <div>
 <figure>
 <p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(\mathbb{P}\left[X \geq 60\right] \approx ...\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(\mathbb{P}\left[X \geq 60\right] \approx ...\)</span></p>
+</div>
+</div>
+</section>
+<section id="probability-and-the-normal-distribution-a-reminder-4" class="slide level2">
+<h2>Probability and the Normal Distribution (A Reminder)</h2>
+<p>Probabilities associated with values far away from the mean are larger in the distribution on the left than they are in the distribution on the right.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -591,7 +625,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -618,7 +652,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -644,7 +678,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -692,7 +726,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -711,7 +745,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -730,7 +764,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -749,7 +783,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -768,7 +802,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -788,7 +822,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -821,13 +855,21 @@ code.sourceCode {
 <p><em>Flimps</em>, <em>flomps</em>, and <em>flumps</em> are [fictitious] numerical variables whose population distributions appear below and with corresponding sampling distributions to the right.</p>
 </div>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:10%;">
+
+</div><div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </figure>
 </div>
+</div>
+</div>
+</div><div class="column" style="width:10%;">
+
 </div>
 </div>
 <p>Sampling distributions are shown for samples of three observations (<code>s3_*</code>), fifteen observations (<code>s15_*</code>), and thirty observations (<code>s30_*</code>).</p>
@@ -839,19 +881,27 @@ code.sourceCode {
 <p>Similarly, <em>grimps</em>, <em>gromps</em>, and <em>grumps</em> are [fictitious] categorical variables for which we can define success and failure. The sampling distributions for proportion corresponding to a successful outcome appears below.</p>
 </div>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:15%;">
+
+</div><div class="column" style="width:70%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
 </figure>
 </div>
+</div>
+</div>
+</div><div class="column" style="width:15%;">
+
 </div>
 </div>
 <p>Sampling distributions this time are shown for samples of ten observations (<code>s10_*</code>), thirty observations (<code>s30_*</code>), fifty observations (<code>s50_*</code>), and one hundred observations (<code>s100_*</code>).</p>
 </div>
 </section>
-<section id="when-is-a-sampling-distribution-normal" class="slide level2">
+<section id="when-is-a-sampling-distribution-normal" class="slide level2 smaller">
 <h2>When is a Sampling Distribution Normal?</h2>
 <div class="fragment">
 <p><strong>Important:</strong> Bringing back our sampling distributions for <em>flimps</em>, <em>flomps</em>, and <em>flumps</em> (numerical variables) we see that the more skewed the population distribution, the larger the sample size required before the sampling distribution is well-approximated by a normal distribution.</p>
@@ -859,7 +909,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -869,7 +919,7 @@ code.sourceCode {
 <p>Some people/books recommend <span class="math inline">\(n\geq 30\)</span>, but I advocate against this <em>rule of thumb</em> because of the slightly maintained skew we see in the top two rows of plots.</p>
 </div>
 </section>
-<section id="when-is-a-sampling-distribution-normal-1" class="slide level2">
+<section id="when-is-a-sampling-distribution-normal-1" class="slide level2 smaller">
 <h2>When is a Sampling Distribution Normal?</h2>
 <div class="fragment">
 <p><strong>Important:</strong> Bringing back our sampling distributions for <em>grimps</em>, <em>gromps</em>, and <em>grumps</em> (binary categorical variables) we see that the presence of skew is related to the population proportion and the sample size.</p>
@@ -877,7 +927,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -907,7 +957,6 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <h2>The Central Limit Theorem</h2>
 <div class="fragment">
 <p><strong>Central Limit Theorem (CLT):</strong> The <em>Sampling Distribution</em> of the mean (average of averages or average of proportions) is approximately normally distributed as long as the sample sizes are <em>large enough</em>.</p>
-<p><br></p>
 </div>
 <div class="fragment">
 <p>The <strong>mean</strong> of the sampling distribution is…</p>
@@ -926,7 +975,6 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 </section>
 <section id="the-central-limit-theorem-restated" class="slide level2">
 <h2>The Central Limit Theorem (Restated)</h2>
-<p><br></p>
 <div class="fragment">
 <p><strong>CLT for Means:</strong> For large enough sample sizes (<span class="math inline">\(n\)</span>), the <em>sampling distribution of the mean</em> is well-approximated by <span class="math inline">\(\displaystyle{N\left(\mu,~S_E = \sigma /\sqrt{n}\right)}\)</span></p>
 </div>
@@ -934,7 +982,7 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <blockquote>
 <p><em>Note</em>. Recall that <span class="math inline">\(\displaystyle{N\left(\mu,~S_E = \sigma /\sqrt{n}\right)}\)</span> means the “normal distribution centered at <span class="math inline">\(\mu\)</span> and with spread (standard deviation/standared error) described by <span class="math inline">\(\displaystyle{\sigma/\sqrt{n}}\)</span>”</p>
 </blockquote>
-<p><br> <br></p>
+<p><br></p>
 </div>
 <div class="fragment">
 <p><strong>CLT for Proportions:</strong> For large enough sample sizes (<span class="math inline">\(n\)</span>), the <em>sampling distribution of the proportion</em> is well-approximated by <span class="math inline">\(\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}\)</span></p>
@@ -945,7 +993,7 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 </blockquote>
 </div>
 </section>
-<section id="back-to-pumpkin-launching" class="slide level2">
+<section id="back-to-pumpkin-launching" class="slide level2 smaller">
 <h2>Back to Pumpkin Launching!</h2>
 <div class="fragment">
 <p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
@@ -962,70 +1010,18 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-
-</div>
-</div>
-</div>
-</section>
-<section id="back-to-pumpkin-launching-1" class="slide level2">
-<h2>Back to Pumpkin Launching!</h2>
-<p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
-<div>
-<ol type="1">
-<li><p>Note that the population distribution of launch distances is not skewed (it is approximately normal).</p></li>
-<li><p>This means that we have no skew to overcome, and our sampling distribution will be approximately normal.</p></li>
-<li><p>Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be <span class="math inline">\(\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}\)</span>, which in this case is <span class="math inline">\(\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}\)</span></p></li>
-</ol>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-
-</div>
-</div>
-</section>
-<section id="back-to-pumpkin-launching-2" class="slide level2">
-<h2>Back to Pumpkin Launching!</h2>
-<p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
-<div>
-<ol type="1">
-<li><p>Note that the population distribution of launch distances is not skewed (it is approximately normal).</p></li>
-<li><p>This means that we have no skew to overcome, and our sampling distribution will be approximately normal.</p></li>
-<li><p>Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be <span class="math inline">\(\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}\)</span>, which in this case is <span class="math inline">\(\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}\)</span></p></li>
-</ol>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<p>The probability of an average launch distance of at least 2,028ft is…</p>
+
+</div>
 </div>
 </div>
 </section>
-<section id="back-to-pumpkin-launching-3" class="slide level2">
+<section id="back-to-pumpkin-launching-1" class="slide level2 smaller">
 <h2>Back to Pumpkin Launching!</h2>
 <p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
 <div>
@@ -1047,12 +1043,11 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<p>The probability of an average launch distance of at least 2,028ft is…</p>
-<p><code>1 - pnorm(2028, 1800, 250/sqrt(12))</code> <span class="math inline">\(\approx\)</span> 0.0008</p>
+
 </div>
 </div>
 </section>
-<section id="back-to-pumpkin-launching-4" class="slide level2">
+<section id="back-to-pumpkin-launching-2" class="slide level2 smaller">
 <h2>Back to Pumpkin Launching!</h2>
 <p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
 <div>
@@ -1074,9 +1069,119 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 </div>
 </div>
 </div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</section>
+<section id="back-to-pumpkin-launching-3" class="slide level2 smaller">
+<h2>Back to Pumpkin Launching!</h2>
+<p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
+<div>
+<ol type="1">
+<li><p>Note that the population distribution of launch distances is not skewed (it is approximately normal).</p></li>
+<li><p>This means that we have no skew to overcome, and our sampling distribution will be approximately normal.</p></li>
+<li><p>Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be <span class="math inline">\(\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}\)</span>, which in this case is <span class="math inline">\(\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}\)</span></p></li>
+</ol>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>The probability of an average launch distance of at least 2,028ft is…</p>
+</div>
+</div>
+</section>
+<section id="back-to-pumpkin-launching-4" class="slide level2 smaller">
+<h2>Back to Pumpkin Launching!</h2>
+<p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
+<div>
+<ol type="1">
+<li><p>Note that the population distribution of launch distances is not skewed (it is approximately normal).</p></li>
+<li><p>This means that we have no skew to overcome, and our sampling distribution will be approximately normal.</p></li>
+<li><p>Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be <span class="math inline">\(\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}\)</span>, which in this case is <span class="math inline">\(\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}\)</span></p></li>
+</ol>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
 <p>The probability of an average launch distance of at least 2,028ft is…</p>
 <p><code>1 - pnorm(2028, 1800, 250/sqrt(12))</code> <span class="math inline">\(\approx\)</span> 0.0008</p>
-<p>Their trebuchet is likely much stronger than the average trebuchet!</p>
+</div>
+</div>
+</section>
+<section id="back-to-pumpkin-launching-5" class="slide level2 smaller">
+<h2>Back to Pumpkin Launching!</h2>
+<p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
+<div>
+<ol type="1">
+<li><p>Note that the population distribution of launch distances is not skewed (it is approximately normal).</p></li>
+<li><p>This means that we have no skew to overcome, and our sampling distribution will be approximately normal.</p></li>
+<li><p>Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be <span class="math inline">\(\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}\)</span>, which in this case is <span class="math inline">\(\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}\)</span></p></li>
+</ol>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>The probability of an average launch distance of at least 2,028ft is…</p>
+<p><code>1 - pnorm(2028, 1800, 250/sqrt(12))</code> <span class="math inline">\(\approx\)</span> 0.0008</p>
+<p>This team’s trebuchet is likely much stronger than the average trebuchet!</p>
+</div>
+</div>
+</section>
+<section id="back-to-pumpkin-launching-6" class="slide level2 smaller">
+<h2>Back to Pumpkin Launching!</h2>
+<p><strong>Reminder:</strong> The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?</p>
+<div>
+<ol type="1">
+<li><p>Note that the population distribution of launch distances is not skewed (it is approximately normal).</p></li>
+<li><p>This means that we have no skew to overcome, and our sampling distribution will be approximately normal.</p></li>
+<li><p>Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be <span class="math inline">\(\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}\)</span>, which in this case is <span class="math inline">\(\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}\)</span></p></li>
+</ol>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>The probability of an average launch distance of at least 2,028ft is…</p>
+<p><code>1 - pnorm(2028, 1800, 250/sqrt(12))</code> <span class="math inline">\(\approx\)</span> 0.0008</p>
+<p>This team’s trebuchet is likely much stronger than the average trebuchet!</p>
+<blockquote>
+<p><strong>FYI:</strong> The current world record is a launch of 4,091ft by <a href="https://www.punkinchunkin.com/registeredmachines/chunk-norris/">a trebuchet named “<em>Chunk Norris</em>” and captained by Mike Powers of Bedford, NH!</a></p>
+</blockquote>
 </div>
 </div>
 </section>
@@ -1095,11 +1200,172 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <p>You’ll even need to determine whether the Central Limit Theorem applies and you can <em>safely</em> use the normal distribution to model the sampling distribution.</p>
 </div>
 </section>
-<section id="completed-example-on-time-package-delivery" class="slide level2">
+<section id="completed-example-on-time-package-delivery" class="slide level2 smaller">
 <h2>Completed Example: On-Time Package Delivery</h2>
+<p><strong>Scenario:</strong> A major online retailer, let’s call it “<em>Amazonia</em>”, has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. To investigate, they randomly sample 150 recent package deliveries. Out of these, 132 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 88% or fewer packages arrive on time in a random sample of 150 deliveries.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ol type="1">
+<li class="fragment"><p>Notice here that the variable of interest is a <br>proportion.</p></li>
+<li class="fragment"><p>Since this is the case, we’ll check the <em>success-failure condition</em>…<br><span class="math inline">\(\begin{array}{lcl} n\cdot p &amp; = &amp; 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) &amp; = &amp; 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}\)</span></p></li>
+<li class="fragment"><p>Since the <em>success-failure condition</em> is not satisfied here, the Central Limit Theorem does not apply and we cannot use the normal model to approximate the distribution for this problem.</p></li>
+</ol>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+
+</div>
+</div>
 </section>
-<section id="completed-example-voting-propensity-ii" class="slide level2">
-<h2>Completed Example: Voting Propensity II</h2>
+<section id="completed-example-on-time-package-delivery-1" class="slide level2 smaller">
+<h2>Completed Example: On-Time Package Delivery</h2>
+<p><strong>Scenario:</strong> A major online retailer, let’s call it “<em>Amazonia</em>”, has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. To investigate, they randomly sample 150 recent package deliveries. Out of these, 132 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 88% or fewer packages arrive on time in a random sample of 150 deliveries.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div>
+<ol type="1">
+<li><p>Notice here that the variable of interest is a proportion.</p></li>
+<li><p>Since this is the case, we’ll check the <em>success-failure condition</em>…<br><span class="math inline">\(\begin{array}{lcl} n\cdot p &amp; = &amp; 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) &amp; = &amp; 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}\)</span></p></li>
+<li><p>Since the <em>success-failure condition</em> is not satisfied here, the Central Limit Theorem does not apply and we cannot use the normal model to approximate the distribution for this problem.</p></li>
+</ol>
+</div>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<p>We’ll stop here since our focus is on applying the Central Limit Theorem. We could, however, still complete it using our old friends the binomial distribution and <code>pbinom()</code>.</p>
+<blockquote>
+<p><strong>FYI:</strong> The answer is approximately 0.000001 – can you figure out why?</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="completed-example-on-time-package-delivery-ii" class="slide level2 smaller">
+<h2>Completed Example: On-Time Package Delivery II</h2>
+<p><strong>Scenario:</strong> A major online retailer, let’s call it “<em>Amazonia</em>”, has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ol type="1">
+<li class="fragment"><p>Again the variable of interest is a proportion.</p></li>
+<li class="fragment"><p>Since this is the case, we’ll check the <em>success-failure condition</em>…<br><span class="math inline">\(\begin{array}{lcl} n\cdot p &amp; = &amp; 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) &amp; = &amp; 500\cdot\left(0.03\right) = 15 \not\geq 10~\checkmark \end{array}\)</span></p></li>
+<li class="fragment"><p>The <em>success-failure condition</em> is satisfied, so the CLT says that the samplind distribution for the proportion will be <span class="math inline">\(\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}\)</span></p></li>
+</ol>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</section>
+<section id="completed-example-on-time-package-delivery-ii-1" class="slide level2 smaller">
+<h2>Completed Example: On-Time Package Delivery II</h2>
+<p><strong>Scenario:</strong> A major online retailer, let’s call it “<em>Amazonia</em>”, has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div>
+<ol type="1">
+<li><p>Again the variable of interest is a proportion.</p></li>
+<li><p>Since this is the case, we’ll check the <em>success-failure condition</em>…<br><span class="math inline">\(\begin{array}{lcl} n\cdot p &amp; = &amp; 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) &amp; = &amp; 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}\)</span></p></li>
+<li><p>The <em>success-failure condition</em> is satisfied, so the CLT says that the sampling distribution for the proportion will be <span class="math inline">\(\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}\)</span></p></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="completed-example-on-time-package-delivery-ii-2" class="slide level2 smaller">
+<h2>Completed Example: On-Time Package Delivery II</h2>
+<p><strong>Scenario:</strong> A major online retailer, let’s call it “<em>Amazonia</em>”, has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div>
+<ol type="1">
+<li><p>Again the variable of interest is a proportion.</p></li>
+<li><p>Since this is the case, we’ll check the <em>success-failure condition</em>…<br><span class="math inline">\(\begin{array}{lcl} n\cdot p &amp; = &amp; 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) &amp; = &amp; 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}\)</span></p></li>
+<li><p>The <em>success-failure condition</em> is satisfied, so the CLT says that the sampling distribution for the proportion will be <span class="math inline">\(\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}\)</span></p></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The probability of observing 95% or lower on-time package delivery proportions is…</p>
+</div>
+</div>
+</section>
+<section id="completed-example-on-time-package-delivery-ii-3" class="slide level2 smaller">
+<h2>Completed Example: On-Time Package Delivery II</h2>
+<p><strong>Scenario:</strong> A major online retailer, let’s call it “<em>Amazonia</em>”, has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div>
+<ol type="1">
+<li><p>Again the variable of interest is a proportion.</p></li>
+<li><p>Since this is the case, we’ll check the <em>success-failure condition</em>…<br><span class="math inline">\(\begin{array}{lcl} n\cdot p &amp; = &amp; 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) &amp; = &amp; 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}\)</span></p></li>
+<li><p>The <em>success-failure condition</em> is satisfied, so the CLT says that the sampling distribution for the proportion will be <span class="math inline">\(\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}\)</span></p></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The probability of observing 95% or lower on-time package delivery proportions is…</p>
+<p><code>S_E &lt;- sqrt((0.97*0.03)/500)</code> <br> <code>pnorm(0.95, 0.97, S_E)</code> <span class="math inline">\(\approx\)</span> 0.0044</p>
+</div>
+</div>
+</section>
+<section id="completed-example-on-time-package-delivery-ii-4" class="slide level2 smaller">
+<h2>Completed Example: On-Time Package Delivery II</h2>
+<p><strong>Scenario:</strong> A major online retailer, let’s call it “<em>Amazonia</em>”, has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. The logistics manager takes a new random sample of 500 recent package deliveries. Out of these, 475 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that 95% or fewer packages arrive on time in a random sample of 500 deliveries.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div>
+<ol type="1">
+<li><p>Again the variable of interest is a proportion.</p></li>
+<li><p>Since this is the case, we’ll check the <em>success-failure condition</em>…<br><span class="math inline">\(\begin{array}{lcl} n\cdot p &amp; = &amp; 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) &amp; = &amp; 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}\)</span></p></li>
+<li><p>The <em>success-failure condition</em> is satisfied, so the CLT says that the sampling distribution for the proportion will be <span class="math inline">\(\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}\)</span></p></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The probability of observing 95% or lower on-time package delivery proportions is…</p>
+<p><code>S_E &lt;- sqrt((0.97*0.03)/500)</code> <br> <code>pnorm(0.95, 0.97, S_E)</code> <span class="math inline">\(\approx\)</span> 0.0044</p>
+<p>With such a low likelihood of observing only 95% on-time delivery, perhaps this distribution center is underperforming.</p>
+</div>
+</div>
 </section>
 <section id="completed-example-whats-the-buzz-about-honey" class="slide level2 smaller">
 <h2>Completed Example: What’s the Buzz About Honey?</h2>
@@ -1115,7 +1381,7 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1141,7 +1407,7 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1166,7 +1432,7 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1192,7 +1458,7 @@ We can use the normal distribution as a model for the Sampling Distribution as l
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<p><img data-src="IntroInference_Slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
 </figure>
 </div>
 </div>
