@@ -33,6 +33,18 @@ code.sourceCode {
   font-size: 1.3em;
   /* or try font-size: xx-large; */
 }
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
 ```
 
 ## The Highlights
@@ -1687,7 +1699,7 @@ The probability of an average launch distance of at least 2,028ft is...
 
 This team's trebuchet is likely much stronger than the average trebuchet!
 
-> **FYI:** The current world record is a launch of 4,091ft by [a trebuchet named "*Chunk Norris*" and captained by Mike Powers of Bedford, NH!](https://www.punkinchunkin.com/registeredmachines/chunk-norris/)
+> **FYI:** The current world record is a launch of 4,091ft by [a trebuchet named "*Chunk Norris*", captained by Mike Powers of Bedford, NH!](https://www.punkinchunkin.com/registeredmachines/chunk-norris/)
 
 :::
 
@@ -2163,7 +2175,25 @@ A 7.32% chance of observing a result as bad as they observed means that such an 
 
 ::::
 
-## Several Additional Interesting Contexts...
+## Examples to Try: Fast Food Waiting Times
+
+**Scenario:** A popular fast-food chain claims that its wait time in its drive-thru is approximately normally distributed with a mean of 3.5 minutes and a standard deviation of 2.5 minutes. A consumer advocacy group randomly samples 40 customers from different locations, and the average wait time in the sample is 4 minutes. What is the probability of observing a random sample of 40 customers with an average wait time of at least 4 minutes?
+
+## Examples to Try: Mobile App Usage
+
+**Scenario:** A mobile app company claims that 60% of its users open the app at least once a day. A marketing team conducts a survey, randomly sampling 200 users. Of those, 112 report using the app daily. What is the probability of observing a random sample of 200 users where less than 113 open the app at least once a day?
+
+## Examples to Try: Online Course Completion Rates
+
+**Scenario:** An online education platform reports internally that 15% of students don't complete their courses. A research team samples 120 students recently enrolled in a particular class, and 26 of them did not complete that course. What is the probability of observing a random sample of 120 students where 26 or more did not complete this course? What might this say about that course?
+
+## Examples to Try: Hospital Length of Stay
+
+**Scenario:** A local hospital claims that the average length of stay for patients is 5.2 days, with a standard deviation of 2.1 days. A health department survey randomly samples 36 patients from recent discharges, and the average length of stay in the sample is 6.1 days. Find the probability of observing a random sample of 36 patients whose average stay length was at least 6.1 days. Assume that the population distribution of stay lengths is not strongly skewed.
+
+## Examples to Try: NFL Offensive Line, QB Protection
+
+**Scenario:** In the NFL, one of the most important roles of the offensive line is to protect the quarterback from being sacked. The distribution of sacks per game is approximately normal. League-wide, teams allow an average of 2.3 sacks per game, with a standard deviation of 0.9 sacks. The coaching staff of a particular team believes their offensive line is better than average. Over the course of 17 games in the regular season, they allow an average of 1.8 sacks per game. What is the probability that a random sample of 17 games would result in an average of 1.8 sacks or fewer?
 
 ## Next Time...
 
