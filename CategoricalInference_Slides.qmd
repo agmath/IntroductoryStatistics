@@ -1,0 +1,728 @@
+---
+title: "Inference with Categorical Data"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 20pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+
+theme_set(theme_bw(base_size = 32))
+
+pop_prop <- 0.86
+num_obs <- 17
+new_obs <- 113
+num_samps <- 100
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+```
+
+## The Highlights
+
++ Reminder on Proportions
++ Sampling from a Population
++ Sampling Variation
++ Repeated Sampling and Proportion Estimates
+    + Sampling Error
++ Another item...
++ Other additional items...
++ Example Problems (confidence intervals and hypothesis tests)
++ Summary
+
+## Reminder on Proportions
+
+. . . 
+
+Proportions are a statistic for summarizing categorical data
+
+. . . 
+
+Proportions measure part of a whole, and are typically represented as a decimal value between 0 and 1 -- alternatives include fractions or percentages.
+
+. . .
+
+Proportions are used to measure the relative size of a group or category resulting from *grouping questions* like:
+
++ Are you a smoker?
++ Do you identify politically as *conservative*, *moderate*, *liberal*, or *unsure*?
++ Is the type of diet *carnivore*, *herbivore*, *omnivore*, *insectivore*, or *frugivore*?
+
+## Sampling Variation
+
+. . . 
+
+When we collect sample data, we get an estimate for the population parameter.
+
+. . . 
+
+We do this because we want to know the population parameter, even though we are unable to measure it directly.
+
+. . . 
+
+I'm going to take a random sample of `r num_obs` individuals from a voting population considering the fictitious *Proposition B-52*. The results of the individuals' voting plans appear below.
+
+. . .
+
+```{r}
+my_sample_1 <- sample(c("In-Favor", "Against"), 
+                    size = num_obs, 
+                    prob = c(pop_prop, 1 - pop_prop),
+                    replace = TRUE)
+
+my_prop_est_1 <- mean(my_sample_1 == "In-Favor")
+
+my_sample_1
+```
+
+. . . 
+
+The estimated proportion in favor of *Proposition B-52* is about `r round(my_prop_est_1, 3)`
+
+. . . 
+
+Is the population proportion in favor of *Proposition B-52* equal to `r round(my_prop_est_1, 3)`?
+
+. . . 
+
+> No, but the sample provides an *estimate* for the population proportion.
+
+## Sampling Variation
+
+Here's another random sample of `r num_obs` individuals' voting preference on *Proposition B-52*.
+
+. . . 
+
+```{r}
+my_sample_2 <- sample(c("In-Favor", "Against"), 
+                    size = num_obs, 
+                    prob = c(pop_prop, 1 - pop_prop),
+                    replace = TRUE)
+
+my_prop_est_2 <- mean(my_sample_2 == "In-Favor")
+
+my_sample_2
+```
+
+. . . 
+
+The estimated proportion from this sample is `r round(my_prop_est_2, 3)`
+
+. . . 
+
+Okay, so what can the results from a random sample actually tell us?
+
+## Sampling Variation and Sampling Error
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+The result from our first sample appears in the plot on the right.
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| fig.height: 7
+
+my_samples <- tibble(
+  sample_id = 1:num_samps,
+  prop_est = c(my_prop_est_1, rep(NA, num_samps - 1))
+)
+
+my_samples %>%
+  ggplot() + 
+  geom_point(aes(x = prop_est,
+                 y = sample_id)) + 
+  coord_cartesian(xlim = c(0, 1),
+                  ylim = c(0, 101)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+:::
+
+::::
+
+## Sampling Variation and Sampling Error
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+We've added in the estimate from our second sample as well.
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| fig.height: 7
+
+my_samples <- tibble(
+  sample_id = 1:num_samps,
+  prop_est = c(my_prop_est_1, my_prop_est_2, rep(NA, num_samps - 2))
+)
+
+my_samples %>%
+  ggplot() + 
+  geom_point(aes(x = prop_est,
+                 y = sample_id)) + 
+  coord_cartesian(xlim = c(0, 1),
+                  ylim = c(0, 101)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+:::
+
+::::
+
+## Sampling Variation and Sampling Error
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+Here's the result of a third random sample of `r num_obs` individuals.
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| fig.height: 7
+
+my_sample_3 <- sample(c("In-Favor", "Against"), 
+                    size = num_obs, 
+                    prob = c(pop_prop, 1 - pop_prop),
+                    replace = TRUE)
+
+my_prop_est_3 <- mean(my_sample_3 == "In-Favor")
+
+my_samples <- tibble(
+  sample_id = 1:num_samps,
+  prop_est = c(my_prop_est_1, my_prop_est_2, my_prop_est_3, rep(NA, num_samps - 3))
+)
+
+my_samples %>%
+  ggplot() + 
+  geom_point(aes(x = prop_est,
+                 y = sample_id)) + 
+  coord_cartesian(xlim = c(0, 1),
+                  ylim = c(0, 101)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+:::
+
+::::
+
+## Sampling Variation and Sampling Error
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+Let's take `r num_samps - 3` more random samples and plot the results from all of these random samples containing `r num_obs` voters each... 
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| fig.height: 7
+
+toy_data <- tibble(
+  sample = 1:num_samps,
+  samp_prop = c(my_prop_est_1, my_prop_est_2, my_prop_est_3, rep(NA, num_samps - 3))
+                   )
+
+for(i in 4:num_samps){
+  toy_data[i, "samp_prop"] <- rbinom(1, num_obs, pop_prop)/num_obs
+}
+
+toy_data %>%
+  ggplot() + 
+  # geom_vline(xintercept = pop_prop, 
+  #            linetype = "dashed") + 
+  geom_point(aes(x = samp_prop, 
+                 y = sample)) +
+  coord_cartesian(xlim = c(0, 1)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+:::
+
+::::
+
+. . . 
+
+What information can we take away from these `r num_samps` random samples?
+
+## Sampling Variation and Sampling Error
+
+. . . 
+
+A sample of 17 individuals is quite small and leaves lots of uncertainty.
+
+. . . 
+
+Let's take samples of `r new_obs` individuals instead
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+Here are `r num_samps` random samples of `r new_obs` voters each.
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| fig.height: 7
+
+toy_data <- tibble(
+  sample = 1:num_samps,
+  samp_prop = rep(NA, num_samps),
+  samp_prop_norm = rep(NA, num_samps)
+                   )
+
+for(i in 1:num_samps){
+  toy_data[i, "samp_prop"] <- rbinom(1, new_obs, pop_prop)/new_obs
+  toy_data[i, "samp_prop_norm"] <- rnorm(1, mean = pop_prop, 
+                                         sd = sqrt(pop_prop*(1 - pop_prop)/new_obs))
+}
+
+toy_data %>%
+  ggplot() + 
+  # geom_vline(xintercept = pop_prop, 
+  #            linetype = "dashed") + 
+  geom_point(aes(x = samp_prop, 
+                 y = sample)) +
+  # geom_point(aes(x = samp_prop_norm,
+  #                y = sample),
+  #            color = "red",
+  #            alpha = 0.2) + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+:::
+
+::::
+
+. . . 
+
+What do we feel comfortable claiming now?
+
+## Sampling Variation and Sampling Error (Summary, So Far...)
+
+. . . 
+
+Each sampled provides us with a *summary statistic* (a sample proportion) which serves as an estimate for the population proportion.
+
+. . . 
+
+Each sample results in a different *summary statistic* -- this is referred to as *sampling variation*
+
+## Sampling Variation and Sampling Error
+
+. . . 
+
+Let's revisit those `r num_samps` random samples of `r new_obs` individuals.
+
+. . .
+
+```{r}
+toy_data %>%
+  ggplot() + 
+  # geom_vline(xintercept = pop_prop, 
+  #            linetype = "dashed") + 
+  geom_point(aes(x = samp_prop, 
+                 y = sample)) +
+  # geom_point(aes(x = samp_prop_norm,
+  #                y = sample),
+  #            color = "red",
+  #            alpha = 0.2) + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+## Sampling Variation and Sampling Error
+
+Let's revisit those `r num_samps` random samples of `r new_obs` individuals.
+
+```{r}
+toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, 
+             linetype = "dashed") + 
+  geom_point(aes(x = samp_prop, 
+                 y = sample)) +
+  # geom_point(aes(x = samp_prop_norm,
+  #                y = sample),
+  #            color = "red",
+  #            alpha = 0.2) + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+. . . 
+
+That black dashed line is at the underlying population proportion (`r pop_prop`)
+
+## Sampling Variation and Sampling Error
+
+Let's revisit those `r num_samps` random samples of `r new_obs` individuals.
+
+```{r}
+toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, 
+             linetype = "dashed") + 
+  geom_point(aes(x = samp_prop, 
+                 y = sample)) +
+  # geom_point(aes(x = samp_prop_norm,
+  #                y = sample),
+  #            color = "red",
+  #            alpha = 0.2) + 
+  geom_segment(aes(x = samp_prop, xend = pop_prop, y = sample, yend = sample),
+               color = "red") +
+  coord_cartesian(xlim = c(0, 1)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+. . . 
+
+Now, these red horizontal lines represent the *sampling error* -- how far the sample statistic falls from the true population proportion.
+
+## Distribution of Sampling Errors
+
+. . . 
+
+Let's switch our view here and look at the distribution of sampling errors.
+
+. . . 
+
+```{r}
+toy_data %>%
+  mutate(samp_errors = samp_prop - pop_prop) %>%
+  ggplot() + 
+  geom_histogram(aes(x = samp_errors, y = after_stat(density)),
+                 color = "black",
+                 fill = "purple",
+                 bins = 15) + 
+  geom_density(aes(x = samp_errors),
+               fill = "purple",
+               alpha = 0.4) + 
+  labs(
+    x = "Sampling Error",
+    y = "Density"
+  )
+```
+
+. . .
+
+What do you notice?
+
+## Distribution of Sampling Errors
+
+. . . 
+
+In case you aren't convinced, here's the distribution of sampling errors from 10,000 random samples.
+
+. . . 
+
+```{r}
+many_samples <- tibble(
+  sample_prop = rbinom(1e3, new_obs, pop_prop)/new_obs
+) %>%
+  mutate(samp_errors = sample_prop - pop_prop) 
+
+many_samples %>%
+  ggplot() + 
+  geom_histogram(aes(x = samp_errors, y = after_stat(density)),
+                 color = "black",
+                 fill = "purple") + 
+  geom_density(aes(x = samp_errors),
+               fill = "purple",
+               alpha = 0.4) + 
+  labs(
+    x = "Sampling Error",
+    y = "Density"
+  )
+```
+
+## Sampling Variation and Sampling Error
+
+. . . 
+
+Each sampled provides us with a *summary statistic* (a sample proportion) which serves as an estimate for the population proportion.
+
+. . . 
+
+Each sample results in a different *summary statistic* -- this is referred to as *sampling variation*.
+
+. . . 
+
+Each sample's *summary statistic* has some deviation from the *population proportion* -- that deviation is called the *sampling error*.
+
+. . . 
+
+The distribution of sampling errors is approximately normal$^*$
+
+## When Are Sampling Errors Approximately Normal?
+
+. . . 
+
+It's not actually always the case that the sampling errors will be nearly normally distributed.
+
+. . . 
+
+Let's consider three example scenarios -- one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.
+
+```{r}
+#| fig.height: 5
+
+toy_data <- tibble(
+  sample_id = 1:100,
+  small_samples = rbinom(100, 15, pop_prop)/15,
+  medium_samples = rbinom(100, 40, pop_prop)/40,
+  large_samples = rbinom(100, 100, pop_prop)/100
+)
+
+p1 <- toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
+  geom_segment(aes(x = pop_prop, xend = small_samples, 
+                   y = sample_id, yend = sample_id),
+               color = "red") +
+  geom_point(aes(x = small_samples, y = sample_id)) + 
+  labs(
+    title = " Sampling Errors (n = 15)",
+    x = "Sample Proportion",
+    y = "Sample Number") + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  theme_bw(base_size = 11)
+
+p2 <- toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
+  geom_segment(aes(x = pop_prop, xend = medium_samples, 
+                   y = sample_id, yend = sample_id),
+               color = "red") +
+  geom_point(aes(x = medium_samples, y = sample_id)) + 
+  labs(
+    title = " Sampling Errors (n = 40)",
+    x = "Sample Proportion",
+    y = "Sample Number") + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  theme_bw(base_size = 11)
+
+p3 <- toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
+  geom_segment(aes(x = pop_prop, xend = large_samples, 
+                   y = sample_id, yend = sample_id),
+               color = "red") +
+  geom_point(aes(x = large_samples, y = sample_id)) + 
+  labs(
+    title = " Sampling Errors (n = 100)",
+    x = "Sample Proportion",
+    y = "Sample Number") + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  theme_bw(base_size = 11)
+
+p1 + p2 + p3
+```
+
+## When Are Sampling Errors Approximately Normal?
+
+It's not actually always the case that the sampling errors will be nearly normally distributed.
+
+Let's consider three example scenarios -- one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.
+
+::::{.columns}
+
+:::{.column width="65%"}
+
+```{r}
+#| fig.height: 5
+
+toy_data <- tibble(
+  sample_id = 1:100,
+  small_samples = rbinom(100, 15, pop_prop)/15,
+  medium_samples = rbinom(100, 40, pop_prop)/40,
+  large_samples = rbinom(100, 100, pop_prop)/100
+)
+
+p1 <- toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
+  geom_segment(aes(x = pop_prop, xend = small_samples, 
+                   y = sample_id, yend = sample_id),
+               color = "red") +
+  geom_point(aes(x = small_samples, y = sample_id)) + 
+  labs(
+    title = " Sampling Errors (n = 15)",
+    x = "Sample Proportion",
+    y = "Sample Number") + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  theme_bw(base_size = 13)
+
+p2 <- toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
+  geom_segment(aes(x = pop_prop, xend = medium_samples, 
+                   y = sample_id, yend = sample_id),
+               color = "red") +
+  geom_point(aes(x = medium_samples, y = sample_id)) + 
+  labs(
+    title = " Sampling Errors (n = 40)",
+    x = "Sample Proportion",
+    y = "Sample Number") + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  theme_bw(base_size = 13)
+
+p3 <- toy_data %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
+  geom_segment(aes(x = pop_prop, xend = large_samples, 
+                   y = sample_id, yend = sample_id),
+               color = "red") +
+  geom_point(aes(x = large_samples, y = sample_id)) + 
+  labs(
+    title = " Sampling Errors (n = 100)",
+    x = "Sample Proportion",
+    y = "Sample Number") + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  theme_bw(base_size = 13)
+
+p1 + p2 + p3
+```
+
+:::
+
+:::{.column width="35%"}
+
+```{r}
+#| fig.height: 10
+
+toy_data <- tibble(
+  sample_id = 1:1e3,
+  small_samples = rbinom(1e3, 15, pop_prop)/15,
+  medium_samples = rbinom(1e3, 40, pop_prop)/40,
+  large_samples = rbinom(1e3, 100, pop_prop)/100
+)
+
+toy_data <- toy_data %>%
+  mutate(
+    samp_err_small = small_samples - pop_prop,
+    samp_err_medium = medium_samples - pop_prop,
+    samp_err_large = large_samples - pop_prop
+  )
+
+p1 <- toy_data %>%
+  ggplot() + 
+  geom_histogram(aes(x = samp_err_small,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "purple") +
+  geom_density(aes(x = samp_err_small),
+               fill = "purple",
+               alpha = 0.75) +
+  labs(
+    title = " Sampling Errors (n = 15)",
+    x = "Sampling Error",
+    y = "") +  
+  theme_bw(base_size = 22)
+
+p2 <- toy_data %>%
+  ggplot() + 
+  geom_histogram(aes(x = samp_err_medium,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "purple") +
+  geom_density(aes(x = samp_err_medium),
+               fill = "purple",
+               alpha = 0.75) +
+  labs(
+    title = " Sampling Errors (n = 40)",
+    x = "Sampling Error",
+    y = "") + 
+  theme_bw(base_size = 22)
+
+p3 <- toy_data %>%
+  ggplot() + 
+  geom_histogram(aes(x = samp_err_large,
+                     y = after_stat(density)),
+                 color = "black",
+                 fill = "purple") +
+  geom_density(aes(x = samp_err_large),
+               fill = "purple",
+               alpha = 0.75) +
+  labs(
+    title = " Sampling Errors (n = 100)",
+    x = "Sampling Error",
+    y = "") + 
+  theme_bw(base_size = 22)
+
+p1 / p2 / p3
+```
+
+:::
+
+::::
+
+. . . 
+
+**Rule of Thumb:** The 
+
+## Next Time...
+
+<center><br/> Discrete Probability and Simulation Lab</center>
+
+
+
