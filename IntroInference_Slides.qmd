@@ -54,7 +54,7 @@ a:visited {
 + Sampling from a population (working with a Population Distribution)
 + Drawing Multiple Observations (Collecting a Sample)
 
-  + **Intuition:** Can we calculate probabilities associated with sample outcomes in a familiar manner?
+  + **Question:** Can we calculate probabilities associated with sample outcomes in a familiar manner?
 
 + What is the Sampling Distribution?
 
