@@ -1163,10 +1163,10 @@ We'll come back and finish this problem soon, but first we need a detour to talk
 
 . . . 
 
-The *sampling distribution* is a theoretical distribution of summary statistics resulting from samples of the same size.
+The *sampling distribution* is a theoretical distribution of summary statistics resulting from samples of the same size. For example,
 
-+ The distribution of all **average launch distances** from *twelve launches* of 10lb pumpkins from a trebuchet.
-+ The distribution of all **sample proportions** from collections of *100 likely voters* asked whether they favor increasing the state's mandatory judicial retirement age from 70 to 75.
++ the distribution of all **average launch distances** from *twelve launches* of 10lb pumpkins from a trebuchet.
++ the distribution of all **sample proportions** from collections of *100 likely voters* asked whether they favor increasing the state's mandatory judicial retirement age from 70 to 75.
 
 . . . 
 
