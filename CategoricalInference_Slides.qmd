@@ -352,7 +352,7 @@ What do we feel comfortable claiming now?
 
 . . . 
 
-Each sampled provides us with a *summary statistic* (a sample proportion) which serves as an estimate for the population proportion.
+Each sample provides us with a *summary statistic* (a sample proportion) which serves as an estimate for the population proportion.
 
 . . . 
 
@@ -499,7 +499,7 @@ many_samples %>%
 
 . . . 
 
-Each sampled provides us with a *summary statistic* (a sample proportion) which serves as an estimate for the population proportion.
+Each sample provides us with a *summary statistic* (a sample proportion) which serves as an estimate for the population proportion.
 
 . . . 
 
