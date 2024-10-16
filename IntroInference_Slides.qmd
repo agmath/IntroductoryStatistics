@@ -54,12 +54,12 @@ a:visited {
 + Sampling from a population (working with a Population Distribution)
 + Drawing Multiple Observations (Collecting a Sample)
 
-  + **Intuition:** Can we calculate probability in the same way?
+  + **Intuition:** Can we calculate probabilities associated with sample outcomes in a familiar manner?
 
 + What is the Sampling Distribution?
 
   + A few examples with means and proportions
-  + When is a sampling distribution normal?
+  + When is a sampling distribution [nearly] normal?
 
 + Central Limit Theorem
 
@@ -702,11 +702,71 @@ $\mathbb{P}\left[X > 2000\right] \approx ...$
 
 ::::
 
-## A Confident Team...
+## Sampling One Observation at a Time (Population Distribution)
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. Find the probability that a launched pumpkin exceeds 2000ft.
+
+:::
+
+:::{.column width="50%"}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5WxPoU7sf9E?si=TxjOWnUNCvE2Dkgm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+:::
+
+::::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1050, 2550, length.out = 500)
+x_vals_shade <- seq(2000, 2550, length.out = 500)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade,
+                               mean = 1800,
+                               sd = 250)),
+              fill = "#FF7518") +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25) + 
+  labs(
+    title = "Pumpkin Trebuchet Launch Distribution",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+$\mathbb{P}\left[X > 2000\right] \approx ...$
+
+`1 - pnorm(2000, mean = 1800, sd = 250)` $\approx$ `r 1 - pnorm(2000, mean = 1800, sd = 250)`
+
+There's about a 21.19% chance that a randomly selected pumpkin will be launched 2,000ft or further.
+:::
+
+::::
+
+## Motivating Example: A Confident Team...
 
 . . . 
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 . . . 
 
@@ -718,9 +778,9 @@ $\mathbb{P}\left[X > 2000\right] \approx ...$
 
 + What if one of the twelve launches was a relatively short, but not unexpected, launch of say 1700ft?
 
-## A Confident Team...
+## Motivating Example: A Confident Team...
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 ::::{.columns}
 
@@ -736,9 +796,45 @@ $\mathbb{P}\left[X > 2000\right] \approx ...$
 
 ::::
 
-## A Confident Team...
+## Motivating Example: A Confident Team...
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Let's simulate the launches of 12 randomly selected 10lb pumpkins...
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) +
+  labs(
+    title = "Pumpkin Trebuchet Launch",
+    subtitle= "(Population Distribution, Simulated Launches, \n and Average Launch Distance)",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+## Motivating Example: A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 ::::{.columns}
 
@@ -783,9 +879,50 @@ ggplot() +
 
 ::::
 
-## A Confident Team...
+## Motivating Example: A Confident Team...
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+**A Simulation:** Let's simulate another set of launches of 12 randomly selected 10lb pumpkins... The simulated launch distances appear below and the launches, along their average launch distance and the average launch distance from our first set of launches are shown on the graph to the right.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 
+                          mean = 1800,
+                          sd = 250)),
+            color = "black",
+            lwd = 1.25,
+            alpha = 0.75) + 
+  geom_vline(aes(xintercept = sim_launches),
+             alpha = 0.75) + 
+  geom_vline(xintercept = avg_launch_1,
+             color = "#FF7518",
+             lwd = 1.75) +
+  labs(
+    title = "Pumpkin Trebuchet Launch",
+    subtitle= "(Population Distribution, Simulated Launches, \n and Average Launch Distance)",
+    x = "Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+::::
+
+## Motivating Example: A Confident Team...
+
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 ::::{.columns}
 
@@ -833,9 +970,9 @@ ggplot() +
 
 ::::
 
-## A Confident Team...
+## Motivating Example: A Confident Team...
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 ::::{.columns}
 
@@ -875,9 +1012,9 @@ ggplot() +
 
 ::::
 
-## A Confident Team...
+## Motivating Example: A Confident Team...
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 ::::{.columns}
 
@@ -918,9 +1055,9 @@ ggplot() +
 
 ::::
 
-## A Confident Team...
+## Motivating Example: A Confident Team...
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 ::::{.columns}
 
@@ -963,9 +1100,9 @@ ggplot() +
 
 ::::
 
-## A Confident Team...
+## Motivating Example: A Confident Team...
 
-**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Motivating Example:** A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it's not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 ::::{.columns}
 
@@ -1022,14 +1159,14 @@ ggplot() +
 
 We'll come back and finish this problem soon, but first we need a detour to talk about this new, more narrow distribution.
 
-## What is the Sampling Distribution
+## What is the Sampling Distribution?
 
 . . . 
 
 The *sampling distribution* is a theoretical distribution of summary statistics resulting from samples of the same size.
 
-+ The distribution of all average launch distances from twelve launches of 10lb pumpkins from a trebuchet.
-+ The distribution of all sample proportions from collections of 100 likely voters asked whether they favor increasing the state's mandatory judicial retirement age from 70 to 75.
++ The distribution of all **average launch distances** from *twelve launches* of 10lb pumpkins from a trebuchet.
++ The distribution of all **sample proportions** from collections of *100 likely voters* asked whether they favor increasing the state's mandatory judicial retirement age from 70 to 75.
 
 . . . 
 
@@ -1251,7 +1388,7 @@ p5
 
 Sampling distributions this time are shown for samples of ten observations (`s10_*`), thirty observations (`s30_*`), fifty observations (`s50_*`), and one hundred observations (`s100_*`).
 
-## When is a Sampling Distribution Normal? {.smaller}
+## When is a Sampling Distribution [Nearly] Normal? {.smaller}
 
 . . . 
 
@@ -1265,7 +1402,7 @@ Sampling distributions this time are shown for samples of ten observations (`s10
 
 Some people/books recommend $n\geq 30$, but I advocate against this *rule of thumb* because of the slightly maintained skew we see in the top two rows of plots. 
 
-## When is a Sampling Distribution Normal? {.smaller}
+## When is a Sampling Distribution [Nearly] Normal? {.smaller}
 
 . . . 
 
@@ -1316,8 +1453,8 @@ The **mean** of the sampling distribution is...
 
 The *standard deviation* of the sampling distribution is called the *standard error* and is denoted by $S_E$...
 
-+ The **standard error** for the sampling distribution of means is $\boxed{~\displaystyle{S_E = \sigma / \sqrt{n}}~}$, where $\sigma$ is the population standard deviation
-+ The **standard error** for the sampling distribution of proportions is $\boxed{~\displaystyle{S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}}~}$ where $p$ is the population proportion (or an estimate for it).
++ The **standard error** for the sampling distribution of means is $\boxed{~\displaystyle{S_E = \sigma / \sqrt{n}}~}$, where $\sigma$ is the population standard deviation and $n$ is the sample size.
++ The **standard error** for the sampling distribution of proportions is $\boxed{~\displaystyle{S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}}~}$ where $p$ is the population proportion (or an estimate for it) and $n$ is the sample size.
 
 ## The Central Limit Theorem (Restated)
 
@@ -1343,7 +1480,7 @@ The *standard deviation* of the sampling distribution is called the *standard er
 
 . . .
 
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
 
@@ -1395,7 +1532,7 @@ ggplot() +
 
 ## Back to Pumpkin Launching! {.smaller}
 
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 :::{.nonincremental}
 
@@ -1457,7 +1594,49 @@ ggplot() +
 
 ## Back to Pumpkin Launching! {.smaller}
 
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Back to Pumpkin Launching! {.smaller}
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 :::{.nonincremental}
 
@@ -1503,7 +1682,7 @@ ggplot() +
 
 ## Back to Pumpkin Launching! {.smaller}
 
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 :::{.nonincremental}
 
@@ -1551,57 +1730,7 @@ The probability of an average launch distance of at least 2,028ft is...
 
 ## Back to Pumpkin Launching! {.smaller}
 
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
-
-:::{.nonincremental}
-
-1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
-
-2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
-
-3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
-
-:::
-
-::::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-x_vals <- seq(1500, 2100, length.out = 500)
-
-ggplot() + 
-  geom_line(aes(x = x_vals,
-                y = dnorm(x_vals, 1800, 250/sqrt(12))),
-            color = "black",
-            lwd = 1.5) +
-  geom_vline(xintercept = 2028,
-             color = "#2FA71C",
-             lwd = 1.75,
-             linestyle = "dashed") +
-  labs(
-    title = "Sampling Distribution for 12 Launches",
-    x = "Average Launch Distance (ft)",
-    y = "Density"
-  ) + 
-  theme_bw(base_size = 24)
-```
-
-:::
-
-:::{.column width="50%"}
-
-The probability of an average launch distance of at least 2,028ft is...
-
-`1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
-
-:::
-
-::::
-
-## Back to Pumpkin Launching! {.smaller}
-
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 :::{.nonincremental}
 
@@ -1645,14 +1774,13 @@ The probability of an average launch distance of at least 2,028ft is...
 
 `1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
 
-This team's trebuchet is likely much stronger than the average trebuchet!
 :::
 
 ::::
 
 ## Back to Pumpkin Launching! {.smaller}
 
-**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), then team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
 
 :::{.nonincremental}
 
@@ -1696,7 +1824,58 @@ The probability of an average launch distance of at least 2,028ft is...
 
 `1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
 
-This team's trebuchet is likely much stronger than the average trebuchet!
+Observing an average launch distance this long is extremely unlikely if the average launch is really 1,800ft. This team's trebuchet is likely much stronger than the average trebuchet!
+:::
+
+::::
+
+## Back to Pumpkin Launching! {.smaller}
+
+**Reminder:** The distances traveled by a 10lb pumpkin launched via a trebuchet are approximately normally distributed with a mean of 1800ft and a standard deviation of 250ft. A particular team feels that their pumpkin launching trebuchet is much better than average. On a typical day (it’s not extra windy), the team launches a random selection of twelve 10lb pumpkins. Their average launch distance is 2,028ft. What is the probability that a random selection of twelve launches averages 2,028ft or further?
+
+:::{.nonincremental}
+
+1. Note that the population distribution of launch distances is not skewed (it is approximately normal).
+
+2. This means that we have no skew to overcome, and our sampling distribution will be approximately normal.
+
+3. Launch distance is a numerical variable, and so the sampling distribution for average launch distances of 12 pumpkins will be $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$, which in this case is $\displaystyle{N\left(\mu = 1800, S_E = 250/\sqrt{12}\right)}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(1500, 2100, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 1800, 250/sqrt(12))),
+            color = "black",
+            lwd = 1.5) +
+  geom_vline(xintercept = 2028,
+             color = "#2FA71C",
+             lwd = 1.75,
+             linestyle = "dashed") +
+  labs(
+    title = "Sampling Distribution for 12 Launches",
+    x = "Average Launch Distance (ft)",
+    y = "Density"
+  ) + 
+  theme_bw(base_size = 24)
+```
+
+:::
+
+:::{.column width="50%"}
+
+The probability of an average launch distance of at least 2,028ft is...
+
+`1 - pnorm(2028, 1800, 250/sqrt(12))` $\approx$ `r round(1 - pnorm(2028, 1800, 250/sqrt(12)), 4)`
+
+Observing an average launch distance this long is extremely unlikely if the average launch is really 1,800ft. This team's trebuchet is likely much stronger than the average trebuchet!
 
 > **FYI:** The current world record is a launch of 4,091ft by [a trebuchet named "*Chunk Norris*", captained by Mike Powers of Bedford, NH!](https://www.punkinchunkin.com/registeredmachines/chunk-norris/)
 
@@ -1735,10 +1914,7 @@ You'll even need to determine whether the Central Limit Theorem applies and you 
 
 1. Notice here that the variable of interest is a <br/>proportion.
 
-2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
-n\cdot \left(1 - p\right) & = & 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}$
-
-3. Since the *success-failure condition* is not satisfied here, the Central Limit Theorem does not apply and we cannot use the normal model to approximate the distribution for this problem.
+2. Since this is the case, we'll check the *success-failure condition*...<br/>
 
 :::
 
@@ -1762,10 +1938,69 @@ n\cdot \left(1 - p\right) & = & 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\
 
 :::{.nonincremental}
 
+1. Notice here that the variable of interest is a <br/>proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/> $\begin{array}{l} n\cdot p = 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\end{array}$
+
+:::
+
+::::
+
+::::{.column width="10%"}
+
+::::
+
+::::{.column width="45%"}
+
+::::
+
+:::::
+
+## Completed Example: On-Time Package Delivery {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. To investigate, they randomly sample 150 recent package deliveries. Out of these, 132 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that  88% or fewer packages arrive on time in a random sample of 150 deliveries.
+
+:::::{.columns}
+
+::::{.column width="45%"}
+
+:::{.nonincremental}
+
+1. Notice here that the variable of interest is a <br/>proportion.
+
+2. Since this is the case, we'll check the *success-failure condition*...<br/> $\begin{array}{l} n\cdot p = 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) = 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}$
+
+:::
+
+3. Since the *success-failure condition* is not satisfied here, the Central Limit Theorem does not apply and we cannot use the normal model to approximate the distribution for this problem.
+
+::::
+
+::::{.column width="10%"}
+
+::::
+
+::::{.column width="45%"}
+
+::::
+
+:::::
+
+## Completed Example: On-Time Package Delivery {.smaller}
+
+**Scenario:** A major online retailer, let’s call it "*Amazonia*", has an internal benchmark to ensure that at least 97% of its packages are delivered on time. A logistics manager has concerns that a particular distribution center has been falling short of this target. To investigate, they randomly sample 150 recent package deliveries. Out of these, 132 were delivered on time. Assuming that the facility is in compliance with the 97% on-time delivery rate, what is the probability that  88% or fewer packages arrive on time in a random sample of 150 deliveries.
+
+:::::{.columns}
+
+::::{.column width="45%"}
+
+:::{.nonincremental}
+
 1. Notice here that the variable of interest is a proportion.
 
-2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
-n\cdot \left(1 - p\right) & = & 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}$
+2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{l} n\cdot p = 150\cdot\left(0.97\right) = 145.5 \geq 10~\checkmark\\
+n\cdot \left(1 - p\right) = 150\cdot\left(0.03\right) = 4.5 \not\geq 10 ✗\end{array}$
 
 3. Since the *success-failure condition* is not satisfied here, the Central Limit Theorem does not apply and we cannot use the normal model to approximate the distribution for this problem.
 
@@ -1798,9 +2033,9 @@ We'll stop here since our focus is on applying the Central Limit Theorem. We cou
 1. Again the variable of interest is a proportion.
 
 2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
-n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \not\geq 10~\checkmark \end{array}$
+n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
 
-3. The *success-failure condition* is satisfied, so the CLT says that the samplind distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+3. The *success-failure condition* is satisfied, so the CLT<br/> says that the sampling distribution for the proportion<br/> will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
 
 :::
 
@@ -1865,7 +2100,7 @@ ggplot() +
 2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
 n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
 
-3. The *success-failure condition* is satisfied, so the CLT says that the sampling distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+3. The *success-failure condition* is satisfied, so the CLT<br/> says that the sampling distribution for the proportion<br/> will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
 
 :::
 
@@ -1911,7 +2146,7 @@ The probability of observing 95% or lower on-time package delivery proportions i
 2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
 n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
 
-3. The *success-failure condition* is satisfied, so the CLT says that the sampling distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+3. The *success-failure condition* is satisfied, so the CLT<br/> says that the sampling distribution for the proportion<br/> will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
 
 :::
 
@@ -1960,7 +2195,7 @@ The probability of observing 95% or lower on-time package delivery proportions i
 2. Since this is the case, we'll check the *success-failure condition*...<br/>$\begin{array}{lcl} n\cdot p & = & 500\cdot\left(0.97\right) = 485 \geq 10~\checkmark\\
 n\cdot \left(1 - p\right) & = & 500\cdot\left(0.03\right) = 15 \geq 10~\checkmark \end{array}$
 
-3. The *success-failure condition* is satisfied, so the CLT says that the sampling distribution for the proportion will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+3. The *success-failure condition* is satisfied, so the CLT<br/> says that the sampling distribution for the proportion<br/> will be $\displaystyle{N\left(p,~S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
 
 :::
 
@@ -2168,6 +2403,10 @@ ggplot() +
 
 :::{.column width="50%"}
 
+The probability of an average honey production of 47 pounds or less is...
+
+`pnorm(47, 50, 8/sqrt(15))` $\approx$ `r round(pnorm(47, 50, 8/sqrt(15)), 4)`
+
 A 7.32% chance of observing a result as bad as they observed means that such an average is not totally unexpected, but they may want to investigate the environment around this site to see if there are abnormal conditions impacting honey production.
 
 :::
@@ -2176,25 +2415,54 @@ A 7.32% chance of observing a result as bad as they observed means that such an 
 
 ## Examples to Try: Fast Food Waiting Times
 
-**Scenario:** A popular fast-food chain claims that its wait time in its drive-thru is approximately normally distributed with a mean of 3.5 minutes and a standard deviation of 2.5 minutes. A consumer advocacy group randomly samples 40 customers from different locations, and the average wait time in the sample is 4 minutes. What is the probability of observing a random sample of 40 customers with an average wait time of at least 4 minutes?
+**Scenario:** A popular fast-food chain claims that its wait time in its drive-thru is approximately normally distributed with a mean of 3.5 minutes and a standard deviation of 2.5 minutes. A consumer advocacy group randomly samples 40 customers from different locations, and the average wait time in the sample is 4 minutes. What is the probability of observing a random sample of 40 customers with an average wait time of at least 4 minutes?[^2]
+
+[^2]: **Answer:** ~10.30%
 
 ## Examples to Try: Mobile App Usage
 
-**Scenario:** A mobile app company claims that 60% of its users open the app at least once a day. A marketing team conducts a survey, randomly sampling 200 users. Of those, 112 report using the app daily. What is the probability of observing a random sample of 200 users where less than 113 open the app at least once a day?
+**Scenario:** A mobile app company claims that 60% of its users open the app at least once a day. A marketing team conducts a survey, randomly sampling 200 users. Of those, 112 report using the app daily. What is the probability of observing a random sample of 200 users where less than 113 open the app at least once a day?[^3]
+
+[^3]: **Answer:** ~12.41%
 
 ## Examples to Try: Online Course Completion Rates
 
-**Scenario:** An online education platform reports internally that 15% of students don't complete their courses. A research team samples 120 students recently enrolled in a particular class, and 26 of them did not complete that course. What is the probability of observing a random sample of 120 students where 26 or more did not complete this course? What might this say about that course?
+**Scenario:** An online education platform reports internally that 15% of students don't complete their courses. A research team samples 120 students recently enrolled in a particular class, and 26 of them did not complete that course. What is the probability of observing a random sample of 120 students where 26 or more did not complete this course? What might this say about that course?[^4]
+
+[^4]: **Answer:** ~2.04%
 
 ## Examples to Try: Hospital Length of Stay
 
-**Scenario:** A local hospital claims that the average length of stay for patients is 5.2 days, with a standard deviation of 2.1 days. A health department survey randomly samples 36 patients from recent discharges, and the average length of stay in the sample is 6.1 days. Find the probability of observing a random sample of 36 patients whose average stay length was at least 6.1 days. Assume that the population distribution of stay lengths is not strongly skewed.
+**Scenario:** A local hospital claims that the average length of stay for patients is 5.2 days, with a standard deviation of 2.1 days. A health department survey randomly samples 36 patients from recent discharges, and the average length of stay in the sample is 6.1 days. Find the probability of observing a random sample of 36 patients whose average stay length was at least 6.1 days. Assume that the population distribution of stay lengths is not strongly skewed.[^5]
+
+[^5]: **Answer:** ~0.51%
 
 ## Examples to Try: NFL Offensive Line, QB Protection
 
-**Scenario:** In the NFL, one of the most important roles of the offensive line is to protect the quarterback from being sacked. The distribution of sacks per game is approximately normal. League-wide, teams allow an average of 2.3 sacks per game, with a standard deviation of 0.9 sacks. The coaching staff of a particular team believes their offensive line is better than average. Over the course of 17 games in the regular season, they allow an average of 1.8 sacks per game. What is the probability that a random sample of 17 games would result in an average of 1.8 sacks or fewer?
+**Scenario:** In the NFL, one of the most important roles of the offensive line is to protect the quarterback from being sacked. The distribution of sacks per game is approximately normal. League-wide, teams allow an average of 2.3 sacks per game, with a standard deviation of 0.9 sacks. The coaching staff of a particular team believes their offensive line is better than average. Over the course of 17 games in the regular season, they allow an average of 1.8 sacks per game. What is the probability that a random sample of 17 games would result in an average of 1.8 sacks or fewer?[^6]
 
-## Next Time...
+[^6]: **Answer:** ~1.1%
+
+## Summary and Next Time... {.smaller}
+
++ The sampling distribution is a theoretical distribution of sample statistics (ie. sample means or sample proportions) coming from samples of a common size
++ As long as sample sizes are large enough, the sampling distribution is nearly normal
+
+  + For means, "large enough" is having enough observations in the sample to overcome skew in the population distribution -- more skew means larger samples are necessary
+  + For proportions, "large enough" means that the *success-failure condition* is satisfied -- the sample size is large enough that we "expect" at least 10 successes and at least 10 failures
+  
++ The Central Limit Theorem tells us that the normal distributions approximating our sampling distribution are:
+
+  + For sample means: $\displaystyle{N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$
+  + For sample proportions: $\displaystyle{N\left(p, S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)}$
+  
++ When sample sizes are large enough (as described above), we can use `pnorm()` to calculate probabilities associated with outcomes from samples, using the appropriate sampling distribution
+
+. . .
+
+**Next Time:**
+
+. . .
 
 <center><br/> Inference on Categorical Data</center>
 
