@@ -757,7 +757,7 @@ $\mathbb{P}\left[X > 2000\right] \approx ...$
 
 `1 - pnorm(2000, mean = 1800, sd = 250)` $\approx$ `r 1 - pnorm(2000, mean = 1800, sd = 250)`
 
-There's about a 21.19% chance that a randomly selected pumpkin will be launched 2,000ft or further.
+There's about a 21.19% chance that a randomly selected pumpkin will be launched further than 2,000ft.
 :::
 
 ::::
@@ -1453,8 +1453,8 @@ The **mean** of the sampling distribution is...
 
 The *standard deviation* of the sampling distribution is called the *standard error* and is denoted by $S_E$...
 
-+ The **standard error** for the sampling distribution of means is $\boxed{~\displaystyle{S_E = \sigma / \sqrt{n}}~}$, where $\sigma$ is the population standard deviation and $n$ is the sample size.
-+ The **standard error** for the sampling distribution of proportions is $\boxed{~\displaystyle{S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}}~}$ where $p$ is the population proportion (or an estimate for it) and $n$ is the sample size.
++ The **standard error** for the sampling distribution of *means* is $\boxed{~\displaystyle{S_E = \sigma / \sqrt{n}}~}$, where $\sigma$ is the population standard deviation and $n$ is the sample size.
++ The **standard error** for the sampling distribution of *proportions* is $\boxed{~\displaystyle{S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}}~}$ where $p$ is the population proportion (or an estimate for it) and $n$ is the sample size.
 
 ## The Central Limit Theorem (Restated)
 
