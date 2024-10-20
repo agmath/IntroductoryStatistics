@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.43">
 
   <meta name="author" content="Dr.&nbsp;Gilbert">
-  <meta name="dcterms.date" content="2024-10-10">
+  <meta name="dcterms.date" content="2024-10-20">
   <title>Inference with Categorical Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -337,7 +337,7 @@ Dr.&nbsp;Gilbert
 </div>
 </div>
 
-  <p class="date">October 10, 2024</p>
+  <p class="date">October 20, 2024</p>
 </section>
 <section class="slide level2">
 
@@ -353,34 +353,88 @@ code.sourceCode {
 <section id="the-highlights" class="slide level2">
 <h2>The Highlights</h2>
 <ul>
-<li class="fragment">Reminder on Proportions</li>
-<li class="fragment">Sampling from a Population</li>
-<li class="fragment">Sampling Variation</li>
-<li class="fragment">Repeated Sampling and Proportion Estimates
+<li class="fragment">Descriptive Statistics versus Inferential Statistics</li>
+<li class="fragment">Two Types of Inferential Task
 <ul>
-<li class="fragment">Sampling Error</li>
+<li class="fragment">Estimating a Population Parameter</li>
+<li class="fragment">Testing a Claim About a Population Parameter</li>
 </ul></li>
-<li class="fragment">Another item…</li>
-<li class="fragment">Other additional items…</li>
-<li class="fragment">Example Problems (confidence intervals and hypothesis tests)</li>
+<li class="fragment">Reminder on the Sampling Distribution and Central Limit Theorem</li>
+<li class="fragment">Sampling Error</li>
+<li class="fragment">Confidence Intervals for Parameter Estimation</li>
+<li class="fragment">Hypothesis Testing for Claims About Parameters</li>
+<li class="fragment">Example Problems</li>
 <li class="fragment">Summary</li>
 </ul>
 </section>
+<section id="descriptive-and-inferential-statistics" class="slide level2">
+<h2>Descriptive and Inferential Statistics</h2>
+<div class="fragment">
+<p><strong><em>Descriptive Statistics</em></strong> gives us the tools necessary to describe <em>the data we have</em></p>
+<ul>
+<li class="fragment">Summary Statistics (mean, median, standard deviation, counts, etc.)</li>
+<li class="fragment">Data visualizations</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Aside:</strong> Before moving forward, we need to explicitly clarify the difference between <em>Sample Statistics</em> and <em>Population Parameters</em></p>
+<ul>
+<li class="fragment">A <strong><em>sample statistic</em></strong> is a summary measure belonging to a <em>sample</em> – this could be a sample mean (<span class="math inline">\(\bar{x}\)</span>), sample standard deviation (<span class="math inline">\(s\)</span>), etc.</li>
+<li class="fragment">A <strong><em>population parameter</em></strong> is a summary measure belonging to an entire population – this could be the population mean (<span class="math inline">\(\mu\)</span>), population standard deviation (<span class="math inline">\(\sigma\)</span>), etc.</li>
+</ul>
+</div>
+<div class="fragment">
+<blockquote>
+<p><strong>Note:</strong> It is not generally possible to observe population parameters due to the infeasibility of conducting a true Census</p>
+</blockquote>
+</div>
+<div class="fragment">
+<p><strong><em>Inferential Statistics</em></strong> consists of tools and methods for using sample data as evidence to make and test claims about a population</p>
+</div>
+</section>
+<section id="inferential-statistics-tools-and-procedure" class="slide level2">
+<h2>Inferential Statistics: Tools and Procedure</h2>
+<div class="fragment">
+<p>We’re often much more interested in describing entire populations than we are in simply describing our sample data</p>
+</div>
+<div class="fragment">
+<p>Because we can’t typically calculate population parameters directly, we have tools and procedures to help us</p>
+</div>
+<div class="fragment">
+<p>Since taking a sample, and calculating a <em>sample statistic</em>, is a “random process” (in the sense that we don’t know exactly what will happen before the sample has been taken), the tools that we utilize depend on probability.</p>
+</div>
+<div class="fragment">
+<p><strong>Confidence Intervals</strong> capture a <em>population parameter</em> with some degree of certainty</p>
+</div>
+<div class="fragment">
+<p><strong>Hypothesis Tests</strong> can test claims involving a <em>population parameter</em></p>
+</div>
+</section>
 <section id="reminder-on-proportions" class="slide level2">
 <h2>Reminder on Proportions</h2>
+<p>As we mentioned last time, we use <em>proportions</em> to summarize categorical data</p>
 <div class="fragment">
-<p>Proportions are a statistic for summarizing categorical data</p>
+<p>Categorical data results from questions whose response results in a grouping</p>
+<ul>
+<li class="fragment">“<em>Have you attended a college sporting event at SNHU?</em>”</li>
+<li class="fragment">“<em>Are you vegan, vegetarian, pescatarian, or omnivore?</em>”</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Proportions of Interest:</strong> In the cases above,</p>
+<ul>
+<li class="fragment">we may be interested in the proportion of all SNHU students who have attended at least one sporting event at the University</li>
+<li class="fragment">we may be interested in the proportion of the adult population in the United States who choose not to eat any meat or fish (are either vegan or vegetarian).</li>
+</ul>
 </div>
 <div class="fragment">
 <p>Proportions measure part of a whole, and are typically represented as a decimal value between 0 and 1 – alternatives include fractions or percentages.</p>
 </div>
 <div class="fragment">
-<p>Proportions are used to measure the relative size of a group or category resulting from <em>grouping questions</em> like:</p>
-<ul>
-<li class="fragment">Are you a smoker?</li>
-<li class="fragment">Do you identify politically as <em>conservative</em>, <em>moderate</em>, <em>liberal</em>, or <em>unsure</em>?</li>
-<li class="fragment">Is the type of diet <em>carnivore</em>, <em>herbivore</em>, <em>omnivore</em>, <em>insectivore</em>, or <em>frugivore</em>?</li>
-</ul>
+<p>We compute a <strong>sample proportion</strong> by taking the number of observations with the characteristic we are interested in and dividing it by the total sample size.</p>
+</div>
+<div class="fragment">
+<p>A <strong>sample proportion</strong> serves as an <em>estimate</em> for a <strong>population proportion</strong></p>
 </div>
 </section>
 <section id="sampling-variation" class="slide level2">
@@ -392,22 +446,22 @@ code.sourceCode {
 <p>We do this because we want to know the population parameter, even though we are unable to measure it directly.</p>
 </div>
 <div class="fragment">
-<p>I’m going to take a random sample of 17 individuals from a voting population considering the fictitious <em>Proposition B-52</em>. The results of the individuals’ voting plans appear below.</p>
+<p>I’m going to take a random sample of 17 individuals from a voting population considering the fictitious <em>Proposition B-52</em>, making it illegal to pop bubble-wrap in public places. The results of the individuals’ voting plans appear below.</p>
 </div>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "In-Favor" "Against"  "In-Favor" "In-Favor" "In-Favor" "In-Favor"
- [7] "Against"  "In-Favor" "In-Favor" "In-Favor" "In-Favor" "In-Favor"
-[13] "In-Favor" "In-Favor" "In-Favor" "In-Favor" "In-Favor"</code></pre>
+<pre><code> [1] "Against"  "In-Favor" "Against"  "In-Favor" "Against"  "In-Favor"
+ [7] "In-Favor" "In-Favor" "Against"  "Against"  "Against"  "In-Favor"
+[13] "In-Favor" "Against"  "In-Favor" "Against"  "Against" </code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>The estimated proportion in favor of <em>Proposition B-52</em> is about 0.882</p>
+<p>The estimated proportion in favor of <em>Proposition B-52</em> is about 0.471</p>
 </div>
 <div class="fragment">
-<p>Is the population proportion in favor of <em>Proposition B-52</em> equal to 0.882?</p>
+<p>Is the population proportion in favor of <em>Proposition B-52</em> equal to 0.471?</p>
 </div>
 <div class="fragment">
 <blockquote>
@@ -421,14 +475,14 @@ code.sourceCode {
 <div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "In-Favor" "In-Favor" "In-Favor" "In-Favor" "In-Favor" "In-Favor"
- [7] "In-Favor" "In-Favor" "Against"  "In-Favor" "In-Favor" "In-Favor"
-[13] "In-Favor" "In-Favor" "Against"  "In-Favor" "Against" </code></pre>
+<pre><code> [1] "In-Favor" "Against"  "In-Favor" "In-Favor" "Against"  "Against" 
+ [7] "In-Favor" "In-Favor" "In-Favor" "In-Favor" "In-Favor" "In-Favor"
+[13] "In-Favor" "In-Favor" "Against"  "In-Favor" "In-Favor"</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>The estimated proportion from this sample is 0.824</p>
+<p>The estimated proportion from this sample is 0.765</p>
 </div>
 <div class="fragment">
 <p>Okay, so what can the results from a random sample actually tell us?</p>
@@ -507,17 +561,35 @@ code.sourceCode {
 </div>
 </div>
 </div>
+</section>
+<section id="sampling-variation-and-sampling-error-4" class="slide level2">
+<h2>Sampling Variation and Sampling Error</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Let’s take 97 more random samples and plot the results from all of these random samples containing 17 voters each…</p>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="fragment">
 <p>What information can we take away from these 100 random samples?</p>
 </div>
 </section>
-<section id="sampling-variation-and-sampling-error-4" class="slide level2">
+<section id="sampling-variation-and-sampling-error-5" class="slide level2">
 <h2>Sampling Variation and Sampling Error</h2>
-<div class="fragment">
 <p>A sample of 17 individuals is quite small and leaves lots of uncertainty.</p>
-</div>
 <div class="fragment">
 <p>Let’s take samples of 113 individuals instead</p>
+</div>
+<div class="fragment">
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>Here are 100 random samples of 113 voters each.</p>
@@ -526,7 +598,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -547,7 +619,7 @@ code.sourceCode {
 <p>Each sample results in a different <em>summary statistic</em> – this is referred to as <em>sampling variation</em></p>
 </div>
 </section>
-<section id="sampling-variation-and-sampling-error-5" class="slide level2">
+<section id="sampling-variation-and-sampling-error-6" class="slide level2">
 <h2>Sampling Variation and Sampling Error</h2>
 <div class="fragment">
 <p>Let’s revisit those 100 random samples of 113 individuals.</p>
@@ -557,19 +629,11 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="sampling-variation-and-sampling-error-6" class="slide level2">
-<h2>Sampling Variation and Sampling Error</h2>
-<p>Let’s revisit those 100 random samples of 113 individuals.</p>
-
-<img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"><div class="fragment">
-<p>That black dashed line is at the underlying population proportion (0.86)</p>
 </div>
 </section>
 <section id="sampling-variation-and-sampling-error-7" class="slide level2">
@@ -577,6 +641,14 @@ code.sourceCode {
 <p>Let’s revisit those 100 random samples of 113 individuals.</p>
 
 <img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"><div class="fragment">
+<p>That black dashed line is at the underlying population proportion (0.74)</p>
+</div>
+</section>
+<section id="sampling-variation-and-sampling-error-8" class="slide level2">
+<h2>Sampling Variation and Sampling Error</h2>
+<p>Let’s revisit those 100 random samples of 113 individuals.</p>
+
+<img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"><div class="fragment">
 <p>Now, these red horizontal lines represent the <em>sampling error</em> – how far the sample statistic falls from the true population proportion.</p>
 </div>
 </section>
@@ -590,7 +662,7 @@ code.sourceCode {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -602,23 +674,21 @@ code.sourceCode {
 </section>
 <section id="distribution-of-sampling-errors-1" class="slide level2">
 <h2>Distribution of Sampling Errors</h2>
-<div class="fragment">
-<p>In case you aren’t convinced, here’s the distribution of sampling errors from 10,000 random samples.</p>
-</div>
+<p>In case you aren’t convinced, here’s the distribution of sampling errors from 50,000 random samples of 113 individuals each.</p>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="sampling-variation-and-sampling-error-8" class="slide level2">
-<h2>Sampling Variation and Sampling Error</h2>
+<section id="summary-of-sampling-variation-and-sampling-error" class="slide level2">
+<h2>Summary of Sampling Variation and Sampling Error</h2>
 <div class="fragment">
 <p>Each sample provides us with a <em>summary statistic</em> (a sample proportion) which serves as an estimate for the population proportion.</p>
 </div>
@@ -631,31 +701,11 @@ code.sourceCode {
 <div class="fragment">
 <p>The distribution of sampling errors is approximately normal<span class="math inline">\(^*\)</span></p>
 </div>
-</section>
-<section id="when-are-sampling-errors-approximately-normal" class="slide level2">
-<h2>When Are Sampling Errors Approximately Normal?</h2>
 <div class="fragment">
-<p>It’s not actually always the case that the sampling errors will be nearly normally distributed.</p>
-</div>
-<div class="fragment">
-<p>Let’s consider three example scenarios – one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="when-are-sampling-errors-approximately-normal-1" class="slide level2">
-<h2>When Are Sampling Errors Approximately Normal?</h2>
-<p>It’s not actually always the case that the sampling errors will be nearly normally distributed.</p>
-<p>Let’s consider three example scenarios – one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.</p>
 <div class="columns">
-<div class="column" style="width:65%;">
+<div class="column" style="width:50%;">
+<p>In fact, because of this, the distribution of sample proportions is approximately normal and, according to the Central Limit Theorem, …</p>
+</div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -665,12 +715,167 @@ code.sourceCode {
 </div>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
+</div>
+</div>
+</div>
+</section>
+<section id="summary-of-sampling-variation-and-sampling-error-1" class="slide level2">
+<h2>Summary of Sampling Variation and Sampling Error</h2>
+<p>Each sample provides us with a <em>summary statistic</em> (a sample proportion) which serves as an estimate for the population proportion.</p>
+<p>Each sample results in a different <em>summary statistic</em> – this is referred to as <em>sampling variation</em>.</p>
+<p>Each sample’s <em>summary statistic</em> has some deviation from the <em>population proportion</em> – that deviation is called the <em>sampling error</em>.</p>
+<p>The distribution of sampling errors is approximately normal<span class="math inline">\(^*\)</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>In fact, because of this, the distribution of sample proportions is approximately normal and, according to the Central Limit Theorem, …</p>
+<p><span class="math display">\[p \sim N\left(\mu = p, S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)\]</span></p>
+</div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
 <p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-is-the-distribution-of-sample-proportions-approximately-normal" class="slide level2">
+<h2>When is the Distribution of Sample Proportions Approximately Normal?</h2>
+<div class="fragment">
+<p>Remember, from last time, that the Central Limit Theorem requires samples that are “large enough”…</p>
+</div>
+<div class="fragment">
+<p><strong>Success-Failure Condition:</strong> As a <em>rule of thumb</em>, we can assume that the sampling distribution <em>for proportions</em> is approximately normal as long as our samples are large enough that we <em>expect</em> at least 10 successes and at least 10 failures.</p>
+</div>
+<div class="fragment">
+<p>That is,</p>
+<p><span class="math display">\[\begin{array}{lcl} n\cdot p &amp; \geq &amp; 10\\
+n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
+</div>
+</section>
+<section id="a-serious-problem" class="slide level2">
+<h2>A Serious Problem…</h2>
+<div class="fragment">
+<p>In all of our most recent discussions, we’ve been simulating a sampling distribution to help us.</p>
+</div>
+<div class="fragment">
+<p>Unfortunately, doing this requires knowledge of the population parameter</p>
+</div>
+<div class="fragment">
+<p>If we had that knowledge, then there would be no need for statistical inference…</p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it.</p>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="a-serious-problem-1" class="slide level2">
+<h2>A Serious Problem…</h2>
+<p>In all of our most recent discussions, we’ve been simulating a sampling distribution to help us.</p>
+<p>Unfortunately, doing this requires knowledge of the population parameter</p>
+<p>If we had that knowledge, then there would be no need for statistical inference…</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-serious-problem-2" class="slide level2">
+<h2>A Serious Problem…</h2>
+<p>In all of our most recent discussions, we’ve been simulating a sampling distribution to help us.</p>
+<p>Unfortunately, doing this requires knowledge of the population parameter</p>
+<p>If we had that knowledge, then there would be no need for statistical inference…</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-serious-problem-3" class="slide level2">
+<h2>A Serious Problem…</h2>
+<p>In all of our most recent discussions, we’ve been simulating a sampling distribution to help us.</p>
+<p>Unfortunately, doing this requires knowledge of the population parameter</p>
+<p>If we had that knowledge, then there would be no need for statistical inference…</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="slides-to-not-use" class="slide level2">
+<h2>Slides to not use…</h2>
+<div class="fragment">
+<p>Let’s consider three example scenarios – one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-are-sampling-errors-approximately-normal" class="slide level2">
+<h2>When Are Sampling Errors Approximately Normal?</h2>
+<p>It’s not actually always the case that the sampling errors will be nearly normally distributed.</p>
+<p>Let’s consider three example scenarios – one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </figure>
 </div>
 </div>

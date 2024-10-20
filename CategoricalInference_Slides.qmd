@@ -19,10 +19,12 @@ options(kable_styling_bootstrap_options = c("hover", "striped"))
 
 theme_set(theme_bw(base_size = 32))
 
-pop_prop <- 0.86
+pop_prop <- 0.74
 num_obs <- 17
 new_obs <- 113
 num_samps <- 100
+
+set.seed(8202024)
 ```
 
 ```{css}
@@ -34,21 +36,80 @@ code.sourceCode {
 
 ## The Highlights
 
-+ Reminder on Proportions
-+ Sampling from a Population
-+ Sampling Variation
-+ Repeated Sampling and Proportion Estimates
-    + Sampling Error
-+ Another item...
-+ Other additional items...
-+ Example Problems (confidence intervals and hypothesis tests)
++ Descriptive Statistics versus Inferential Statistics
++ Two Types of Inferential Task
+  + Estimating a Population Parameter
+  + Testing a Claim About a Population Parameter
++ Reminder on the Sampling Distribution and Central Limit Theorem
++ Sampling Error
++ Confidence Intervals for Parameter Estimation
++ Hypothesis Testing for Claims About Parameters
++ Example Problems
 + Summary
 
-## Reminder on Proportions
+## Descriptive and Inferential Statistics
 
 . . . 
 
-Proportions are a statistic for summarizing categorical data
+***Descriptive Statistics*** gives us the tools necessary to describe *the data we have*
+
++ Summary Statistics (mean, median, standard deviation, counts, etc.)
++ Data visualizations
+
+. . . 
+
+**Aside:** Before moving forward, we need to explicitly clarify the difference between *Sample Statistics* and *Population Parameters*
+
++ A ***sample statistic*** is a summary measure belonging to a *sample* -- this could be a sample mean ($\bar{x}$), sample standard deviation ($s$), etc.
++ A ***population parameter*** is a summary measure belonging to an entire population -- this could be the population mean ($\mu$), population standard deviation ($\sigma$), etc.
+
+. . . 
+
+> **Note:** It is not generally possible to observe population parameters due to the infeasibility of conducting a true Census
+
+. . . 
+
+***Inferential Statistics*** consists of tools and methods for using sample data as evidence to make and test claims about a population
+
+## Inferential Statistics: Tools and Procedure
+
+. . . 
+
+We're often much more interested in describing entire populations than we are in simply describing our sample data
+
+. . . 
+
+Because we can't typically calculate population parameters directly, we have tools and procedures to help us
+
+. . . 
+
+Since taking a sample, and calculating a *sample statistic*, is a "random process" (in the sense that we don't know exactly what will happen before the sample has been taken), the tools that we utilize depend on probability.
+
+. . . 
+
+**Confidence Intervals** capture a *population parameter* with some degree of certainty
+
+. . . 
+
+**Hypothesis Tests** can test claims involving a *population parameter*
+
+## Reminder on Proportions
+
+As we mentioned last time, we use *proportions* to summarize categorical data
+
+. . . 
+
+Categorical data results from questions whose response results in a grouping
+
+  + "*Have you attended a college sporting event at SNHU?*"
+  + "*Are you vegan, vegetarian, pescatarian, or omnivore?*"
+
+. . . 
+
+**Proportions of Interest:** In the cases above, 
+
+  + we may be interested in the proportion of all SNHU students who have attended at least one sporting event at the University
+  + we may be interested in the proportion of the adult population in the United States who choose not to eat any meat or fish (are either vegan or vegetarian).
 
 . . . 
 
@@ -56,11 +117,11 @@ Proportions measure part of a whole, and are typically represented as a decimal 
 
 . . .
 
-Proportions are used to measure the relative size of a group or category resulting from *grouping questions* like:
+We compute a **sample proportion** by taking the number of observations with the characteristic we are interested in and dividing it by the total sample size.
 
-+ Are you a smoker?
-+ Do you identify politically as *conservative*, *moderate*, *liberal*, or *unsure*?
-+ Is the type of diet *carnivore*, *herbivore*, *omnivore*, *insectivore*, or *frugivore*?
+. . . 
+
+A **sample proportion** serves as an *estimate* for a **population proportion**
 
 ## Sampling Variation
 
@@ -74,7 +135,7 @@ We do this because we want to know the population parameter, even though we are 
 
 . . . 
 
-I'm going to take a random sample of `r num_obs` individuals from a voting population considering the fictitious *Proposition B-52*. The results of the individuals' voting plans appear below.
+I'm going to take a random sample of `r num_obs` individuals from a voting population considering the fictitious *Proposition B-52*, making it illegal to pop bubble-wrap in public places. The results of the individuals' voting plans appear below.
 
 . . .
 
@@ -258,6 +319,37 @@ Let's take `r num_samps - 3` more random samples and plot the results from all o
 ```{r}
 #| fig.height: 7
 
+my_samples %>%
+  ggplot() + 
+  geom_point(aes(x = prop_est,
+                 y = sample_id)) + 
+  coord_cartesian(xlim = c(0, 1),
+                  ylim = c(0, 101)) + 
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  )
+```
+
+:::
+
+::::
+
+## Sampling Variation and Sampling Error
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+Let's take `r num_samps - 3` more random samples and plot the results from all of these random samples containing `r num_obs` voters each... 
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+#| fig.height: 7
+
 toy_data <- tibble(
   sample = 1:num_samps,
   samp_prop = c(my_prop_est_1, my_prop_est_2, my_prop_est_3, rep(NA, num_samps - 3))
@@ -290,13 +382,13 @@ What information can we take away from these `r num_samps` random samples?
 
 ## Sampling Variation and Sampling Error
 
-. . . 
-
 A sample of 17 individuals is quite small and leaves lots of uncertainty.
 
 . . . 
 
 Let's take samples of `r new_obs` individuals instead
+
+. . . 
 
 ::::{.columns}
 
@@ -469,15 +561,13 @@ What do you notice?
 
 ## Distribution of Sampling Errors
 
-. . . 
-
-In case you aren't convinced, here's the distribution of sampling errors from 10,000 random samples.
+In case you aren't convinced, here's the distribution of sampling errors from 50,000 random samples of `r new_obs` individuals each.
 
 . . . 
 
 ```{r}
 many_samples <- tibble(
-  sample_prop = rbinom(1e3, new_obs, pop_prop)/new_obs
+  sample_prop = rbinom(5e3, new_obs, pop_prop)/new_obs
 ) %>%
   mutate(samp_errors = sample_prop - pop_prop) 
 
@@ -485,7 +575,8 @@ many_samples %>%
   ggplot() + 
   geom_histogram(aes(x = samp_errors, y = after_stat(density)),
                  color = "black",
-                 fill = "purple") + 
+                 fill = "purple",
+                 bins = 35) + 
   geom_density(aes(x = samp_errors),
                fill = "purple",
                alpha = 0.4) + 
@@ -495,7 +586,7 @@ many_samples %>%
   )
 ```
 
-## Sampling Variation and Sampling Error
+## Summary of Sampling Variation and Sampling Error
 
 . . . 
 
@@ -513,11 +604,267 @@ Each sample's *summary statistic* has some deviation from the *population propor
 
 The distribution of sampling errors is approximately normal$^*$
 
-## When Are Sampling Errors Approximately Normal?
+. . . 
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+In fact, because of this, the distribution of sample proportions is approximately normal and, according to the Central Limit Theorem, ...
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+x_vals <- seq(0.6, 0.88, length.out = 250)
+
+ggplot() + 
+  geom_histogram(data = many_samples,
+                 aes(x = sample_prop, y = after_stat(density)),
+                 color = "black",
+                 fill = "purple",
+                 bins = 35) + 
+  geom_density(data = many_samples,
+               aes(x = sample_prop),
+               fill = "purple",
+               alpha = 0.4) + 
+  # geom_line(aes(x = x_vals,
+  #               y = dnorm(x_vals, mean = pop_prop,
+  #                         sd = sqrt(pop_prop*(1 - pop_prop)/new_obs))),
+  #           lwd = 1.25) +
+  labs(
+    x = "Sample Proportions",
+    y = "Density"
+  )
+```
+
+:::
+
+::::
+
+## Summary of Sampling Variation and Sampling Error
+
+Each sample provides us with a *summary statistic* (a sample proportion) which serves as an estimate for the population proportion.
+
+Each sample results in a different *summary statistic* -- this is referred to as *sampling variation*.
+
+Each sample's *summary statistic* has some deviation from the *population proportion* -- that deviation is called the *sampling error*.
+
+The distribution of sampling errors is approximately normal$^*$
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+In fact, because of this, the distribution of sample proportions is approximately normal and, according to the Central Limit Theorem, ...
+
+$$p \sim N\left(\mu = p, S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}\right)$$
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+ggplot() + 
+  geom_histogram(data = many_samples,
+                 aes(x = sample_prop, y = after_stat(density)),
+                 color = "black",
+                 fill = "purple",
+                 bins = 35,
+                 alpha = 0.4) + 
+  geom_density(data = many_samples,
+               aes(x = sample_prop),
+               fill = "purple",
+               alpha = 0.2) + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, mean = pop_prop,
+                          sd = sqrt(pop_prop*(1 - pop_prop)/new_obs))),
+            lwd = 1.5) +
+  labs(
+    x = "Sample Proportions",
+    y = "Density"
+  )
+```
+
+:::
+
+::::
+
+## When is the Distribution of Sample Proportions Approximately Normal?
 
 . . . 
 
-It's not actually always the case that the sampling errors will be nearly normally distributed.
+Remember, from last time, that the Central Limit Theorem requires samples that are "large enough"...
+
+. . . 
+
+**Success-Failure Condition:** As a *rule of thumb*, we can assume that the sampling distribution *for proportions* is approximately normal as long as our samples are large enough that we *expect* at least 10 successes and at least 10 failures.
+
+. . . 
+
+That is, 
+
+$$\begin{array}{lcl} n\cdot p & \geq & 10\\
+n\cdot\left(1 - p\right) & \geq & 10\end{array}$$
+
+## A Serious Problem...
+
+. . . 
+
+In all of our most recent discussions, we've been simulating a sampling distribution to help us. 
+
+. . . 
+
+Unfortunately, doing this requires knowledge of the population parameter
+
+. . . 
+
+If we had that knowledge, then there would be no need for statistical inference...
+
+. . . 
+
+::::{.columns}
+
+:::{.column width=50%}
+
+**The Problem:** We take a single sample and attempt to draw inferences from it.
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Serious Problem...
+
+In all of our most recent discussions, we've been simulating a sampling distribution to help us. 
+
+Unfortunately, doing this requires knowledge of the population parameter
+
+If we had that knowledge, then there would be no need for statistical inference...
+
+::::{.columns}
+
+:::{.column width=50%}
+
+**The Problem:** We take a single sample and attempt to draw inferences from it.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| fig.height: 7
+
+toy_data %>%
+  ggplot() + 
+  geom_point(aes(x = samp_prop, y = sample,
+                 alpha = 0.4)) +
+  geom_point(aes(x = samp_prop, y = sample,
+                 alpha = ifelse(sample == 25, 1, 0.6),
+                 size = ifelse(sample == 25, 2, 1.5))) + 
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  ) + 
+  coord_cartesian(xlim = c(0, 1)) +
+  theme(legend.position = "None")
+```
+
+:::
+
+::::
+
+## A Serious Problem...
+
+In all of our most recent discussions, we've been simulating a sampling distribution to help us. 
+
+Unfortunately, doing this requires knowledge of the population parameter
+
+If we had that knowledge, then there would be no need for statistical inference...
+
+::::{.columns}
+
+:::{.column width=50%}
+
+**The Problem:** We take a single sample and attempt to draw inferences from it.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| fig.height: 7
+
+toy_data %>%
+  ggplot() + 
+  geom_point(aes(x = samp_prop, y = sample,
+                 alpha = 0.4)) +
+  geom_point(aes(x = samp_prop, y = sample,
+                 alpha = ifelse(sample == 27, 1, 0.6),
+                 size = ifelse(sample == 27, 2, 1.5))) + 
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  ) + 
+  coord_cartesian(xlim = c(0, 1)) +
+  theme(legend.position = "None")
+```
+
+:::
+
+::::
+
+## A Serious Problem...
+
+In all of our most recent discussions, we've been simulating a sampling distribution to help us. 
+
+Unfortunately, doing this requires knowledge of the population parameter
+
+If we had that knowledge, then there would be no need for statistical inference...
+
+::::{.columns}
+
+:::{.column width=50%}
+
+**The Problem:** We take a single sample and attempt to draw inferences from it.
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| fig.height: 7
+
+toy_data %>%
+  ggplot() + 
+  geom_point(aes(x = samp_prop, y = sample,
+                 alpha = 0.4)) +
+  geom_point(aes(x = samp_prop, y = sample,
+                 alpha = ifelse(sample == 20, 1, 0.6),
+                 size = ifelse(sample == 20, 2, 1.5))) + 
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  labs(
+    x = "Sample Proportion",
+    y = "Sample Number"
+  ) + 
+  coord_cartesian(xlim = c(0, 1)) +
+  theme(legend.position = "None")
+```
+
+:::
+
+::::
+
+## Slides to not use...
 
 . . . 
 
