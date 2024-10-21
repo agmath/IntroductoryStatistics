@@ -347,6 +347,18 @@ code.sourceCode {
   font-size: 1.3em;
   /* or try font-size: xx-large; */
 }
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
 </style>
 </div>
 </section>
@@ -784,7 +796,7 @@ n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
 <p>If we had that knowledge, then there would be no need for statistical inference…</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it.</p>
+<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it, but which sample do we get?</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -805,7 +817,7 @@ n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
 <p>If we had that knowledge, then there would be no need for statistical inference…</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it.</p>
+<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it, but which sample do we get?</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -826,7 +838,7 @@ n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
 <p>If we had that knowledge, then there would be no need for statistical inference…</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it.</p>
+<p><strong>The Problem:</strong> We take a single sample and attempt to draw inferences from it, but which sample do we get?</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -840,10 +852,44 @@ n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
 </div>
 </div>
 </section>
-<section id="slides-to-not-use" class="slide level2">
-<h2>Slides to not use…</h2>
+<section id="confidence-intervals-estimating-a-population-proportion" class="slide level2">
+<h2>Confidence Intervals: Estimating a Population Proportion</h2>
 <div class="fragment">
-<p>Let’s consider three example scenarios – one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.</p>
+<p>We know that our <em>sample proportion</em> will provide an estimate for our <em>population proportion</em></p>
+</div>
+<div class="fragment">
+<p>We also know that our <em>sample proportion</em> will almost surely be incorrect</p>
+</div>
+<div class="fragment">
+<p>We need to try and quantify how far off that sample estimate is likely to fall.</p>
+</div>
+<div class="fragment">
+<p><strong>General Confidence Interval Formula:</strong> Provided that the sampling distribution is approximately normal, we can construct a <em>confidence interval</em> using the following form:</p>
+<p><span class="math display">\[\left(\texttt{point estimate}\right) \pm \left(\texttt{critical value}\right)\cdot\left(\texttt{standard error}\right)\]</span></p>
+<ul>
+<li class="fragment">The <em>point estimate</em> is our sample statistic (ie. sample proportion)</li>
+<li class="fragment">The <em>critical value</em> depends on the level of confidence we want in capturing the population parameter</li>
+<li class="fragment">The <em>standard error</em> is the standard deviation of the sampling distribution
+<ul>
+<li class="fragment">We’ll get this from the <a href="https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf" target="_blank">decision tree</a></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="confidence-intervals-visual-intuition" class="slide level2">
+<h2>Confidence Intervals: Visual Intuition</h2>
+<div class="fragment">
+<p>Before we work through the construction of a confidence interval, let’s build some intuition</p>
+<ul>
+<li class="fragment">What does a <em>confidence</em> interval actually mean?</li>
+<li class="fragment">How does the level of confidence impact the intervals constructed?</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:33%;">
+
+</div><div class="column" style="width:33%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -853,14 +899,23 @@ n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:33%;">
+
+</div>
+</div>
 </div>
 </section>
-<section id="when-are-sampling-errors-approximately-normal" class="slide level2">
-<h2>When Are Sampling Errors Approximately Normal?</h2>
-<p>It’s not actually always the case that the sampling errors will be nearly normally distributed.</p>
-<p>Let’s consider three example scenarios – one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.</p>
+<section id="confidence-intervals-visual-intuition-1" class="slide level2">
+<h2>Confidence Intervals: Visual Intuition</h2>
+<div>
+<p>Before we work through the construction of a confidence interval, let’s build some intuition</p>
+<ul>
+<li>What does a <em>confidence</em> interval actually mean?</li>
+<li>How does the level of confidence impact the intervals constructed?</li>
+</ul>
+</div>
 <div class="columns">
-<div class="column" style="width:65%;">
+<div class="column" style="width:33%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -870,7 +925,7 @@ n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
+</div><div class="column" style="width:33%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -880,16 +935,445 @@ n\cdot\left(1 - p\right) &amp; \geq &amp; 10\end{array}\]</span></p>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:33%;">
+
+</div>
+</div>
+</section>
+<section id="confidence-intervals-visual-intuition-2" class="slide level2">
+<h2>Confidence Intervals: Visual Intuition</h2>
+<div>
+<p>Before we work through the construction of a confidence interval, let’s build some intuition</p>
+<ul>
+<li>What does a <em>confidence</em> interval actually mean?</li>
+<li>How does the level of confidence impact the intervals constructed?</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Rule of Thumb:</strong> The</p>
+<p>Confidence intervals with lower levels of confidence are more narrow, but also more likely to <em>miss</em> the true population proportion</p>
+</div>
+</section>
+<section id="a-first-confidence-interval" class="slide level2">
+<h2>A First Confidence Interval</h2>
+<p><strong>Scenario:</strong> A study finds that 380 out of 1,000 randomly selected households use some form of renewable energy (e.g., solar panels, wind turbines). Construct a 95% confidence interval for the proportion of households using renewable energy.</p>
+<div class="fragment">
+<p><strong>General Strategy:</strong> Check out the <a href="https://agmath.github.io/SiteFiles/CIgeneral.pdf" target="_blank">general strategy document here</a></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment">Read the problem carefully <span class="math inline">\(\checkmark\)</span></li>
+<li class="fragment">Estimate the population proportion of households using some form of renewable energy</li>
+<li class="fragment">The “formula” for the confidence<br> interval is</li>
+</ol>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</div>
+</section>
+<section id="a-first-confidence-interval-1" class="slide level2">
+<h2>A First Confidence Interval</h2>
+<p><strong>Scenario:</strong> A study finds that 380 out of 1,000 randomly selected households use some form of renewable energy (e.g., solar panels, wind turbines). Construct a 95% confidence interval for the proportion of households using renewable energy.</p>
+<p><strong>General Strategy:</strong> Check out the <a href="https://agmath.github.io/SiteFiles/CIgeneral.pdf" target="_blank">general strategy document here</a></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ol type="1">
+<li>Read the problem carefully <span class="math inline">\(\checkmark\)</span></li>
+<li>Estimate the population proportion of households using some form of renewable energy</li>
+<li>The “formula” for the confidence<br> interval is</li>
+</ol>
+</div>
+<p><span class="math display">\[\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}\]</span></p>
+</div><div class="column" style="width:50%;">
+<ol start="4" type="1">
+<li class="fragment">The <em>point estimate</em> is <span class="math inline">\(p = \frac{380}{1000}\)</span>, so <span class="math inline">\(p = 0.38\)</span></li>
+<li class="fragment">The <em>standard error</em> is given by <span class="math inline">\(S_E = \sqrt{\frac{0.38\cdot\left(1 - 0.38\right)}{1000}}\)</span>, so <span class="math inline">\(S_E \approx 0.0153\)</span></li>
+<li class="fragment">The <em>critical value</em> is <span class="math inline">\(z_{\alpha/2} = 1.96\)</span></li>
+<li class="fragment">The confidence bounds are<br> <span class="math inline">\(0.38 \pm 1.96\cdot\left(0.0153\right) \left\{\begin{array}{lcl} 0.38 + 0.030 &amp; = &amp; 0.410\\ 0.38 - 0.030 &amp; = &amp; 0.350\end{array}\right.\)</span></li>
+</ol>
+</div>
+</div>
+<ol start="8" type="1">
+<li class="fragment">We are 95% confident that the true proportion of households using some form of renewable energy is between 0.35 and 0.41.</li>
+</ol>
+</section>
+<section id="ask-me-at-least-two-questions" class="slide level2">
+<h2>Ask Me At Least Two Questions</h2>
+<p><br> <br></p>
+<div class="fragment">
+<p>Constructing a confidence interval involves many steps</p>
+</div>
+<div class="fragment">
+<p>This is a process that will almost surely take you time and lots of practice to master</p>
+</div>
+<div class="fragment">
+<p>In my experience, very few students (myself included) feel comfortable with statistical inference quickly – be sure to ask questions early and often</p>
+</div>
+</section>
+<section id="intuition-for-testing-claims" class="slide level2">
+<h2>Intuition for Testing Claims</h2>
+<div class="fragment">
+<p>Another type of inferential task that we often want to conduct is to test a claim about a population parameter.</p>
+</div>
+<div class="fragment">
+<p>We do this through indirect reasoning…</p>
+<ol type="i">
+<li class="fragment">We assume that the claim we are testing is false</li>
+<li class="fragment">We measure how compatible our observed data are with a reality in which the claim is false</li>
+</ol>
+</div>
+<div class="fragment">
+<p>The idea is that,</p>
+<ul>
+<li class="fragment">if it is not terribly unlikely that we would observe our data in this reality, then <em>it may be the case that the claim is actually false</em></li>
+<li class="fragment">if our data is very unlikely to be observed in a reality where the claim is false, then our assumption is probably wrong and <em>it is likely that the claim being tested is true</em></li>
+</ul>
+</div>
+<div class="fragment">
+<p>If we use a low enough threshold for what it means for our observed data to be “unlikely”, then we can make justifiable conclusions</p>
+<ul>
+<li class="fragment">Generally, we use thresholds like 0.10, 0.05, or 0.01</li>
+</ul>
+</div>
+</section>
+<section id="the-hypothesis-testing-framework" class="slide level2 smaller">
+<h2>The Hypothesis Testing Framework</h2>
+<div class="fragment">
+<p>We’ll outline the steps involved in conducting a hypothesis test below, before completing an example</p>
+<ol type="1">
+<li class="fragment"><p>Read the scenario carefully and determine whether you are testing a claim about a mean, a proportion, comparison of means, or comparison of proportions.</p></li>
+<li class="fragment"><p>Identify the claim being tested and state the <em>null hypothesis</em> (<span class="math inline">\(H_0\)</span>) and <em>alternative hypothesis</em> (<span class="math inline">\(H_a\)</span>). The null hypothesis represents the “status quo” or “no difference” and always involves an equal sign, while the alternative hypothesis is the claim to be tested and involves one of: <span class="math inline">\(&lt;,~&gt;,~\neq\)</span></p></li>
+<li class="fragment"><p>Draw a picture of your alternative hypothesis, shading in the tails corresponding to samples that would satisfy the alternative hypothesis.</p></li>
+<li class="fragment"><p>Set the level of significance (<span class="math inline">\(\alpha\)</span>) for the test. The level of significance is the “cut-off” for a sample being unusual/unlikely/unexpected. The standard cutoff is <span class="math inline">\(\alpha = 0.05\)</span>, unless we are told otherwise.</p></li>
+<li class="fragment"><p>Compute t <em>test statistic</em>, where <span class="math inline">\(\displaystyle{\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}}\)</span></p>
+<ul>
+<li class="fragment">The <em>point estimate</em> comes from the sample data</li>
+<li class="fragment">The <em>null value</em> comes from the null hypothesis</li>
+<li class="fragment">The <em>standard error</em> (<span class="math inline">\(S_E\)</span>) formula is found on the Standard Error Decision Tree</li>
+</ul></li>
+<li class="fragment"><p>The test statistic is just a boundary value, use it along with your picture from step 3 to calculate a <span class="math inline">\(p\)</span>-value (the probability of observing data at least as extreme as ours if the null hypothesis were true).</p></li>
+<li class="fragment"><p>Compare your <span class="math inline">\(p\)</span>-value to the level of significance (<span class="math inline">\(\alpha\)</span>) demanded by your test and make a decision about whether or not to reject the null hypothesis.</p></li>
+<li class="fragment"><p>Interpret the result of your hypothesis test in the context appropriate for your scenario.</p></li>
+</ol>
+</div>
+<div class="fragment">
+<p><strong>Note:</strong> This is another lengthy procedure which will take time and practice to master – ask questions early and often.</p>
+</div>
+</section>
+<section id="hypothesis-testing-an-example" class="slide level2 smaller">
+<h2>Hypothesis Testing: An Example</h2>
+<p><strong>Scenario:</strong> A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment">We’re testing a claim on a single population proportion <span class="math inline">\(\checkmark\)</span></li>
+<li class="fragment">The hypotheses are: <span class="math inline">\(\begin{array}{lcl} H_0 &amp; : &amp; p = 0.10\\ H_a &amp; : &amp; p &lt; 0.10\end{array}\)</span></li>
+<li class="fragment">See the picture of the alternative hypothesis below:</li>
+</ol>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-an-example-1" class="slide level2 smaller">
+<h2>Hypothesis Testing: An Example</h2>
+<p><strong>Scenario:</strong> A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ol type="1">
+<li>We’re testing a claim on a single population proportion <span class="math inline">\(\checkmark\)</span></li>
+<li>The hypotheses are: <span class="math inline">\(\begin{array}{lcl} H_0 &amp; : &amp; p = 0.10\\ H_a &amp; : &amp; p &lt; 0.10\end{array}\)</span></li>
+<li>See the picture of the alternative hypothesis below:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li class="fragment">Set <span class="math inline">\(\alpha = 0.05\)</span></li>
+</ol>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-an-example-2" class="slide level2 smaller">
+<h2>Hypothesis Testing: An Example</h2>
+<p><strong>Scenario:</strong> A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ol type="1">
+<li>We’re testing a claim on a single population proportion <span class="math inline">\(\checkmark\)</span></li>
+<li>The hypotheses are: <span class="math inline">\(\begin{array}{lcl} H_0 &amp; : &amp; p = 0.10\\ H_a &amp; : &amp; p &lt; 0.10\end{array}\)</span></li>
+<li>See the picture of the alternative hypothesis below:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Set <span class="math inline">\(\alpha = 0.05\)</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<ol start="5" type="1">
+<li class="fragment">We calculate the <em>test statistic</em></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-an-example-3" class="slide level2 smaller">
+<h2>Hypothesis Testing: An Example</h2>
+<p><strong>Scenario:</strong> A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ol type="1">
+<li>We’re testing a claim on a single population proportion <span class="math inline">\(\checkmark\)</span></li>
+<li>The hypotheses are: <span class="math inline">\(\begin{array}{lcl} H_0 &amp; : &amp; p = 0.10\\ H_a &amp; : &amp; p &lt; 0.10\end{array}\)</span></li>
+<li>See the picture of the alternative hypothesis below:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Set <span class="math inline">\(\alpha = 0.05\)</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ol start="5" type="1">
+<li>We calculate the <em>test statistic</em></li>
+</ol>
+<p><span class="math display">\[\begin{align*} \texttt{test statistic} &amp;= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&amp;\approx \frac{0.08 - 0.1}{0.0134}\\
+&amp;\approx -1.49\end{align*}\]</span></p>
+</div>
+<ol start="6" type="1">
+<li class="fragment">We’ll draw our boundary value and calculate our <span class="math inline">\(p\)</span>-value</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-an-example-4" class="slide level2 smaller">
+<h2>Hypothesis Testing: An Example</h2>
+<p><strong>Scenario:</strong> A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ol type="1">
+<li>We’re testing a claim on a single population proportion <span class="math inline">\(\checkmark\)</span></li>
+<li>The hypotheses are: <span class="math inline">\(\begin{array}{lcl} H_0 &amp; : &amp; p = 0.10\\ H_a &amp; : &amp; p &lt; 0.10\end{array}\)</span></li>
+<li>See the picture of the alternative hypothesis below:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Set <span class="math inline">\(\alpha = 0.05\)</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ol start="5" type="1">
+<li>We calculate the <em>test statistic</em></li>
+</ol>
+<p><span class="math display">\[\begin{align*} \texttt{test statistic} &amp;= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&amp;\approx \frac{0.08 - 0.1}{0.0134}\\
+&amp;\approx -1.49\end{align*}\]</span></p>
+<ol start="6" type="1">
+<li>We’ll draw our boundary value and calculate our <span class="math inline">\(p\)</span>-value</li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-an-example-5" class="slide level2 smaller">
+<h2>Hypothesis Testing: An Example</h2>
+<p><strong>Scenario:</strong> A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ol type="1">
+<li>We’re testing a claim on a single population proportion <span class="math inline">\(\checkmark\)</span></li>
+<li>The hypotheses are: <span class="math inline">\(\begin{array}{lcl} H_0 &amp; : &amp; p = 0.10\\ H_a &amp; : &amp; p &lt; 0.10\end{array}\)</span></li>
+<li>See the picture of the alternative hypothesis below:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Set <span class="math inline">\(\alpha = 0.05\)</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ol start="5" type="1">
+<li>We calculate the <em>test statistic</em></li>
+</ol>
+<p><span class="math display">\[\begin{align*} \texttt{test statistic} &amp;= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&amp;\approx \frac{0.08 - 0.1}{0.0134}\\
+&amp;\approx -1.49\end{align*}\]</span></p>
+<ol start="6" type="1">
+<li>We’ll draw our boundary value and calculate our <span class="math inline">\(p\)</span>-value</li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li class="fragment"><span class="math inline">\(p\)</span>-value <span class="math inline">\(=\)</span> <code>pnorm(-1.49, 0, 1)</code> <span class="math inline">\(\approx\)</span> 0.0681121</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-an-example-6" class="slide level2 smaller">
+<h2>Hypothesis Testing: An Example</h2>
+<p><strong>Scenario:</strong> A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ol type="1">
+<li>We’re testing a claim on a single population proportion <span class="math inline">\(\checkmark\)</span></li>
+<li>The hypotheses are: <span class="math inline">\(\begin{array}{lcl} H_0 &amp; : &amp; p = 0.10\\ H_a &amp; : &amp; p &lt; 0.10\end{array}\)</span></li>
+<li>See the picture of the alternative hypothesis below:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Set <span class="math inline">\(\alpha = 0.05\)</span></li>
+</ol>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<ol start="8" type="1">
+<li>The <span class="math inline">\(p\)</span>-value of about 0.0681 indicates that samples like ours are not extremely unlikely if the population proportion is 10% or higher. We fail to reject the null hypothesis and it may be the case that 10% or more of patients experience side-effects.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ol start="5" type="1">
+<li>We calculate the <em>test statistic</em></li>
+</ol>
+<p><span class="math display">\[\begin{align*} \texttt{test statistic} &amp;= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&amp;\approx \frac{0.08 - 0.1}{0.0134}\\
+&amp;\approx -1.49\end{align*}\]</span></p>
+<ol start="6" type="1">
+<li>We’ll draw our boundary value and calculate our <span class="math inline">\(p\)</span>-value</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="CategoricalInference_Slides_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li><span class="math inline">\(p\)</span>-value <span class="math inline">\(=\)</span> <code>pnorm(-1.49, 0, 1)</code> <span class="math inline">\(\approx\)</span> 0.0681121</li>
+</ol>
+</div>
+</div>
 </div>
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next Time…</h2>
 <center>
-<br> Discrete Probability and Simulation Lab
+<br> Practicing with Inference
 </center>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

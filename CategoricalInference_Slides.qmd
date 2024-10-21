@@ -32,6 +32,18 @@ code.sourceCode {
   font-size: 1.3em;
   /* or try font-size: xx-large; */
 }
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
 ```
 
 ## The Highlights
@@ -750,7 +762,7 @@ If we had that knowledge, then there would be no need for statistical inference.
 
 :::{.column width=50%}
 
-**The Problem:** We take a single sample and attempt to draw inferences from it.
+**The Problem:** We take a single sample and attempt to draw inferences from it, but which sample do we get?
 
 :::
 
@@ -792,7 +804,7 @@ If we had that knowledge, then there would be no need for statistical inference.
 
 :::{.column width=50%}
 
-**The Problem:** We take a single sample and attempt to draw inferences from it.
+**The Problem:** We take a single sample and attempt to draw inferences from it, but which sample do we get?
 
 :::
 
@@ -834,7 +846,7 @@ If we had that knowledge, then there would be no need for statistical inference.
 
 :::{.column width=50%}
 
-**The Problem:** We take a single sample and attempt to draw inferences from it.
+**The Problem:** We take a single sample and attempt to draw inferences from it, but which sample do we get?
 
 :::
 
@@ -864,199 +876,371 @@ toy_data %>%
 
 ::::
 
-## Slides to not use...
+## Confidence Intervals: Estimating a Population Proportion
 
 . . . 
 
-Let's consider three example scenarios -- one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.
+We know that our *sample proportion* will provide an estimate for our *population proportion*
 
-```{r}
-#| fig.height: 5
+. . . 
 
-toy_data <- tibble(
-  sample_id = 1:100,
-  small_samples = rbinom(100, 15, pop_prop)/15,
-  medium_samples = rbinom(100, 40, pop_prop)/40,
-  large_samples = rbinom(100, 100, pop_prop)/100
-)
+We also know that our *sample proportion* will almost surely be incorrect
 
-p1 <- toy_data %>%
-  ggplot() + 
-  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
-  geom_segment(aes(x = pop_prop, xend = small_samples, 
-                   y = sample_id, yend = sample_id),
-               color = "red") +
-  geom_point(aes(x = small_samples, y = sample_id)) + 
-  labs(
-    title = " Sampling Errors (n = 15)",
-    x = "Sample Proportion",
-    y = "Sample Number") + 
-  coord_cartesian(xlim = c(0, 1)) + 
-  theme_bw(base_size = 11)
+. . . 
 
-p2 <- toy_data %>%
-  ggplot() + 
-  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
-  geom_segment(aes(x = pop_prop, xend = medium_samples, 
-                   y = sample_id, yend = sample_id),
-               color = "red") +
-  geom_point(aes(x = medium_samples, y = sample_id)) + 
-  labs(
-    title = " Sampling Errors (n = 40)",
-    x = "Sample Proportion",
-    y = "Sample Number") + 
-  coord_cartesian(xlim = c(0, 1)) + 
-  theme_bw(base_size = 11)
+We need to try and quantify how far off that sample estimate is likely to fall.
 
-p3 <- toy_data %>%
-  ggplot() + 
-  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
-  geom_segment(aes(x = pop_prop, xend = large_samples, 
-                   y = sample_id, yend = sample_id),
-               color = "red") +
-  geom_point(aes(x = large_samples, y = sample_id)) + 
-  labs(
-    title = " Sampling Errors (n = 100)",
-    x = "Sample Proportion",
-    y = "Sample Number") + 
-  coord_cartesian(xlim = c(0, 1)) + 
-  theme_bw(base_size = 11)
+. . . 
 
-p1 + p2 + p3
-```
+**General Confidence Interval Formula:** Provided that the sampling distribution is approximately normal, we can construct a *confidence interval* using the following form:
 
-## When Are Sampling Errors Approximately Normal?
+$$\left(\texttt{point estimate}\right) \pm \left(\texttt{critical value}\right)\cdot\left(\texttt{standard error}\right)$$
 
-It's not actually always the case that the sampling errors will be nearly normally distributed.
++ The *point estimate* is our sample statistic (ie. sample proportion)
++ The *critical value* depends on the level of confidence we want in capturing the population parameter
++ The *standard error* is the standard deviation of the sampling distribution 
+  + We'll get this from the [decision tree](https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"}
 
-Let's consider three example scenarios -- one in which we took samples of size 10, the next with samples of size 40, and finally, with samples of size 100.
+## Confidence Intervals: Visual Intuition
+
+. . . 
+
+Before we work through the construction of a confidence interval, let's build some intuition
+
++ What does a *confidence* interval actually mean?
++ How does the level of confidence impact the intervals constructed?
+
+. . . 
 
 ::::{.columns}
 
-:::{.column width="65%"}
-
-```{r}
-#| fig.height: 5
-
-toy_data <- tibble(
-  sample_id = 1:100,
-  small_samples = rbinom(100, 15, pop_prop)/15,
-  medium_samples = rbinom(100, 40, pop_prop)/40,
-  large_samples = rbinom(100, 100, pop_prop)/100
-)
-
-p1 <- toy_data %>%
-  ggplot() + 
-  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
-  geom_segment(aes(x = pop_prop, xend = small_samples, 
-                   y = sample_id, yend = sample_id),
-               color = "red") +
-  geom_point(aes(x = small_samples, y = sample_id)) + 
-  labs(
-    title = " Sampling Errors (n = 15)",
-    x = "Sample Proportion",
-    y = "Sample Number") + 
-  coord_cartesian(xlim = c(0, 1)) + 
-  theme_bw(base_size = 13)
-
-p2 <- toy_data %>%
-  ggplot() + 
-  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
-  geom_segment(aes(x = pop_prop, xend = medium_samples, 
-                   y = sample_id, yend = sample_id),
-               color = "red") +
-  geom_point(aes(x = medium_samples, y = sample_id)) + 
-  labs(
-    title = " Sampling Errors (n = 40)",
-    x = "Sample Proportion",
-    y = "Sample Number") + 
-  coord_cartesian(xlim = c(0, 1)) + 
-  theme_bw(base_size = 13)
-
-p3 <- toy_data %>%
-  ggplot() + 
-  geom_vline(xintercept = pop_prop, linetype = "dashed") + 
-  geom_segment(aes(x = pop_prop, xend = large_samples, 
-                   y = sample_id, yend = sample_id),
-               color = "red") +
-  geom_point(aes(x = large_samples, y = sample_id)) + 
-  labs(
-    title = " Sampling Errors (n = 100)",
-    x = "Sample Proportion",
-    y = "Sample Number") + 
-  coord_cartesian(xlim = c(0, 1)) + 
-  theme_bw(base_size = 13)
-
-p1 + p2 + p3
-```
+:::{.column width="33%"}
 
 :::
 
-:::{.column width="35%"}
+:::{.column width="33%"}
 
 ```{r}
 #| fig.height: 10
 
-toy_data <- tibble(
-  sample_id = 1:1e3,
-  small_samples = rbinom(1e3, 15, pop_prop)/15,
-  medium_samples = rbinom(1e3, 40, pop_prop)/40,
-  large_samples = rbinom(1e3, 100, pop_prop)/100
-)
-
-toy_data <- toy_data %>%
+toy_data %>%
   mutate(
-    samp_err_small = small_samples - pop_prop,
-    samp_err_medium = medium_samples - pop_prop,
-    samp_err_large = large_samples - pop_prop
-  )
-
-p1 <- toy_data %>%
+    lower_90 = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_90 = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_95 = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_95 = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_99 = samp_prop - 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_99 = samp_prop + 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+  ) %>%
+  mutate(
+    contains_90 = between(rep(pop_prop, 100), lower_90, upper_90),
+    contains_95 = between(rep(pop_prop, 100), lower_95, upper_95),
+    contains_99 = between(rep(pop_prop, 100), lower_99, upper_99)
+  ) %>%
   ggplot() + 
-  geom_histogram(aes(x = samp_err_small,
-                     y = after_stat(density)),
-                 color = "black",
-                 fill = "purple") +
-  geom_density(aes(x = samp_err_small),
-               fill = "purple",
-               alpha = 0.75) +
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  geom_segment(aes(x = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_95,
+                   lwd = ifelse(contains_95, 1, 1.1))) +
+  geom_segment(aes(x = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_95,
+                   lwd = ifelse(contains_95, 1, 1.1))) +
+  geom_point(aes(x = samp_prop, y = sample)) + 
+  scale_color_manual(values = c("red", "darkgreen")) + 
   labs(
-    title = " Sampling Errors (n = 15)",
-    x = "Sampling Error",
-    y = "") +  
-  theme_bw(base_size = 22)
+    title = "95% Confidence Intervals",
+    subtitle = "Critical Value 1.96",
+    x = "Proportion",
+    y = "Sample Number"
+  ) + 
+  theme(legend.position = "None") + 
+  coord_cartesian(xlim = c(0.55, 0.95))
+```
 
-p2 <- toy_data %>%
+:::
+
+:::{.column width="33%"}
+
+:::
+
+::::
+
+
+## Confidence Intervals: Visual Intuition
+
+:::{.nonincremental}
+
+Before we work through the construction of a confidence interval, let's build some intuition
+
++ What does a *confidence* interval actually mean?
++ How does the level of confidence impact the intervals constructed?
+
+:::
+
+::::{.columns}
+
+:::{.column width="33%"}
+
+```{r}
+#| fig.height: 10
+
+toy_data %>%
+  mutate(
+    lower_90 = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_90 = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_95 = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_95 = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_99 = samp_prop - 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_99 = samp_prop + 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+  ) %>%
+  mutate(
+    contains_90 = between(rep(pop_prop, 100), lower_90, upper_90),
+    contains_95 = between(rep(pop_prop, 100), lower_95, upper_95),
+    contains_99 = between(rep(pop_prop, 100), lower_99, upper_99)
+  ) %>%
   ggplot() + 
-  geom_histogram(aes(x = samp_err_medium,
-                     y = after_stat(density)),
-                 color = "black",
-                 fill = "purple") +
-  geom_density(aes(x = samp_err_medium),
-               fill = "purple",
-               alpha = 0.75) +
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  geom_segment(aes(x = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_90,
+                   lwd = ifelse(contains_90, 1, 1.1))) +
+  geom_segment(aes(x = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_90,
+                   lwd = ifelse(contains_90, 1, 1.1))) +
+  geom_point(aes(x = samp_prop, y = sample)) + 
+  scale_color_manual(values = c("red", "darkgreen")) + 
   labs(
-    title = " Sampling Errors (n = 40)",
-    x = "Sampling Error",
-    y = "") + 
-  theme_bw(base_size = 22)
+    title = "90% Confidence Intervals",
+    subtitle = "Critical Value 1.645",
+    x = "Proportion",
+    y = "Sample Number"
+  ) + 
+  theme(legend.position = "None") + 
+  coord_cartesian(xlim = c(0.55, 0.95))
+```
 
-p3 <- toy_data %>%
+:::
+
+:::{.column width="33%"}
+
+```{r}
+#| fig.height: 10
+
+toy_data %>%
+  mutate(
+    lower_90 = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_90 = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_95 = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_95 = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_99 = samp_prop - 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_99 = samp_prop + 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+  ) %>%
+  mutate(
+    contains_90 = between(rep(pop_prop, 100), lower_90, upper_90),
+    contains_95 = between(rep(pop_prop, 100), lower_95, upper_95),
+    contains_99 = between(rep(pop_prop, 100), lower_99, upper_99)
+  ) %>%
   ggplot() + 
-  geom_histogram(aes(x = samp_err_large,
-                     y = after_stat(density)),
-                 color = "black",
-                 fill = "purple") +
-  geom_density(aes(x = samp_err_large),
-               fill = "purple",
-               alpha = 0.75) +
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  geom_segment(aes(x = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_95,
+                   lwd = ifelse(contains_95, 1, 1.1))) +
+  geom_segment(aes(x = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_95,
+                   lwd = ifelse(contains_95, 1, 1.1))) +
+  geom_point(aes(x = samp_prop, y = sample)) + 
+  scale_color_manual(values = c("red", "darkgreen")) + 
   labs(
-    title = " Sampling Errors (n = 100)",
-    x = "Sampling Error",
-    y = "") + 
-  theme_bw(base_size = 22)
+    title = "95% Confidence Intervals",
+    subtitle = "Critical Value 1.96",
+    x = "Proportion",
+    y = "Sample Number"
+  ) + 
+  theme(legend.position = "None") + 
+  coord_cartesian(xlim = c(0.55, 0.95))
+```
 
-p1 / p2 / p3
+:::
+
+:::{.column width="33%"}
+
+:::
+
+::::
+
+## Confidence Intervals: Visual Intuition
+
+:::{.nonincremental}
+
+Before we work through the construction of a confidence interval, let's build some intuition
+
++ What does a *confidence* interval actually mean?
++ How does the level of confidence impact the intervals constructed?
+
+:::
+
+::::{.columns}
+
+:::{.column width="33%"}
+
+```{r}
+#| fig.height: 10
+
+toy_data %>%
+  mutate(
+    lower_90 = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_90 = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_95 = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_95 = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_99 = samp_prop - 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_99 = samp_prop + 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+  ) %>%
+  mutate(
+    contains_90 = between(rep(pop_prop, 100), lower_90, upper_90),
+    contains_95 = between(rep(pop_prop, 100), lower_95, upper_95),
+    contains_99 = between(rep(pop_prop, 100), lower_99, upper_99)
+  ) %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  geom_segment(aes(x = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_90,
+                   lwd = ifelse(contains_90, 1, 1.1))) +
+  geom_segment(aes(x = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_90,
+                   lwd = ifelse(contains_90, 1, 1.1))) +
+  geom_point(aes(x = samp_prop, y = sample)) + 
+  scale_color_manual(values = c("red", "darkgreen")) + 
+  labs(
+    title = "90% Confidence Intervals",
+    subtitle = "Critical Value 1.645",
+    x = "Proportion",
+    y = "Sample Number"
+  ) + 
+  theme(legend.position = "None") + 
+  coord_cartesian(xlim = c(0.55, 0.95))
+```
+
+:::
+
+:::{.column width="33%"}
+
+```{r}
+#| fig.height: 10
+
+toy_data %>%
+  mutate(
+    lower_90 = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_90 = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_95 = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_95 = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_99 = samp_prop - 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_99 = samp_prop + 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+  ) %>%
+  mutate(
+    contains_90 = between(rep(pop_prop, 100), lower_90, upper_90),
+    contains_95 = between(rep(pop_prop, 100), lower_95, upper_95),
+    contains_99 = between(rep(pop_prop, 100), lower_99, upper_99)
+  ) %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  geom_segment(aes(x = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_95,
+                   lwd = ifelse(contains_95, 1, 1.1))) +
+  geom_segment(aes(x = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_95,
+                   lwd = ifelse(contains_95, 1, 1.1))) +
+  geom_point(aes(x = samp_prop, y = sample)) + 
+  scale_color_manual(values = c("red", "darkgreen")) + 
+  labs(
+    title = "95% Confidence Intervals",
+    subtitle = "Critical Value 1.96",
+    x = "Proportion",
+    y = "Sample Number"
+  ) + 
+  theme(legend.position = "None") + 
+  coord_cartesian(xlim = c(0.55, 0.95))
+```
+
+:::
+
+:::{.column width="33%"}
+
+```{r}
+#| fig.height: 10
+
+toy_data %>%
+  mutate(
+    lower_90 = samp_prop - 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_90 = samp_prop + 1.645*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_95 = samp_prop - 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_95 = samp_prop + 1.96*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    lower_99 = samp_prop - 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+    upper_99 = samp_prop + 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+  ) %>%
+  mutate(
+    contains_90 = between(rep(pop_prop, 100), lower_90, upper_90),
+    contains_95 = between(rep(pop_prop, 100), lower_95, upper_95),
+    contains_99 = between(rep(pop_prop, 100), lower_99, upper_99)
+  ) %>%
+  ggplot() + 
+  geom_vline(xintercept = pop_prop,
+             linetype = "dashed") +
+  geom_segment(aes(x = samp_prop - 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_99,
+                   lwd = ifelse(contains_99, 1, 1.1))) +
+  geom_segment(aes(x = samp_prop + 2.58*sqrt(samp_prop*(1 - samp_prop)/new_obs),
+                   xend = samp_prop,
+                   y = sample,
+                   yend = sample,
+                   color = contains_99,
+                   lwd = ifelse(contains_99, 1, 1.1))) +
+  geom_point(aes(x = samp_prop, y = sample)) + 
+  scale_color_manual(values = c("red", "darkgreen")) + 
+  labs(
+    title = "99% Confidence Intervals",
+    subtitle = "Critical Value 2.58",
+    x = "Proportion",
+    y = "Sample Number"
+  ) + 
+  theme(legend.position = "None") + 
+  coord_cartesian(xlim = c(0.55, 0.95))
 ```
 
 :::
@@ -1065,11 +1249,554 @@ p1 / p2 / p3
 
 . . . 
 
-**Rule of Thumb:** The 
+Confidence intervals with lower levels of confidence are more narrow, but also more likely to *miss* the true population proportion
+
+## A First Confidence Interval
+
+**Scenario:** A study finds that 380 out of 1,000 randomly selected households use some form of renewable energy (e.g., solar panels, wind turbines). Construct a 95% confidence interval for the proportion of households using renewable energy.
+
+. . . 
+
+**General Strategy:** Check out the [general strategy document here](https://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the population proportion of households using some form of renewable energy
+3. The "formula" for the confidence<br/> interval is 
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A First Confidence Interval
+
+**Scenario:** A study finds that 380 out of 1,000 randomly selected households use some form of renewable energy (e.g., solar panels, wind turbines). Construct a 95% confidence interval for the proportion of households using renewable energy.
+
+**General Strategy:** Check out the [general strategy document here](https://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the population proportion of households using some form of renewable energy
+3. The "formula" for the confidence<br/> interval is 
+
+:::
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+:::
+
+:::{.column width="50%"}
+
+4. The *point estimate* is $p = \frac{380}{1000}$, so $p = 0.38$
+5. The *standard error* is given by $S_E = \sqrt{\frac{0.38\cdot\left(1 - 0.38\right)}{1000}}$, so $S_E \approx 0.0153$
+6. The *critical value* is $z_{\alpha/2} = 1.96$
+7. The confidence bounds are<br/> $0.38 \pm 1.96\cdot\left(0.0153\right) \left\{\begin{array}{lcl} 0.38 + 0.030 & = & 0.410\\ 0.38 - 0.030 & = & 0.350\end{array}\right.$
+:::
+
+::::
+
+8. We are 95% confident that the true proportion of households using some form of renewable energy is between 0.35 and 0.41.
+
+## Ask Me At Least Two Questions
+
+<br/>
+<br/>
+
+. . .
+
+Constructing a confidence interval involves many steps
+
+. . .
+
+This is a process that will almost surely take you time and lots of practice to master
+
+. . . 
+
+In my experience, very few students (myself included) feel comfortable with statistical inference quickly -- be sure to ask questions early and often
+
+## Intuition for Testing Claims
+
+. . .
+
+Another type of inferential task that we often want to conduct is to test a claim about a population parameter.
+
+. . . 
+
+We do this through indirect reasoning...
+
+i. We assume that the claim we are testing is false
+ii. We measure how compatible our observed data are with a reality in which the claim is false
+
+. . . 
+
+The idea is that,
+
++ if it is not terribly unlikely that we would observe our data in this reality, then *it may be the case that the claim is actually false*
++ if our data is very unlikely to be observed in a reality where the claim is false, then our assumption is probably wrong and *it is likely that the claim being tested is true*
+
+. . . 
+
+If we use a low enough threshold for what it means for our observed data to be "unlikely", then we can make justifiable conclusions
+
++ Generally, we use thresholds like 0.10, 0.05, or 0.01
+
+## The Hypothesis Testing Framework {.smaller}
+
+. . . 
+
+We'll outline the steps involved in conducting a hypothesis test below, before completing an example
+
+1. Read the scenario carefully and determine whether you are testing a claim about a mean, a proportion, comparison of means, or comparison of proportions.
+2. Identify the claim being tested and state the *null hypothesis* ($H_0$) and *alternative hypothesis* ($H_a$). The null hypothesis represents the "status quo" or "no difference" and always involves an equal sign, while the alternative hypothesis is the claim to be tested and involves one of: $<,~>,~\neq$
+3. Draw a picture of your alternative hypothesis, shading in the tails corresponding to
+samples that would satisfy the alternative hypothesis.
+4. Set the level of significance ($\alpha$) for the test. The level of significance is the "cut-off" for a sample being unusual/unlikely/unexpected. The standard cutoff is $\alpha = 0.05$, unless we are told otherwise.
+5. Compute t *test statistic*, where $\displaystyle{\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}}$
+
+    + The *point estimate* comes from the sample data
+    + The *null value* comes from the null hypothesis
+    + The *standard error* ($S_E$) formula is found on the Standard Error Decision Tree
+
+6. The test statistic is just a boundary value, use it along with your picture from step 3 to calculate a $p$-value (the probability of observing data at least as extreme as ours if the null hypothesis were true).
+7. Compare your $p$-value to the level of significance ($\alpha$) demanded by your test and make a decision about whether or not to reject the null hypothesis.
+8. Interpret the result of your hypothesis test in the context appropriate for your scenario.
+
+. . . 
+
+**Note:** This is another lengthy procedure which will take time and practice to master -- ask questions early and often.
+
+## Hypothesis Testing: An Example {.smaller}
+
+**Scenario:** A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+1. We're testing a claim on a single population proportion $\checkmark$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p = 0.10\\ H_a & : & p < 0.10\end{array}$
+3. See the picture of the alternative hypothesis below:
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Hypothesis Testing: An Example {.smaller}
+
+**Scenario:** A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. We're testing a claim on a single population proportion $\checkmark$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p = 0.10\\ H_a & : & p < 0.10\end{array}$
+3. See the picture of the alternative hypothesis below:
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(-3, -1.645, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0, ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue",
+              alpha = 0.75) + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1))) + 
+  labs(
+    subtitle = "Samples Satisfying the Alternative Hypothesis",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+:::
+
+4. Set $\alpha = 0.05$
+
+::::
+
+::::{.column width="50%"}
+
+::::
+
+:::::
+
+## Hypothesis Testing: An Example {.smaller}
+
+**Scenario:** A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. We're testing a claim on a single population proportion $\checkmark$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p = 0.10\\ H_a & : & p < 0.10\end{array}$
+3. See the picture of the alternative hypothesis below:
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(-3, -1.645, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0, ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue",
+              alpha = 0.75) + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1))) + 
+  labs(
+    subtitle = "Samples Satisfying the Alternative Hypothesis",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+4. Set $\alpha = 0.05$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+5. We calculate the *test statistic*
+
+::::
+
+:::::
+
+## Hypothesis Testing: An Example {.smaller}
+
+**Scenario:** A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. We're testing a claim on a single population proportion $\checkmark$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p = 0.10\\ H_a & : & p < 0.10\end{array}$
+3. See the picture of the alternative hypothesis below:
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(-3, -1.645, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0, ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue",
+              alpha = 0.75) + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1))) + 
+  labs(
+    subtitle = "Samples Satisfying the Alternative Hypothesis",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+4. Set $\alpha = 0.05$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. We calculate the *test statistic*
+
+\begin{align*} \texttt{test statistic} &= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&\approx \frac{0.08 - 0.1}{0.0134}\\
+&\approx -1.49\end{align*}
+
+::: 
+
+6. We'll draw our boundary value and calculate our $p$-value
+
+::::
+
+:::::
+
+## Hypothesis Testing: An Example {.smaller}
+
+**Scenario:** A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. We're testing a claim on a single population proportion $\checkmark$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p = 0.10\\ H_a & : & p < 0.10\end{array}$
+3. See the picture of the alternative hypothesis below:
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(-3, -1.645, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0, ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue",
+              alpha = 0.75) + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1))) + 
+  labs(
+    subtitle = "Samples Satisfying the Alternative Hypothesis",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+4. Set $\alpha = 0.05$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. We calculate the *test statistic*
+
+\begin{align*} \texttt{test statistic} &= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&\approx \frac{0.08 - 0.1}{0.0134}\\
+&\approx -1.49\end{align*}
+
+
+
+6. We'll draw our boundary value and calculate our $p$-value
+
+:::
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd = 1.25) + 
+  geom_vline(xintercept = -1.49,
+             linetype = "dashed") + 
+  labs(
+    title = "The Test Statistic",
+    x = "",
+    y = ""
+  ) + 
+  scale_x_continuous(breaks = c(-2, -1.49, 0, 2)) +
+  theme_bw(base_size = 28)
+```
+
+::::
+
+:::::
+
+## Hypothesis Testing: An Example {.smaller}
+
+**Scenario:** A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. We're testing a claim on a single population proportion $\checkmark$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p = 0.10\\ H_a & : & p < 0.10\end{array}$
+3. See the picture of the alternative hypothesis below:
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(-3, -1.645, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0, ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue",
+              alpha = 0.75) + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1))) + 
+  labs(
+    subtitle = "Samples Satisfying the Alternative Hypothesis",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+4. Set $\alpha = 0.05$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. We calculate the *test statistic*
+
+\begin{align*} \texttt{test statistic} &= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&\approx \frac{0.08 - 0.1}{0.0134}\\
+&\approx -1.49\end{align*}
+
+
+
+6. We'll draw our boundary value and calculate our $p$-value
+
+:::
+
+```{r}
+x_vals_shade_ts <- seq(-3, -1.49, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade_ts,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade_ts, 0, 1)),
+              fill = "purple",
+              alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd = 1.25) + 
+  geom_vline(xintercept = -1.49,
+             linetype = "dashed") + 
+    scale_x_continuous(breaks = c(-2, -1.49, 0, 2)) +
+  labs(
+    title = "The Test Statistic and p-value",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+7. $p$-value $=$ `pnorm(-1.49, 0, 1)` $\approx$ `r pnorm(-1.49, 0, 1)`
+
+
+::::
+
+:::::
+
+## Hypothesis Testing: An Example {.smaller}
+
+**Scenario:** A pharmaceutical company claims that fewer than 10% of patients experience side effects from a new drug. In a clinical trial, 45 out of 500 patients reported side effects. Test the company’s claim at a 5% significance level.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+::::{.nonincremental}
+
+1. We're testing a claim on a single population proportion $\checkmark$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p = 0.10\\ H_a & : & p < 0.10\end{array}$
+3. See the picture of the alternative hypothesis below:
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(-3, -1.645, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, 
+                  ymin = 0, ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue",
+              alpha = 0.75) + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1))) + 
+  labs(
+    subtitle = "Samples Satisfying the Alternative Hypothesis",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+4. Set $\alpha = 0.05$
+
+:::{.callout-note appearance="simple"}
+8. The $p$-value of about 0.0681 indicates that samples like ours are not extremely unlikely if the population proportion is 10% or higher. We fail to reject the null hypothesis and it may be the case that 10% or more of patients experience side-effects.
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+::::{.nonincremental}
+
+5. We calculate the *test statistic*
+
+\begin{align*} \texttt{test statistic} &= \frac{\left(\frac{40}{500}\right) - 0.1}{\sqrt{\frac{0.1\cdot\left(1 - 0.1\right)}{500}}}\\
+&\approx \frac{0.08 - 0.1}{0.0134}\\
+&\approx -1.49\end{align*}
+
+
+
+6. We'll draw our boundary value and calculate our $p$-value
+
+```{r}
+x_vals_shade_ts <- seq(-3, -1.49, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade_ts,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade_ts, 0, 1)),
+              fill = "purple",
+              alpha = 0.75) +
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd = 1.25) + 
+  geom_vline(xintercept = -1.49,
+             linetype = "dashed") + 
+    scale_x_continuous(breaks = c(-2, -1.49, 0, 2)) +
+  labs(
+    title = "The Test Statistic and p-value",
+    x = "",
+    y = ""
+  ) + 
+  theme_bw(base_size = 28)
+```
+
+7. $p$-value $=$ `pnorm(-1.49, 0, 1)` $\approx$ `r pnorm(-1.49, 0, 1)`
+
+::::
+
+:::::
+
+::::::
 
 ## Next Time...
 
-<center><br/> Discrete Probability and Simulation Lab</center>
+<center><br/> Practicing with Inference</center>
 
 
 
