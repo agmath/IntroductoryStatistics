@@ -49,7 +49,7 @@ a:visited {
 
 ## Reminder: Framework for Constructing Confidence Intervals
 
-**General Strategy:** Each time we seek to construct a confidence interval, we will...
+**General Strategy:** Each time we seek to Construct a confidence interval, we will...
 
 1. Read the scenario very carefully
 2. Determine what it is we are trying to estimate -- a mean? a proportion? a difference in means or proportions?
@@ -984,7 +984,300 @@ ggplot() +
 
 :::::::
 
-## A Completed Confidence Interval
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+:::
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+4. The *point estimate* is the difference in proportions...
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+4. The *point estimate* is the difference in proportions...
+
+Notice that $\displaystyle{p_{\text{virtual}} = \frac{62}{140}}$ and $\displaystyle{p_{\text{in-person}} = \frac{38}{120}}$, so $p_{\text{virtual}} \approx 0.4429$ and $p_{\text{in-person}} \approx 0.3167$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+4. The *point estimate* is the difference in proportions...
+
+Notice that $\displaystyle{p_{\text{virtual}} = \frac{62}{140}}$ and $\displaystyle{p_{\text{in-person}} = \frac{38}{120}}$, so $p_{\text{virtual}} \approx 0.4429$ and $p_{\text{in-person}} \approx 0.3167$
+
+The *point estimate* is 
+
+$$p_{\text{virtual}} - p_{\text{in-person}} \approx 0.1262$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+5. The *standard error* is...
+
+:::
+
+::::
+
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+4. The *point estimate* is the difference in proportions...
+
+Notice that $\displaystyle{p_{\text{virtual}} = \frac{62}{140}}$ and $\displaystyle{p_{\text{in-person}} = \frac{38}{120}}$, so $p_{\text{virtual}} \approx 0.4429$ and $p_{\text{in-person}} \approx 0.3167$
+
+The *point estimate* is 
+
+$$p_{\text{virtual}} - p_{\text{in-person}} \approx 0.1262$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. The *standard error* is...
+
+\begin{align*}S_E &= \sqrt{\frac{p_{\text{virtual}}\left(1 - p_{\text{virtual}}\right)}{n_{\text{virtual}}} + \frac{p_{\text{in-person}}\left(1 - p_{\text{in-person}}\right)}{n_{\text{in-person}}}}\end{align*}
+
+:::
+
+:::
+
+::::
+
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+4. The *point estimate* is the difference in proportions...
+
+Notice that $\displaystyle{p_{\text{virtual}} = \frac{62}{140}}$ and $\displaystyle{p_{\text{in-person}} = \frac{38}{120}}$, so $p_{\text{virtual}} \approx 0.4429$ and $p_{\text{in-person}} \approx 0.3167$
+
+The *point estimate* is 
+
+$$p_{\text{virtual}} - p_{\text{in-person}} \approx 0.1262$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. The *standard error* is...
+
+\begin{align*} S_E &= \sqrt{\frac{p_{\text{virtual}}\left(1 - p_{\text{virtual}}\right)}{n_{\text{virtual}}} + \frac{p_{\text{in-person}}\left(1 - p_{\text{in-person}}\right)}{n_{\text{in-person}}}}\\
+&\approx \sqrt{\frac{0.4429\left(1 - 0.4429\right)}{140} + \frac{0.3167\left(1 - 0.3167\right)}{120}}\end{align*}
+
+:::
+
+:::
+
+::::
+
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+4. The *point estimate* is the difference in proportions...
+
+Notice that $\displaystyle{p_{\text{virtual}} = \frac{62}{140}}$ and $\displaystyle{p_{\text{in-person}} = \frac{38}{120}}$, so $p_{\text{virtual}} \approx 0.4429$ and $p_{\text{in-person}} \approx 0.3167$
+
+The *point estimate* is 
+
+$$p_{\text{virtual}} - p_{\text{in-person}} \approx 0.1262$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. The *standard error* is...
+
+\begin{align*} S_E &= \sqrt{\frac{p_{\text{virtual}}\left(1 - p_{\text{virtual}}\right)}{n_{\text{virtual}}} + \frac{p_{\text{in-person}}\left(1 - p_{\text{in-person}}\right)}{n_{\text{in-person}}}}\\
+&\approx \sqrt{\frac{0.4429\left(1 - 0.4429\right)}{140} + \frac{0.3167\left(1 - 0.3167\right)}{120}}\\
+&\approx \sqrt{0.00176 + 0.0018}\end{align*}
+
+:::
+
+:::
+
+::::
+
+## A Completed Confidence Interval {.smaller}
+
+**Scenario:** A college wants to understand if there is a difference in the proportion of students who attend office hours in-person versus virtually. Faculty members noticed varying attendance patterns and want to explore whether virtual office hours increase engagement. Out of 120 students surveyed, 38 said that they attend in-person office hours regularly. A separate random sample of 140 students revealed that 62 attended virtual office hours regularly. Construct a 90% confidence interval for the difference in proportions of students attending virtual and face-to-face office hours regularly.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. Read the problem carefully $\checkmark$
+2. Estimate the *difference between the proportions* of students regularly attending virtual office hours versus in-person office hours
+3. The "formula" for the confidence<br/> interval is 
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm  \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot \left(\begin{array}{c}\texttt{standard}\\ \texttt{error}\end{array}\right)}$$
+
+4. The *point estimate* is the difference in proportions...
+
+Notice that $\displaystyle{p_{\text{virtual}} = \frac{62}{140}}$ and $\displaystyle{p_{\text{in-person}} = \frac{38}{120}}$, so $p_{\text{virtual}} \approx 0.4429$ and $p_{\text{in-person}} \approx 0.3167$
+
+The *point estimate* is 
+
+$$p_{\text{virtual}} - p_{\text{in-person}} \approx 0.1262$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. The *standard error* is...
+
+\begin{align*} S_E &= \sqrt{\frac{p_{\text{virtual}}\left(1 - p_{\text{virtual}}\right)}{n_{\text{virtual}}} + \frac{p_{\text{in-person}}\left(1 - p_{\text{in-person}}\right)}{n_{\text{in-person}}}}\\
+&\approx \sqrt{\frac{0.4429\left(1 - 0.4429\right)}{140} + \frac{0.3167\left(1 - 0.3167\right)}{120}}\\
+&\approx \sqrt{0.00176 + 0.0018}\\
+&\approx 0.0597\end{align*}
+
+:::
+
+6. The *critical value* is $\displaystyle{z_{\alpha/2} = 1.65}$
+
+7. The confidence bounds are $\displaystyle{0.1262 \pm 1.65\left(0.0597\right) \to \left\{\begin{array}{lcl} 0.1262 + 0.0985 & = & 0.2247\\ 0.1262 - 0.0985 & = & 0.0277\end{array}\right.}$
+
+8. We are 90% confident that the true difference in proportions of students regularly attending virtual office hours versus in person office hours is somewhere between 2.77% and 22.47%, with virtual office hour attendance being more prevalent.
+
+:::
+
+::::
+
 
 ## Examples to Try: Influencer and Viral Videos
 
@@ -992,7 +1285,7 @@ ggplot() +
 
 ## Examples to Try: Fast Food Preferences
 
-**Scenario:** A fast food chain claims that 70% of customers prefer its chicken sandwich over its competitors'. A random sample of 300 customers shows that only 65% prefer the chain's sandwich. Construct a 90% confidence interval for the true proportion of customers who prefer the sandwich. Does the chain's claim fall within the confidence interval?
+**Scenario:** A fast food chain claims that 70% of customers prefer its chicken sandwich over its competitors'. A random sample of 300 customers shows that only 65% prefer the chain's sandwich. Construct a 95% confidence interval for the true proportion of customers who prefer the sandwich. Does the chain's claim fall within the confidence interval?
 
 ## Examples to Try: Vaccine Approval Rate
 
@@ -1004,7 +1297,7 @@ ggplot() +
 
 ## Examples to Try: Recycling Habits in a City
 
-**Scenario:** A city's environmental department claims that 65% of its residents participate in curbside recycling programs. A local survey of 800 randomly selected residents finds that 68% of them recycle. Construct a 90% confidence interval for the true proportion of recyclers in the city. Does this support the department's claim?
+**Scenario:** A city's environmental department claims that 65% of its residents participate in curbside recycling programs. A local survey of 800 randomly selected residents finds that 68% of them recycle. Construct a 98% confidence interval for the true proportion of recyclers in the city. Does this support the department's claim?
 
 ## Examples to Try: Return Rates for an Online Store
 
