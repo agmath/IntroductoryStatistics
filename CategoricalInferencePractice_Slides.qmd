@@ -128,7 +128,7 @@ At this point, we'll either calculate $\displaystyle{S_E = \sqrt{\frac{p\left(1 
 
 ## A Completed Hypothesis Test {.smaller}
 
-**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 20 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
 
 ::::{.columns}
 
@@ -147,7 +147,7 @@ At this point, we'll either calculate $\displaystyle{S_E = \sqrt{\frac{p\left(1 
 
 ## A Completed Hypothesis Test {.smaller}
 
-**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 20 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
 
 :::::{.columns}
 
@@ -156,7 +156,7 @@ At this point, we'll either calculate $\displaystyle{S_E = \sqrt{\frac{p\left(1 
 :::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 :::
 
@@ -181,17 +181,17 @@ At this point, we'll either calculate $\displaystyle{S_E = \sqrt{\frac{p\left(1 
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
 ::::{.columns}
 
-:::{.column width="15%"}
+:::{.column width="20%"}
 
 :::
 
-:::{.column width="70%"}
+:::{.column width="60%"}
 
 ```{r}
 x_vals <- seq(-3, 3, length.out = 500)
@@ -217,15 +217,15 @@ ggplot() +
 
 :::
 
-:::{.column width="15%"}
+:::{.column width="20%"}
 
 :::
-
-4. Set $\alpha = 0.10$
 
 ::::
 
 :::::
+
+4. Set $\alpha = 0.10$
 
 ::::::
 
@@ -249,17 +249,17 @@ ggplot() +
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
 ::::{.columns}
 
-:::{.column width="15%"}
+:::{.column width="20%"}
 
 :::
 
-:::{.column width="70%"}
+:::{.column width="60%"}
 
 ```{r}
 x_vals <- seq(-3, 3, length.out = 500)
@@ -285,7 +285,7 @@ ggplot() +
 
 :::
 
-:::{.column width="15%"}
+:::{.column width="20%"}
 
 :::
 
@@ -303,9 +303,7 @@ ggplot() +
 
 5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
 
-$$\texttt{test statistic} = \frac{\left(0.23 - 0.3611\right) - 0}{\sqrt{\frac{0.23\left(1 - 0.23\right)}{200} + \frac{0.3611\left(1 - 0.3611\right)}{180}}} \approx -2.82$$
-
-6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+Notice that $\displaystyle{p_{\text{swipe}} = \frac{46}{200}}$, so $p_{\text{swipe}} = 0.23$ and<br/> $\displaystyle{p_{\text{personality}} = \frac{65}{180}}$, so $p_{\text{personality}} \approx 0.3611$
 
 :::
 
@@ -324,17 +322,17 @@ $$\texttt{test statistic} = \frac{\left(0.23 - 0.3611\right) - 0}{\sqrt{\frac{0.
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
 ::::{.columns}
 
-:::{.column width="15%"}
+:::{.column width="20%"}
 
 :::
 
-:::{.column width="70%"}
+:::{.column width="60%"}
 
 ```{r}
 x_vals <- seq(-3, 3, length.out = 500)
@@ -360,7 +358,7 @@ ggplot() +
 
 :::
 
-:::{.column width="15%"}
+:::{.column width="20%"}
 
 :::
 
@@ -378,26 +376,259 @@ ggplot() +
 
 5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
 
-$$\texttt{test statistic} = \frac{\left(0.23 - 0.3611\right) - 0}{\sqrt{\frac{0.23\left(1 - 0.23\right)}{200} + \frac{0.3611\left(1 - 0.3611\right)}{180}}} \approx -2.82$$
+Notice that $\displaystyle{p_{\text{swipe}} = \frac{46}{200}}$, so $p_{\text{swipe}} = 0.23$ and<br/> $\displaystyle{p_{\text{personality}} = \frac{65}{180}}$, so $p_{\text{personality}} \approx 0.3611$
 
-6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+Notice also that our *standard error* is calculated as
+
+$$S_E = \sqrt{\frac{p_{\text{swipe}}\left(1 - p_{\text{swipe}}\right)}{n_{\text{swipe}}} + \frac{p_{\text{personality}}\left(1 - p_{\text{personality}}\right)}{n_{\text{personality}}}}$$
 
 :::
+
+:::::
+
+::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
 
 ::::{.columns}
 
-:::{.column width="15%"}
+:::{.column width="20%"}
 
 :::
 
-:::{.column width="70%"}
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+Notice that $\displaystyle{p_{\text{swipe}} = \frac{46}{200}}$, so $p_{\text{swipe}} = 0.23$ and<br/> $\displaystyle{p_{\text{personality}} = \frac{65}{180}}$, so $p_{\text{personality}} \approx 0.3611$
+
+Notice also that our *standard error* is calculated as
+
+$$S_E = \sqrt{\frac{p_{\text{swipe}}\left(1 - p_{\text{swipe}}\right)}{n_{\text{swipe}}} + \frac{p_{\text{personality}}\left(1 - p_{\text{personality}}\right)}{n_{\text{personality}}}}$$
+
+So, 
+
+$$\texttt{test statistic} = \frac{\left(0.23 - 0.3611\right) - 0}{\sqrt{\frac{0.23\left(1 - 0.23\right)}{200} + \frac{0.3611\left(1 - 0.3611\right)}{180}}} \approx -2.82$$
+
+:::
+
+:::::
+
+::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+$$\texttt{test statistic} \approx -2.82$$
+
+:::
+
+6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+
+:::::
+
+::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+$$\texttt{test statistic} \approx -2.82$$
+
+6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
 
 ```{r}
 ggplot() + 
   geom_line(aes(x = x_vals,
                 y = dnorm(x_vals, 0, 1)),
             lwd = 1.5) + 
-  geom_vline(xintercept = -2.82) + 
+  geom_vline(xintercept = -2.82,
+             lwd = 1.5,
+             linetype = "dashed") + 
   scale_x_continuous(breaks = c(-2.82, -2, 0, 2)) + 
   labs(
     title = "",
@@ -408,7 +639,116 @@ ggplot() +
 
 :::
 
-:::{.column width="15%"}
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+7. $p$-value = ...
+
+::::::
+
+:::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+$$\texttt{test statistic} \approx -2.82$$
+
+6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd = 1.5) + 
+  geom_vline(xintercept = -2.82,
+             lwd = 1.5,
+             linetype = "dashed") + 
+  scale_x_continuous(breaks = c(-2.82, -2, 0, 2)) + 
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
 
 :::
 
@@ -419,6 +759,230 @@ ggplot() +
 :::::
 
 ::::::
+
+:::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+$$\texttt{test statistic} \approx -2.82$$
+
+6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd = 1.5) + 
+  geom_vline(xintercept = -2.82,
+             lwd = 1.5,
+             linetype = "dashed") + 
+  scale_x_continuous(breaks = c(-2.82, -2, 0, 2)) + 
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+7. $p$-value = `2*pnorm(-2.82, 0, 1)` $\approx$ `r round(2*pnorm(-2.82, 0, 1), 4)`
+
+8. $p$-value $< \alpha$, we reject $H_0$ and accept $H_a$
+
+:::::
+
+::::::
+
+:::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+$$\texttt{test statistic} \approx -2.82$$
+
+6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd = 1.5) + 
+  geom_vline(xintercept = -2.82,
+             lwd = 1.5,
+             linetype = "dashed") + 
+  scale_x_continuous(breaks = c(-2.82, -2, 0, 2)) + 
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+7. $p$-value = `2*pnorm(-2.82, 0, 1)` $\approx$ `r round(2*pnorm(-2.82, 0, 1), 4)`
+
+8. Our observed data is incompatible with the proportion of successful relationships being equal. The relationship success rates differ across the two apps.
+
+:::::
+
+::::::
+
+:::::::
 
 ## A Completed Confidence Interval
 
