@@ -1428,6 +1428,7 @@ ggplot() +
               alpha = 0.75) + 
   geom_line(aes(x = x_vals,
                 y = dnorm(x_vals, 0, 1))) + 
+  scale_x_continuous(breaks = NULL) +
   labs(
     subtitle = "Samples Satisfying the Alternative Hypothesis",
     x = "",
@@ -1473,6 +1474,7 @@ ggplot() +
               alpha = 0.75) + 
   geom_line(aes(x = x_vals,
                 y = dnorm(x_vals, 0, 1))) + 
+  scale_x_continuous(breaks = NULL) +
   labs(
     subtitle = "Samples Satisfying the Alternative Hypothesis",
     x = "",
@@ -1520,6 +1522,7 @@ ggplot() +
               alpha = 0.75) + 
   geom_line(aes(x = x_vals,
                 y = dnorm(x_vals, 0, 1))) + 
+  scale_x_continuous(breaks = NULL) +
   labs(
     subtitle = "Samples Satisfying the Alternative Hypothesis",
     x = "",
@@ -1577,6 +1580,7 @@ ggplot() +
               alpha = 0.75) + 
   geom_line(aes(x = x_vals,
                 y = dnorm(x_vals, 0, 1))) + 
+  scale_x_continuous(breaks = NULL) +
   labs(
     subtitle = "Samples Satisfying the Alternative Hypothesis",
     x = "",
@@ -1652,6 +1656,7 @@ ggplot() +
               alpha = 0.75) + 
   geom_line(aes(x = x_vals,
                 y = dnorm(x_vals, 0, 1))) + 
+  scale_x_continuous(breaks = NULL) +
   labs(
     subtitle = "Samples Satisfying the Alternative Hypothesis",
     x = "",
@@ -1737,6 +1742,7 @@ ggplot() +
               alpha = 0.75) + 
   geom_line(aes(x = x_vals,
                 y = dnorm(x_vals, 0, 1))) + 
+  scale_x_continuous(breaks = NULL) +
   labs(
     subtitle = "Samples Satisfying the Alternative Hypothesis",
     x = "",
