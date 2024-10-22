@@ -1,0 +1,462 @@
+---
+title: "Practicing Inference with Categorical Data"
+subtitle: "One- and Two-Proportion Inference"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 20pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+
+theme_set(theme_bw(base_size = 32))
+
+pop_prop <- 0.74
+num_obs <- 17
+new_obs <- 113
+num_samps <- 100
+
+set.seed(8202024)
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
+## Reminder: Framework for Constructing Confidence Intervals
+
+**General Strategy:** Each time we seek to construct a confidence interval, we will...
+
+1. Read the scenario very carefully
+2. Determine what it is we are trying to estimate -- a mean? a proportion? a difference in means or proportions?
+3. Recall the general "formula" for the *confidence interval*
+
+. . .
+
+$$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot S_E}$$
+
+4. Re-read the scenario to identify the *point estimate*, which comes from the sample data
+5. Use the Standard Error Decision Tree to identify how to compute the *standard error* ($S_E$)
+6. Identify or compute the appropriate *critical value*
+7. Find the *lower-* and *upper-bounds* for the confidence interval by evaluating the "formula"
+8. Interpret the confidence interval in the appropriate context
+
+## Reminder: Hypothesis Testing Framework {.smaller}
+
+**General Strategy:** Each time we conduct a hypothesis test, we will...
+
+1. Read the scenario carefully and determine whether you are testing a claim about a mean, a proportion, comparison of means, or comparison of proportions.
+2. Identify the claim being tested and state the *null hypothesis* ($H_0$) and *alternative hypothesis* ($H_a$). The null hypothesis represents the "status quo" or "no difference" and always involves an equal sign, while the alternative hypothesis is the claim to be tested and involves one of: $<,~>,~\neq$
+3. Draw a picture of your alternative hypothesis, shading in the tails corresponding to samples that would satisfy the alternative hypothesis.
+4. Set the level of significance ($\alpha$) for the test. The level of significance is the "cut-off" for a sample being unusual/unlikely/unexpected. The standard cutoff is $\alpha = 0.05$, unless we are told otherwise.
+5. Compute the *test statistic*, where $\displaystyle{\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}}$
+
+    + The *point estimate* comes from the sample data
+    + The *null value* comes from the null hypothesis
+    + The *standard error* ($S_E$) formula is found on the Standard Error Decision Tree
+
+6. The test statistic is just a boundary value, use it along with your picture from step 3 to calculate a $p$-value (the probability of observing data at least as extreme as ours if the null hypothesis were true).
+7. Compare your $p$-value to the level of significance ($\alpha$) demanded by your test and make a decision about whether or not to reject the null hypothesis.
+8. Interpret the result of your hypothesis test in the context appropriate for your scenario.
+
+## Inference on a Single Proportion versus Comparisons of Proportions
+
+. . . 
+
+At our last class meeting, we saw one example of the construction of a confidence interval and another example conducting a hypothesis test
+
+. . . 
+
+In both of those scenarios, the population parameter of interest was a single *population proportion*
+
+. . . 
+
+We'll see scenarios like this again today, but we'll also consider scenarios in which we'd like to compare two population proportions.
+
+. . . 
+
+The general procedures for constructing confidence intervals or conducting hypothesis tests are the same in both scenarios, except that in the comparison scenarios...
+
++ the population parameter of interest is the *difference in proportions* between the two sub-populations
++ the formula for computing the standard error ($S_E$) is different
+
+## Navigating the Standard Error Tree
+
+. . . 
+
+One of the main purposes of the *Standard Error Decision Tree* document is to help you identify the appropriate standard error ($S_E$) to use in your calculation of a confidence interval or test statistic
+
+. . . 
+
+To navigate the tree, begin from the box at the top, which asks whether we are working with means ($\mu$) or proportions ($p$)
+
+. . . 
+
+Follow your answer down the tree and continue answering the questions until you land inside a box with a standard error formula ($S_E = \cdots$)
+
+. . . 
+
+The side of the tree for working with proportions is less complicated than the side for means -- we'll stick to proportions for now
+
+. . . 
+
+At this point, we'll either calculate $\displaystyle{S_E = \sqrt{\frac{p\left(1 - p\right)}{n}}}$ for a single proportion or $\displaystyle{S_E = \sqrt{\frac{p_1\left(1 - p_1\right)}{n_1} + \frac{p_2\left(1 - p_2\right)}{n_2}}}$ for a comparison between two population proportions
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 20 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 20 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+:::
+
+3. See the picture of the alternative hypothesis below:
+
+::::
+
+::::{.column width="50%"}
+
+::::
+
+:::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+4. Set $\alpha = 0.10$
+
+::::
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+
+::::::
+
+:::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+$$\texttt{test statistic} = \frac{\left(0.23 - 0.3611\right) - 0}{\sqrt{\frac{0.23\left(1 - 0.23\right)}{200} + \frac{0.3611\left(1 - 0.3611\right)}{180}}} \approx -2.82$$
+
+6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+
+:::
+
+:::::
+
+::::::
+
+## A Completed Hypothesis Test {.smaller}
+
+**Scenario:** A group of students is curious about whether the success rates (finding a long-term relationship) differ between people using a swipe-based dating app versus a personality-based matchmaking app. They conduct a survey of users from both types of apps and compare the proportion of users who report being in a long-term relationship. On the swipe-based app, 46 out of 200 users surveyed reported being in a long-term relationship. On the personality-based site, 65 out of 180 users surveyed said the same. Is there significant evidence to suggest (at the 10% level of significance) that proportion of successful relationships are not the same for swipe-based apps and personality-based apps?
+
+:::::::{.columns}
+
+::::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+1. We're testing a claim comparing two population<br/> proportions
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+
+3. See the picture of the alternative hypothesis below:
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+x_vals <- seq(-3, 3, length.out = 500)
+x_vals_shade <- seq(1.96, 3, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_ribbon(aes(x = -x_vals_shade,
+                  ymin = 0,
+                  ymax = dnorm(-x_vals_shade, 0, 1)),
+              fill = "steelblue") + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd =  1.5) + 
+  scale_x_continuous(breaks = NULL) + 
+  labs(title = "Samples Favoring Ha",
+       x = "",
+       y = "")
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+4. Set $\alpha = 0.10$
+
+:::::
+
+::::::
+
+::::::{.column width="50%"}
+
+:::{.nonincremental}
+
+5. We'll calculate the test statistic, where $\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}$
+
+$$\texttt{test statistic} = \frac{\left(0.23 - 0.3611\right) - 0}{\sqrt{\frac{0.23\left(1 - 0.23\right)}{200} + \frac{0.3611\left(1 - 0.3611\right)}{180}}} \approx -2.82$$
+
+6. Now we'll draw our test statistic on our standard normal distribution and calculate the $p$-value
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dnorm(x_vals, 0, 1)),
+            lwd = 1.5) + 
+  geom_vline(xintercept = -2.82) + 
+  scale_x_continuous(breaks = c(-2.82, -2, 0, 2)) + 
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+7. $p$-value = `2*pnorm(-2.82, 0, 1)` $\approx$ `r round(2*pnorm(-2.82, 0, 1), 4)`
+
+:::::
+
+::::::
+
+## A Completed Confidence Interval
+
+## Examples to Try: Influencer and Viral Videos
+
+**Scenario:** A social media influencer claims that 60% of their followers have watched their latest viral video. A marketing company surveys 400 randomly selected followers and finds that 54% have actually watched the video. Is there enough evidence to reject the influencer's claim at the 5% significance level?
+
+## Examples to Try: Fast Food Preferences
+
+**Scenario:** A fast food chain claims that 70% of customers prefer its chicken sandwich over its competitors'. A random sample of 300 customers shows that only 65% prefer the chain's sandwich. Construct a 90% confidence interval for the true proportion of customers who prefer the sandwich. Does the chain's claim fall within the confidence interval?
+
+## Examples to Try: Vaccine Approval Rate
+
+**Scenario:** In clinical trials, a new vaccine was found to be effective in 85% of cases. After the vaccine was approved, a public health survey randomly sampled 1,200 people who received the vaccine and found that 83% of them reported its effectiveness. Is this evidence that the true effectiveness rate of the vaccine is different from 85%? Test at the 1% significance level.
+
+## Examples to Try: Coffee Shop Loyalty Cards
+
+**Scenario:** A coffee shop chain claims that 40% of its customers use loyalty cards. A random sample of 250 customers reveals that 38% of them use the loyalty cards. At the 10% significance level, can you reject the coffee shop's claim?
+
+## Examples to Try: Recycling Habits in a City
+
+**Scenario:** A city's environmental department claims that 65% of its residents participate in curbside recycling programs. A local survey of 800 randomly selected residents finds that 68% of them recycle. Construct a 90% confidence interval for the true proportion of recyclers in the city. Does this support the department's claim?
+
+## Examples to Try: Return Rates for an Online Store
+
+**Scenario:** An online store states that its customer return rate is 8%. A customer service audit randomly selects 700 transactions and finds that 6.5% of the customers returned items. Construct a 95% confidence interval for the true return rate. Is the store’s stated return rate within this interval?
+
+## Examples to Try: Video Game Console Popularity
+
+**Scenario:** A gaming company believes that 75% of video game players prefer their console over competitors'. A survey of 500 gamers reveals that 72% prefer the company’s console. Construct a 98% confidence interval for the true proportion of gamers who prefer the console. Does the company's claim fall within this interval?
+
+## Examples to Try: Support for a New Environmental Policy
+
+**Scenario:** A politician claims that a minority of the public supports a new environmental policy. A random sample of 900 people finds that 54% of them support the policy. At the 5% significance level, can you reject the politician's claim?
+
+## Next Time...
+
+<center><br/> Practicing with Inference</center>
+
+
+
