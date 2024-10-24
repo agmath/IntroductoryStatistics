@@ -60,7 +60,7 @@ a:visited {
 $$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot S_E}$$
 
 4. Re-read the scenario to identify the *point estimate*, which comes from the sample data
-5. Use the Standard Error Decision Tree to find how to compute the *standard error* ($S_E$)
+5. Use [the Standard Error Decision Tree](https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"} to find how to compute the *standard error* ($S_E$)
 6. Identify or compute the appropriate *critical value*
 7. Find the *lower-* and *upper-bounds* for the confidence interval by evaluating the "formula"
 8. Interpret the confidence interval in the appropriate context
@@ -77,7 +77,7 @@ $$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array
 
     + The *point estimate* comes from the sample data
     + The *null value* comes from the null hypothesis
-    + The *standard error* ($S_E$) formula is found on the Standard Error Decision Tree
+    + The *standard error* ($S_E$) formula is found on [the Standard Error Decision Tree](https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"}
 
 6. The test statistic is just a boundary value, use it along with your picture from step 3 to calculate a $p$-value (the probability of observing data at least as extreme as ours if the null hypothesis were true).
 7. Compare your $p$-value to the level of significance ($\alpha$) demanded by your test and make a decision about whether or not to reject the null hypothesis.
