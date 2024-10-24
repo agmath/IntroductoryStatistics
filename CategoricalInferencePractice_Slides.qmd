@@ -60,7 +60,7 @@ a:visited {
 $$\scriptsize{\left(\begin{array}{c}\texttt{point}\\ \texttt{estimate}\end{array}\right) \pm \left(\begin{array}{c}\texttt{critical}\\ \texttt{value}\end{array}\right)\cdot S_E}$$
 
 4. Re-read the scenario to identify the *point estimate*, which comes from the sample data
-5. Use the Standard Error Decision Tree to identify how to compute the *standard error* ($S_E$)
+5. Use the Standard Error Decision Tree to find how to compute the *standard error* ($S_E$)
 6. Identify or compute the appropriate *critical value*
 7. Find the *lower-* and *upper-bounds* for the confidence interval by evaluating the "formula"
 8. Interpret the confidence interval in the appropriate context
@@ -156,7 +156,7 @@ At this point, we'll either calculate $\displaystyle{S_E = \sqrt{\frac{p\left(1 
 :::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 :::
 
@@ -181,7 +181,7 @@ At this point, we'll either calculate $\displaystyle{S_E = \sqrt{\frac{p\left(1 
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -249,7 +249,7 @@ ggplot() +
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -322,7 +322,7 @@ Notice that $\displaystyle{p_{\text{swipe}} = \frac{46}{200}}$, so $p_{\text{swi
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -399,7 +399,7 @@ $$S_E = \sqrt{\frac{p_{\text{swipe}}\left(1 - p_{\text{swipe}}\right)}{n_{\text{
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -480,7 +480,7 @@ $$\texttt{test statistic} = \frac{\left(0.23 - 0.3611\right) - 0}{\sqrt{\frac{0.
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -555,7 +555,7 @@ $$\texttt{test statistic} \approx -2.82$$
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -664,7 +664,7 @@ ggplot() +
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -773,7 +773,7 @@ ggplot() +
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
@@ -884,7 +884,7 @@ ggplot() +
 :::::{.nonincremental}
 
 1. We're testing a claim comparing two population<br/> proportions
-2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write these them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
+2. The hypotheses are: $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} = p_{\text{personality}}\\ H_a & : & p_{\text{swipe}} \neq p_{\text{personality}}\end{array}$, but a<br/> better way to write them is $\begin{array}{lcl} H_0 & : & p_{\text{swipe}} - p_{\text{personality}} = 0\\ H_a & : & p_{\text{swipe}} - p_{\text{personality}} \neq 0\end{array}$
 
 3. See the picture of the alternative hypothesis below:
 
