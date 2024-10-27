@@ -1,0 +1,991 @@
+---
+title: "Chi-Squared Goodness of Fit and Independence"
+subtitle: "Inference on Categorical Variables with Multiple Levels"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 20pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+library(kableExtra)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+
+theme_set(theme_bw(base_size = 32))
+
+pop_prop <- 0.74
+num_obs <- 17
+new_obs <- 113
+num_samps <- 100
+
+set.seed(8202024)
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
+## Reminder of Inference and Inferential Tools
+
+. . . 
+
+We use *statistical inference* to make or test claims about *population parameters* which we cannot measure directly
+
+  + We ***make*** claims by constructing *confidence intervals*
+  + We ***test*** claims by conducting *hypothesis tests*
+
+. . . 
+
+*Confidence intervals* provide a range of *plausible values* for a *population parameter*
+
+  + They are centered at the *point estimate* (sample statistic)
+  + They open up some "wiggle room" called a *margin of error*, which is influenced by the *critical value* and the *standard error*
+  
+. . .  
+
+$$\left(\begin{array}{c}\text{point}\\ \text{estimate}\end{array}\right) \pm \left(\begin{array}{c}\text{critical}\\ \text{value}\end{array}\right)\left(\begin{array}{c}\text{standard}\\ \text{error}\end{array}\right)$$
+
+## Reminder of Inference and Inferential Tools
+
+:::{.nonincremental}
+
+We use *statistical inference* to make or test claims about *population parameters* which we cannot measure directly
+
+  + We ***make*** claims by constructing *confidence intervals*
+  + We ***test*** claims by conducting *hypothesis tests*
+
+*Confidence intervals* provide a range of *plausible values* for a *population parameter*
+
+  + They are centered at the *point estimate* (sample statistic)
+  + They open up some "wiggle room" called a *margin of error*, which is influenced by the *critical value* and the *standard error*
+  
+$$\left(\begin{array}{c}\text{point}\\ \text{estimate}\end{array}\right) \pm \boxed{\left(\begin{array}{c}\text{critical}\\ \text{value}\end{array}\right)\left(\begin{array}{c}\text{standard}\\ \text{error}\end{array}\right)}$$
+
+:::
+
+## Reminder of Inference and Inferential Tools {.nonincremental}
+
+:::{.nonincremental}
+
+We use *statistical inference* to make or test claims about *population parameters* which we cannot measure directly
+
+  + We ***make*** claims by constructing *confidence intervals*
+  + We ***test*** claims by conducting *hypothesis tests*
+
+*Confidence intervals* provide a range of *plausible values* for a *population parameter*
+
+  + They are centered at the *point estimate* (sample statistic)
+  + They open up some "wiggle room" called a *margin of error*, which is influenced by the *critical value* and the *standard error*
+  
+$$\left(\begin{array}{c}\text{point}\\ \text{estimate}\end{array}\right) \pm \left(\begin{array}{c}\text{critical}\\ \text{value}\end{array}\right)\left(\begin{array}{c}\text{standard}\\ \text{error}\end{array}\right)$$
+
+:::
+
+## Inferential Tools (Continued)
+
+. . . 
+
+*Hypothesis tests* provide a framework for testing claims about a *population parameter*
+
+i) Assume the claim is false (*null hypothesis*)
+ii) Measure the probability of observing a sample at least as extreme as ours in a reality where the null hypothesis holds (this is called the $p$-value)
+
+    + If our observed data is "unlikely" ($p$-value is lower than the *level of significance*, $\alpha$), then what  we've observed is *incompatible with the null hypothesis* and we declare that the null hypothesis is false, accepting the alternative hypothesis instead
+    + If our observed data is not "unlikely" ($p$-value at least as large as the *level of significance*), then our observed data is compatible with a reality in which the null hypothesis holds -- we don't reject the null hypothesis
+    
+## Where We Are; Where We're Going...
+
+. . . 
+
+```{r}
+inf_df <- tibble(
+  "Inference On..." = c("One Binary Categorical Variable",
+                          "Association Between Two Binary Categorical Variables",
+                          "One MultiClass Categorical Variable",
+                          "Associations Between Two MultiClass Categorical Variables",
+                          "One Numerical Variable",
+                          "Association Between a Numerical Variable and a Binary Categorical Variable",
+                          "Association Between a Numerical Variable and a MultiClass Categorical Variable",
+                          "Association Between a Numerical Variable and a Single Other Numerical Variable",
+                          "Association Between a Numerical Variable and Many Other Variables",
+                          "Association Between a Categorical Variable and Many Other Variables"),
+  "Covered" = c("✔", "✔", "Today", "Today", "", "", "", "", "", "✘")
+)
+
+inf_df %>%
+  slice(1:2) %>%
+  kable() %>%
+  kable_styling()
+```
+
+## Where We Are; Where We're Going...
+
+```{r}
+inf_df %>%
+  slice(1:4) %>%
+  kable() %>%
+  kable_styling()
+```
+
+## Where We Are; Where We're Going...
+
+```{r}
+inf_df %>%
+  slice(1:9) %>%
+  kable() %>%
+  kable_styling()
+```
+
+## Where We Are; Where We're Going...
+
+```{r}
+inf_df %>%
+  kable() %>%
+  kable_styling()
+```
+
+## Reminder: Inference on a Single Categorical Variable
+
+. . . 
+
+We've been focused on binary (two-class) categorical variables
+
+. . . 
+
+The single-variable questions we've asked are of the form:
+
++ Can we estimate the population proportion?
+
+  + For example, *with 95% confidence, what is the proportion of likely voters in New Hampshire who are planning to vote in favor of Amendment 1?*
+  
++ Is the population proportion greater/less/different than some proposed value?
+
+  + For example, *is the proportion of likely voters in New Hampshire who favor Amendment 1 at least 67%?*
+  
+. . . 
+
+But what if we were interested in categorical variables that have more than just two levels?
+
+. . .
+
+> Are ideological alignments of voting-aged citizens in the US uniformly distributed across the categories *very liberal*, *liberal*, *moderate*, *conservative*, and *very conservative*?
+
+## Reminder: Inference on Associations Between Two Categorical Variables
+
+. . . 
+
+Our multivariable questions have been of the form:
+
++ Can we estimate the difference in population proportions between Group A and Group B?
+
+  + For example, *Find a 90% confidence interval for the difference in the proportion of students who feel a sense of belonging at their university between first-year students and seniors.*
++ Is the population proportion in Group A greater/less/different than the population proportion in Group B?
+
+  + For example, *Is the proportion of students who feel a sense of belonging at their university different between first-year students and seniors?*
+
+. . . 
+
+What about associations between categorical variables where at least one has three or more levels?
+
+. . . 
+
+> *Is there an association between and individual's ideology and their perception of the state of their finances (better off, worse off, about the same) relative to four years ago?*
+
+## Highlights
+
++ Analysing the form of a *test statistic*
++ The need for a different *test statistic*
++ The need for a new probability *distribution*
++ Chi-Squared Tests for *Goodness of Fit* (inference on a single, multiclass categorical variable)
+
+  + A Completed Example
++ Chi-Squared Tests for *Independence* (inference on associations between two potentially multiclass categorical variables)
+
+  + A Completed Example
+
++ Additional Examples
+
+## A Closer Look at a Test Statistic
+
+. . . 
+
+So far, I've told you that a test statistic takes the form:
+
+. . .
+
+$$\begin{array}{c}\text{test}\\ \text{statistic}\end{array} = \frac{\left(\begin{array}{c}\text{point}\\ \text{estimate}\end{array}\right) - \left(\begin{array}{c}\text{null}\\ \text{value}\end{array}\right)}{S_E}$$
+
++ The *point estimate* comes from our sample data -- it is our *observed* value
++ The *null value* comes from our null hypothesis -- it is our *expected* outcome
+
+. . . 
+
+Another way to phrase the test statistic formula then is
+
+. . . 
+
+$$\begin{array}{c}\text{test}\\ \text{statistic}\end{array} = \frac{\text{observed} - \text{expected}}{S_E}$$
+
+. . . 
+
+For example, if our *null hypothesis* assumed that 50% of individuals have characteristic "A" and a sample of 200 people included 95 that did, then our *observed* proportion is 0.475 and our *expected* proportion was 0.50, so our sample was about 2.5 "percentage points" away from the expected sample.
+
+## A New Test Statistic
+
+. . . 
+
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
+
+. . . 
+
+For example, if we surveyed 100 voters in the US and asked them if they identify more closely with a *liberal* ideology or a *conservative* ideology and the results were
+
+. . . 
+
+<center>
+
+| Liberal | Conservative |
+|:---:|:---:|
+| 54 | ? |
+
+</center>
+
+. . . 
+
+Then you know what the full table looks like...
+
+. . . 
+
+<center>
+
+| Liberal | Conservative |
+|:---:|:---:|
+| 54 | 46 |
+
+</center>
+
+
+## A New Test Statistic
+
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
+
+With multiclass categorical variables, this is not the case
+
+. . . 
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| ? | ? | ? | ? | ? | 
+
+</center>
+
+. . .
+
+If we collected data from a sample of 500 citizens and political ideology was uniformly distributed, then we would **expect**:
+
+. . .
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 100 | 100 | 100 | 100 | 100 | 
+
+</center>
+
+. . .
+
+But what if we **observed**:
+
+. . .
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 | 105 | 175 | 140 | 45 | 
+
+</center>
+
+## A New Test Statistic
+
+**Expected** results from 500 surveyed individuals:
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 100 | 100 | 100 | 100 | 100 | 
+
+</center>
+
+**Observed** results from 500 surveyed individuals:
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 | 105 | 175 | 140 | 45 | 
+
+</center>
+
+Comparing a single *observed* value to a single *expected* value is no longer enough to describe our scenario
+
+. . . 
+
+We could calculate the difference **observed - expected** for each group though
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 - 100 = -65 | 105 - 100 = 5 | 175 - 100 = 75 | 140 - 100 = 40 | 45 - 100 = -55 | 
+
+</center>
+
+## A New Test Statistic
+
+Differences (**observed - expected**) in results from 500 surveyed individuals:
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| -65 | 5 | 75 | 40 | -55 | 
+
+</center>
+
+. . . 
+
+If we just add these up, we'll get 0 because the positive and negative differences will cancel one another out.
+
+. . . 
+
+We want to penalize "large" deviations more than small deviations, so we'll square the differences.
+
+. . .
+
+A "large" deviation is relative -- a deviation of 50 is very large if the expected count was only 20 to begin with, but a deviation of 50 is quite small if the expected count was 1000. We'll divide each squared deviation by the expected count to compensate for this.
+
+. . . 
+
+Our resulting test statistic for this scenario takes the form
+
+$$\sum_{i = 1}^{k}{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}$$
+
+where $k$ is the number of categories/groups.
+
+## The Chi-Squared Distribution
+
+This new test statistic doesn't follow a normal distribution.
+
+## The Chi-Squared Distribution
+
+This new test statistic doesn't follow a normal distribution. It instead follows a *Chi-Squared* distribution.
+
+. . . 
+
+Actually, the Chi-Squared distribution isn't a single distribution -- it is a family of distributions defined by a single parameter...*degrees of freedom*.
+
+. . . 
+
+We'll talk more about *degrees of freedom* when we get to the actual tests but, for now, here are a few Chi-Squared distributions.
+
+. . .
+
+::::{.columns}
+
+:::{.column width="70%"}
+
+```{r}
+library(tidyverse)
+colors <- c("df1" = "red", "df2" = "orange", "df6" = "darkgreen", "df10" = "purple")
+
+x_vals <- seq(0, 20, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 1),
+                color = "df1"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 2),
+                color = "df2"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 6),
+                color = "df6"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 10),
+                color = "df10"),
+            lwd = 1.25) + 
+  scale_color_manual(values = colors, 
+                     limits = c("df1", "df2", "df6", "df10")) +
+  coord_cartesian(ylim = c(0, 1)) +
+  labs(
+    title = "Chi-Squared Distributions",
+    x = "χ2",
+    y = "",
+    color = "Degrees of \nFreedom"
+  )
+```
+
+:::
+
+:::{.column width="30%"}
+
+The Chi-Squared distributions are defined over non-negative numbers only, are right-skewed, and [for our course] we'll only ever be interested in the area in the right tail.
+
+:::
+
+::::
+
+## The Chi-Squared Distribution
+
+This new test statistic doesn't follow a normal distribution. It instead follows a *Chi-Squared* distribution.
+
+Actually, the Chi-Squared distribution isn't a single distribution -- it is a family of distributions defined by a single parameter...*degrees of freedom*.
+
+We'll talk more about *degrees of freedom* when we get to the actual tests but, for now, here are a few Chi-Squared distributions.
+
+::::{.columns}
+
+:::{.column width="70%"}
+
+```{r}
+library(tidyverse)
+colors <- c("df1" = "red", "df2" = "orange", "df6" = "darkgreen", "df10" = "purple")
+
+x_vals <- seq(0, 20, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 1),
+                color = "df1"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 2),
+                color = "df2"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 6),
+                color = "df6"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 10),
+                color = "df10"),
+            lwd = 1.25) + 
+  scale_color_manual(values = colors, 
+                     limits = c("df1", "df2", "df6", "df10")) +
+  coord_cartesian(ylim = c(0, 1)) +
+  labs(
+    title = "Chi-Squared Distributions",
+    x = "χ2",
+    y = "",
+    color = "Degrees of \nFreedom"
+  )
+```
+
+:::
+
+:::{.column width="30%"}
+
+The Chi-Squared distributions are defined over non-negative numbers only, are right-skewed, and [for our course] we'll only ever be interested in the area in the right tail.
+
+`1 - pchisq(q, df)`
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+. . . 
+
+**Scenario:** We wonder if political ideologies (*very liberal*, *liberal*, *moderate*, *conservative*, or *very conservative*) are ***uniformly*** distributed. We collect data from a random sample of 500 individuals and observe the following results
+
+. . . 
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 | 105 | 175 | 140 | 45 | 
+
+</center>
+
+. . .
+
+Run a test at the $\alpha = 0.05$ level of significance to determine whether the distribution of political ideologies is uniform.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+Recall the table of differences from earlier
+
+. . . 
+
+<center>
+
+|  | Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| **Observed** | 35 | 105 | 175 | 140 | 45 | 
+| **Expected** | 100 | 100 | 100 | 100 | 100 |
+| **Difference** | -65 | 5 | 75 | 40 | -55 |
+
+</center>
+
+. . . 
+
+$$\begin{array}{c}\text{test}\\ \text{statistic}\end{array} = \sum_{i = 1}^{5}{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}$$
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+Recall the table of differences from earlier
+
+<center>
+
+|  | Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| **Observed** | 35 | 105 | 175 | 140 | 45 | 
+| **Expected** | 100 | 100 | 100 | 100 | 100 |
+| **Difference** | -65 | 5 | 75 | 40 | -55 |
+
+</center>
+
+$$\begin{array}{c}\text{test}\\ \text{statistic}\end{array} = \frac{\left(-65\right)^2}{100} + \frac{5^2}{100} + \frac{75^2}{100} + \frac{40^2}{100} + \frac{\left(-55\right)^2}{100}$$
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+Recall the table of differences from earlier
+
+<center>
+
+|  | Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| **Observed** | 35 | 105 | 175 | 140 | 45 | 
+| **Expected** | 100 | 100 | 100 | 100 | 100 |
+| **Difference** | -65 | 5 | 75 | 40 | -55 |
+
+</center>
+
+$$\begin{array}{c}\text{test}\\ \text{statistic}\end{array} = 145$$
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+Alternatively,
+
+```{r}
+#| echo: true
+
+observed <- c(35, 105, 175, 140, 45)
+expected <- c(100, 100, 100, 100, 100)
+
+sum((observed - expected)^2/expected)
+```
+
+:::
+
+::::
+
+Recall the table of differences from earlier
+
+<center>
+
+|  | Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| **Observed** | 35 | 105 | 175 | 140 | 45 | 
+| **Expected** | 100 | 100 | 100 | 100 | 100 |
+| **Difference** | -65 | 5 | 75 | 40 | -55 |
+
+</center>
+
+$$\begin{array}{c}\text{test}\\ \text{statistic}\end{array} = \frac{\left(-65\right)^2}{100} + \frac{5^2}{100} + \frac{75^2}{100} + \frac{40^2}{100} + \frac{\left(-55\right)^2}{100} = \boxed{~145~}$$
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+$$\chi^2~\text{test statistic} = 145$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+4. Calculate the $p$-value using the Chi-Squared distribution
+
+:::
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+$$\chi^2~\text{test statistic} = 145$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+
+```{r}
+x_vals <- seq(0, 160, length.out = 250)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals,
+                           df = 4)),
+            color = "purple",
+            lwd = 1.25) + 
+  geom_vline(xintercept = 145,
+             linetype = "dashed") +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+$$\chi^2~\text{test statistic} = 145$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+
+```{r}
+x_vals <- seq(0, 160, length.out = 250)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals,
+                           df = 4)),
+            color = "purple",
+            lwd = 1.25) + 
+  geom_vline(xintercept = 145,
+             linetype = "dashed") +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+`1 - pchisq(145, df = 5 - 1)` $\approx$ `r 1 - pchisq(145, df = 5 - 1)`
+
+:::
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+$$\chi^2~\text{test statistic} = 145$$
+
+**Note:** Remember that a reported $p$-value of "0" means that the $p$-value is extremely small and is being *rounded to 0* -- it is not possible to have a $p$-value which is 0 exactly.
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+
+```{r}
+x_vals <- seq(0, 160, length.out = 250)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals,
+                           df = 4)),
+            color = "purple",
+            lwd = 1.25) + 
+  geom_vline(xintercept = 145,
+             linetype = "dashed") +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+`1 - pchisq(145, df = 5 - 1)` $\approx$ `r 1 - pchisq(145, df = 5 - 1)`
+
+:::
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Goodness of Fit
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+1. $\begin{array}{lcl} H_0 & : & \text{The distribution is uniform}\\ H_a & : & \text{The distribution is not uniform}\end{array}$
+2. Set the level of significance at $\alpha = 0.05$
+3. Calculate the *test statistic*
+
+$$\chi^2~\text{test statistic} = 145$$
+
+5. The $p$-value is less than $0.05$ (our desired level of significance), so we reject the null hypothesis and accept the alternative
+
+:::
+
+6. The observed data are not compatible with political ideologies being distributed uniformly. The distribution is different.
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+
+```{r}
+x_vals <- seq(0, 160, length.out = 250)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals,
+                           df = 4)),
+            color = "purple",
+            lwd = 1.25) + 
+  geom_vline(xintercept = 145,
+             linetype = "dashed") +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+`1 - pchisq(145, df = 5 - 1)` $\approx$ `r 1 - pchisq(145, df = 5 - 1)`
+
+:::
+
+:::
+
+::::
+
+## Recap: Chi-Squared Goodness of Fit
+
+. . . 
+
+We now have an ability to test whether the levels of a categorical variable over a population follow a particular distribution
+
+. . . 
+
+> Here, we tested for a uniform distribution, but we can test any generic distribution we like -- the choice just influences how we calculate our *expected* counts
+
+## Recap: Chi-Squared Goodness of Fit
+
+We now have an ability to test whether the levels of a categorical variable over a population follow a particular distribution
+
+The strategy for testing Goodness of Fit follows the same general structure as the hypothesis tests we've seen previously: *read the scenario*, *write the hypotheses*, *declare the level of significance ($\alpha$)*, *calculate the test statistic*, *convert it to a $p$-value*, *compare the $p$-value to $\alpha$*, and *interpret the result of the test in context*
+
+. . . 
+
+The main differences are:
+
+1. The *null hypothesis* assumes the questioned distribution rather than assuming a claim is false.
+2. The test statistic is a $\chi^2$ test statistic, taking the form $\displaystyle{\sum_{i = 1}^{k}{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}}$
+3. The $p$-value is computed using the Chi-Squared distribution and we are *always* interested in the right tail; we use `1 - pchisq(test_statistic, df)`
+
+    + The *degrees of freedom* (`df`) is one less than the number of levels/groups under the categorical variable whose distribution we are testing.
+
+## Chi-Squared Tests for Independence
+
+
+
+## Next Time...
+
+<center><br/> Inference on Numerical Variables</center>
+
+
+
