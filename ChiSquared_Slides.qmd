@@ -35,6 +35,10 @@ code.sourceCode {
   /* or try font-size: xx-large; */
 }
 
+div.cell-output-stdout {
+  font-size: 1.4em;
+}
+
 a {
   color: purple;
 }
@@ -783,7 +787,8 @@ ggplot() +
             color = "purple",
             lwd = 1.25) + 
   geom_vline(xintercept = 145,
-             linetype = "dashed") +
+             linetype = "dashed",
+             lwd = 1.5) +
   labs(
     title = "",
     x = "",
@@ -831,7 +836,8 @@ ggplot() +
             color = "purple",
             lwd = 1.25) + 
   geom_vline(xintercept = 145,
-             linetype = "dashed") +
+             linetype = "dashed",
+             lwd = 1.5) +
   labs(
     title = "",
     x = "",
@@ -883,7 +889,8 @@ ggplot() +
             color = "purple",
             lwd = 1.25) + 
   geom_vline(xintercept = 145,
-             linetype = "dashed") +
+             linetype = "dashed",
+             lwd = 1.5) +
   labs(
     title = "",
     x = "",
@@ -937,7 +944,8 @@ ggplot() +
             color = "purple",
             lwd = 1.25) + 
   geom_vline(xintercept = 145,
-             linetype = "dashed") +
+             linetype = "dashed",
+             lwd = 1.5) +
   labs(
     title = "",
     x = "",
@@ -981,7 +989,554 @@ The main differences are:
 
 ## Chi-Squared Tests for Independence
 
+. . .
 
+Now that we know how to perform statistical inference to test the distribution of a single categorical variable with multiple (more than two) classes, we can use a similar strategy to test for associations between two categorical variables where at least one has more than two classes.
+
+. . . 
+
+The main differences are:
+
+1. The hypotheses will be $\begin{array}{lcl} H_0 & : & \text{The two variables are independent}\\ H_a & : & \text{An association exists between the two variables}\end{array}$
+2. The tables for our **observed** and **expected** counts will be organized in both rows and columns
+3. Assuming that the first categorical variable has $k$ levels and the second categorical variable has $\ell$ levels, the degrees of freedom for the Chi-Squared distribution in this scenario will be $\left(k - 1\right)\cdot \left(\ell - 1\right)$.
+
+. . . 
+
+We'll quickly review how to work with a "two-way table", calculating probabilities of independent events, and calculating expected value before heading into an example.
+
+## Probability Review
+
+. . . 
+
+A ***two-way table*** is a way to summarize data observed with respect to two categorical variables -- its rows correspond to the levels of one of the categorical variables and its columns correspond to levels of the other categorical variable.
+
+. . . 
+
+Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
+
+. . .
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+## Probability Review
+
+Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+The probability of a randomly selected bird being a *Hummingbird* is 
+
+:::
+
+:::{.column width="50%"}
+
+The probability of a randomly selected bird being found at a *nectar feeder* is
+
+:::
+
+::::
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+$$\mathbb{P}\left[\text{Hummingbird}\right] = \frac{80}{305} \approx 0.2262$$
+:::
+
+:::{.column width="50%"}
+
+$$\mathbb{P}\left[\text{Nectar Feeder}\right] = \frac{90}{305} \approx 0.2951$$
+
+:::
+
+::::
+
+## Probability Review
+
+Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+. . . 
+
+Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a *hummingbird* and being found at a nectar feeder is
+
+. . . 
+
+$$\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] = \mathbb{P}\left[\text{Hummingbird}\right]\cdot\mathbb{P}\left[\text{Nectar Feeder}\right]$$
+
+## Probability Review
+
+Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a *hummingbird* and being found at a nectar feeder is
+
+$$\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] = \left(\frac{80}{305}\right)\cdot\left(\frac{90}{305}\right)$$
+
+## Probability Review
+
+Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a *hummingbird* and being found at a nectar feeder is
+
+$$\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] \approx 0.0774$$
+
+## Probability Review
+
+Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+Assuming that species and feeder preference are independent, the **expected** number of *hummingbirds* observed at the *nectar feeder* would be:
+
+. . . 
+
+$$n\cdot\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] \approx 305\cdot 0.0774$$
+
+## Probability Review
+
+Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+Assuming that species and feeder preference are independent, the **expected** number of *hummingbirds* observed at the *nectar feeder* would be:
+
+$$n\cdot\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] \approx 23.607$$
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+. . . 
+
+|  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+2. The level of significance is $\alpha = 0.10$
+3. We'll calculate the test statistic, but we'll need the observed and expected counts for each cell in the table first...
+
+## A Completed Example: Chi-Squared Test for Independence
+
+| **Observed Counts** | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+. . . 
+
+| **Expected Counts** | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |
+|:---|:---:|:---:|:---:|
+| Finches | $305\cdot\left(\frac{85}{305}\right)\cdot\left(\frac{115}{305}\right)$ | $305\cdot\left(\frac{85}{305}\right)\cdot\left(\frac{90}{305}\right)$ | $305\cdot\left(\frac{85}{305}\right)\cdot\left(\frac{100}{305}\right)$ |
+| Hummingbirds | $305\cdot\left(\frac{80}{305}\right)\cdot\left(\frac{115}{305}\right)$ | $305\cdot\left(\frac{80}{305}\right)\cdot\left(\frac{90}{305}\right)$ | $305\cdot\left(\frac{80}{305}\right)\cdot\left(\frac{100}{305}\right)$ |
+| Orioles | $305\cdot\left(\frac{85}{305}\right)\cdot\left(\frac{115}{305}\right)$ | $305\cdot\left(\frac{85}{305}\right)\cdot\left(\frac{90}{305}\right)$ | $305\cdot\left(\frac{85}{305}\right)\cdot\left(\frac{100}{305}\right)$ |
+| Woodpeckers | $305\cdot\left(\frac{55}{305}\right)\cdot\left(\frac{115}{305}\right)$ | $305\cdot\left(\frac{55}{305}\right)\cdot\left(\frac{90}{305}\right)$ | $305\cdot\left(\frac{55}{305}\right)\cdot\left(\frac{100}{305}\right)$ |
+
+## A Completed Example: Chi-Squared Test for Independence
+
+| **Observed Counts** | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+| **Expected Counts** | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |
+|:---|:---:|:---:|:---:|
+| Finches | 32.05 | 25.08 | 27.87 |
+| Hummingbirds | 30.16 | 23.61 | 26.23 |
+| Orioles | 32.05 | 25.08 | 27.87 |
+| Woodpeckers | 20.74 | 16.23 | 18.03 |
+
+## A Completed Example: Chi-Squared Test for Independence
+
+| **Observed Counts** | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
+|:---|:---:|:---:|:---:|---:|
+| Finches | 60 | 15 | 10 | 85 |
+| Hummingbirds | 5 | 70 | 5 | 80 |
+| Orioles | 20 | 5 | 60 | 85 |
+| Woodpeckers | 30 | 0 | 25 | 55 |
+| **Total** | 115 | 90 | 100 | 305 |
+
+<br/>
+
+. . . 
+
+```{r}
+#| echo: true
+
+observed <- c(60, 15, 10, 5, 70, 5, 20, 5, 60, 30, 0, 25)
+```
+
+. . . 
+
+**Note:** Be sure to exclude the *total* entries when you store the `observed` values
+
+## A Completed Example: Chi-Squared Test for Independence
+
+| **Expected Counts** | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |
+|:---|:---:|:---:|:---:|
+| Finches | 32.05 | 25.08 | 27.87 |
+| Hummingbirds | 30.16 | 23.61 | 26.23 |
+| Orioles | 32.05 | 25.08 | 27.87 |
+| Woodpeckers | 20.74 | 16.23 | 18.03 |
+
+<br/>
+
+. . . 
+
+```{r}
+#| echo: true
+
+expected <- c(32.05, 25.08, 27.87, 30.16, 23.61, 26.23, 32.05, 25.08, 27.87, 20.74, 16.23, 18.03)
+```
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+2. The level of significance is $\alpha = 0.10$
+3. We'll calculate the test statistic, but we'll need the observed and expected counts for each cell in the table first...
+
+:::
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+2. The level of significance is $\alpha = 0.10$
+3. We'll calculate the test statistic, since we have our `observed` and `expected` counts
+
+:::
+
+. . . 
+
+Remember that the Chi-Squared test statistic is $\displaystyle{\sum{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}}$
+
+. . . 
+
+```{r}
+#| echo: true
+
+sum((observed - expected)^2/expected)
+```
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+2. The level of significance is $\alpha = 0.10$
+3. The Chi-Squared test statistic is about 249.91
+
+:::
+
+4. The *degrees of freedom* for the test is $\left(k - 1\right)\cdot\left(\ell - 1\right)$
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+
+:::
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+2. The level of significance is $\alpha = 0.10$
+3. The Chi-Squared test statistic is about 249.91
+4. The *degrees of freedom* for the test is $\left(4 - 1\right)\cdot\left(3 - 1\right) = 6$
+:::
+
+5. Now we'll calculate the $p$-value
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+
+:::
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+2. The level of significance is $\alpha = 0.10$
+3. The Chi-Squared test statistic is about 249.91
+4. The *degrees of freedom* for the test is $\left(4 - 1\right)\cdot\left(3 - 1\right) = 6$
+5. Now we'll calculate the $p$-value
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+x_vals <- seq(0, 300, length.out = 250)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 6)),
+            color = "purple",
+            lwd = 1.25) + 
+  geom_vline(xintercept = 249.91,
+             linetype = "dashed",
+             lwd = 1.5) + 
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::::
+
+::::::
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+
+:::
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+2. The level of significance is $\alpha = 0.10$
+3. The Chi-Squared test statistic is about 249.91
+4. The *degrees of freedom* for the test is $\left(4 - 1\right)\cdot\left(3 - 1\right) = 6$
+5. Now we'll calculate the $p$-value
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+x_vals <- seq(0, 300, length.out = 250)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 6)),
+            color = "purple",
+            lwd = 1.25) + 
+  geom_vline(xintercept = 249.91,
+             linetype = "dashed",
+             lwd = 1.5) + 
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+`1 - pchisq(249.91, df = 6)` $\approx$ `r 1 - pchisq(249.91, df = 6)`
+
+:::::
+
+::::::
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+2. The level of significance is $\alpha = 0.10$
+3. The Chi-Squared test statistic is about 249.91
+4. The *degrees of freedom* for the test is $\left(4 - 1\right)\cdot\left(3 - 1\right) = 6$
+5. Again, the $p$-value is so small that it rounds to 0
+
+:::
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+2. The level of significance is $\alpha = 0.10$
+3. The Chi-Squared test statistic is about 249.91
+4. The *degrees of freedom* for the test is $\left(4 - 1\right)\cdot\left(3 - 1\right) = 6$
+5. Again, the $p$-value is so small that it rounds to 0
+6. The $p$-value is less than the level of significance, so we reject $H_0$ and accept $H_a$
+
+:::
+
+## A Completed Example: Chi-Squared Test for Independence
+
+**Scenario:** A wildlife researcher is studying whether different bird species have distinct feeding preferences among three types of feeders: Seed Feeder, Nectar Feeder, and Fruit Feeder. The researcher observes four bird species in a particular park: Finches, Hummingbirds, Orioles, and Woodpeckers. Over several days, the researcher records the feeder each bird species prefers in the table below. Test whether species and feeding preference are independent at the 10% level of significance.
+
+:::{.nonincremental}
+
+1. The hypotheses are $\begin{array}{lcl} H_0 & : & \text{Species and feeder preference are independent}\\ H_a & : & \text{Species and feeder preference are associated}\end{array}$
+2. The level of significance is $\alpha = 0.10$
+3. The Chi-Squared test statistic is about 249.91
+4. The *degrees of freedom* for the test is $\left(4 - 1\right)\cdot\left(3 - 1\right) = 6$
+5. Again, the $p$-value is so small that it rounds to 0
+6. The $p$-value is less than the level of significance, so we reject $H_0$ and accept $H_a$
+7. This sample provides evidence to suggest that bird species and feeding preference are associated
+
+:::
+
+## Additional Example: Context Here...
+
+## Additional Example: Context Here...
 
 ## Next Time...
 
