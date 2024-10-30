@@ -308,6 +308,34 @@ With multiclass categorical variables, this is not the case
 
 </center>
 
+## A New Test Statistic
+
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
+
+With multiclass categorical variables, this is not the case
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 | ? | ? | ? | ? | 
+
+</center>
+
+## A New Test Statistic
+
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
+
+With multiclass categorical variables, this is not the case
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| ? | ? | ? | ? | ? | 
+
+</center>
+
 . . .
 
 If we collected data from a sample of 500 citizens and political ideology was uniformly distributed, then we would **expect**:

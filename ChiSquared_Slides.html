@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.43">
 
   <meta name="author" content="Dr.&nbsp;Gilbert">
-  <meta name="dcterms.date" content="2024-10-29">
+  <meta name="dcterms.date" content="2024-10-30">
   <title>Chi-Squared Goodness of Fit and Independence</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -405,7 +405,7 @@ Dr.&nbsp;Gilbert
 </div>
 </div>
 
-  <p class="date">October 29, 2024</p>
+  <p class="date">October 30, 2024</p>
 </section>
 <section class="slide level2">
 
@@ -844,6 +844,60 @@ a:visited {
 </table>
 </center>
 </div>
+</section>
+<section id="a-new-test-statistic-2" class="slide level2">
+<h2>A New Test Statistic</h2>
+<p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
+<p>With multiclass categorical variables, this is not the case</p>
+<center>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Very Liberal</th>
+<th style="text-align: center;">Liberal</th>
+<th style="text-align: center;">Moderate</th>
+<th style="text-align: center;">Conservative</th>
+<th style="text-align: center;">Very Conservative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</center>
+</section>
+<section id="a-new-test-statistic-3" class="slide level2">
+<h2>A New Test Statistic</h2>
+<p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
+<p>With multiclass categorical variables, this is not the case</p>
+<center>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Very Liberal</th>
+<th style="text-align: center;">Liberal</th>
+<th style="text-align: center;">Moderate</th>
+<th style="text-align: center;">Conservative</th>
+<th style="text-align: center;">Very Conservative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</center>
 <div class="fragment">
 <p>If we collected data from a sample of 500 citizens and political ideology was uniformly distributed, then we would <strong>expect</strong>:</p>
 </div>
@@ -899,7 +953,7 @@ a:visited {
 </center>
 </div>
 </section>
-<section id="a-new-test-statistic-2" class="slide level2">
+<section id="a-new-test-statistic-4" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p><strong>Expected</strong> results from 500 surveyed individuals:</p>
 <center>
@@ -981,7 +1035,7 @@ a:visited {
 </center>
 </div>
 </section>
-<section id="a-new-test-statistic-3" class="slide level2">
+<section id="a-new-test-statistic-5" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p>Differences (<strong>observed - expected</strong>) in results from 500 surveyed individuals:</p>
 <center>
