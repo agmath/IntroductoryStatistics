@@ -187,7 +187,7 @@ The single-variable questions we've asked are of the form:
   
 + Is the population proportion greater/less/different than some proposed value?
 
-  + For example, *is the proportion of likely voters in New Hampshire who favor Amendment 1 at least 67%?*
+  + For example, *is the proportion of likely voters in New Hampshire who favor Amendment 1 at least 66.67%?*
   
 . . . 
 
@@ -775,7 +775,7 @@ $$\chi^2~\text{test statistic} = 145$$
 
 :::{.nonincremental}
 
-4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less than the number of groups ($k - 1$)
 
 ```{r}
 x_vals <- seq(0, 160, length.out = 250)
@@ -824,7 +824,7 @@ $$\chi^2~\text{test statistic} = 145$$
 
 :::{.nonincremental}
 
-4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less than the number of groups ($k - 1$)
 
 ```{r}
 x_vals <- seq(0, 160, length.out = 250)
@@ -877,7 +877,7 @@ $$\chi^2~\text{test statistic} = 145$$
 
 :::{.nonincremental}
 
-4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less than the number of groups ($k - 1$)
 
 ```{r}
 x_vals <- seq(0, 160, length.out = 250)
@@ -932,7 +932,7 @@ $$\chi^2~\text{test statistic} = 145$$
 
 :::{.nonincremental}
 
-4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less that the number of groups ($k - 1$)
+4. Calculate the $p$-value using the Chi-Squared distribution with *degrees of freedom* equal to one less than the number of groups ($k - 1$)
 
 ```{r}
 x_vals <- seq(0, 160, length.out = 250)
@@ -979,7 +979,7 @@ The strategy for testing Goodness of Fit follows the same general structure as t
 
 . . . 
 
-The main differences are:
+The main differences were:
 
 1. The *null hypothesis* assumes the questioned distribution rather than assuming a claim is false.
 2. The test statistic is a $\chi^2$ test statistic, taking the form $\displaystyle{\sum_{i = 1}^{k}{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}}$
@@ -1086,7 +1086,7 @@ Consider the two-way table below which shows species of bird and the type of fee
 
 . . . 
 
-Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a *hummingbird* and being found at a nectar feeder is
+Assuming that species and feeder preference are independent, the probability of a randomly selected bird being a *hummingbird* **and** being found at a *nectar feeder* would be
 
 . . . 
 
@@ -1104,7 +1104,7 @@ Consider the two-way table below which shows species of bird and the type of fee
 | Woodpeckers | 30 | 0 | 25 | 55 |
 | **Total** | 115 | 90 | 100 | 305 |
 
-Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a *hummingbird* and being found at a nectar feeder is
+Assuming that species and feeder preference are independent, the probability  of a randomly selected bird being a *hummingbird* **and** being found at a *nectar feeder* would be
 
 $$\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] = \left(\frac{80}{305}\right)\cdot\left(\frac{90}{305}\right)$$
 
@@ -1120,7 +1120,7 @@ Consider the two-way table below which shows species of bird and the type of fee
 | Woodpeckers | 30 | 0 | 25 | 55 |
 | **Total** | 115 | 90 | 100 | 305 |
 
-Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a *hummingbird* and being found at a nectar feeder is
+Assuming that species and feeder preference are independent, the probability of a randomly selected bird being a *hummingbird* **and** being found at a *nectar feeder* would be
 
 $$\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] \approx 0.0774$$
 
@@ -1258,6 +1258,10 @@ observed <- c(60, 15, 10, 5, 70, 5, 20, 5, 60, 30, 0, 25)
 
 expected <- c(32.05, 25.08, 27.87, 30.16, 23.61, 26.23, 32.05, 25.08, 27.87, 20.74, 16.23, 18.03)
 ```
+
+. . . 
+
+**Note:** Be sure to input the *expected* counts in the same order that you used for the *observed* counts -- otherwise you won't be comparing the right cells to one another.
 
 ## A Completed Example: Chi-Squared Test for Independence
 
@@ -1534,9 +1538,57 @@ ggplot() +
 
 :::
 
-## Additional Example: Context Here...
+## Examples to Try: Streaming Service Popularity
 
-## Additional Example: Context Here...
+**Scenario:** A media company expects certain subscription preferences among viewers for various streaming services: Netflix, Hulu, Amazon Prime, and Disney+, with expected preferences of 40%, 25%, 20%, and 15%, respectively. A sample of 500 viewers reveals the following counts:
+
+| **Streaming Service** | **Observed Count** |
+|:---|:---:|
+| Netflix |	210
+| Hulu | 130 |
+| Amazon Prime | 100
+| Disney+ | 60 |
+
+Conduct a test at the 5% level of significance to determine whether the sample provides evidence against this expected distribution.
+
+## Examples to Try: Department and Work Arrangement
+
+**Scenario:** A company wants to investigate if employees’ work arrangement preferences (In-office, Hybrid, or Remote) vary by department (IT, Marketing, HR). A survey of 300 employees yields the following results:
+
+|  | **In-office** | **Hybrid** | **Remote** | ***Total*** |
+|:---|:---:|:---:|:---:|---:|
+| IT | 30 | 60 | 40 | 130 |
+| Marketing | 25 | 35 | 30 | 90 |
+| HR | 20 | 25 | 35 | 80 |
+| *Total* | 75 | 120 | 105 | 300 |
+
+Conduct a test at the 1% level of significance to determine whether this data provides evidence to suggest that work arrangements are different across departments.
+
+## Examples to Try: Student Major versus Preferred Social Media Platform
+
+**Scenario:** A university wants to see if there’s a link between students’ major category (STEM, Arts, Business, Humanities) and their preferred social media platform (Instagram, TikTok, Twitter, LinkedIn). They survey 200 students and gather the following results back:
+
+|  | **Instagram** | **TikTok** | **Twitter** | **LinkedIn** | ***Total*** |
+|:---|:---:|:---:|:---:|:---:|---:|
+| STEM | 20 | 15 | 30 | 35 | 100 |
+| Arts | 15 | 25 | 20 | 5 | 65 |
+| Business | 10 | 5 | 15 | 25 | 55 |
+| Humanities | 5 | 5 | 10 | 5 | 25 |
+| *Total* | 50 | 50 | 75 | 70 | 200 |
+
+## Examples to Try: Voting Method Preferences
+
+**Scenario:** An electoral commission wants to verify if voter preferences for different voting methods in a city (In-person, Mail-in, Drop-off, Online) match their pre-election forecast based on trends in similar areas. They projected that 50% would prefer in-person voting, 20% mail-in, 15% drop-off, and 15% online. A random sample of 1000 likely voters revealed the following preferences.
+
+| **Voting Method** | **Observed Count** |	**Expected Percentage**
+|:---|:---:|:---:|
+|In-person | 520 | 50% |
+| Mail-in | 200 | 20% |
+| Drop-off | 150 | 15% |
+| Online | 130 | 15% |
+| *Total* |1,000 |  |
+
+Does the sample provide evidence against their projections?
 
 ## Next Time...
 

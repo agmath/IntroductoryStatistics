@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.43">
 
   <meta name="author" content="Dr.&nbsp;Gilbert">
-  <meta name="dcterms.date" content="2024-10-27">
+  <meta name="dcterms.date" content="2024-10-29">
   <title>Chi-Squared Goodness of Fit and Independence</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -405,7 +405,7 @@ Dr.&nbsp;Gilbert
 </div>
 </div>
 
-  <p class="date">October 27, 2024</p>
+  <p class="date">October 29, 2024</p>
 </section>
 <section class="slide level2">
 
@@ -692,7 +692,7 @@ a:visited {
 </ul></li>
 <li class="fragment"><p>Is the population proportion greater/less/different than some proposed value?</p>
 <ul>
-<li class="fragment">For example, <em>is the proportion of likely voters in New Hampshire who favor Amendment 1 at least 67%?</em></li>
+<li class="fragment">For example, <em>is the proportion of likely voters in New Hampshire who favor Amendment 1 at least 66.67%?</em></li>
 </ul></li>
 </ul>
 </div>
@@ -1431,7 +1431,7 @@ a:visited {
 </div><div class="column" style="width:50%;">
 <div>
 <ol start="4" type="1">
-<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less that the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
+<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less than the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1461,7 +1461,7 @@ a:visited {
 </div><div class="column" style="width:50%;">
 <div>
 <ol start="4" type="1">
-<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less that the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
+<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less than the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1493,7 +1493,7 @@ a:visited {
 </div><div class="column" style="width:50%;">
 <div>
 <ol start="4" type="1">
-<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less that the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
+<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less than the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1530,7 +1530,7 @@ a:visited {
 </div><div class="column" style="width:50%;">
 <div>
 <ol start="4" type="1">
-<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less that the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
+<li>Calculate the <span class="math inline">\(p\)</span>-value using the Chi-Squared distribution with <em>degrees of freedom</em> equal to one less than the number of groups (<span class="math inline">\(k - 1\)</span>)</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1562,7 +1562,7 @@ a:visited {
 <p>We now have an ability to test whether the levels of a categorical variable over a population follow a particular distribution</p>
 <p>The strategy for testing Goodness of Fit follows the same general structure as the hypothesis tests we’ve seen previously: <em>read the scenario</em>, <em>write the hypotheses</em>, <em>declare the level of significance (<span class="math inline">\(\alpha\)</span>)</em>, <em>calculate the test statistic</em>, <em>convert it to a <span class="math inline">\(p\)</span>-value</em>, <em>compare the <span class="math inline">\(p\)</span>-value to <span class="math inline">\(\alpha\)</span></em>, and <em>interpret the result of the test in context</em></p>
 <div class="fragment">
-<p>The main differences are:</p>
+<p>The main differences were:</p>
 <ol type="1">
 <li class="fragment"><p>The <em>null hypothesis</em> assumes the questioned distribution rather than assuming a claim is false.</p></li>
 <li class="fragment"><p>The test statistic is a <span class="math inline">\(\chi^2\)</span> test statistic, taking the form <span class="math inline">\(\displaystyle{\sum_{i = 1}^{k}{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}}\)</span></p></li>
@@ -1792,7 +1792,7 @@ a:visited {
 </tbody>
 </table>
 <div class="fragment">
-<p>Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a <em>hummingbird</em> and being found at a nectar feeder is</p>
+<p>Assuming that species and feeder preference are independent, the probability of a randomly selected bird being a <em>hummingbird</em> <strong>and</strong> being found at a <em>nectar feeder</em> would be</p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] = \mathbb{P}\left[\text{Hummingbird}\right]\cdot\mathbb{P}\left[\text{Nectar Feeder}\right]\]</span></p>
@@ -1856,7 +1856,7 @@ a:visited {
 </tr>
 </tbody>
 </table>
-<p>Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a <em>hummingbird</em> and being found at a nectar feeder is</p>
+<p>Assuming that species and feeder preference are independent, the probability of a randomly selected bird being a <em>hummingbird</em> <strong>and</strong> being found at a <em>nectar feeder</em> would be</p>
 <p><span class="math display">\[\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] = \left(\frac{80}{305}\right)\cdot\left(\frac{90}{305}\right)\]</span></p>
 </section>
 <section id="probability-review-4" class="slide level2">
@@ -1917,7 +1917,7 @@ a:visited {
 </tr>
 </tbody>
 </table>
-<p>Assuming that species and feeder preference are independent, the probability, the probability of a randomly selected bird being a <em>hummingbird</em> and being found at a nectar feeder is</p>
+<p>Assuming that species and feeder preference are independent, the probability of a randomly selected bird being a <em>hummingbird</em> <strong>and</strong> being found at a <em>nectar feeder</em> would be</p>
 <p><span class="math display">\[\mathbb{P}\left[\text{Hummingbird and Nectar Feeder}\right] \approx 0.0774\]</span></p>
 </section>
 <section id="probability-review-5" class="slide level2">
@@ -2433,6 +2433,9 @@ a:visited {
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">32.05</span>, <span class="fl">25.08</span>, <span class="fl">27.87</span>, <span class="fl">30.16</span>, <span class="fl">23.61</span>, <span class="fl">26.23</span>, <span class="fl">32.05</span>, <span class="fl">25.08</span>, <span class="fl">27.87</span>, <span class="fl">20.74</span>, <span class="fl">16.23</span>, <span class="fl">18.03</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+<div class="fragment">
+<p><strong>Note:</strong> Be sure to input the <em>expected</em> counts in the same order that you used for the <em>observed</em> counts – otherwise you won’t be comparing the right cells to one another.</p>
+</div>
 </section>
 <section id="a-completed-example-chi-squared-test-for-independence-6" class="slide level2">
 <h2>A Completed Example: Chi-Squared Test for Independence</h2>
@@ -2637,11 +2640,189 @@ a:visited {
 </ol>
 </div>
 </section>
-<section id="additional-example-context-here" class="slide level2">
-<h2>Additional Example: Context Here…</h2>
+<section id="examples-to-try-streaming-service-popularity" class="slide level2">
+<h2>Examples to Try: Streaming Service Popularity</h2>
+<p><strong>Scenario:</strong> A media company expects certain subscription preferences among viewers for various streaming services: Netflix, Hulu, Amazon Prime, and Disney+, with expected preferences of 40%, 25%, 20%, and 15%, respectively. A sample of 500 viewers reveals the following counts:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Streaming Service</strong></th>
+<th style="text-align: center;"><strong>Observed Count</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Netflix</td>
+<td style="text-align: center;">210</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hulu</td>
+<td style="text-align: center;">130</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Amazon Prime</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Disney+</td>
+<td style="text-align: center;">60</td>
+</tr>
+</tbody>
+</table>
+<p>Conduct a test at the 5% level of significance to determine whether the sample provides evidence against this expected distribution.</p>
 </section>
-<section id="additional-example-context-here-1" class="slide level2">
-<h2>Additional Example: Context Here…</h2>
+<section id="examples-to-try-department-and-work-arrangement" class="slide level2">
+<h2>Examples to Try: Department and Work Arrangement</h2>
+<p><strong>Scenario:</strong> A company wants to investigate if employees’ work arrangement preferences (In-office, Hybrid, or Remote) vary by department (IT, Marketing, HR). A survey of 300 employees yields the following results:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><strong>In-office</strong></th>
+<th style="text-align: center;"><strong>Hybrid</strong></th>
+<th style="text-align: center;"><strong>Remote</strong></th>
+<th style="text-align: right;"><strong><em>Total</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">IT</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: right;">130</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Marketing</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HR</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>Total</em></td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">105</td>
+<td style="text-align: right;">300</td>
+</tr>
+</tbody>
+</table>
+<p>Conduct a test at the 1% level of significance to determine whether this data provides evidence to suggest that work arrangements are different across departments.</p>
+</section>
+<section id="examples-to-try-student-major-versus-preferred-social-media-platform" class="slide level2">
+<h2>Examples to Try: Student Major versus Preferred Social Media Platform</h2>
+<p><strong>Scenario:</strong> A university wants to see if there’s a link between students’ major category (STEM, Arts, Business, Humanities) and their preferred social media platform (Instagram, TikTok, Twitter, LinkedIn). They survey 200 students and gather the following results back:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><strong>Instagram</strong></th>
+<th style="text-align: center;"><strong>TikTok</strong></th>
+<th style="text-align: center;"><strong>Twitter</strong></th>
+<th style="text-align: center;"><strong>LinkedIn</strong></th>
+<th style="text-align: right;"><strong><em>Total</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STEM</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arts</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Business</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: right;">55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Humanities</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>Total</em></td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples-to-try-voting-method-preferences" class="slide level2">
+<h2>Examples to Try: Voting Method Preferences</h2>
+<p><strong>Scenario:</strong> An electoral commission wants to verify if voter preferences for different voting methods in a city (In-person, Mail-in, Drop-off, Online) match their pre-election forecast based on trends in similar areas. They projected that 50% would prefer in-person voting, 20% mail-in, 15% drop-off, and 15% online. A random sample of 1000 likely voters revealed the following preferences.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Voting Method</strong></th>
+<th style="text-align: center;"><strong>Observed Count</strong></th>
+<th style="text-align: center;"><strong>Expected Percentage</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">In-person</td>
+<td style="text-align: center;">520</td>
+<td style="text-align: center;">50%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mail-in</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">20%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Drop-off</td>
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">15%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Online</td>
+<td style="text-align: center;">130</td>
+<td style="text-align: center;">15%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>Total</em></td>
+<td style="text-align: center;">1,000</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Does the sample provide evidence against their projections?</p>
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next Time…</h2>
