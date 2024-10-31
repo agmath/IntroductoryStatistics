@@ -114,11 +114,11 @@ $$\left(\begin{array}{c}\text{point}\\ \text{estimate}\end{array}\right) \pm \le
 
 *Hypothesis tests* provide a framework for testing claims about a *population parameter*
 
-i) Assume the claim is false (*null hypothesis*)
-ii) Measure the probability of observing a sample at least as extreme as ours in a reality where the null hypothesis holds (this is called the $p$-value)
+i) Assume the claim is false, in reality (*null hypothesis*)
+ii) Measure the probability of observing a sample at least as extreme as ours in that reality (this is called the $p$-value)
 
-    + If our observed data is "unlikely" ($p$-value is lower than the *level of significance*, $\alpha$), then what  we've observed is *incompatible with the null hypothesis* and we declare that the null hypothesis is false, accepting the alternative hypothesis instead
-    + If our observed data is not "unlikely" ($p$-value at least as large as the *level of significance*), then our observed data is compatible with a reality in which the null hypothesis holds -- we don't reject the null hypothesis
+    + If our observed data is "unlikely" ($p$-value is lower than the *level of significance*, $\alpha$), then what  we've observed is **incompatible** with our assumed reality; we declare that the null hypothesis is false and accept the alternative hypothesis instead
+    + If our observed data is not "unlikely" ($p$-value at least as large as the *level of significance*), then our observed data is **compatible** with our assumed reality -- we don't reject the null hypothesis
     
 ## Where We Are; Where We're Going...
 
