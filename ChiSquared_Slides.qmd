@@ -414,11 +414,25 @@ Differences (**observed - expected**) in results from 500 surveyed individuals:
 
 . . . 
 
-If we just add these up, we'll get 0 because the positive and negative differences will cancel one another out.
+We need some way to combine/summarize these deviations.
+
+## A New Test Statistic
+
+Differences (**observed - expected**) in results from 500 surveyed individuals:
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| -65 | 5 | 75 | 40 | -55 | 
+
+</center>
+
+We need some way to combine/summarize these deviations. If we just add these up, we'll get 0 because the positive and negative differences will cancel one another out.
 
 . . . 
 
-We want to penalize "large" deviations more than small deviations, so we'll square the differences.
+"Small" deviations are unsurprising, while "large" deviations should be more rare. To emphasize this, we’ll square the differences, penalizing larger deviations more heavily.
 
 . . .
 
@@ -449,6 +463,60 @@ Actually, the Chi-Squared distribution isn't a single distribution -- it is a fa
 We'll talk more about *degrees of freedom* when we get to the actual tests but, for now, here are a few Chi-Squared distributions.
 
 . . .
+
+::::{.columns}
+
+:::{.column width="70%"}
+
+```{r}
+library(tidyverse)
+colors <- c("df1" = "red", "df2" = "orange", "df6" = "darkgreen", "df10" = "purple")
+
+x_vals <- seq(0, 20, length.out = 500)
+
+ggplot() + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 1),
+                color = "df1"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 2),
+                color = "df2"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 6),
+                color = "df6"),
+            lwd = 1.25) + 
+  geom_line(aes(x = x_vals,
+                y = dchisq(x_vals, df = 10),
+                color = "df10"),
+            lwd = 1.25) + 
+  scale_color_manual(values = colors, 
+                     limits = c("df1", "df2", "df6", "df10")) +
+  coord_cartesian(ylim = c(0, 1)) +
+  labs(
+    title = "Chi-Squared Distributions",
+    x = "χ2",
+    y = "",
+    color = "Degrees of \nFreedom"
+  )
+```
+
+:::
+
+:::{.column width="30%"}
+
+:::
+
+::::
+
+## The Chi-Squared Distribution
+
+This new test statistic doesn't follow a normal distribution. It instead follows a *Chi-Squared* distribution.
+
+Actually, the Chi-Squared distribution isn't a single distribution -- it is a family of distributions defined by a single parameter...*degrees of freedom*.
+
+We'll talk more about *degrees of freedom* when we get to the actual tests but, for now, here are a few Chi-Squared distributions.
 
 ::::{.columns}
 

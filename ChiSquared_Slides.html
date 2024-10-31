@@ -1061,10 +1061,37 @@ a:visited {
 </table>
 </center>
 <div class="fragment">
-<p>If we just add these up, we’ll get 0 because the positive and negative differences will cancel one another out.</p>
+<p>We need some way to combine/summarize these deviations.</p>
 </div>
+</section>
+<section id="a-new-test-statistic-6" class="slide level2">
+<h2>A New Test Statistic</h2>
+<p>Differences (<strong>observed - expected</strong>) in results from 500 surveyed individuals:</p>
+<center>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Very Liberal</th>
+<th style="text-align: center;">Liberal</th>
+<th style="text-align: center;">Moderate</th>
+<th style="text-align: center;">Conservative</th>
+<th style="text-align: center;">Very Conservative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-65</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">-55</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>We need some way to combine/summarize these deviations. If we just add these up, we’ll get 0 because the positive and negative differences will cancel one another out.</p>
 <div class="fragment">
-<p>We want to penalize “large” deviations more than small deviations, so we’ll square the differences.</p>
+<p>“Small” deviations are unsurprising, while “large” deviations should be more rare. To emphasize this, we’ll square the differences, penalizing larger deviations more heavily.</p>
 </div>
 <div class="fragment">
 <p>A “large” deviation is relative – a deviation of 50 is very large if the expected count was only 20 to begin with, but a deviation of 50 is quite small if the expected count was 1000. We’ll divide each squared deviation by the expected count to compensate for this.</p>
@@ -1101,7 +1128,7 @@ a:visited {
 </div>
 </div>
 </div><div class="column" style="width:30%;">
-<p>The Chi-Squared distributions are defined over non-negative numbers only, are right-skewed, and [for our course] we’ll only ever be interested in the area in the right tail.</p>
+
 </div>
 </div>
 </div>
@@ -1118,6 +1145,27 @@ a:visited {
 <div>
 <figure>
 <p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p>The Chi-Squared distributions are defined over non-negative numbers only, are right-skewed, and [for our course] we’ll only ever be interested in the area in the right tail.</p>
+</div>
+</div>
+</section>
+<section id="the-chi-squared-distribution-3" class="slide level2">
+<h2>The Chi-Squared Distribution</h2>
+<p>This new test statistic doesn’t follow a normal distribution. It instead follows a <em>Chi-Squared</em> distribution.</p>
+<p>Actually, the Chi-Squared distribution isn’t a single distribution – it is a family of distributions defined by a single parameter…<em>degrees of freedom</em>.</p>
+<p>We’ll talk more about <em>degrees of freedom</em> when we get to the actual tests but, for now, here are a few Chi-Squared distributions.</p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1491,7 +1539,7 @@ a:visited {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1521,7 +1569,7 @@ a:visited {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1553,7 +1601,7 @@ a:visited {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1590,7 +1638,7 @@ a:visited {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2600,7 +2648,7 @@ a:visited {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2639,7 +2687,7 @@ a:visited {
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="ChiSquared_Slides_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
