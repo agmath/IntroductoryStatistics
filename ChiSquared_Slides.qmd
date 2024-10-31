@@ -208,7 +208,7 @@ Our multivariable questions have been of the form:
   + For example, *Find a 90% confidence interval for the difference in the proportion of students who feel a sense of belonging at their university between first-year students and seniors.*
 + Is the population proportion in Group A greater/less/different than the population proportion in Group B?
 
-  + For example, *Is the proportion of students who feel a sense of belonging at their university different between first-year students and seniors?*
+  + For example, *Is the proportion of students who feel a sense of belonging at their university greater for seniors than for first-year students?*
 
 . . . 
 
@@ -216,7 +216,7 @@ What about associations between categorical variables where at least one has thr
 
 . . . 
 
-> *Is there an association between and individual's ideology and their perception of the state of their finances (better off, worse off, about the same) relative to four years ago?*
+> *Is there an association between and individual's ideology and their perception of the state of their finances (better off, worse off, or about the same) relative to four years ago?*
 
 ## Highlights
 
@@ -228,6 +228,7 @@ What about associations between categorical variables where at least one has thr
   + A Completed Example
 + Chi-Squared Tests for *Independence* (inference on associations between two potentially multiclass categorical variables)
 
+  + A Probability Review
   + A Completed Example
 
 + Additional Examples
@@ -242,8 +243,8 @@ So far, I've told you that a test statistic takes the form:
 
 $$\begin{array}{c}\text{test}\\ \text{statistic}\end{array} = \frac{\left(\begin{array}{c}\text{point}\\ \text{estimate}\end{array}\right) - \left(\begin{array}{c}\text{null}\\ \text{value}\end{array}\right)}{S_E}$$
 
-+ The *point estimate* comes from our sample data -- it is our *observed* value
-+ The *null value* comes from our null hypothesis -- it is our *expected* outcome
++ The *point estimate* comes from our sample data -- it is our **observed** value
++ The *null value* comes from our null hypothesis -- it is our **expected** outcome
 
 . . . 
 
@@ -391,6 +392,8 @@ Comparing a single *observed* value to a single *expected* value is no longer en
 . . . 
 
 We could calculate the difference **observed - expected** for each group though
+
+. . .
 
 <center>
 
