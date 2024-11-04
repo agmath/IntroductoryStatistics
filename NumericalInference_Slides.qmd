@@ -881,14 +881,9 @@ ii) Samples satisfying $H_a$ are
 crit_val <- qt(0.975, df = 29)
 
 x_vals <- seq(-3.5, 3.5, length.out = 500)
-x_vals_shade1 <- seq(-3.5, -crit_val, length.out = 250)
 x_vals_shade2 <- seq(crit_val, 3.5, length.out = 250)
 
 ggplot() + 
-  geom_ribbon(aes(x = x_vals_shade1, ymin = 0, 
-                  ymax = dt(x_vals_shade1, df = 29)),
-              fill = "purple",
-              alpha = 0.7) + 
   geom_ribbon(aes(x = x_vals_shade2, ymin = 0, 
                   ymax = dt(x_vals_shade2, df = 29)),
               fill = "purple",
@@ -954,10 +949,6 @@ x_vals_shade1 <- seq(-3.5, -crit_val, length.out = 250)
 x_vals_shade2 <- seq(crit_val, 3.5, length.out = 250)
 
 ggplot() + 
-  geom_ribbon(aes(x = x_vals_shade1, ymin = 0, 
-                  ymax = dt(x_vals_shade1, df = 29)),
-              fill = "purple",
-              alpha = 0.7) + 
   geom_ribbon(aes(x = x_vals_shade2, ymin = 0, 
                   ymax = dt(x_vals_shade2, df = 29)),
               fill = "purple",
@@ -1031,10 +1022,6 @@ x_vals_shade1 <- seq(-3.5, -crit_val, length.out = 250)
 x_vals_shade2 <- seq(crit_val, 3.5, length.out = 250)
 
 ggplot() + 
-  geom_ribbon(aes(x = x_vals_shade1, ymin = 0, 
-                  ymax = dt(x_vals_shade1, df = 29)),
-              fill = "purple",
-              alpha = 0.7) + 
   geom_ribbon(aes(x = x_vals_shade2, ymin = 0, 
                   ymax = dt(x_vals_shade2, df = 29)),
               fill = "purple",
@@ -1110,10 +1097,6 @@ x_vals_shade1 <- seq(-3.5, -crit_val, length.out = 250)
 x_vals_shade2 <- seq(crit_val, 3.5, length.out = 250)
 
 ggplot() + 
-  geom_ribbon(aes(x = x_vals_shade1, ymin = 0, 
-                  ymax = dt(x_vals_shade1, df = 29)),
-              fill = "purple",
-              alpha = 0.7) + 
   geom_ribbon(aes(x = x_vals_shade2, ymin = 0, 
                   ymax = dt(x_vals_shade2, df = 29)),
               fill = "purple",
@@ -1190,10 +1173,6 @@ x_vals_shade1 <- seq(-3.5, -crit_val, length.out = 250)
 x_vals_shade2 <- seq(crit_val, 3.5, length.out = 250)
 
 ggplot() + 
-  geom_ribbon(aes(x = x_vals_shade1, ymin = 0, 
-                  ymax = dt(x_vals_shade1, df = 29)),
-              fill = "purple",
-              alpha = 0.7) + 
   geom_ribbon(aes(x = x_vals_shade2, ymin = 0, 
                   ymax = dt(x_vals_shade2, df = 29)),
               fill = "purple",
@@ -1230,12 +1209,12 @@ iii) $\alpha = 0.05$
 
 iv) $S_E = s/\sqrt{n} \approx 27.39,~~~\text{df} = n - 1$
 v) $t = \frac{450 - 400}{27.39} \approx 1.83$
-vi) $p$-value $\approx$ `2*(1 - pt(1.83, df = 29))` $\approx$ `r 2*(1 - pt(1.83, df = 29))`
+vi) $p$-value $\approx$ `(1 - pt(1.83, df = 29))` $\approx$ `r (1 - pt(1.83, df = 29))`
 
 :::
 
-vii) $p$-value $\geq \alpha$, fail to reject $H_0$
-viii) The sample data is compatible with a reality in which the average annual repair costs are no more than \$400.
+vii) $p$-value $< \alpha$, reject $H_0$
+viii) The sample data is not compatible with a reality in which the average annual repair costs are no more than \$400. The average repair cost is higher.
 
 :::::
 
