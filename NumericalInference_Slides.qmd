@@ -992,7 +992,7 @@ iii) $\alpha = 0.05$
 
 :::{.nonincremental}
 
-iv) $S_E = s/\sqrt{n}$
+iv) $S_E = s/\sqrt{n},~~~\text{df} = n - 1$
 
 :::
 
@@ -1069,7 +1069,7 @@ iii) $\alpha = 0.05$
 
 :::{.nonincremental}
 
-iv) $S_E = s/\sqrt{n} = \frac{150}{\sqrt{30}} \approx 27.39$
+iv) $S_E = s/\sqrt{n} = \frac{150}{\sqrt{30}} \approx 27.39,~~~\text{df} = n - 1$
 
 :::
 
@@ -1148,7 +1148,7 @@ iii) $\alpha = 0.05$
 
 :::{.nonincremental}
 
-iv) $S_E = s/\sqrt{n} = \frac{150}{\sqrt{30}} \approx 27.39$
+iv) $S_E = s/\sqrt{n} \approx 27.39,~~~\text{df} = n - 1$
 v) $t = \frac{450 - 400}{27.39} \approx 1.83$
 
 :::
@@ -1228,7 +1228,7 @@ iii) $\alpha = 0.05$
 
 :::{.nonincremental}
 
-iv) $S_E = s/\sqrt{n} = \frac{150}{\sqrt{30}} \approx 27.39$
+iv) $S_E = s/\sqrt{n} \approx 27.39,~~~\text{df} = n - 1$
 v) $t = \frac{450 - 400}{27.39} \approx 1.83$
 vi) $p$-value $\approx$ `2*(1 - pt(1.83, df = 29))` $\approx$ `r 2*(1 - pt(1.83, df = 29))`
 
@@ -1241,9 +1241,509 @@ viii) The sample data is compatible with a reality in which the average annual r
 
 ::::::
 
-## Hypothesis Test for a Difference in Population Means (Together)
+## Hypothesis Test for a Difference in Population Means 
 
 **Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} = \mu_{\text{C}}\\ H_a & : & \mu_{\text{HS}} < \mu_{\text{C}}\end{array}$
+
+:::
+
+:::{.column width="50%"}
+
+:::
+
+::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+
+:::
+
+ii) Samples satisfying $H_a$ are:
+
+:::::
+
+:::::{.column width="50%"}
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+ii) Samples satisfying $H_a$ are:
+
+:::
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, -2, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0,
+                  ymax = dt(x_vals_shade, df = 13)),
+              fill = "purple") + 
+  geom_line(aes(x = x_vals, y = dt(x_vals, df = 13))) + 
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "μ(HS) - μ(C)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+iii) $\alpha = 0.10$
+iv) $S_E = ?$
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+ii) Samples satisfying $H_a$ are:
+
+:::
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, -2, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0,
+                  ymax = dt(x_vals_shade, df = 13)),
+              fill = "purple") + 
+  geom_line(aes(x = x_vals, y = dt(x_vals, df = 13))) + 
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "μ(HS) - μ(C)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.10$
+iv) $\displaystyle{S_E = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},~~~\text{df} = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+
+:::
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+ii) Samples satisfying $H_a$ are:
+
+:::
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, -2, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0,
+                  ymax = dt(x_vals_shade, df = 13)),
+              fill = "purple") + 
+  geom_line(aes(x = x_vals, y = dt(x_vals, df = 13))) + 
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "μ(HS) - μ(C)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.10$
+iv) $\displaystyle{S_E = \sqrt{\frac{0.9^2}{14} + \frac{1.2^2}{21}},~~~\text{df} = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+
+:::
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+ii) Samples satisfying $H_a$ are:
+
+:::
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, -2, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0,
+                  ymax = dt(x_vals_shade, df = 13)),
+              fill = "purple") + 
+  geom_line(aes(x = x_vals, y = dt(x_vals, df = 13))) + 
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "μ(HS) - μ(C)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.10$
+iv) $\displaystyle{S_E = 0.3556,~~~\text{df} = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+
+:::
+
+v) $\displaystyle{t = \frac{\left(\text{point est.}\right) - \left(\text{null_val.}\right)}{S_E}}$
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+ii) Samples satisfying $H_a$ are:
+
+:::
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, -2, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0,
+                  ymax = dt(x_vals_shade, df = 13)),
+              fill = "purple") + 
+  geom_line(aes(x = x_vals, y = dt(x_vals, df = 13))) + 
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "μ(HS) - μ(C)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.10$
+iv) $\displaystyle{S_E = 0.3556,~~~\text{df} = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+v) $\displaystyle{t = \frac{\left(2.8 - 3.5\right) - \left(0\right)}{0.3556}}$
+
+:::
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+ii) Samples satisfying $H_a$ are:
+
+:::
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, -2, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0,
+                  ymax = dt(x_vals_shade, df = 13)),
+              fill = "purple") + 
+  geom_line(aes(x = x_vals, y = dt(x_vals, df = 13))) + 
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "μ(HS) - μ(C)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.10$
+iv) $\displaystyle{S_E = 0.3556,~~~\text{df} = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+v) $\displaystyle{t \approx - 1.97}$
+
+:::
+
+vi) $p$-value $\approx$ ?
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+:::{.smaller}
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students.
+
+:::
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu_{\text{HS}} - \mu_{\text{C}} = 0\\ H_a & : & \mu_{\text{HS}} - \mu_{\text{C}} < 0\end{array}$
+ii) Samples satisfying $H_a$ are:
+
+:::
+
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
+```{r}
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, -2, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0,
+                  ymax = dt(x_vals_shade, df = 13)),
+              fill = "purple") + 
+  geom_line(aes(x = x_vals, y = dt(x_vals, df = 13))) + 
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "μ(HS) - μ(C)",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.10$
+iv) $\displaystyle{S_E = 0.3556,~~~\text{df} = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+v) $\displaystyle{t \approx - 1.97}$
+vi) $p$-value $\approx$ `pt(-1.97, df = 13)` $\approx$ `r pt(-1.97, df = 13)`
+
+:::
+
+vii) $p$-value $< \alpha$, reject $H_0$ and accept $H_a$
+
+:::::
+
+::::::
+
+## Hypothesis Test for a Difference in Population Means 
+
+**Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students.
+
+:::{.nonincremental}
+
+viii) Our sample data is not compatible with a reality in which high school students spend the same amount of time per day on social media as college students. College students spend more time.
+
+:::
+
 
 ## Confidence Interval for a Population Mean (Together)
 
