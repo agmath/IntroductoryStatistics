@@ -65,11 +65,14 @@ a:visited {
 
   + Calculating probabilities (useful for obtaining $p$-values)
   + Identifying quantiles (useful for finding *critical values* for confidence intervals)
-  
-+ Hypothesis Testing Examples
-+ Confidence Interval Examples
 
-+ Mixed Examples
++ Examples
+
+  + One Sample Hypothesis Testing Completed Example
+  + Two Sample Hypothesis Testing Example Together
+  + One Sample Confidence Interval Example Together
+  + Two Sample Confidence Interval Completed Example
+  + Mixed Examples
 
 ## Reminders on Inference and Inferential Tools
 
@@ -1238,11 +1241,11 @@ viii) The sample data is compatible with a reality in which the average annual r
 
 ::::::
 
-## Hypothesis Test for a Difference in Population Means
+## Hypothesis Test for a Difference in Population Means (Together)
 
 **Scenario:** Researchers are interested in understanding how social media usage varies between different educational stages. They surveyed a sample of 14 high school and 21 college students to measure the average time they spend on social media platforms daily. The average time spent for high school students was 2.8 hours per day with a standard deviation of 0.9 hours. For college students, the average was 3.5 hours per day with a standard deviation of 1.2 hours. Conduct a test at the 10% level of significance to determine whether this sample provides evidence to suggest that college students spend more time per day on social media than high school students. 
 
-## Confidence Interval for a Population Mean
+## Confidence Interval for a Population Mean (Together)
 
 **Scenario:** City planners are investigating the average commute time for residents to work. They survey 17 residents to estimate the average commute time in minutes. The average commute time in the sample was 35 minutes with a standard deviation of 10 minutes. Find a 95% confidence interval for the average commute time.
 
