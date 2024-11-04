@@ -1763,7 +1763,7 @@ i. Build a confidence interval for the difference in average response times
 ii. $\displaystyle{\left(\begin{array}{c} \text{Point}\\ \text{Estimate}\end{array}\right) \pm \left(\begin{array}{c} \text{Critical}\\ \text{Value}\end{array}\right)\cdot S_E}$
 iii. Point estimate for the difference in average response times...
 
-$$\mu_F - \mu_A = 10 - 8 = 2$$
+$$\bar{x}_F - \bar{x}_A = 10 - 8 = 2$$
 
 :::
 
@@ -1771,7 +1771,7 @@ $$\mu_F - \mu_A = 10 - 8 = 2$$
 
 :::{.column width="50%"}
 
-iv. Critical Value...
+iv. $S_E = ?$
 
 :::
 
@@ -1791,7 +1791,7 @@ i. Build a confidence interval for the difference in average response times
 ii. $\displaystyle{\left(\begin{array}{c} \text{Point}\\ \text{Estimate}\end{array}\right) \pm \left(\begin{array}{c} \text{Critical}\\ \text{Value}\end{array}\right)\cdot S_E}$
 iii. Point estimate for the difference in average response times...
 
-$$\mu_F - \mu_A = 10 - 8 = 2$$
+$$\bar{x}_F - \bar{x}_A = 10 - 8 = 2$$
 
 :::
 
@@ -1801,42 +1801,7 @@ $$\mu_F - \mu_A = 10 - 8 = 2$$
 
 :::{.nonincremental}
 
-iv. Critical Value: `qt(1 - 0.01, df = 34)` $\approx$ `r round(qt(1 - 0.01, df = 34), 2)`
-
-:::
-
-v. $S_E = ?$
-
-:::
-
-::::
-
-## Confidence Interval for a Difference in Population Means
-
-**Scenario:** A city council is evaluating the efficiency of two emergency services (ambulance and fire department) based on their average response times. They collect data from 40 recent incidents handled by the ambulance service and 35 recent incidents that the Fire Department responded to. The average response time for the ambulance service was 8 minutes with a standard deviation of 2 minutes, while the average response time for the fire department was 10 minutes with a standard deviation of 2.5 minutes. Build a 98% confidence interval for the difference in average response times.
-
-::::{.columns}
-
-:::{.column width="50%"}
-
-:::{.nonincremental}
-
-i. Build a confidence interval for the difference in average response times
-ii. $\displaystyle{\left(\begin{array}{c} \text{Point}\\ \text{Estimate}\end{array}\right) \pm \left(\begin{array}{c} \text{Critical}\\ \text{Value}\end{array}\right)\cdot S_E}$
-iii. Point estimate for the difference in average response times...
-
-$$\mu_F - \mu_A = 10 - 8 = 2$$
-
-:::
-
-:::
-
-:::{.column width="50%"}
-
-:::{.nonincremental}
-
-iv. Critical Value: `qt(1 - 0.01, df = 34)` $\approx$ `r round(qt(1 - 0.01, df = 34), 2)`
-v. $\displaystyle{S_E = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$
+iv. $\displaystyle{S_E = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},~~~~df = \min\left\{n_1 - 1, n_2 - 1\right\}}$
 
 :::
 
@@ -1858,7 +1823,7 @@ i. Build a confidence interval for the difference in average response times
 ii. $\displaystyle{\left(\begin{array}{c} \text{Point}\\ \text{Estimate}\end{array}\right) \pm \left(\begin{array}{c} \text{Critical}\\ \text{Value}\end{array}\right)\cdot S_E}$
 iii. Point estimate for the difference in average response times...
 
-$$\mu_F - \mu_A = 10 - 8 = 2$$
+$$\bar{x}_F - \bar{x}_A = 10 - 8 = 2$$
 
 :::
 
@@ -1868,8 +1833,7 @@ $$\mu_F - \mu_A = 10 - 8 = 2$$
 
 :::{.nonincremental}
 
-iv. Critical Value: `qt(1 - 0.01, df = 34)` $\approx$ `r round(qt(1 - 0.01, df = 34), 2)`
-v. $\displaystyle{S_E = \sqrt{\frac{2^2}{40} + \frac{2.5^2}{35}}}$
+iv. $\displaystyle{S_E = \sqrt{\frac{2^2}{40} + \frac{2.5^2}{35}},~~~~df = \min\left\{n_1 - 1, n_2 - 1\right\}}$
 
 :::
 
@@ -1891,7 +1855,7 @@ i. Build a confidence interval for the difference in average response times
 ii. $\displaystyle{\left(\begin{array}{c} \text{Point}\\ \text{Estimate}\end{array}\right) \pm \left(\begin{array}{c} \text{Critical}\\ \text{Value}\end{array}\right)\cdot S_E}$
 iii. Point estimate for the difference in average response times...
 
-$$\mu_F - \mu_A = 10 - 8 = 2$$
+$$\bar{x}_F - \bar{x}_A = 10 - 8 = 2$$
 
 :::
 
@@ -1901,8 +1865,42 @@ $$\mu_F - \mu_A = 10 - 8 = 2$$
 
 :::{.nonincremental}
 
-iv. Critical Value: `qt(1 - 0.01, df = 34)` $\approx$ `r round(qt(1 - 0.01, df = 34), 2)`
-v. $\displaystyle{S_E \approx 0.5278}$
+iv. $\displaystyle{S_E \approx 0.5278,~~~~df = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+
+:::
+
+v. Critical Value...
+
+:::
+
+::::
+
+## Confidence Interval for a Difference in Population Means
+
+**Scenario:** A city council is evaluating the efficiency of two emergency services (ambulance and fire department) based on their average response times. They collect data from 40 recent incidents handled by the ambulance service and 35 recent incidents that the Fire Department responded to. The average response time for the ambulance service was 8 minutes with a standard deviation of 2 minutes, while the average response time for the fire department was 10 minutes with a standard deviation of 2.5 minutes. Build a 98% confidence interval for the difference in average response times.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+i. Build a confidence interval for the difference in average response times
+ii. $\displaystyle{\left(\begin{array}{c} \text{Point}\\ \text{Estimate}\end{array}\right) \pm \left(\begin{array}{c} \text{Critical}\\ \text{Value}\end{array}\right)\cdot S_E}$
+iii. Point estimate for the difference in average response times...
+
+$$\bar{x}_F - \bar{x}_A = 10 - 8 = 2$$
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+iv. $\displaystyle{S_E \approx 0.5278,~~~~df = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+v. Critical Value: `qt(1 - 0.01, df = 34)` $\approx$ `r round(qt(1 - 0.01, df = 34), 2)`
 
 :::
 
@@ -1926,7 +1924,7 @@ i. Build a confidence interval for the difference in average response times
 ii. $\displaystyle{\left(\begin{array}{c} \text{Point}\\ \text{Estimate}\end{array}\right) \pm \left(\begin{array}{c} \text{Critical}\\ \text{Value}\end{array}\right)\cdot S_E}$
 iii. Point estimate for the difference in average response times...
 
-$$\mu_F - \mu_A = 10 - 8 = 2$$
+$$\bar{x}_F - \bar{x}_A = 10 - 8 = 2$$
 
 :::
 
@@ -1936,8 +1934,8 @@ $$\mu_F - \mu_A = 10 - 8 = 2$$
 
 :::{.nonincremental}
 
-iv. Critical Value: `qt(1 - 0.01, df = 34)` $\approx$ `r round(qt(1 - 0.01, df = 34), 2)`
-v. $\displaystyle{S_E \approx 0.5278}$
+iv. $\displaystyle{S_E \approx 0.5278,~~~~df = \min\left\{n_1 - 1, n_2 - 1\right\}}$
+v. Critical Value: `qt(1 - 0.01, df = 34)` $\approx$ `r round(qt(1 - 0.01, df = 34), 2)`
 vi. $2 \pm 2.44\cdot\left(0.5278\right)$ 
 
 $$\to \left\{\begin{array}{lcl} 2 - 1.2878 & = & 0.7122\\ 2 + 1.2878 & = & 3.2878\end{array}\right.$$
@@ -2013,7 +2011,7 @@ You'll need to determine which scenario you are in and which tools to apply
 
 ## Next Time...
 
-<center><br/> Inference on Numerical Variables</center>
+<center><br/> Lots of Practice</center>
 
 
 
