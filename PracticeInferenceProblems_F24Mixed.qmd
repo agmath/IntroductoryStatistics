@@ -34,7 +34,7 @@ In this notebook, we'll work through several practice problems. The problems app
   + One population mean (one sample $t$-test)
   + A difference between two population means (two sample $t$-test)
 
-You may benefit by referring back to the [General Strategy for Constructing Confidence Intervals](http://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}, [General Strategy for Conducting Hypothesis Tests](http://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}, and [Standard Error Decision Tree](http://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"} documents.
+You may benefit by referring back to the [General Strategy for Constructing Confidence Intervals](http://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}, [General Strategy for Conducting Hypothesis Tests](http://agmath.github.io/SiteFiles/HTgeneral.pdf){target="_blank"}, and [Standard Error Decision Tree](http://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"} documents.
 
 ## Example Scenarios
 

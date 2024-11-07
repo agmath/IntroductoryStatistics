@@ -99,7 +99,7 @@ window.Quarto = {
   <li><a href="#scenario-20-memory-retention" id="toc-scenario-20-memory-retention" class="nav-link" data-scroll-target="#scenario-20-memory-retention">Scenario 20: Memory Retention</a></li>
   <li><a href="#scenario-21-customer-satisfaction-survey" id="toc-scenario-21-customer-satisfaction-survey" class="nav-link" data-scroll-target="#scenario-21-customer-satisfaction-survey">Scenario 21: Customer Satisfaction Survey</a></li>
   <li><a href="#scenario-22-online-course-completion-rates" id="toc-scenario-22-online-course-completion-rates" class="nav-link" data-scroll-target="#scenario-22-online-course-completion-rates">Scenario 22: Online Course Completion Rates</a></li>
-  <li><a href="#scenario-23-voter-belief-in-climate-change" id="toc-scenario-23-voter-belief-in-climate-change" class="nav-link" data-scroll-target="#scenario-23-voter-belief-in-climate-change">Scenario 23: Voter Belief in Climate Change</a></li>
+  <li><a href="#scenario-23-streaming-service-usage" id="toc-scenario-23-streaming-service-usage" class="nav-link" data-scroll-target="#scenario-23-streaming-service-usage">Scenario 23: Streaming Service Usage</a></li>
   <li><a href="#scenario-24-college-students-weekly-study-hours" id="toc-scenario-24-college-students-weekly-study-hours" class="nav-link" data-scroll-target="#scenario-24-college-students-weekly-study-hours">Scenario 24: College Students’ Weekly Study Hours</a></li>
   <li><a href="#scenario-25-comparing-productivity-in-two-office-settings" id="toc-scenario-25-comparing-productivity-in-two-office-settings" class="nav-link" data-scroll-target="#scenario-25-comparing-productivity-in-two-office-settings">Scenario 25: Comparing Productivity in Two Office Settings</a></li>
   <li><a href="#scenario-26-customer-loyalty-program-impact" id="toc-scenario-26-customer-loyalty-program-impact" class="nav-link" data-scroll-target="#scenario-26-customer-loyalty-program-impact">Scenario 26: Customer Loyalty Program Impact</a></li>
@@ -156,16 +156,16 @@ window.Quarto = {
 <li>A difference between two population means (two sample <span class="math inline">\(t\)</span>-test)</li>
 </ul></li>
 </ul>
-<p>You may benefit by referring back to the <a href="http://agmath.github.io/SiteFiles/CIgeneral.pdf" target="_blank">General Strategy for Constructing Confidence Intervals</a>, <a href="http://agmath.github.io/SiteFiles/CIgeneral.pdf" target="_blank">General Strategy for Conducting Hypothesis Tests</a>, and <a href="http://agmath.github.io/SiteFiles/CIgeneral.pdf" target="_blank">Standard Error Decision Tree</a> documents.</p>
+<p>You may benefit by referring back to the <a href="http://agmath.github.io/SiteFiles/CIgeneral.pdf" target="_blank">General Strategy for Constructing Confidence Intervals</a>, <a href="http://agmath.github.io/SiteFiles/HTgeneral.pdf" target="_blank">General Strategy for Conducting Hypothesis Tests</a>, and <a href="http://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf" target="_blank">Standard Error Decision Tree</a> documents.</p>
 <section id="example-scenarios" class="level2">
 <h2 class="anchored" data-anchor-id="example-scenarios">Example Scenarios</h2>
 <section id="scenario-1-average-commute-time" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-1-average-commute-time">Scenario 1: Average Commute Time</h3>
-<p>An urban planning committee wants to verify that the average commute time for a sample of city residents is higher than the national average of 30 minutes. They survey 40 residents, whose average commute time is 32 minutes with a standard deviation of 5 minutes. Test if the average commute time for city residents is significantly greater than 30 minutes.</p>
+<p>An urban planning committee wants to verify that the average commute time for citizens residing in a section of their city is higher than the national average of 30 minutes. They survey 40 residents, whose average commute time is 32 minutes with a standard deviation of 5 minutes. Test if the average commute time for city residents in this location is significantly greater than 30 minutes.</p>
 </section>
 <section id="scenario-2-psychology-study-on-sleep-quality" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-2-psychology-study-on-sleep-quality">Scenario 2: Psychology Study on Sleep Quality</h3>
-<p>A psychology researcher wants to investigate whether a new sleep therapy program is effective in improving sleep quality. They collect data from 50 patients who completed the program and 50 who did not. Among the program participants, 60% reported significantly improved sleep quality, while 48% of the control group reported improvement. Test for a significant difference in sleep improvement rates between the two groups.</p>
+<p>A psychology researcher wants to investigate whether a new sleep therapy program is effective in improving sleep quality. They collect data from 50 patients who completed the program and 50 who did not use the program. Among the program participants, 60% reported significantly improved sleep quality, while 48% of the control group reported improvement. Test for a significant difference in sleep improvement rates between the two groups.</p>
 </section>
 <section id="scenario-3-effectiveness-of-two-math-tutoring-methods" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-3-effectiveness-of-two-math-tutoring-methods">Scenario 3: Effectiveness of Two Math Tutoring Methods</h3>
@@ -177,11 +177,11 @@ window.Quarto = {
 </section>
 <section id="scenario-5-free-throw-accuracy" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-5-free-throw-accuracy">Scenario 5: Free Throw Accuracy</h3>
-<p>A basketball coach tracks the free throw accuracy of two players. Player A made 85 out of 100 free throws, while Player B made 77 out of 100. Is there a statistically significant difference in free throw accuracy between the two players?</p>
+<p>A basketball coach tracks the free throw accuracy of two players. Both players shot 100 free throws under the same conditions. Player A made 85 while Player B made 77. Is there a statistically significant difference in free throw accuracy between the two players?</p>
 </section>
 <section id="scenario-6-exercise-preferences" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-6-exercise-preferences">Scenario 6: Exercise Preferences</h3>
-<p>A fitness company wants to understand if there is an association between preferred exercise type and age group among their clients. They randomly survey 296 clients and categorize their preferences into three exercise types: Strength Training, Cardio, and Yoga/Pilates. The clients are also grouped by age: Under 30, 30-50, and Over 50. They summarize the results in the table below and ask you to determine whether an associaton between age group and exercise preference exists.</p>
+<p>A fitness company wants to understand if there is an association between preferred exercise type and age group among their clients. They randomly survey 296 clients and categorize their preferences into three exercise types: Strength Training, Cardio, and Yoga/Pilates. The clients are also grouped by age: Under 30, 30-50, and Over 50. They summarize the results in the table below and ask you to determine whether an association between age group and exercise preference exists.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
@@ -233,11 +233,11 @@ window.Quarto = {
 </section>
 <section id="scenario-7-sociology-survey-on-pet-ownership" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-7-sociology-survey-on-pet-ownership">Scenario 7: Sociology Survey on Pet Ownership</h3>
-<p>A survey of 300 households found that 200 households own pets. Construct a 90% confidence interval for the proportion of households that own pets.</p>
+<p>A survey of 300 randomly identified households in the US found that 200 households own pets. Construct a 90% confidence interval for the proportion of households that own pets.</p>
 </section>
 <section id="scenario-8-customer-waiting-time-in-a-new-restaurant" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-8-customer-waiting-time-in-a-new-restaurant">Scenario 8: Customer Waiting Time in a New Restaurant</h3>
-<p>A new restaurant claims that customers wait an average of 10 minutes to receive their orders. A random sample of 25 customers has an average waiting time of 12 minutes with a standard deviation of 3 minutes. Conduct a hypothesis test to determine if the actual average wait time exceeds the restaurant’s claim.</p>
+<p>A new restaurant claims that customers wait an average of 10 minutes to receive their orders. A random sample of 25 customers has an average waiting time of 12 minutes with a standard deviation of 3 minutes. Conduct a hypothesis test to determine if the actual average wait time at this location exceeds the restaurant’s claim.</p>
 </section>
 <section id="scenario-9-recidivism-rates" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-9-recidivism-rates">Scenario 9: Recidivism Rates</h3>
@@ -273,7 +273,7 @@ window.Quarto = {
 </section>
 <section id="scenario-17-athlete-recovery-time" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-17-athlete-recovery-time">Scenario 17: Athlete Recovery Time</h3>
-<p>Post-Training Sports scientists measure the average heart rate recovery time (in seconds) for a group of 23 NCAA Division II athletes after a high-intensity workout. The average time to return to an individual’s normal heart rate after the workout is recovery time is 117 seconds with a standard deviation of 9 seconds. Test if the recovery time is significantly less than two minutes.</p>
+<p>Sports scientists measure the average heart rate recovery time (in seconds) for a group of 23 NCAA Division II athletes after a high-intensity workout. The average time to return to an individual’s normal heart rate after the workout is recovery time is 117 seconds with a standard deviation of 9 seconds. Test if the recovery time is significantly less than two minutes.</p>
 </section>
 <section id="scenario-18-running-speed-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-18-running-speed-comparison">Scenario 18: Running Speed Comparison</h3>
@@ -343,9 +343,9 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="scenario-22-online-course-completion-rates">Scenario 22: Online Course Completion Rates</h3>
 <p>A college compares completion rates between students enrolled in online and in-person classes. Out of 153 online students, 114 completed the course, while 147 out of 161 in-person students completed it. Test whether course completion rates for in-person students exceeds that for online students.</p>
 </section>
-<section id="scenario-23-voter-belief-in-climate-change" class="level3">
-<h3 class="anchored" data-anchor-id="scenario-23-voter-belief-in-climate-change">Scenario 23: Voter Belief in Climate Change</h3>
-<p>A survey of 300 voters finds that 65% believe in human-caused climate change. Construct a 90% confidence interval for the proportion of voters who hold this belief.</p>
+<section id="scenario-23-streaming-service-usage" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-23-streaming-service-usage">Scenario 23: Streaming Service Usage</h3>
+<p>A media company surveys 350 randomly identified households from its member population and finds that 48% of them subscribe to a music streaming service. Construct a 90% confidence interval for the proportion of households that subscribe to music streaming.</p>
 </section>
 <section id="scenario-24-college-students-weekly-study-hours" class="level3">
 <h3 class="anchored" data-anchor-id="scenario-24-college-students-weekly-study-hours">Scenario 24: College Students’ Weekly Study Hours</h3>
