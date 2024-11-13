@@ -1,0 +1,75 @@
+---
+title: "Practice Inference: Two Examples"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 20pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+options(scipen = 999)
+
+theme_set(theme_bw(base_size = 32))
+
+set.seed(123)
+
+pop_prop <- 0.86
+num_obs <- 17
+new_obs <- 113
+num_samps <- 100
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
+## The Highlights
+
+. . . 
+
+This slide deck just contains two statistical inference scenarios which have been completely addressed.
+
+. . . 
+
+That is, this slide deck contains two completed examples.
+
+## Completed Example 1: Water Contamination
+
+**Scenario:** Environmental scientists are studying water quality in a river system and want to estimate the proportion of water samples that exceed a specific contaminant threshold. They aim for a 99% confidence level and to capture the population parameter to within two percentage points of the true population proportion. These thresholds are necessary to ensure reliability of their findings, especially as the data could inform public health advisories. How many sections of the river system should they collect water samples from?
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average of 120 mmHg or less. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic.
+
+**Next Time:**
+
+. . .
+
+<center><br/> Inference on Categorical Data</center>
+
+
+
