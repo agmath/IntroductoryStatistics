@@ -36,6 +36,10 @@ In this notebook, we'll work through several practice problems. The problems app
 
 You may benefit by referring back to the [General Strategy for Constructing Confidence Intervals](http://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}, [General Strategy for Conducting Hypothesis Tests](http://agmath.github.io/SiteFiles/HTgeneral.pdf){target="_blank"}, and [Standard Error Decision Tree](http://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"} documents.
 
+:::{.callout-note}
+This document contains "answers" in the form of approximate test statistics and p-values for hypothesis tests and bounds in the case of confidence intervals. Use the document cautiously since looking at the answers will tell you which tool is used to approach the scenario. Additionally, if you notice or suspect a typo, please post about it to the `#general` channel in our Slack workgroup.
+:::
+
 ## Example Scenarios
 
 ### Scenario 1: Average Commute Time 
@@ -163,6 +167,8 @@ Sports scientists measure the average heart rate recovery time (in seconds) for 
 
 A coach tests the average running speed of two groups of athletes. Group A has an average speed of 7.2 m/s (n = 20, SD = 0.5), and Group B has an average speed of 7.0 m/s (n = 25, SD = 0.6). Construct a 95% confidence interval for the difference in average speed between the two groups.
 
+> bounds: ~-0.1433 to ~0.5433
+
 ### Scenario 19: Study Habit Survey
 
 A school surveys 500 students to see if study habits are associated with grade level (freshman, sophomore, junior, senior). Test for independence between grade level and whether students study regularly using a chi-squared test.
@@ -175,40 +181,66 @@ A school surveys 500 students to see if study habits are associated with grade l
 | Senior | 70 | 55 | 125 |
 | Total | 315 | 185 | 500 |
 
+> test statistic: ~14.37
+> p-value: 0.0024
+
 ### Scenario 20: Memory Retention
 
 A psychologist investigates the effect of caffeine on memory retention. In a sample of 30 students who consumed caffeine, the average recall score was 70% (SD = 8%). Construct a 99% confidence interval for the mean recall score for students who consumed caffeine.
+
+> bounds: ~0.4841 to ~0.9159
 
 ### Scenario 21: Customer Satisfaction Survey
 
 A store conducts a satisfaction survey with 400 customers, finding that 85% are satisfied. Construct a 95% confidence interval for the proportion of satisfied customers.
 
+> bounds: ~0.815 to ~0.885
+
 ### Scenario 22: Online Course Completion Rates
 
 A college compares completion rates between students enrolled in online and in-person classes. Out of 153 online students, 114 completed the course, while 147 out of 161 in-person students completed it. Test whether course completion rates for in-person students exceeds that for online students.
+
+> test statistic: 4.03
+> p-value: ~0.000028
 
 ### Scenario 23: Streaming Service Usage
 
 A media company surveys 350 randomly identified households from its member population and finds that 48% of them subscribe to a music streaming service. Construct a 90% confidence interval for the proportion of households that subscribe to music streaming.
 
+> bounds: ~0.4359 to ~0.5241
+
 ### Scenario 24: College Students' Weekly Study Hours 
 
 A university administrator wants to see if students at their institution study more than the national average of 15.5 hours per week. A random sample of 19 students from their school has an average weekly study time of 16.25 hours with a standard deviation of 2.3 hours. Test if the university’s students study more on average than students nationally.
+
+> test statistic: ~1.42
+> p-value: 0.0863
 
 ### Scenario 25: Comparing Productivity in Two Office Settings 
 
 A company measures productivity (number of tasks completed) in two different office layouts, Layout A and Layout B. A sample of 20 employees working in Layout A completes an average of 30 tasks with a standard deviation of 6 tasks, while a sample of 25 employees in Layout B completes an average of 27 tasks with a standard deviation of 5 tasks. Use the $\alpha = 0.10$ level of significance to test if there is evidence of a difference in productivity between the two office layouts.
 
+> test statistic: ~1.79
+> p-value: ~0.0636
+
 ### Scenario 26: Customer Loyalty Program Impact
 
 A company tests a new loyalty program. In a sample of 211 program participants, 124 made repeat purchases, while in a control group of 196 non-participants, 97 made repeat purchases. Conduct a test to determine whether the loyalty program is successful in generating repeat purchases.
+
+> test statistic: ~1.88
+> p-value: ~0.0301
 
 ### Scenario 27: Traffic Violations by Age Group
 
 A traffic study looks at the frequency of violations among two age groups. Among 18-25 year-olds, 43 of 155 drivers have received a violation in the past year, compared to 32 out of 127 drivers aged 26-35. Test for a difference in violation rates between the two age groups.
 
+> test statistic: ~0.4829
+> p-value: ~0.6292
+
 ### Scenario 28: Exercise and Blood Pressure
 
 A health study evaluates blood pressure reductions from exercise programs. The average blood pressure reduction for 25 participants in Program A was 12 mmHg (SD = 3 mmHg), and for 30 participants in Program B, it was 10 mmHg (SD = 4 mmHg). Construct a 95% confidence interval for the difference in blood pressure reduction between the two programs.
+
+> bounds: ~0.0493 to ~3.951
 
 
