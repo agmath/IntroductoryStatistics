@@ -49,13 +49,13 @@ a:visited {
 
 ## The Highlights
 
-. . . 
++ A completed example problem together
++ Another completed example problem together
++ Hypothesis Testing; what could go wrong?
 
-This slide deck just contains two statistical inference scenarios which have been completely addressed.
+  + A short discussion on statistical errors, error types, and the likelihood of errors
 
-. . . 
 
-That is, this slide deck contains two completed examples.
 
 ## Completed Example 1: Water Contamination
 
@@ -709,7 +709,7 @@ If you want to check your answers, I do have a limited "answer key", but use it 
 
 . . . 
 
-Looking at the key will essentially tell you what type of statistical inference the scenario is requesting from you -- that is, if you aren't confident about determining whether a scenario requires a confidence interval, a hypothesis test, or something else...avoid looking at the answer key and come see me for help (or go to walk-in tutoring).
+Looking at the key will essentially tell you what type of statistical inference the scenario is requesting from you -- that is, if you aren't confident about determining whether a scenario requires a confidence interval, a hypothesis test, or something else...avoid looking at the answer key and come see me (or go to walk-in tutoring) for help.
 
 . . . 
 
