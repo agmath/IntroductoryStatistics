@@ -59,17 +59,647 @@ That is, this slide deck contains two completed examples.
 
 ## Completed Example 1: Water Contamination
 
-**Scenario:** Environmental scientists are studying water quality in a river system and want to estimate the proportion of water samples that exceed a specific contaminant threshold. They aim for a 99% confidence level and to capture the population parameter to within two percentage points of the true population proportion. These thresholds are necessary to ensure reliability of their findings, especially as the data could inform public health advisories. How many sections of the river system should they collect water samples from?
+**Scenario:** Environmental scientists are studying water quality in a river system and want to estimate the proportion of water samples that exceed a specific contaminant threshold. They aim for a 99% confidence level and to capture the population parameter to within two percentage points of the true population proportion. These thresholds are necessary to ensure reliability of their findings, especially as the data could inform public health advisories. The results of a small, initial investigation indicate that the proportion is near 25%. How many sections of the river system should they collect water samples from?
+
+::::{.columns}
+
+:::{.column width="50%"}
+1. This scenario is asking us to compute a required sample size
+2. The population parameter is a *proportion*
+3. The sample size formula is $\displaystyle{n\geq \left(\frac{z_{\alpha/2}}{M_E}\right)^2\cdot p\left(1 - p\right)}$
+4. The *critical value* ($z_{\alpha/2}$) is 2.58
+:::
+
+:::{.column width="50%"}
+5. The *margin of error* is 0.02
+6. Our best guess at the proportion is $p \approx 0.25$ (note that using $p \approx 0.50$ results in a "worst case" largest sample size requirement).
+7. $\displaystyle{n\geq \left(\frac{2.58}{0.02}\right)^2\cdot 0.25\left(1 - 0.25\right) \approx 3120.188}$
+8. The scientists should sample from 3121 randomly identified locations along the river system.
+:::
+
+::::
 
 ## Completed Example 2: Blood Pressure Medication
 
-**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average of 120 mmHg or less. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic.
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
 
-**Next Time:**
+::::::{.columns}
 
-. . .
+:::::{.column width="50%"}
 
-<center><br/> Inference on Categorical Data</center>
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::::
+
+::::::
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+crit_val <- qt(0.02, df = 11)
+
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, crit_val, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0, 
+                  ymax = dt(x_vals_shade, df = 11)),
+              fill = "purple",
+              alpha = 0.7) + 
+  geom_line(aes(x = x_vals, 
+                y = dt(x_vals, df = 11))) +
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::::
+
+::::::
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+crit_val <- qt(0.02, df = 11)
+
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, crit_val, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0, 
+                  ymax = dt(x_vals_shade, df = 11)),
+              fill = "purple",
+              alpha = 0.7) + 
+  geom_line(aes(x = x_vals, 
+                y = dt(x_vals, df = 11))) +
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.02$
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+iv) $S_E = s/\sqrt{n},~~~\text{df} = n - 1$
+
+:::::
+
+::::::
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+crit_val <- qt(0.02, df = 11)
+
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, crit_val, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0, 
+                  ymax = dt(x_vals_shade, df = 11)),
+              fill = "purple",
+              alpha = 0.7) + 
+  geom_line(aes(x = x_vals, 
+                y = dt(x_vals, df = 11))) +
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.02$
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iv) $S_E = s/\sqrt{n} = \displaystyle{\frac{5.7}{\sqrt{12}}},~~~\text{df} = n - 1$
+
+:::
+
+:::::
+
+::::::
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+crit_val <- qt(0.02, df = 11)
+
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, crit_val, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0, 
+                  ymax = dt(x_vals_shade, df = 11)),
+              fill = "purple",
+              alpha = 0.7) + 
+  geom_line(aes(x = x_vals, 
+                y = dt(x_vals, df = 11))) +
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.02$
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iv) $S_E = s/\sqrt{n} \approx 1.6454,~~~\text{df} = n - 1$
+
+:::
+
+v) $\displaystyle{t = \frac{\left(\text{point est.}\right) - \left(\text{null val.}\right)}{S_E}}$
+
+:::::
+
+::::::
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+crit_val <- qt(0.02, df = 11)
+
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, crit_val, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0, 
+                  ymax = dt(x_vals_shade, df = 11)),
+              fill = "purple",
+              alpha = 0.7) + 
+  geom_line(aes(x = x_vals, 
+                y = dt(x_vals, df = 11))) +
+  scale_x_continuous(breaks = NULL) +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.02$
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iv) $S_E = s/\sqrt{n} \approx 1.6454,~~~\text{df} = n - 1$
+v) $t = \frac{118.7 - 120}{1.6454}$
+
+:::
+
+:::::
+
+::::::
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+crit_val <- qt(0.02, df = 11)
+
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, crit_val, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0, 
+                  ymax = dt(x_vals_shade, df = 11)),
+              fill = "purple",
+              alpha = 0.7) + 
+  geom_line(aes(x = x_vals, 
+                y = dt(x_vals, df = 11))) +
+  geom_vline(xintercept = -0.79, linetype = "dashed", lwd = 1.25) + 
+  scale_x_continuous(breaks = c(-0.79, 0), labels = c("-0.79", "0")) +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.02$
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iv) $S_E = s/\sqrt{n} \approx 1.6454,~~~\text{df} = n - 1$
+v) $t = \frac{118.7 - 120}{1.6454} \approx -0.79$
+
+:::
+
+vi) $p$-value $\approx$...
+
+:::::
+
+::::::
+
+## Completed Example 2: Blood Pressure Medication
+
+**Scenario:** A pharmaceutical company claims that a new medication lowers systolic blood pressure to an average below 120 mmHg. A health clinic plans to test this claim by giving the medication to 12 patients and measuring their systolic blood pressure after one month. The average systolic blood pressure for the group was 118.7 mmHg with a standard deviation of 5.7 mmHg. Run the test for the clinic at the $\alpha = 0.02$ level of significance.
+
+::::::{.columns}
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+i) $\begin{array}{lcl} H_0 & : & \mu = 120\\ H_a & : & \mu < 120\end{array}$
+ii) Samples satisfying $H_a$ are
+
+:::
+
+::::{.columns}
+
+:::{.column width="15%"}
+
+:::
+
+:::{.column width="70%"}
+
+```{r}
+crit_val <- qt(0.02, df = 11)
+
+x_vals <- seq(-3.5, 3.5, length.out = 500)
+x_vals_shade <- seq(-3.5, crit_val, length.out = 250)
+
+ggplot() + 
+  geom_ribbon(aes(x = x_vals_shade, ymin = 0, 
+                  ymax = dt(x_vals_shade, df = 11)),
+              fill = "purple",
+              alpha = 0.7) + 
+  geom_line(aes(x = x_vals, 
+                y = dt(x_vals, df = 11))) +
+  geom_vline(xintercept = -0.79, linetype = "dashed", lwd = 1.25) + 
+  scale_x_continuous(breaks = c(-0.79, 0), labels = c("-0.79", "0")) +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+:::
+
+:::{.column width="15%"}
+
+:::
+
+::::
+
+:::{.nonincremental}
+
+iii) $\alpha = 0.02$
+
+:::
+
+:::::
+
+:::::{.column width="50%"}
+
+:::{.nonincremental}
+
+iv) $S_E = s/\sqrt{n} \approx 1.6454,~~~\text{df} = n - 1$
+v) $t = \frac{118.7 - 120}{1.6454} \approx -0.79$
+vi) $p$-value $\approx$ `pt(-0.79, df = 11)` $\approx$ `r pt(-0.79, df = 11)`
+
+:::
+
+vii) $p$-value $\geq \alpha$, fail to reject $H_0$
+viii) The sample data is compatible with a reality in which the average systolic blood pressure is still 120 mmHg or higher.
+
+:::::
+
+::::::
+
+## A Short Discussion on Statistical Errors
+
+. . . 
+
+Generally speaking, there are four possible outcomes to a hypothesis test.
+
+. . . 
+
+<center>
+
+|  | **Null Hypothesis ($H_0$) is False** | **Null Hypothesis ($H_0$) is<br/> True** | 
+|:---|:---:|:---:|
+**Reject $H_0$** |  |  |
+**Do Not Reject $H_0$** |  |  |
+
+</center>
+
+## A Short Discussion on Statistical Errors
+
+Generally speaking, there are four possible outcomes to a hypothesis test.
+
+<center>
+
+|  | **Null Hypothesis ($H_0$) is False** | **Null Hypothesis ($H_0$) is<br/> True** | 
+|:---|:---:|:---:|
+**Reject $H_0$** | $\checkmark$  |  |
+**Do Not Reject $H_0$** |  |  |
+
+</center>
+
+## A Short Discussion on Statistical Errors
+
+Generally speaking, there are four possible outcomes to a hypothesis test.
+
+<center>
+
+|  | **Null Hypothesis ($H_0$) is False** | **Null Hypothesis ($H_0$) is<br/> True** | 
+|:---|:---:|:---:|
+**Reject $H_0$** | $\checkmark$  |  |
+**Do Not Reject $H_0$** |  | $\checkmark$ |
+
+</center>
+
+## A Short Discussion on Statistical Errors
+
+Generally speaking, there are four possible outcomes to a hypothesis test.
+
+<center>
+
+|  | **Null Hypothesis ($H_0$) is False** | **Null Hypothesis ($H_0$) is<br/> True** | 
+|:---|:---:|:---:|
+**Reject $H_0$** | $\checkmark$  | Type I Error<br/> (False Positive) |
+**Do Not Reject $H_0$** |  | $\checkmark$ |
+
+</center>
+
+## A Short Discussion on Statistical Errors
+
+Generally speaking, there are four possible outcomes to a hypothesis test.
+
+<center>
+
+|  | **Null Hypothesis ($H_0$) is False** | **Null Hypothesis ($H_0$) is<br/> True** | 
+|:---|:---:|:---:|
+**Reject $H_0$** | $\checkmark$  | Type I Error<br/> (False Positive) |
+**Do Not Reject $H_0$** | Type II Error<br/> (False Negative) | $\checkmark$ |
+
+</center>
+
+. . . 
+
+These erroneous outcomes are no fault of our own
+
+. . . 
+
+They are the result of sampling error -- the randomness associated with the observations that were included as part of our sample, by chance
+
++ The probability of making a **Type I Error** is $\alpha$, our level of significance
++ The probability of making a **Type II Error** is often referred to as $\beta$, and $1 - \beta$ is called the *power* of the statistical test -- *statistical power* is beyond the scope of our course, but it is related to the "effect size", sample size, and the level of significance of the test being run.
+
+
+
+## Next Up...
+
+Work through some additional [practice problems from our long list](https://agmath.github.io/IntroductoryStatistics/PracticeInferenceProblems_F24Mixed.html).
 
 
 
