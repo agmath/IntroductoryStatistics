@@ -699,7 +699,20 @@ They are the result of sampling error -- the randomness associated with the obse
 
 ## Next Up...
 
+. . . 
+
 Work through some additional [practice problems from our long list](https://agmath.github.io/IntroductoryStatistics/PracticeInferenceProblems_F24Mixed.html).
 
+. . . 
+
+If you want to check your answers, I do have a limited "answer key", but use it sparingly.
+
+. . . 
+
+Looking at the key will essentially tell you what type of statistical inference the scenario is requesting from you -- that is, if you aren't confident about determining whether a scenario requires a confidence interval, a hypothesis test, or something else...avoid looking at the answer key and come see me for help (or go to walk-in tutoring).
+
+. . . 
+
+You can [find the answer key here](https://agmath.github.io/IntroductoryStatistics/PracticeInferenceProblems_F24Mixed_Answers.html)
 
 
