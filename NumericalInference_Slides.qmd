@@ -133,7 +133,7 @@ inf_df <- tibble(
                           "Association Between a Numerical Variable and a Single Other Numerical Variable",
                           "Association Between a Numerical Variable and Many Other Variables",
                           "Association Between a Categorical Variable and Many Other Variables"),
-  "Covered" = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "", "", "", "✘")
+  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "", "", "", "✘")
 )
 
 inf_df %>%
