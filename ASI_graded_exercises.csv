@@ -1,157 +1,211 @@
-"notebook","label"
-"10 Introduction to Inference Lab","samp60"
-"10 Introduction to Inference Lab","small-loop"
-"12 Inference Practice I","try-it-2-question-10"
-"12 Inference Practice I","try-it-2-question-7"
-"12 Inference Practice I","try-it-2-question-8"
-"12 Inference Practice I","try-it-2-question-10"
-"12 Inference Practice I","try-it-2-question-7"
-"12 Inference Practice I","try-it-2-question-8"
-"14 Inference for One or More Categorical Variables with Many Levels","chi-sq-ind"
-"14 Inference for One or More Categorical Variables with Many Levels","compute-p"
-"14 Inference for One or More Categorical Variables with Many Levels","compute-p-indep"
-"14 Inference for One or More Categorical Variables with Many Levels","df"
-"14 Inference for One or More Categorical Variables with Many Levels","df-ind"
-"14 Inference for One or More Categorical Variables with Many Levels","exp-black"
-"14 Inference for One or More Categorical Variables with Many Levels","exp-hispanic"
-"14 Inference for One or More Categorical Variables with Many Levels","exp-other"
-"14 Inference for One or More Categorical Variables with Many Levels","exp-white"
-"14 Inference for One or More Categorical Variables with Many Levels","highInc-drug-use"
-"14 Inference for One or More Categorical Variables with Many Levels","lowInc-drug-use"
-"14 Inference for One or More Categorical Variables with Many Levels","middleInc-drug-use"
-"14 Inference for One or More Categorical Variables with Many Levels","poverty-drug-use"
-"14 Inference for One or More Categorical Variables with Many Levels","test-stat"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","pt-ex1-left"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","pt-ex2-right"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","qt-ex3"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","qt-ex4"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ci-2"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ci-4"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ci-7"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ci-8"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ci-9"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-10"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-11"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-12"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-13"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-14"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-16"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-17"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-18"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-18_5"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-19"
-"15 Hypothesis Tests and Confidence Intervals for Numerical Data","sentencing-ht-9"
-"16 Inference Practice II","prob1-5"
-"16 Inference Practice II","prob10-10"
-"16 Inference Practice II","prob10-11"
-"16 Inference Practice II","prob10-7"
-"16 Inference Practice II","prob10-8"
-"16 Inference Practice II","prob10-9"
-"16 Inference Practice II","prob11-10"
-"16 Inference Practice II","prob11-11"
-"16 Inference Practice II","prob11-12"
-"16 Inference Practice II","prob11-13"
-"16 Inference Practice II","prob11-9"
-"16 Inference Practice II","prob12-10"
-"16 Inference Practice II","prob12-11"
-"16 Inference Practice II","prob12-7"
-"16 Inference Practice II","prob12-8"
-"16 Inference Practice II","prob12-9"
-"16 Inference Practice II","prob2-10"
-"16 Inference Practice II","prob2-11"
-"16 Inference Practice II","prob2-12"
-"16 Inference Practice II","prob2-13"
-"16 Inference Practice II","prob2-9"
-"16 Inference Practice II","prob3-10"
-"16 Inference Practice II","prob3-11"
-"16 Inference Practice II","prob3-7"
-"16 Inference Practice II","prob3-8"
-"16 Inference Practice II","prob3-9"
-"16 Inference Practice II","prob4-10"
-"16 Inference Practice II","prob4-6"
-"16 Inference Practice II","prob4-7"
-"16 Inference Practice II","prob4-8"
-"16 Inference Practice II","prob4-9"
-"16 Inference Practice II","prob5-3"
-"16 Inference Practice II","prob5-4"
-"16 Inference Practice II","prob5-5"
-"16 Inference Practice II","prob5-6"
-"16 Inference Practice II","prob6-10"
-"16 Inference Practice II","prob6-6"
-"16 Inference Practice II","prob6-7"
-"16 Inference Practice II","prob6-8"
-"16 Inference Practice II","prob6-9"
-"16 Inference Practice II","prob7-10"
-"16 Inference Practice II","prob7-11"
-"16 Inference Practice II","prob7-7"
-"16 Inference Practice II","prob7-8"
-"16 Inference Practice II","prob7-9"
-"16 Inference Practice II","prob8-10"
-"16 Inference Practice II","prob8-11"
-"16 Inference Practice II","prob8-12"
-"16 Inference Practice II","prob8-8"
-"16 Inference Practice II","prob8-9"
-"16 Inference Practice II","prob9-3"
-"16 Inference Practice II","prob9-4"
-"16 Inference Practice II","prob9-5"
-"16 Inference Practice II","prob9-6"
-"17 Inference for Numerical Data Lab","check-inference-conditions-habit"
-"17 Inference for Numerical Data Lab","first-inference-run"
-"17 Inference for Numerical Data Lab","plot-habit-weight"
-"19 Linear Regression","bty-score"
-"19 Linear Regression","model-final"
-"19 Linear Regression","model-second-it"
-"2 Intro to R","HelloWorld"
-"2 Intro to R","a-first-operation"
-"2 Intro to R","arithmeticExercise"
-"2 Intro to R","columnAccess"
-"2 Intro to R","defineAndCompute"
-"2 Intro to R","parensExercise"
-"2 Intro to R","redefine"
-"2 Intro to R","testStatEval"
-"3 Summarizing Numerical and Categorical Data","meanSampThree"
-"3 Summarizing Numerical and Categorical Data","meanSampleOne"
-"3 Summarizing Numerical and Categorical Data","myData"
-"4 Data Visualization","barplot-class-drv"
-"4 Data Visualization","boxplot-hwy-cyl"
-"4 Data Visualization","facet-wrapped-plot"
-"4 Data Visualization","hwy-displ-class-plot"
-"4 Data Visualization","plot-displ-cty"
-"4 Data Visualization","plot-hwy-cyl"
-"4 Data Visualization","print-mpg-dataframe"
-"4 Data Visualization","trans-drv-plot"
-"4 Data Visualization","trans2-fill-class"
-"5 Discrete Probability Distributions","binom-assignments-ex1"
-"5 Discrete Probability Distributions","binom-assignments-ex2"
-"5 Discrete Probability Distributions","binom-assignments-ex3"
-"5 Discrete Probability Distributions","binom-assignments-ex4"
-"5 Discrete Probability Distributions","binom-assignments-ex5"
-"5 Discrete Probability Distributions","binom-assignments-ex6"
-"5 Discrete Probability Distributions","binom-assignments-ex7"
-"5 Discrete Probability Distributions","chem-quiz-binom"
-"5 Discrete Probability Distributions","pAandB"
-"6 Introduction to the Normal Distribution","GRE-QR-percentile"
-"6 Introduction to the Normal Distribution","GRE-VR-percent-above"
-"6 Introduction to the Normal Distribution","chick-pox-exp"
-"6 Introduction to the Normal Distribution","chick-pox-prob-atleast"
-"6 Introduction to the Normal Distribution","chick-pox-prob-atmost"
-"6 Introduction to the Normal Distribution","chick-pox-prob-between"
-"6 Introduction to the Normal Distribution","chick-pox-prob-exact1"
-"6 Introduction to the Normal Distribution","chick-pox-prob-exact2"
-"6 Introduction to the Normal Distribution","chick-pox-sd"
-"6 Introduction to the Normal Distribution","find-percentile"
-"6 Introduction to the Normal Distribution","pnorm-ex1-left"
-"6 Introduction to the Normal Distribution","pnorm-ex2-left"
-"6 Introduction to the Normal Distribution","pnorm-ex3-right"
-"6 Introduction to the Normal Distribution","pnorm-ex4-right"
-"6 Introduction to the Normal Distribution","pnorm-ex5-mid"
-"6 Introduction to the Normal Distribution","pnorm-ex6-out"
-"6 Introduction to the Normal Distribution","pnorm-ex7-out"
-"6 Introduction to the Normal Distribution","z-score-QR"
-"6 Introduction to the Normal Distribution","z-score-VR"
-"7 Discrete Distributions Lab","plot-streak-kobe"
-"7 Discrete Distributions Lab","sim-independent"
-"7 Discrete Distributions Lab","sim-streak"
-"8 Normal Distribution Lab","head-data"
-"8 Normal Distribution Lab","prob-height-norm"
-"8 Normal Distribution Lab","subset-mf"
+notebook,label
+10 Introduction to Inference Lab,samp60
+10 Introduction to Inference Lab,small-loop
+12 Inference Practice I,try-it-2-question-10
+12 Inference Practice I,try-it-2-question-7
+12 Inference Practice I,try-it-2-question-8
+12 Inference Practice I,try-it-2-question-10
+12 Inference Practice I,try-it-2-question-7
+12 Inference Practice I,try-it-2-question-8
+14 Inference for One or More Categorical Variables with Many Levels,chi-sq-ind
+14 Inference for One or More Categorical Variables with Many Levels,compute-p
+14 Inference for One or More Categorical Variables with Many Levels,compute-p-indep
+14 Inference for One or More Categorical Variables with Many Levels,df
+14 Inference for One or More Categorical Variables with Many Levels,df-ind
+14 Inference for One or More Categorical Variables with Many Levels,exp-black
+14 Inference for One or More Categorical Variables with Many Levels,exp-hispanic
+14 Inference for One or More Categorical Variables with Many Levels,exp-other
+14 Inference for One or More Categorical Variables with Many Levels,exp-white
+14 Inference for One or More Categorical Variables with Many Levels,highInc-drug-use
+14 Inference for One or More Categorical Variables with Many Levels,lowInc-drug-use
+14 Inference for One or More Categorical Variables with Many Levels,middleInc-drug-use
+14 Inference for One or More Categorical Variables with Many Levels,poverty-drug-use
+14 Inference for One or More Categorical Variables with Many Levels,test-stat
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,pt-ex1-left
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,pt-ex2-right
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,qt-ex3
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,qt-ex4
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ci-2
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ci-4
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ci-7
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ci-8
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ci-9
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-10
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-11
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-12
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-13
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-14
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-16
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-17
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-18
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-18_5
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-19
+15 Hypothesis Tests and Confidence Intervals for Numerical Data,sentencing-ht-9
+16 Inference Practice II,prob1-5
+16 Inference Practice II,prob10-10
+16 Inference Practice II,prob10-11
+16 Inference Practice II,prob10-7
+16 Inference Practice II,prob10-8
+16 Inference Practice II,prob10-9
+16 Inference Practice II,prob11-10
+16 Inference Practice II,prob11-11
+16 Inference Practice II,prob11-12
+16 Inference Practice II,prob11-13
+16 Inference Practice II,prob11-9
+16 Inference Practice II,prob12-10
+16 Inference Practice II,prob12-11
+16 Inference Practice II,prob12-7
+16 Inference Practice II,prob12-8
+16 Inference Practice II,prob12-9
+16 Inference Practice II,prob2-10
+16 Inference Practice II,prob2-11
+16 Inference Practice II,prob2-12
+16 Inference Practice II,prob2-13
+16 Inference Practice II,prob2-9
+16 Inference Practice II,prob3-10
+16 Inference Practice II,prob3-11
+16 Inference Practice II,prob3-7
+16 Inference Practice II,prob3-8
+16 Inference Practice II,prob3-9
+16 Inference Practice II,prob4-10
+16 Inference Practice II,prob4-6
+16 Inference Practice II,prob4-7
+16 Inference Practice II,prob4-8
+16 Inference Practice II,prob4-9
+16 Inference Practice II,prob5-3
+16 Inference Practice II,prob5-4
+16 Inference Practice II,prob5-5
+16 Inference Practice II,prob5-6
+16 Inference Practice II,prob6-10
+16 Inference Practice II,prob6-6
+16 Inference Practice II,prob6-7
+16 Inference Practice II,prob6-8
+16 Inference Practice II,prob6-9
+16 Inference Practice II,prob7-10
+16 Inference Practice II,prob7-11
+16 Inference Practice II,prob7-7
+16 Inference Practice II,prob7-8
+16 Inference Practice II,prob7-9
+16 Inference Practice II,prob8-10
+16 Inference Practice II,prob8-11
+16 Inference Practice II,prob8-12
+16 Inference Practice II,prob8-8
+16 Inference Practice II,prob8-9
+16 Inference Practice II,prob9-3
+16 Inference Practice II,prob9-4
+16 Inference Practice II,prob9-5
+16 Inference Practice II,prob9-6
+17 Inference for Numerical Data Lab,check-inference-conditions-habit
+17 Inference for Numerical Data Lab,first-inference-run
+17 Inference for Numerical Data Lab,plot-habit-weight
+19 Linear Regression,bty-score
+19 Linear Regression,model-final
+19 Linear Regression,model-second-it
+2 Intro to R,HelloWorld
+2 Intro to R,a-first-operation
+2 Intro to R,arithmeticExercise
+2 Intro to R,columnAccess
+2 Intro to R,defineAndCompute
+2 Intro to R,parensExercise
+2 Intro to R,redefine
+2 Intro to R,testStatEval
+3 Summarizing Numerical and Categorical Data,meanSampThree
+3 Summarizing Numerical and Categorical Data,meanSampleOne
+3 Summarizing Numerical and Categorical Data,myData
+4 Data Visualization,barplot-class-drv
+4 Data Visualization,boxplot-hwy-cyl
+4 Data Visualization,facet-wrapped-plot
+4 Data Visualization,hwy-displ-class-plot
+4 Data Visualization,plot-displ-cty
+4 Data Visualization,plot-hwy-cyl
+4 Data Visualization,print-mpg-dataframe
+4 Data Visualization,trans-drv-plot
+4 Data Visualization,trans2-fill-class
+5 Discrete Probability Distributions,binom-assignments-ex1
+5 Discrete Probability Distributions,binom-assignments-ex2
+5 Discrete Probability Distributions,binom-assignments-ex3
+5 Discrete Probability Distributions,binom-assignments-ex4
+5 Discrete Probability Distributions,binom-assignments-ex5
+5 Discrete Probability Distributions,binom-assignments-ex6
+5 Discrete Probability Distributions,binom-assignments-ex7
+5 Discrete Probability Distributions,chem-quiz-binom
+5 Discrete Probability Distributions,pAandB
+6 Introduction to the Normal Distribution,GRE-QR-percentile
+6 Introduction to the Normal Distribution,GRE-VR-percent-above
+6 Introduction to the Normal Distribution,chick-pox-exp
+6 Introduction to the Normal Distribution,chick-pox-prob-atleast
+6 Introduction to the Normal Distribution,chick-pox-prob-atmost
+6 Introduction to the Normal Distribution,chick-pox-prob-between
+6 Introduction to the Normal Distribution,chick-pox-prob-exact1
+6 Introduction to the Normal Distribution,chick-pox-prob-exact2
+6 Introduction to the Normal Distribution,chick-pox-sd
+6 Introduction to the Normal Distribution,find-percentile
+6 Introduction to the Normal Distribution,pnorm-ex1-left
+6 Introduction to the Normal Distribution,pnorm-ex2-left
+6 Introduction to the Normal Distribution,pnorm-ex3-right
+6 Introduction to the Normal Distribution,pnorm-ex4-right
+6 Introduction to the Normal Distribution,pnorm-ex5-mid
+6 Introduction to the Normal Distribution,pnorm-ex6-out
+6 Introduction to the Normal Distribution,pnorm-ex7-out
+6 Introduction to the Normal Distribution,z-score-QR
+6 Introduction to the Normal Distribution,z-score-VR
+7 Discrete Distributions Lab,plot-streak-kobe
+7 Discrete Distributions Lab,sim-independent
+7 Discrete Distributions Lab,sim-streak
+8 Normal Distribution Lab,head-data
+8 Normal Distribution Lab,prob-height-norm
+8 Normal Distribution Lab,subset-mf
+16a Inference Practice II (Part A),prob1-5
+16c Inference Practice II (Part C),prob10-10
+16c Inference Practice II (Part C),prob10-11
+16c Inference Practice II (Part C),prob10-7
+16c Inference Practice II (Part C),prob10-8
+16c Inference Practice II (Part C),prob10-9
+16c Inference Practice II (Part C),prob11-10
+16c Inference Practice II (Part C),prob11-11
+16c Inference Practice II (Part C),prob11-12
+16c Inference Practice II (Part C),prob11-13
+16c Inference Practice II (Part C),prob11-9
+16c Inference Practice II (Part C),prob12-10
+16c Inference Practice II (Part C),prob12-11
+16c Inference Practice II (Part C),prob12-7
+16c Inference Practice II (Part C),prob12-8
+16c Inference Practice II (Part C),prob12-9
+16a Inference Practice II (Part A),prob2-10
+16a Inference Practice II (Part A),prob2-11
+16a Inference Practice II (Part A),prob2-12
+16a Inference Practice II (Part A),prob2-13
+16a Inference Practice II (Part A),prob2-9
+16a Inference Practice II (Part A),prob3-10
+16a Inference Practice II (Part A),prob3-11
+16a Inference Practice II (Part A),prob3-7
+16a Inference Practice II (Part A),prob3-8
+16a Inference Practice II (Part A),prob3-9
+16a Inference Practice II (Part A),prob4-10
+16a Inference Practice II (Part A),prob4-6
+16a Inference Practice II (Part A),prob4-7
+16a Inference Practice II (Part A),prob4-8
+16a Inference Practice II (Part A),prob4-9
+16b Inference Practice II (Part B),prob5-3
+16b Inference Practice II (Part B),prob5-4
+16b Inference Practice II (Part B),prob5-5
+16b Inference Practice II (Part B),prob5-6
+16b Inference Practice II (Part B),prob6-10
+16b Inference Practice II (Part B),prob6-6
+16b Inference Practice II (Part B),prob6-7
+16b Inference Practice II (Part B),prob6-8
+16b Inference Practice II (Part B),prob6-9
+16b Inference Practice II (Part B),prob7-10
+16b Inference Practice II (Part B),prob7-11
+16b Inference Practice II (Part B),prob7-7
+16b Inference Practice II (Part B),prob7-8
+16b Inference Practice II (Part B),prob7-9
+16b Inference Practice II (Part B),prob8-10
+16b Inference Practice II (Part B),prob8-11
+16b Inference Practice II (Part B),prob8-12
+16b Inference Practice II (Part B),prob8-8
+16b Inference Practice II (Part B),prob8-9
+16c Inference Practice II (Part C),prob9-3
+16c Inference Practice II (Part C),prob9-4
+16c Inference Practice II (Part C),prob9-5
+16c Inference Practice II (Part C),prob9-6
