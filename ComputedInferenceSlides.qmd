@@ -21,12 +21,7 @@ options(scipen = 999)
 
 theme_set(theme_bw(base_size = 32))
 
-set.seed(123)
 
-pop_prop <- 0.86
-num_obs <- 17
-new_obs <- 113
-num_samps <- 100
 ```
 
 ```{css}
@@ -70,24 +65,76 @@ After completing several examples, we'll return to our long list of practice sce
 
 . . .
 
-**Scenario:** Researchers are interested in understanding the fuel efficiency of cars on the highway. To investigate, they collect data on the highway gas mileage (in miles per gallon) of a random sample of 234 cars. The researchers want to determine whether the average highway gas mileage for all cars exceeds 23 mpg. They conduct a test at the $\alpha = 0.10$ level of significance and the results appear below. Write the hypotheses for the test and determine the results of the test in the context of the scenario.
+**Scenario:** Researchers are interested in understanding the fuel efficiency of cars on the highway. To investigate, they collect data on the highway gas mileage (in miles per gallon) of a random sample of 234 cars. The researchers want to determine whether the average highway gas mileage for all cars exceeds 22.5 mpg. They conduct a test at the $\alpha = 0.10$ level of significance and the results appear below. Write the hypotheses for the test and determine the results of the test in the context of the scenario.
 
 . . . 
 
 ```{r}
-inference(y = hwy, data = mpg, type = "ht", statistic = "mean", method = "theoretical", null = 23, alternative = "greater", show_eda_plot = FALSE, show_inf_plot = FALSE)
+inference(y = hwy, data = mpg, type = "ht", statistic = "mean", method = "theoretical", null = 22.5, alternative = "greater", show_eda_plot = FALSE, show_inf_plot = FALSE)
 ```
-## Scenario II: Comparing Average Highway Fuel Economy
 
-**Scenario:** The researchers from the previous scenario would like to determine whether the highway fuel economy of automatic and manual vehicles differ from on another. They use their random sample of 234 cars and conduct this test at the $\alpha = 0.05$ level of significance. The results of the test appear below. Write the hypotheses for the test and state the conclusion in the context of the scenario.
+. . . 
+
+FYI...
+
+. . .
+
+...the code to run this inference is
 
 . . .
 
 ```{r}
-mpg <- mpg %>%
-  mutate(trans = str_sub(trans, 1, -5))
+#| echo: true
+#| eval: false
 
-inference(y = hwy, x = trans, data = mpg, type = "ht", statistic = "mean", method = "theoretical", null = 0, alternative = "twosided", show_eda_plot = FALSE, show_inf_plot = FALSE)
+inference(y = hwy, data = mpg, type = "ht", 
+          statistic = "mean", method = "theoretical", 
+          null = 22.5, alternative = "greater", 
+          show_eda_plot = FALSE, show_inf_plot = FALSE)
+```
+
+## Scenario II: Comparing Transmission Types
+
+**Scenario:** The researchers from the previous scenario would like to determine whether the proportion of automatic and manual vehicles differ from one another between front-wheel and rear-wheel drive vehicles. They use their random sample of 234 cars and conduct this test at the $\alpha = 0.05$ level of significance. The results of the test appear below. Write the hypotheses for the test and state the conclusion in the context of the scenario.
+
+. . .
+
+```{r}
+drive_trans <- mpg %>%
+  mutate(trans = str_sub(trans, 1, -5)) %>%
+  filter(drv %in% c("f", "r")) %>%
+  mutate(drv = ifelse(drv == "f", "front", "rear"))
+
+inference(y = trans, x = drv, data = drive_trans, 
+          type = "ht", statistic = "proportion", 
+          method = "theoretical", null = 0,
+          alternative = "twosided", 
+          success = "manual",
+          show_eda_plot = FALSE, 
+          show_inf_plot = FALSE)
+```
+
+. . . 
+
+FYI...
+
+. . .
+
+...after a bit of data manipulation, the code to run this inference is
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+
+inference(y = trans, x = drv, data = drive_trans, 
+          type = "ht", statistic = "proportion", 
+          method = "theoretical", null = 0,
+          alternative = "twosided", 
+          success = "manual",
+          show_eda_plot = FALSE, 
+          show_inf_plot = FALSE)
 ```
 
 ## Scenario III: City Gas Mileage for Four-Wheel Drive Vehicles
@@ -102,3 +149,64 @@ four_wd <- mpg %>%
 
 inference(y = cty, data = four_wd, type = "ci", statistic = "mean", method = "theoretical", conf_level = 0.95, show_eda_plot = FALSE, show_inf_plot = FALSE)
 ```
+
+. . . 
+
+FYI...
+
+. . .
+
+...after a bit of data manipulation, the code to run this inference is
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+
+inference(y = cty, data = four_wd, type = "ci", 
+          statistic = "mean", method = "theoretical", 
+          conf_level = 0.95, show_eda_plot = FALSE, 
+          show_inf_plot = FALSE)
+```
+
+## Scenario IV: Difference in Highway and City Fuel Economy
+
+**Scenario:** As one final investigation, the researchers would like to estimate the difference in highway gas mileage and city gas mileage. They build a 90% confidence interval for the difference in gas mileage and the results appear below. Interpret the results in context.
+
+. . . 
+
+```{r}
+cty_hwy_mpg <- mpg %>%
+  select(cty, hwy) %>%
+  pivot_longer(cols = everything(), names_to = "environment", values_to = "mpg") %>%
+  mutate(environment = factor(environment, levels = c("hwy", "cty")))
+
+inference(y = mpg, x = environment, 
+          data = cty_hwy_mpg, type = "ci", 
+          statistic = "mean", method = "theoretical", 
+          conf_level = 0.90, show_eda_plot = FALSE, 
+          show_inf_plot = FALSE)
+```
+
+. . . 
+
+FYI...
+
+. . .
+
+...after a bit of data manipulation, the code to run this inference is
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+
+inference(y = mpg, x = environment, 
+          data = cty_hwy_mpg, type = "ci", 
+          statistic = "mean", method = "theoretical", 
+          conf_level = 0.90, show_eda_plot = FALSE, 
+          show_inf_plot = FALSE)
+```
+
