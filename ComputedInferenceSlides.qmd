@@ -99,7 +99,7 @@ Which requires the `{statsr}` package to be loaded (run `library(statsr)`)
 
 ## Scenario II: Comparing Transmission Types
 
-**Scenario:** The researchers from the previous scenario would like to determine whether the proportion of automatic and manual vehicles differ from one another between front-wheel and rear-wheel drive vehicles. They use their random sample of 234 cars and conduct this test at the $\alpha = 0.05$ level of significance. The results of the test appear below. Write the hypotheses for the test and state the conclusion in the context of the scenario.
+**Scenario:** The researchers from the previous scenario would like to determine whether the proportion front-wheel drive vehicles which have manual transmissions differs from the proportion of rear-wheel drive vehicles having a manual transmission. They use their random sample of 234 cars and conduct this test at the $\alpha = 0.05$ level of significance. The results of the test appear below. Write the hypotheses for the test and state the conclusion in the context of the scenario.
 
 . . .
 
@@ -143,7 +143,7 @@ inference(y = trans, x = drv, data = drive_trans,
 
 ## Scenario III: City Gas Mileage for Four-Wheel Drive Vehicles
 
-**Scenario:** The researchers are now interested in estimating the city gas mileage for four-wheel drive vehicles. Using the four-wheel drive vehicles from their random sample, then construct a 95% confidence interval for city gas mileage. The results appear below. Interpret them in the context of the scenario.
+**Scenario:** The researchers are now interested in estimating the city gas mileage for four-wheel drive vehicles. Using the four-wheel drive vehicles from their random sample, they construct a 95% confidence interval for city gas mileage. The results appear below. Interpret them in the context of the scenario.
 
 . . . 
 
@@ -213,4 +213,13 @@ inference(y = mpg, x = environment,
           conf_level = 0.90, show_eda_plot = FALSE, 
           show_inf_plot = FALSE)
 ```
+
+## Next Up...
+
+<br/>
+<br/>
+
+. . .
+
+Let's work through more examples from our [list of practice scenarios](https://agmath.github.io/IntroductoryStatistics/PracticeInferenceProblems_F24Mixed.html)
 
