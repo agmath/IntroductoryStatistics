@@ -95,7 +95,7 @@ inference(y = hwy, data = mpg, type = "ht",
 
 . . . 
 
-Which requires the `{statsr}` package to be loaded (run `library(statsr)`)
+Using the `inference()` function requires the `{statsr}` package to be loaded -- which you can do by running `library(statsr)`
 
 ## Scenario II: Comparing Transmission Types
 
