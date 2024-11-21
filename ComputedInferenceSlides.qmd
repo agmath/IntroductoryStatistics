@@ -93,6 +93,10 @@ inference(y = hwy, data = mpg, type = "ht",
           show_eda_plot = FALSE, show_inf_plot = FALSE)
 ```
 
+. . . 
+
+Which requires the `{statsr}` package to be loaded (run `library(statsr)`)
+
 ## Scenario II: Comparing Transmission Types
 
 **Scenario:** The researchers from the previous scenario would like to determine whether the proportion of automatic and manual vehicles differ from one another between front-wheel and rear-wheel drive vehicles. They use their random sample of 234 cars and conduct this test at the $\alpha = 0.05$ level of significance. The results of the test appear below. Write the hypotheses for the test and state the conclusion in the context of the scenario.
