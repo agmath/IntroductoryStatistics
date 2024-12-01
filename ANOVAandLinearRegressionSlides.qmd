@@ -1,0 +1,333 @@
+---
+title: "Analysis of Variance (ANOVA) and Linear Regression"
+author: Dr. Gilbert
+format: revealjs
+date: today
+date-format: long
+theme: serif
+incremental: true
+fontsize: 20pt
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(countdown)
+library(statsr)
+library(gt)
+
+options(kable_styling_bootstrap_options = c("hover", "striped"))
+options(scipen = 999)
+
+theme_set(theme_bw(base_size = 32))
+
+nbhds <- ames %>%
+  count(Neighborhood) %>%
+  arrange(-n) %>%
+  slice(1:13) %>%
+  pull(Neighborhood)
+
+ames_small <- ames %>%
+  filter(Neighborhood %in% nbhds)
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+div.cell-output-stdout {
+  font-size: 1.5em;
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
+## The Highlights
+
++ What's left in our inference journey?
++ A reminder of the Ames home sales data
++ ANOVA -- testing for a difference in means across multiple (more than two) groups
+  
+  + Some intuition for ANOVA
+  + The mechanics of ANOVA
+  + The F-distribution and F-statistic
+  + A completed example using home sales in Ames, IA
+  + A discussion of the ANOVA output
+
++ What's still left in our inference journey?
++ A reminder on linear functions: $y = mx + b$ and $\mathbb{E}\left[y\right] = \beta_0 + \beta_1\cdot x$
++ Linear Regression
+
+  + Simple Linear Regression
+  + Multiple Linear Regression
+
++ Summary and Closing
+
+## What's Left for Inference?
+
+. . . 
+
+```{r}
+inf_df <- tibble(
+  "Inference On..." = c("One Binary Categorical Variable",
+                          "Association Between Two Binary Categorical Variables",
+                          "One MultiClass Categorical Variable",
+                          "Associations Between Two MultiClass Categorical Variables",
+                          "One Numerical Variable",
+                          "Association Between a Numerical Variable and a Binary Categorical Variable",
+                          "Association Between a Numerical Variable and a MultiClass Categorical Variable",
+                          "Association Between a Numerical Variable and a Single Other Numerical Variable",
+                          "Association Between a Numerical Variable and Many Other Variables",
+                          "Association Between a Categorical Variable and Many Other Variables"),
+  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "?", "?", "?", "✘")
+)
+
+inf_df %>%
+  gt()
+```
+
+## The `ames` Home Sales Data {.scrollable}
+
+. . . 
+
+The `ames` data set includes data on houses sold in Ames, IA between 2006 and 2010
+
+. . . 
+
+The dataset includes 74 features of 2,930 sold homes -- that is, the dataset includes 74 variables and 2,930 observations
+
+. . . 
+
+```{r}
+ames %>%
+  head() %>%
+  gt()
+```
+
+. . . 
+
+I've reduced the data set to only include neighborhoods where at least 100 properties were sold
+
+. . .
+
+The reduced data is stored in `ames_small`
+
+## Analysis of Variance (ANOVA)
+
+. . .
+
+**Inferential Question:** Does the average selling price of a home vary by neighborhood in Ames, IA?
+
+. . . 
+
+Let's start by identifying how many distinct neighborhoods are in `ames_small`
+
+. . .
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+ames_small %>%
+  count(Neighborhood) %>%
+  arrange(-n) %>%
+  gt()
+```
+
+:::
+
+:::{.column width="60%"}
+
+:::
+
+::::
+
+## Analysis of Variance (ANOVA)
+
+**Inferential Question:** Does the average selling price of a home vary by neighborhood in Ames, IA?
+
+Let's start by identifying how many distinct neighborhoods are in `ames_small`
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+ames_small %>%
+  count(Neighborhood) %>%
+  arrange(-n) %>%
+  gt()
+```
+
+:::
+
+:::{.column width="60%"}
+
+There are thirteen neighborhoods here! Our previous tests could only handle comparisons across two groups.
+
+:::
+
+::::
+
+## Analysis of Variance (ANOVA)
+
+**Inferential Question:** Does the average selling price of a home vary by neighborhood in Ames, IA?
+
+Let's start by identifying how many distinct neighborhoods are in `ames_small`
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+ames_small %>%
+  count(Neighborhood) %>%
+  arrange(-n) %>%
+  gt()
+```
+
+:::
+
+:::{.column width="60%"}
+
+There are thirteen neighborhoods here! Our previous tests could only handle comparisons across two groups.
+
+Analysis of Variance (ANOVA) provides a method for comparing group means across three or more groups
+
+:::
+
+::::
+
+## Analysis of Variance (ANOVA)
+
+**Inferential Question:** Does the average selling price of a home vary by neighborhood in Ames, IA?
+
+Let's start by identifying how many distinct neighborhoods are in `ames_small`
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+```{r}
+ames_small %>%
+  count(Neighborhood) %>%
+  arrange(-n) %>%
+  gt()
+```
+
+:::
+
+:::{.column width="60%"}
+
+There are thirteen neighborhoods here! Our previous tests could only handle comparisons across two groups.
+
+Analysis of Variance (ANOVA) provides a method for comparing group means across three or more groups
+
+The hypotheses for an ANOVA test are:
+
+$$\begin{array}{lcl} H_0 & : & \mu_1 = \mu_2 = \cdots = \mu_k\\ H_a & : & \text{At least one of the group means is different}\end{array}$$
+
+:::
+
+::::
+
+## Intuition for ANOVA
+
+. . . 
+
+The main ideas behind ANOVA are somewhat simple...
+
+i) Ignore the groups all together and calculate the variability from the overall mean
+ii) Calculate the variability from the group means
+iii) Calculate how much of the total variability is explained by differences between the group means ($\text{SS}_{\text{Total}} = \text{SS}_{\text{Between}} + \text{SS}_{\text{Within}}$)
+iv) Standardize the variability measures by turning them into averages
+v) Compare the average *between* group variability to the average *within* group variability
+
+    + If the *between* and *within* group variability are similar, then there is no evidence that group means differ
+    + If the *between* and *within* group variability differ, then that is evidence that the group means differ from one another
+
+## Mechanics of ANOVA
+
+. . . 
+
+Let's talk a bit about how ANOVA will work
+
+i) Calculate the overall mean ($\bar{x}$) of all the observed data, ignoring the groups.
+ii) Compute the **total sum of squares** ($\text{SS}_{\text{Total}}$) to measure the overall variability in the data: $\text{SS}_\text{Total} = \sum (x - \bar{x})^2$
+iii) For each group, calculate the mean ($\bar{x}_i$) and the **within-group sum of squares** $\left(\text{SS}_{\text{Within}}\right)$, which measures the variability within each group:  $\displaystyle{\text{SS}_\text{Within} = \sum_{\left(\text{groups, } i\right)} \sum_{\left(\text{observations, } x\right)} (x - \bar{x}_i)^2}$
+iv) Subtract the within-group variability from the total variability to get the **between-group sum of squares** ($\text{SS}_{\text{Between}}$), which measures how much the group means differ: $\text{SS}_\text{Between} = \text{SS}_\text{Total} - \text{SS}_\text{Within}$
+v) Compute the mean squares:
+    + **Mean Square Between** ($\text{MS}_{\text{Between}} = \text{SS}_{\text{Between}} / \left(\text{num_groups} - 1\right)$)
+    + **Mean Square Within** ($\text{MS}_{\text{Within}} = \text{SS}_{\text{Within}} / \left(\text{num_observations} - \text{num_groups}\right)$)
+vi) The **F-statistic** is the ratio of these mean squares:  $\displaystyle{F = \frac{\text{MS}_\text{Between}}{\text{MS}_\text{Within}}}$
+
+## Completed Example: Home Sales by Neighborhood
+
+## The ANOVA Output
+
+## What Still Remains of Inference?
+
+```{r}
+inf_df <- tibble(
+  "Inference On..." = c("One Binary Categorical Variable",
+                          "Association Between Two Binary Categorical Variables",
+                          "One MultiClass Categorical Variable",
+                          "Associations Between Two MultiClass Categorical Variables",
+                          "One Numerical Variable",
+                          "Association Between a Numerical Variable and a Binary Categorical Variable",
+                          "Association Between a Numerical Variable and a MultiClass Categorical Variable",
+                          "Association Between a Numerical Variable and a Single Other Numerical Variable",
+                          "Association Between a Numerical Variable and Many Other Variables",
+                          "Association Between a Categorical Variable and Many Other Variables"),
+  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "ANOVA", "?", "?", "✘")
+)
+
+inf_df %>%
+  gt()
+```
+
+## Aside: Linear Functions
+
+## Linear Regression
+
+## Simple Linear Regression
+
+## Multiple Linear Regression
+
+## Our Inference Journey!
+
+```{r}
+inf_df <- tibble(
+  "Inference On..." = c("One Binary Categorical Variable",
+                          "Association Between Two Binary Categorical Variables",
+                          "One MultiClass Categorical Variable",
+                          "Associations Between Two MultiClass Categorical Variables",
+                          "One Numerical Variable",
+                          "Association Between a Numerical Variable and a Binary Categorical Variable",
+                          "Association Between a Numerical Variable and a MultiClass Categorical Variable",
+                          "Association Between a Numerical Variable and a Single Other Numerical Variable",
+                          "Association Between a Numerical Variable and Many Other Variables",
+                          "Association Between a Categorical Variable and Many Other Variables"),
+  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "ANOVA", "Simple Linear Regression", "Multiple Lineaer Regression", "✘")
+)
+
+inf_df %>%
+  gt()
+```
+
+## Summary and Closing
+
