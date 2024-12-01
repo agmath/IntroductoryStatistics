@@ -18,18 +18,19 @@ library(statsr)
 library(gt)
 
 options(kable_styling_bootstrap_options = c("hover", "striped"))
-options(scipen = 999)
+#options(scipen = 999)
 
 theme_set(theme_bw(base_size = 32))
 
 nbhds <- ames %>%
   count(Neighborhood) %>%
   arrange(-n) %>%
-  slice(1:13) %>%
+  slice(1:4) %>%
   pull(Neighborhood)
 
 ames_small <- ames %>%
-  filter(Neighborhood %in% nbhds)
+  filter(Neighborhood %in% nbhds) %>%
+  mutate(Neighborhood = as.character(Neighborhood))
 ```
 
 ```{css}
@@ -63,9 +64,8 @@ a:visited {
   
   + Some intuition for ANOVA
   + The mechanics of ANOVA
-  + The F-distribution and F-statistic
   + A completed example using home sales in Ames, IA
-  + A discussion of the ANOVA output
+  + Limits to ANOVA Results, and Post-Hoc (Follow-Up) Tests
 
 + What's still left in our inference journey?
 + A reminder on linear functions: $y = mx + b$ and $\mathbb{E}\left[y\right] = \beta_0 + \beta_1\cdot x$
@@ -92,7 +92,7 @@ inf_df <- tibble(
                           "Association Between a Numerical Variable and a Single Other Numerical Variable",
                           "Association Between a Numerical Variable and Many Other Variables",
                           "Association Between a Categorical Variable and Many Other Variables"),
-  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "?", "?", "?", "✘")
+  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "?", "?", "?", "✘ (MAT434)")
 )
 
 inf_df %>%
@@ -107,7 +107,7 @@ The `ames` data set includes data on houses sold in Ames, IA between 2006 and 20
 
 . . . 
 
-The dataset includes 74 features of 2,930 sold homes -- that is, the dataset includes 74 variables and 2,930 observations
+The dataset includes 82 features of 2,930 sold homes -- that is, the dataset includes 82 variables and 2,930 observations
 
 . . . 
 
@@ -119,11 +119,11 @@ ames %>%
 
 . . . 
 
-I've reduced the data set to only include neighborhoods where at least 100 properties were sold
+I've reduced the data set to only include the four neighborhoods where the most properties were sold
 
 . . .
 
-The reduced data is stored in `ames_small`
+The reduced data is stored in `ames_small`, which still has 82 features but only 1,143 records
 
 ## Analysis of Variance (ANOVA)
 
@@ -139,7 +139,7 @@ Let's start by identifying how many distinct neighborhoods are in `ames_small`
 
 ::::{.columns}
 
-:::{.column width="40%"}
+:::{.column width="30%"}
 
 ```{r}
 ames_small %>%
@@ -150,7 +150,7 @@ ames_small %>%
 
 :::
 
-:::{.column width="60%"}
+:::{.column width="70%"}
 
 :::
 
@@ -164,7 +164,7 @@ Let's start by identifying how many distinct neighborhoods are in `ames_small`
 
 ::::{.columns}
 
-:::{.column width="40%"}
+:::{.column width="30%"}
 
 ```{r}
 ames_small %>%
@@ -175,9 +175,9 @@ ames_small %>%
 
 :::
 
-:::{.column width="60%"}
+:::{.column width="70%"}
 
-There are thirteen neighborhoods here! Our previous tests could only handle comparisons across two groups.
+There are four neighborhoods here! Our previous tests could only handle comparisons across two groups.
 
 :::
 
@@ -191,7 +191,7 @@ Let's start by identifying how many distinct neighborhoods are in `ames_small`
 
 ::::{.columns}
 
-:::{.column width="40%"}
+:::{.column width="30%"}
 
 ```{r}
 ames_small %>%
@@ -202,9 +202,9 @@ ames_small %>%
 
 :::
 
-:::{.column width="60%"}
+:::{.column width="70%"}
 
-There are thirteen neighborhoods here! Our previous tests could only handle comparisons across two groups.
+There are four neighborhoods here! Our previous tests could only handle comparisons across two groups.
 
 Analysis of Variance (ANOVA) provides a method for comparing group means across three or more groups
 
@@ -220,7 +220,7 @@ Let's start by identifying how many distinct neighborhoods are in `ames_small`
 
 ::::{.columns}
 
-:::{.column width="40%"}
+:::{.column width="30%"}
 
 ```{r}
 ames_small %>%
@@ -231,15 +231,15 @@ ames_small %>%
 
 :::
 
-:::{.column width="60%"}
+:::{.column width="70%"}
 
-There are thirteen neighborhoods here! Our previous tests could only handle comparisons across two groups.
+There are four neighborhoods here! Our previous tests could only handle comparisons across two groups.
 
 Analysis of Variance (ANOVA) provides a method for comparing group means across three or more groups
 
 The hypotheses for an ANOVA test are:
 
-$$\begin{array}{lcl} H_0 & : & \mu_1 = \mu_2 = \cdots = \mu_k\\ H_a & : & \text{At least one of the group means is different}\end{array}$$
+$$\begin{array}{lcl} H_0 & : & \mu_1 = \mu_2 = \cdots = \mu_k~~\text{(All group means are equal)}\\ H_a & : & \text{At least one of the group means is different}\end{array}$$
 
 :::
 
@@ -251,7 +251,7 @@ $$\begin{array}{lcl} H_0 & : & \mu_1 = \mu_2 = \cdots = \mu_k\\ H_a & : & \text{
 
 The main ideas behind ANOVA are somewhat simple...
 
-i) Ignore the groups all together and calculate the variability from the overall mean
+i) Ignore the groups and calculate the variability from the overall mean
 ii) Calculate the variability from the group means
 iii) Calculate how much of the total variability is explained by differences between the group means ($\text{SS}_{\text{Total}} = \text{SS}_{\text{Between}} + \text{SS}_{\text{Within}}$)
 iv) Standardize the variability measures by turning them into averages
@@ -264,7 +264,7 @@ v) Compare the average *between* group variability to the average *within* group
 
 . . . 
 
-Let's talk a bit about how ANOVA will work
+Here are the main steps in an ANOVA test
 
 i) Calculate the overall mean ($\bar{x}$) of all the observed data, ignoring the groups.
 ii) Compute the **total sum of squares** ($\text{SS}_{\text{Total}}$) to measure the overall variability in the data: $\text{SS}_\text{Total} = \sum (x - \bar{x})^2$
@@ -275,9 +275,111 @@ v) Compute the mean squares:
     + **Mean Square Within** ($\text{MS}_{\text{Within}} = \text{SS}_{\text{Within}} / \left(\text{num_observations} - \text{num_groups}\right)$)
 vi) The **F-statistic** is the ratio of these mean squares:  $\displaystyle{F = \frac{\text{MS}_\text{Between}}{\text{MS}_\text{Within}}}$
 
+## Mechanics of ANOVA
+
+Here are the main steps in an ANOVA test
+
+:::{.nonincremental}
+
+iv) Subtract the within-group variability from the total variability to get the **between-group sum of squares** ($\text{SS}_{\text{Between}}$), which measures how much the group means differ: $\text{SS}_\text{Between} = \text{SS}_\text{Total} - \text{SS}_\text{Within}$
+v) Compute the mean squares:
+    + **Mean Square Between** ($\text{MS}_{\text{Between}} = \text{SS}_{\text{Between}} / \left(\text{num_groups} - 1\right)$)
+    + **Mean Square Within** ($\text{MS}_{\text{Within}} = \text{SS}_{\text{Within}} / \left(\text{num_observations} - \text{num_groups}\right)$)
+vi) The **F-statistic** is the ratio of these mean squares:  $\displaystyle{F = \frac{\text{MS}_\text{Between}}{\text{MS}_\text{Within}}}$
+
+:::
+
+vii) Calculate the $p$-value using the $F$ distribution with `df1` as "one less than the number of groups" and `df2` as "the number of observations minus the number of groups"
+viii) Interpret the results of the test as usual (and in context)
+
+. . . 
+
+**In Practice:** The full ANOVA test will be run using software and we'll just need to interpret the results
+
 ## Completed Example: Home Sales by Neighborhood
 
-## The ANOVA Output
+. . . 
+
+**Inferential Question:** Do selling prices of homes vary by neighborhood in Ames?
+
+. . . 
+
+$$\begin{array}{lcl} H_0 & : & \text{Average selling prices are the same across neighborhoods}\\ H_a & : & \text{At least one neighborhood has a difference average selling price}\end{array}$$
+
+. . . 
+
+Let's run the test:
+
+. . . 
+
+```{r}
+#| echo: true
+#| eval: false
+
+ANOVA_results <- aov(price ~ Neighborhood, data = ames_small)
+ANOVA_results %>%
+  tidy()
+```
+
+```{r}
+ANOVA_results <- aov(price ~ Neighborhood, data = ames_small)
+ANOVA_results %>%
+  tidy() %>%
+  gt()
+```
+
+. . . 
+
+**Result:** The $p$-value is very small (it's being rounded to 0 here). Since the $p$-value is less than $\alpha$ (0.05), we reject the null hypothesis and accept the alternative to it.
+
+. . . 
+
+**Result in Context:** The average selling price of a home in Ames, IA does vary by neighborhood. At least one of the neighborhoods has a different average selling price than the others.
+
+## A Note on ANOVA Results
+
+. . . 
+
+Notice that the result of the ANOVA test is simply that at least one neighborhood has a different average selling price
+
+. . . 
+
+We don't know which one, however
+
+. . . 
+
+We can identify which neighborhood(s) differ from one another by either (i) using Tukey's Honestly Significantly Different test, `TukeyHSD()` or (ii) using `inference()` to run the ANOVA test instead of `aov()`
+
+
+## A Note on ANOVA Results
+
+**To Use `TukeyHSD()`:** Run the ANOVA test as we did previously and then
+
+. . .
+
+```{r}
+#| echo: true
+
+TukeyHSD(ANOVA_results)
+```
+
+. . . 
+
+It looks like the data provides evidence suggesting that all pairs of neighborhoods have average selling prices that differ, except for the Old Town and Edwards neighborhoods which *may* have the same average selling price
+
+## A Note on ANOVA Results
+
+**To Use `inference()`:** You won't use `aov()` at all; instead...
+
+. . .
+
+```{r}
+#| echo: true
+
+inference(y = price, x = Neighborhood, data = ames_small,
+          statistic = "mean", type = "ht", method = "theoretical",
+          show_eda_plot = FALSE, show_inf_plot = FALSE)
+```
 
 ## What Still Remains of Inference?
 
@@ -293,22 +395,306 @@ inf_df <- tibble(
                           "Association Between a Numerical Variable and a Single Other Numerical Variable",
                           "Association Between a Numerical Variable and Many Other Variables",
                           "Association Between a Categorical Variable and Many Other Variables"),
-  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "ANOVA", "?", "?", "✘")
+  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "ANOVA", "?", "?", "✘ (MAT434)")
 )
 
 inf_df %>%
   gt()
 ```
 
+. . . 
+
+The only remaining inference tasks for us to explore are those involving associations between two numerical variables (*simple linear regression*) and involving associations between a numerical variable and multiple other variables (*multiple linear regression*)
+
 ## Aside: Linear Functions
+
+. . . 
+
+Perhaps you remember the equation of a straight line from algebra: $y = mx + b$
+
++ $y$ and $x$ are numeric variables, where $x$ is often called the *independent* variable and $y$ is called the *dependent* variable
++ $m$ is the **slope** of the line -- that is, the change in $y$ corresponding to a one-unit increase in $x$
++ $b$ is the **intercept** of the line -- that is, the value of $y$ when $x = 0$
+
+. . . 
+
+We can extend the notion of a linear function to include more than just one independent variable $x$
+
+. . . 
+
+If $x_1,~x_2,~\cdots,~x_k$ are all independent variables, then the equation $y = b + m_1 x_1 + m_2 x_2 + \cdots + m_k x_k$ is an extension of a linear function to multiple dimensions
+
++ $m_i$ is the **slope** with respect to $x_i$ -- that is, the change in $y$ corresponding to a one-unit increase in $x_i$ (holding all other $x_j$ constant)
++ $b$ is the **intercept** -- that is, the value of $y$ if $x_i = 0$ for all $i$
+
 
 ## Linear Regression
 
-## Simple Linear Regression
+. . . 
 
-## Multiple Linear Regression
+In *simple linear regression*, we have a numeric outcome variable of interest ($y$) and a numeric predictor variable $x$ 
 
-## Our Inference Journey!
+. . . 
+
+Due to the random fluctuations in observed values of $y$ and $x$, a straight line will not pass through all of the observed $x,~y$-pairs but a straight line *may* capture the general trend between observed values of $x$ and corresponding observed values of $y$
+
+. . . 
+
+**Simple Linear Regression:** We can describe the relationship above by the equation $\mathbb{E}\left[y\right] = \beta_0 + \beta_1\cdot x$
+
++ $\beta_0$ is the **intercept** -- the *expected* value of $y$ when $x = 0$
++ $\beta_1$ is the **slope** -- the *expected* change in $y$ corresponding to a unit increase in $x$
+
+. . . 
+
+**Multiple Linear Regression:** We can extend the relationship above, accommodating multiple independent and numeric predictor variables$^{**}$, by the equation $\mathbb{E}\left[y\right] = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k$
+
++ $\beta_0$ is the **intercept** -- the *expected* value of $y$ when $x_i = 0$ for all $i$
++ $\beta_1$ is the **slope** -- the *expected* change in $y$ corresponding to a unit increase in $x_i$, holding all other $x_j$ constant
+
+## Completed Example: Simple Linear Regression
+
+. . . 
+
+**Disclaimer:** There is much to learn about linear regression and we'll just scratch the surface here. The MAT300 (Regression Analysis) course spends over half a semester on linear regression models so check it out if you are interested!
+
+. . . 
+
+::::{.columns}
+
+:::{.column width="60%"}
+
+**Inferential Question:** Is there evidence to suggest that the average selling price for a home in Ames, IA changed from one year to the next during the 2006 - 2010 time period?
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+ames %>%
+  ggplot() + 
+  geom_boxplot(aes(x = Yr.Sold, y = price, group = Yr.Sold),
+               alpha = 0.25, outliers = FALSE) + 
+  geom_jitter(aes(x = Yr.Sold, y = price), 
+              width = 0.25, height = 0,
+              alpha = 0.15) + 
+  labs(
+    x = "Year Sold",
+    y = "Selling Price ($)"
+  )
+```
+
+:::
+
+::::
+
+. . . 
+
+Note that selling price (`price`) and year sold (`Yr.Sold`) are both numeric variables, so linear regression is the tool we'll need.
+
+. . . 
+
+```{r}
+#| echo: true
+#| eval: false
+
+lr_mod <- lm(price ~ Yr.Sold, 
+             data = ames)
+lr_mod %>%
+  tidy()
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+lr_mod <- lm(price ~ Yr.Sold, data = ames)
+
+lr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+## Completed Example: Simple Linear Regression
+
+::::{.columns}
+
+:::{.column width="60%"}
+
+**Inferential Question:** Is there evidence to suggest that the average selling price for a home in Ames, IA changed from one year to the next during the 2006 - 2010 time period?
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+ames %>%
+  ggplot() + 
+  geom_boxplot(aes(x = Yr.Sold, y = price, group = Yr.Sold),
+               alpha = 0.25, outliers = FALSE) + 
+  geom_jitter(aes(x = Yr.Sold, y = price), 
+              width = 0.25, height = 0,
+              alpha = 0.15) + 
+  labs(
+    x = "Year Sold",
+    y = "Selling Price ($)"
+  )
+```
+
+:::
+
+::::
+
+```{r}
+#| echo: false
+#| eval: true
+
+lr_mod <- lm(price ~ Yr.Sold, data = ames)
+
+lr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+The `Yr.Sold` variable is statistically significant at the $\alpha = 0.10$ level of significance but not at the $\alpha = 0.05$ level of significance.
+
+. . . 
+
+The fitted regression model suggests that: $\mathbb{E}\left[\text{price}\right] = 3904860 - 1854.81\cdot\text{Year}$
+
+. . . 
+
+Notice that this model is suggesting that selling prices of homes in Ames, IA got cheaper over the 2006 to 2010 time period -- likely a result of [the subprime mortgage crisis](https://www.federalreservehistory.org/essays/subprime-mortgage-crisis).
+
+## Completed Example: Multiple Linear Regression
+
+. . . 
+
+**Inferential Question:** Is there evidence to suggest that selling prices of homes in Ames, IA are associated with the living area (`area`), lot area (`Lot.Area`), lot frontage (`Lot.Frontage`), overall condition (`Overall.Cond`), year built (`Year.Built`), finished basement size (`BsmtFin.SF.1`), total rooms above ground (`TotRms.AbvGrd`), `Fireplaces`, `Garage.Area`, and the year sold (`Yr.Sold`)?
+
+. . . 
+
+In this scenario, we are making use of lots of predictors but linear regression is still the tool for us to use!
+
+## Completed Example: Multiple Linear Regression
+
+```{r}
+#| echo: true
+#| eval: true
+
+mlr_mod <- lm(price ~ area + Lot.Area + Lot.Frontage + Overall.Cond + Year.Built + BsmtFin.SF.1 + TotRms.AbvGrd + Yr.Sold + Fireplaces + Garage.Area, 
+              data = ames)
+mlr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+. . . 
+
+Notice that the $p$-values on several variables are higher than the $\alpha = 0.05$ level of significance
+
+## Completed Example: Multiple Linear Regression
+
+```{r}
+#| echo: false
+#| eval: true
+
+mlr_mod <- lm(price ~ area + Lot.Area + Lot.Frontage + Overall.Cond + Year.Built + BsmtFin.SF.1 + TotRms.AbvGrd + Yr.Sold + Fireplaces + Garage.Area, 
+              data = ames)
+mlr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+. . . 
+
+The $p$-values on `Lot.Frontage`, `TotRms.AbvGrd`, and `Yr.Sold` indicate that these predictors are not statistically significant -- they are candidates for removal from the model
+
+. . . 
+
+We'll remove one predictor at a time, starting with `Lot.Frontage` since it has the largest $p$-value
+
+## Completed Example: Multiple Linear Regression
+
+```{r}
+#| echo: true
+#| eval: true
+
+mlr_mod <- lm(price ~ area + Lot.Area + Overall.Cond + Year.Built + BsmtFin.SF.1 + TotRms.AbvGrd + Yr.Sold + Fireplaces + Garage.Area, 
+              data = ames)
+mlr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+. . . 
+
+`TotRms.AbvGrd` and `Yr.Sold` are still not statistically significant, we'll remove `Yr.Sold` this time since it has the highest $p$-value
+
+## Completed Example: Multiple Linear Regression
+
+```{r}
+#| echo: true
+#| eval: true
+
+mlr_mod <- lm(price ~ area + Lot.Area + Overall.Cond + Year.Built + BsmtFin.SF.1 + TotRms.AbvGrd + Fireplaces + Garage.Area, 
+              data = ames)
+mlr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+. . . 
+
+Now we'll remove `TotRms.AbvGrd` since it is still not statistically significant
+
+## Completed Example: Multiple Linear Regression
+
+```{r}
+#| echo: true
+#| eval: true
+
+mlr_mod <- lm(price ~ area + Lot.Area + Overall.Cond + Year.Built + BsmtFin.SF.1 + Fireplaces + Garage.Area, 
+              data = ames)
+mlr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+. . . 
+
+All of the remaining model terms are statistically significant, so we've arrived at our final model
+
+## Completed Example: Multiple Linear Regression
+
+```{r}
+#| echo: false
+#| eval: true
+
+mlr_mod <- lm(price ~ area + Lot.Area + Overall.Cond + Year.Built + BsmtFin.SF.1 + Fireplaces + Garage.Area, 
+              data = ames)
+mlr_mod %>%
+  tidy() %>%
+  gt()
+```
+
+. . . 
+
+The estimated model form is
+
+. . . 
+
+\begin{align} \mathbb{E}\left[\text{price}\right] = &-1800539 + 72.4\text{area} + 0.37\text{LotArea} + 8477\text{OverallCond} + 897.47\text{YrBuilt}~+\\ 
+&~26.69\text{BsmtFinSF} + 12580.46\text{Fireplaces} + 69.98\text{GarageArea}
+\end{align}
+
+. . . 
+
+There are lots of inferences we can draw from this model -- for example, holding all other predictors constant, each additional fireplace is associated with a higher selling price by about \$12,580.46
+
+## Summary and Closing
+
+. . . 
 
 ```{r}
 inf_df <- tibble(
@@ -322,12 +708,25 @@ inf_df <- tibble(
                           "Association Between a Numerical Variable and a Single Other Numerical Variable",
                           "Association Between a Numerical Variable and Many Other Variables",
                           "Association Between a Categorical Variable and Many Other Variables"),
-  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "ANOVA", "Simple Linear Regression", "Multiple Lineaer Regression", "✘")
+  '"Test" Name' = c("One Sample z", "Two Sample z", "Chi-Squared GOF", "Chi-Squared Independence", "One Sample t", "Two Sample t", "ANOVA", "Simple Linear Regression (More in MAT300)", "Multiple Linear Regression\n (More in MAT300)", "✘ (MAT434)")
 )
 
 inf_df %>%
   gt()
 ```
 
+. . . 
+
+We've covered lots of ground in this course -- you leave MAT241 with an ability to conduct statistical inference in many contexts
+
+. . . 
+
+There's still more to discover though, and I hope some of your will join me in future semesters to take MAT300 and MAT434
+
 ## Summary and Closing
 
+<center>
+
+<iframe src="https://giphy.com/embed/mR3dXKpI6P8CA" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/looney-tunes-mR3dXKpI6P8CA">via GIPHY</a></p>
+
+</center>
