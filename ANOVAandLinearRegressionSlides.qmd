@@ -289,7 +289,7 @@ vi) The **F-statistic** is the ratio of these mean squares:  $\displaystyle{F = 
 
 :::
 
-vii) Calculate the $p$-value using the $F$ distribution with `df1` as "one less than the number of groups" and `df2` as "the number of observations minus the number of groups"
+vii) Calculate the $p$-value using the $F$ distribution with `df1` as "one less than the number of groups" ($k - 1$) and `df2` as "the number of observations minus the number of groups" ($n - k$)
 viii) Interpret the results of the test as usual (and in context)
 
 . . . 
