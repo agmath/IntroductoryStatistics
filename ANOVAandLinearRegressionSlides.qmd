@@ -381,6 +381,25 @@ inference(y = price, x = Neighborhood, data = ames_small,
           show_eda_plot = FALSE, show_inf_plot = FALSE)
 ```
 
+## Visual Confirmation
+
+. . . 
+
+While a graphic alone cannot be used to conduct statistical inference, it can be used to confirm what we see numerically in a statistical test.
+
+. . . 
+
+```{r}
+ames_small %>%
+  ggplot() + 
+  geom_boxplot(aes(x = price, y = Neighborhood, fill = Neighborhood),
+               show.legend = FALSE) + 
+  labs(
+    x = "Selling Price ($)",
+    y = ""
+  )
+```
+
 ## What Still Remains of Inference?
 
 ```{r}
