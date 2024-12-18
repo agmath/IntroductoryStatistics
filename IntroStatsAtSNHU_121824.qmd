@@ -1,0 +1,153 @@
+---
+title: "Introductory Applied Statistics at SNHU"
+format: 
+  revealjs:
+    incremental: true
+    fontsize: 17pt
+date: today
+date-format: long
+theme: sky
+engine: knitr
+---
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+div.cell-output-stdout {
+  font-size: 1.5em;
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+
+a:hover {
+  color: purple;
+}
+
+```
+
+## Introductory Applied Statistics at SNHU
+
++ **Welcome!**
++ **Purpose of this meeting:** To discuss current offerings and gather feedback.
++ **Goal:** Ensure our statistics courses meet partner-discipline needs and student expectations.
+
+. . .
+
+<hr>
+
++ **Current Flavors:** MAT240 and MAT241 (type of software use is the big difference).
+
+## Current Flavors
+
++ **MAT240:** Software used depends on section (Excel, Minitab, StatCrunch, TI Calculator, etc.)
++ **MAT241:** R and Quarto Notebooks (some coding required)
+
+## Introductory Applied Statistics at SNHU
+
+:::{.nonincremental}
+
++ **Purpose of this meeting:** To discuss current offerings and gather feedback.
++ **Goal:** Ensure our statistics courses meet partner-discipline needs and student expectations.
+
+:::
+
+<hr>
+
+:::{.nonincremental}
+
++ **Current Flavors:** MAT240 and MAT241 (type of software use is the big difference).
+  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines?
+
+:::
+
++ **Current Landscape:** Both MAT240 and MAT241 cover the same core topics.
+
+## Current Landscape
+
++ **Descriptive Statistics:** Numerical summaries of data, data visualization, interpretation and communication
++ **Probability:** The bare bones for statistical inference -- binomial distribution, normal distribution
++ **Inferential Statistics:** Parameter estimation, tests, interpretation and communication
+   + Confidence intervals (means, proportions, differences)
+   + Hypothesis tests (means, proportions, comparisons)
+   + Chi-squared tests (goodness of fit, independence)
+   + ANOVA
+   + Basic simple and multiple linear regression
+   
+## Introductory Applied Statistics at SNHU
+
+:::{.nonincremental}
+
++ **Purpose of this meeting:** To discuss current offerings and gather feedback.
++ **Goal:** Ensure our statistics courses meet partner-discipline needs and student expectations.
+
+:::
+
+<hr>
+
+:::{.nonincremental}
+
++ **Current Flavors:** MAT240 and MAT241 (type of software use is the big difference).
+  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines?
+
++ **Current Landscape:** Both MAT240 and MAT241 cover the same core topics (descriptive statistics, basic probability, inferential statistics).
+  + ***Question 2:*** Are we covering the topics you expect and need?
+
+:::
+
++ **Guiding Principles:** We want to stay true to some best practices.
+
+## Guiding Principles
+
++ **ASA recommendations and GAISE:** The American Statistical Association provides [guidelines for assessment and instruction in statistics education](https://www.amstat.org/education/guidelines-for-assessment-and-instruction-in-statistics-education-(gaise)-reports) (GAISE), including 
+  + [recommended learning outcomes](https://community.amstat.org/collegegaiserevision/slo)
+  + [general recommendations for courses in statistics and data science](https://community.amstat.org/collegegaiserevision/revised-gaise-ten-recs).
+
++ **Software Use:** We feel strongly about exposing students to software that they can reasonably expect to have access to and utilize in their future careers
+
+## Introductory Applied Statistics at SNHU
+
+:::{.nonincremental}
+
++ **Purpose of this meeting:** To discuss current offerings and gather feedback.
++ **Goal:** Ensure our statistics courses meet partner-discipline needs and student expectations.
+
+:::
+
+<hr>
+
+:::{.nonincremental}
+
++ **Current Flavors:** MAT240 and MAT241 (type of software use is the big difference).
+  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines?
+
++ **Current Landscape:** Both MAT240 and MAT241 cover the same core topics (descriptive statistics, basic probability, inferential statistics).
+  + ***Question 2:*** Are we covering the topics you expect and need?
+
++ **Guiding Principles:** The GAISE [introductory statistics learning outcomes](https://community.amstat.org/collegegaiserevision/slo) and [general recommendations](https://community.amstat.org/collegegaiserevision/revised-gaise-ten-recs), and use of widely available and accessible software tools.
+
+:::
+
++ **Additional Questions Leading to Action Items and Future Work:** 
+  + ***Question 3:*** What course should students in your disciplines take? 
+  + ***Question 4:*** What software options are viable to consider for MAT240?
+  + ***Question 5:*** Do you (or someone from your department) want to be involved in future discussions around MAT240/MAT241? Reach out to Adam ([a.gilbert1@snhu.edu](mailto:a.gilbert1@snhu.edu)).
+
+. . . 
+
+<center> **Thank You!** </center>
+   
+
+
