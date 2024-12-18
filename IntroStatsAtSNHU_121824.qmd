@@ -69,7 +69,7 @@ a:hover {
 :::{.nonincremental}
 
 + **Current Flavors:** MAT240 and MAT241 (type of software use is the big difference).
-  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines?
+  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines (and helps instructors)?
 
 :::
 
@@ -100,7 +100,7 @@ a:hover {
 :::{.nonincremental}
 
 + **Current Flavors:** MAT240 and MAT241 (type of software use is the big difference).
-  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines?
+  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines (and helps instructors)?
 
 + **Current Landscape:** Both MAT240 and MAT241 cover the same core topics (descriptive statistics, basic probability, inferential statistics).
   + ***Question 2:*** Are we covering the topics you expect and need?
@@ -131,7 +131,7 @@ a:hover {
 :::{.nonincremental}
 
 + **Current Flavors:** MAT240 and MAT241 (type of software use is the big difference).
-  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines?
+  + ***Question 1:*** Can/should we standardize MAT240 software use in a way that satisfies all of our partner disciplines (and helps instructors)?
 
 + **Current Landscape:** Both MAT240 and MAT241 cover the same core topics (descriptive statistics, basic probability, inferential statistics).
   + ***Question 2:*** Are we covering the topics you expect and need?
