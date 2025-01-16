@@ -9,9 +9,31 @@ date-format: long
 theme: sky
 ---
 
+```{css}
+code.sourceCode {
+  font-size: 1.1em;
+  /* or try font-size: xx-large; */
+}
+
+div.cell-output-stdout {
+  font-size: 1.3em;
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
 ```{r}
 library(tidyverse)
-library(countdown)
 library(kableExtra)
 
 austin <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/master/data/classification/austin_zillow_data.csv")
@@ -114,10 +136,6 @@ austin %>%
 . . . 
 
 While you are doing this, do "future you" a favor by keeping your notebook organized, each code chunk to one pipeline, and write descriptive text before each code chunk. 
-
-```{r}
-countdown(minutes = 5)
-```
 
 ## Warning: Missing Values are *Contagious*
 
@@ -445,10 +463,6 @@ $\bigstar$ Continue adding to your notebook by calculating frequencies and relat
 
 Again, do "future you" a favor by keeping your notebook organized and narrated. 
 
-```{r}
-countdown(minutes = 7)
-```
-
 ## Grouped Summaries
 
 . . . 
@@ -515,10 +529,6 @@ $\bigstar$ Use `group_by()` and `summarize()` to answer some of our questions ab
 . . . 
 
 As you've done, continue to do "future you" a favor by keeping your notebook organized and narrated. 
-
-```{r}
-countdown(minutes = 10)
-```
 
 ## Summary
 

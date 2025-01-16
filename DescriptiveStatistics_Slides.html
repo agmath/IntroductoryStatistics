@@ -10,7 +10,7 @@
 <link href="DescriptiveStatistics_Slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.43">
 
-  <meta name="dcterms.date" content="2024-09-16">
+  <meta name="dcterms.date" content="2025-01-16">
   <title>Descriptive Statistics with R and the Austin Housing Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -387,8 +387,6 @@
   </style>
   <script src="DescriptiveStatistics_Slides_files/libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="DescriptiveStatistics_Slides_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-  <link href="DescriptiveStatistics_Slides_files/libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="DescriptiveStatistics_Slides_files/libs/countdown-0.4.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -400,7 +398,34 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">September 16, 2024</p>
+  <p class="date">January 16, 2025</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<style type="text/css">
+code.sourceCode {
+  font-size: 1.1em;
+  /* or try font-size: xx-large; */
+}
+
+div.cell-output-stdout {
+  font-size: 1.3em;
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+</style>
+</div>
 </section>
 <section id="the-highlights" class="slide level2">
 <h2>The Highlights</h2>
@@ -504,14 +529,6 @@
 </div>
 <div class="fragment">
 <p>While you are doing this, do “future you” a favor by keeping your notebook organized, each code chunk to one pipeline, and write descriptive text before each code chunk.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_c5c41d94" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
 </div>
 </section>
 <section id="warning-missing-values-are-contagious" class="slide level2">
@@ -536,44 +553,44 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">23.29265</td>
-<td style="text-align: right;">10.83647</td>
+<td style="text-align: right;">30.06603</td>
+<td style="text-align: right;">16.70668</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">26.66060</td>
-<td style="text-align: right;">15.20252</td>
+<td style="text-align: right;">28.09459</td>
+<td style="text-align: right;">13.91630</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">26.13309</td>
+<td style="text-align: right;">24.13013</td>
+<td style="text-align: right;">15.35275</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21.47366</td>
+<td style="text-align: right;">12.91570</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24.86587</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">25.70069</td>
-<td style="text-align: right;">13.52328</td>
+<td style="text-align: right;">25.55923</td>
+<td style="text-align: right;">14.67098</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">19.07883</td>
-<td style="text-align: right;">15.46630</td>
+<td style="text-align: right;">26.28593</td>
+<td style="text-align: right;">18.33346</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">27.74035</td>
-<td style="text-align: right;">14.41281</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">25.17816</td>
-<td style="text-align: right;">17.00389</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25.42456</td>
-<td style="text-align: right;">14.53529</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">28.95521</td>
-<td style="text-align: right;">13.66709</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">31.78997</td>
+<td style="text-align: right;">25.84654</td>
 <td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27.49840</td>
+<td style="text-align: right;">10.47783</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.72113</td>
+<td style="text-align: right;">12.31492</td>
 </tr>
 </tbody>
 </table>
@@ -600,7 +617,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">25.99541</td>
+<td style="text-align: right;">25.75415</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -630,44 +647,44 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">23.29265</td>
-<td style="text-align: right;">10.83647</td>
+<td style="text-align: right;">30.06603</td>
+<td style="text-align: right;">16.70668</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">26.66060</td>
-<td style="text-align: right;">15.20252</td>
+<td style="text-align: right;">28.09459</td>
+<td style="text-align: right;">13.91630</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">26.13309</td>
+<td style="text-align: right;">24.13013</td>
+<td style="text-align: right;">15.35275</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21.47366</td>
+<td style="text-align: right;">12.91570</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24.86587</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">25.70069</td>
-<td style="text-align: right;">13.52328</td>
+<td style="text-align: right;">25.55923</td>
+<td style="text-align: right;">14.67098</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">19.07883</td>
-<td style="text-align: right;">15.46630</td>
+<td style="text-align: right;">26.28593</td>
+<td style="text-align: right;">18.33346</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">27.74035</td>
-<td style="text-align: right;">14.41281</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">25.17816</td>
-<td style="text-align: right;">17.00389</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25.42456</td>
-<td style="text-align: right;">14.53529</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">28.95521</td>
-<td style="text-align: right;">13.66709</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">31.78997</td>
+<td style="text-align: right;">25.84654</td>
 <td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27.49840</td>
+<td style="text-align: right;">10.47783</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.72113</td>
+<td style="text-align: right;">12.31492</td>
 </tr>
 </tbody>
 </table>
@@ -694,7 +711,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">25.99541</td>
+<td style="text-align: right;">25.75415</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -721,8 +738,8 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">25.99541</td>
-<td style="text-align: right;">14.33096</td>
+<td style="text-align: right;">25.75415</td>
+<td style="text-align: right;">14.33608</td>
 </tr>
 </tbody>
 </table>
@@ -750,44 +767,44 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">23.29265</td>
-<td style="text-align: right;">10.83647</td>
+<td style="text-align: right;">30.06603</td>
+<td style="text-align: right;">16.70668</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">26.66060</td>
-<td style="text-align: right;">15.20252</td>
+<td style="text-align: right;">28.09459</td>
+<td style="text-align: right;">13.91630</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">26.13309</td>
+<td style="text-align: right;">24.13013</td>
+<td style="text-align: right;">15.35275</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21.47366</td>
+<td style="text-align: right;">12.91570</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24.86587</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">25.70069</td>
-<td style="text-align: right;">13.52328</td>
+<td style="text-align: right;">25.55923</td>
+<td style="text-align: right;">14.67098</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">19.07883</td>
-<td style="text-align: right;">15.46630</td>
+<td style="text-align: right;">26.28593</td>
+<td style="text-align: right;">18.33346</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">27.74035</td>
-<td style="text-align: right;">14.41281</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">25.17816</td>
-<td style="text-align: right;">17.00389</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25.42456</td>
-<td style="text-align: right;">14.53529</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">28.95521</td>
-<td style="text-align: right;">13.66709</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">31.78997</td>
+<td style="text-align: right;">25.84654</td>
 <td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27.49840</td>
+<td style="text-align: right;">10.47783</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.72113</td>
+<td style="text-align: right;">12.31492</td>
 </tr>
 </tbody>
 </table>
@@ -814,7 +831,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">25.99541</td>
+<td style="text-align: right;">25.75415</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
@@ -841,8 +858,8 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">25.99541</td>
-<td style="text-align: right;">14.33096</td>
+<td style="text-align: right;">25.75415</td>
+<td style="text-align: right;">14.33608</td>
 </tr>
 </tbody>
 </table>
@@ -1075,14 +1092,6 @@
 <p><span class="math inline">\(\bigstar\)</span> Continue adding to your notebook by calculating frequencies and relative frequencies for several categorical variables. As a reminder, there were some variables in our data set that we said could be treated as numerical <em>or</em> categorical. For these variables, compare the insights you obtain from numerical summary statistics versus counts.</p>
 <div class="fragment">
 <p>Again, do “future you” a favor by keeping your notebook organized and narrated.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_01c2e005" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
 </div>
 </section>
 <section id="grouped-summaries" class="slide level2">
@@ -1172,14 +1181,6 @@
 </div>
 <div class="fragment">
 <p>As you’ve done, continue to do “future you” a favor by keeping your notebook organized and narrated.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_68b12940" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
 </div>
 </section>
 <section id="summary" class="slide level2">
