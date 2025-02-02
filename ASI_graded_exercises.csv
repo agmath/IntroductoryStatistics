@@ -149,6 +149,25 @@ notebook,label
 6 Introduction to the Normal Distribution,pnorm-ex7-out
 6 Introduction to the Normal Distribution,z-score-QR
 6 Introduction to the Normal Distribution,z-score-VR
+6c Introduction to the Normal Distribution (Part C),GRE-QR-percentile
+6c Introduction to the Normal Distribution (Part C),GRE-VR-percent-above
+6c Introduction to the Normal Distribution (Part C),chick-pox-exp
+6c Introduction to the Normal Distribution (Part C),chick-pox-prob-atleast
+6c Introduction to the Normal Distribution (Part C),chick-pox-prob-atmost
+6c Introduction to the Normal Distribution (Part C),chick-pox-prob-between
+6c Introduction to the Normal Distribution (Part C),chick-pox-prob-exact1
+6c Introduction to the Normal Distribution (Part C),chick-pox-prob-exact2
+6c Introduction to the Normal Distribution (Part C),chick-pox-sd
+6b Introduction to the Normal Distribution (Part B),find-percentile
+6b Introduction to the Normal Distribution (Part B),pnorm-ex1-left
+6b Introduction to the Normal Distribution (Part B),pnorm-ex2-left
+6b Introduction to the Normal Distribution (Part B),pnorm-ex3-right
+6b Introduction to the Normal Distribution (Part B),pnorm-ex4-right
+6b Introduction to the Normal Distribution (Part B),pnorm-ex5-mid
+6b Introduction to the Normal Distribution (Part B),pnorm-ex6-out
+6b Introduction to the Normal Distribution (Part B),pnorm-ex7-out
+6c Introduction to the Normal Distribution (Part C),z-score-QR
+6c Introduction to the Normal Distribution (Part C),z-score-VR
 7 Discrete Distributions Lab,plot-streak-kobe
 7 Discrete Distributions Lab,sim-independent
 7 Discrete Distributions Lab,sim-streak
