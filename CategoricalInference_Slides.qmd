@@ -1366,10 +1366,9 @@ We'll outline the steps involved in conducting a hypothesis test below, before c
 
 1. Read the scenario carefully and determine whether you are testing a claim about a mean, a proportion, comparison of means, or comparison of proportions.
 2. Identify the claim being tested and state the *null hypothesis* ($H_0$) and *alternative hypothesis* ($H_a$). The null hypothesis represents the "status quo" or "no difference" and always involves an equal sign, while the alternative hypothesis is the claim to be tested and involves one of: $<,~>,~\neq$
-3. Draw a picture of your alternative hypothesis, shading in the tails corresponding to
-samples that would satisfy the alternative hypothesis.
+3. Draw a picture of your alternative hypothesis, shading in the tails corresponding to samples that would satisfy the alternative hypothesis.
 4. Set the level of significance ($\alpha$) for the test. The level of significance is the "cut-off" for a sample being unusual/unlikely/unexpected. The standard cutoff is $\alpha = 0.05$, unless we are told otherwise.
-5. Compute t *test statistic*, where $\displaystyle{\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}}$
+5. Compute the *test statistic*, where $\displaystyle{\texttt{test statistic} = \frac{\left(\texttt{point estimate}\right) - \left(\texttt{null value}\right)}{S_E}}$
 
     + The *point estimate* comes from the sample data
     + The *null value* comes from the null hypothesis
@@ -1808,19 +1807,19 @@ ggplot() +
 
 ## Examples to Try: Influencer and Viral Videos
 
-**Scenario:** A social media influencer claims that 60% of their followers have watched their latest viral video. A marketing company surveys 400 randomly selected followers and finds that 54% have actually watched the video. Is there enough evidence to reject the influencer's claim at the 5% significance level?
+**Scenario:** A social media influencer claims that at least 60% of their followers have watched their latest viral video. A marketing department from a potential brand partner for the influencer surveys 400 randomly selected followers and finds that 54% have actually watched the video. Is there enough evidence to reject the influencer's claim at the 5% significance level?
 
 ## Examples to Try: Fast Food Preferences
 
-**Scenario:** A fast food chain claims that 70% of customers prefer its chicken sandwich over its competitors'. A random sample of 300 customers shows that only 65% prefer the chain's sandwich. Construct a 90% confidence interval for the true proportion of customers who prefer the sandwich. Does the chain's claim fall within the confidence interval?
+**Scenario:** A fast food chain claims that 70% of customers prefer its chicken sandwich over its competitors'. A random sample of 300 customers shows that only 65% prefer the chain's sandwich. Construct a 90% confidence interval for the true proportion of customers who prefer the sandwich. Does the chain's claimed proportion fall within the confidence interval?
 
 ## Examples to Try: Vaccine Approval Rate
 
-**Scenario:** In clinical trials, a new vaccine was found to be effective in 85% of cases. After the vaccine was approved, a public health survey randomly sampled 1,200 people who received the vaccine and found that 83% of them reported its effectiveness. Is this evidence that the true effectiveness rate of the vaccine is different from 85%? Test at the 1% significance level.
+**Scenario:** In clinical trials, a new vaccine was found to be effective in 85% of cases. After the vaccine was approved, a public health survey randomly sampled 1,200 people who received the vaccine and found that 83% of them reported it being effective over the course of the year. Is this evidence that the true effectiveness rate of the vaccine is different from 85%? Test at the 1% significance level.
 
 ## Examples to Try: Coffee Shop Loyalty Cards
 
-**Scenario:** A coffee shop chain claims that 40% of its customers use loyalty cards. A random sample of 250 customers reveals that 38% of them use the loyalty cards. At the 10% significance level, can you reject the coffee shop's claim?
+**Scenario:** A coffee shop chain claims that 40% of its customers use loyalty cards. A random sample of 250 customers reveals that 38% of them use the loyalty cards. At the 10% significance level, does the sample provide evidence to suggest that fewer than 40% of customers use the loyalty cards?
 
 ## Examples to Try: Recycling Habits in a City
 
@@ -1828,15 +1827,15 @@ ggplot() +
 
 ## Examples to Try: Return Rates for an Online Store
 
-**Scenario:** An online store states that its customer return rate is 8%. A customer service audit randomly selects 700 transactions and finds that 6.5% of the customers returned items. Construct a 95% confidence interval for the true return rate. Is the store’s stated return rate within this interval?
+**Scenario:** An online store identifies that its product return rate is 8%. After changing to a new shipping service, a customer service audit randomly selects 700 transactions and finds that 6.5% of the customers returned items. Construct a 95% confidence interval for the true return rate. Can we determine whether the change in shipping services has had an impact on the return rate?
 
 ## Examples to Try: Video Game Console Popularity
 
-**Scenario:** A gaming company believes that 75% of video game players prefer their console over competitors'. A survey of 500 gamers reveals that 72% prefer the company’s console. Construct a 98% confidence interval for the true proportion of gamers who prefer the console. Does the company's claim fall within this interval?
+**Scenario:** A gaming company has developed a new controller design. If at least 75% of video game players prefer this new controller design, they'll mass produce and sell it. A limited release to a random sample of 93 gamers reveals that about 79.6% prefer the new controller design. Construct a 98% confidence interval for the true proportion of gamers who prefer the new controller design. Does the resulting confidence interval suggest that the company should produce and sell the controllers?
 
 ## Examples to Try: Support for a New Environmental Policy
 
-**Scenario:** A politician claims that a minority of the public supports a new environmental policy. A random sample of 900 people finds that 54% of them support the policy. At the 5% significance level, can you reject the politician's claim?
+**Scenario:** A politician claims that a minority of the public supports a new environmental policy. A random sample of 627 people finds that 54% of them support the policy. At the 5% significance level, can you reject the politician's claim?
 
 ## Next Time...
 
