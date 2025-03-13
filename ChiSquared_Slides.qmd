@@ -297,7 +297,7 @@ Then you know what the full table looks like...
 
 With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
 
-With multiclass categorical variables, this is not the case
+With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.
 
 . . . 
 
@@ -313,7 +313,7 @@ With multiclass categorical variables, this is not the case
 
 With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
 
-With multiclass categorical variables, this is not the case
+With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.
 
 <center>
 
@@ -327,7 +327,51 @@ With multiclass categorical variables, this is not the case
 
 With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
 
-With multiclass categorical variables, this is not the case
+With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 | 105 | ? | ? | ? | 
+
+</center>
+
+## A New Test Statistic
+
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
+
+With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 | 105 | 175 | ? | ? | 
+
+</center>
+
+## A New Test Statistic
+
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
+
+With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.
+
+<center>
+
+| Very Liberal | Liberal | Moderate | Conservative | Very Conservative |
+|:---:|:---:|:---:|:---:|:---:|
+| 35 | 105 | 175 | 140 | ? | 
+
+</center>
+
+## A New Test Statistic
+
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
+
+With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.
+
+If political ideology was uniformly distributed, then we would **expect**:
 
 <center>
 
@@ -337,11 +381,13 @@ With multiclass categorical variables, this is not the case
 
 </center>
 
-. . .
+## A New Test Statistic
 
-If we collected data from a sample of 500 citizens and political ideology was uniformly distributed, then we would **expect**:
+With binary categorical variables, measuring the proportion associated with just a single category was sufficient -- if we know the proportion associated with one outcome, we also know the proportion associated with the other
 
-. . .
+With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.
+
+If political ideology was uniformly distributed, then we would **expect**:
 
 <center>
 
@@ -1106,15 +1152,9 @@ We'll quickly review how to work with a "two-way table", calculating probabiliti
 
 ## Probability Review
 
-. . . 
-
 A ***two-way table*** is a way to summarize data observed with respect to two categorical variables -- its rows correspond to the levels of one of the categorical variables and its columns correspond to levels of the other categorical variable.
 
-. . . 
-
 Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.
-
-. . .
 
 |  | Seed <br/>Feeder | Nectar<br/> Feeder	| Fruit<br/> Feeder |	**Total**
 |:---|:---:|:---:|:---:|---:|

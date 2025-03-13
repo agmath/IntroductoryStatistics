@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.43">
 
   <meta name="author" content="Dr.&nbsp;Gilbert">
-  <meta name="dcterms.date" content="2024-10-31">
+  <meta name="dcterms.date" content="2025-03-13">
   <title>Chi-Squared Goodness of Fit and Independence</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -405,7 +405,7 @@ Dr.&nbsp;Gilbert
 </div>
 </div>
 
-  <p class="date">October 31, 2024</p>
+  <p class="date">March 13, 2025</p>
 </section>
 <section class="slide level2">
 
@@ -820,7 +820,7 @@ a:visited {
 <section id="a-new-test-statistic-1" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
-<p>With multiclass categorical variables, this is not the case</p>
+<p>With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.</p>
 <div class="fragment">
 <center>
 <table class="caption-top">
@@ -849,7 +849,7 @@ a:visited {
 <section id="a-new-test-statistic-2" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
-<p>With multiclass categorical variables, this is not the case</p>
+<p>With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.</p>
 <center>
 <table class="caption-top">
 <thead>
@@ -876,7 +876,89 @@ a:visited {
 <section id="a-new-test-statistic-3" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
-<p>With multiclass categorical variables, this is not the case</p>
+<p>With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.</p>
+<center>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Very Liberal</th>
+<th style="text-align: center;">Liberal</th>
+<th style="text-align: center;">Moderate</th>
+<th style="text-align: center;">Conservative</th>
+<th style="text-align: center;">Very Conservative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">105</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</center>
+</section>
+<section id="a-new-test-statistic-4" class="slide level2">
+<h2>A New Test Statistic</h2>
+<p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
+<p>With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.</p>
+<center>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Very Liberal</th>
+<th style="text-align: center;">Liberal</th>
+<th style="text-align: center;">Moderate</th>
+<th style="text-align: center;">Conservative</th>
+<th style="text-align: center;">Very Conservative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">105</td>
+<td style="text-align: center;">175</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</center>
+</section>
+<section id="a-new-test-statistic-5" class="slide level2">
+<h2>A New Test Statistic</h2>
+<p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
+<p>With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.</p>
+<center>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Very Liberal</th>
+<th style="text-align: center;">Liberal</th>
+<th style="text-align: center;">Moderate</th>
+<th style="text-align: center;">Conservative</th>
+<th style="text-align: center;">Very Conservative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">105</td>
+<td style="text-align: center;">175</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+</center>
+</section>
+<section id="a-new-test-statistic-6" class="slide level2">
+<h2>A New Test Statistic</h2>
+<p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
+<p>With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.</p>
+<p>If political ideology was uniformly distributed, then we would <strong>expect</strong>:</p>
 <center>
 <table class="caption-top">
 <thead>
@@ -899,10 +981,12 @@ a:visited {
 </tbody>
 </table>
 </center>
-<div class="fragment">
-<p>If we collected data from a sample of 500 citizens and political ideology was uniformly distributed, then we would <strong>expect</strong>:</p>
-</div>
-<div class="fragment">
+</section>
+<section id="a-new-test-statistic-7" class="slide level2">
+<h2>A New Test Statistic</h2>
+<p>With binary categorical variables, measuring the proportion associated with just a single category was sufficient – if we know the proportion associated with one outcome, we also know the proportion associated with the other</p>
+<p>With multiclass categorical variables, this is not the case. Say we sampled 500 voters about their political ideology.</p>
+<p>If political ideology was uniformly distributed, then we would <strong>expect</strong>:</p>
 <center>
 <table class="caption-top">
 <thead>
@@ -925,7 +1009,6 @@ a:visited {
 </tbody>
 </table>
 </center>
-</div>
 <div class="fragment">
 <p>But what if we <strong>observed</strong>:</p>
 </div>
@@ -954,7 +1037,7 @@ a:visited {
 </center>
 </div>
 </section>
-<section id="a-new-test-statistic-4" class="slide level2">
+<section id="a-new-test-statistic-8" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p><strong>Expected</strong> results from 500 surveyed individuals:</p>
 <center>
@@ -1038,7 +1121,7 @@ a:visited {
 </center>
 </div>
 </section>
-<section id="a-new-test-statistic-5" class="slide level2">
+<section id="a-new-test-statistic-9" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p>Differences (<strong>observed - expected</strong>) in results from 500 surveyed individuals:</p>
 <center>
@@ -1067,7 +1150,7 @@ a:visited {
 <p>We need some way to combine/summarize these deviations.</p>
 </div>
 </section>
-<section id="a-new-test-statistic-6" class="slide level2">
+<section id="a-new-test-statistic-10" class="slide level2">
 <h2>A New Test Statistic</h2>
 <p>Differences (<strong>observed - expected</strong>) in results from 500 surveyed individuals:</p>
 <center>
@@ -1697,13 +1780,8 @@ a:visited {
 </section>
 <section id="probability-review" class="slide level2">
 <h2>Probability Review</h2>
-<div class="fragment">
 <p>A <strong><em>two-way table</em></strong> is a way to summarize data observed with respect to two categorical variables – its rows correspond to the levels of one of the categorical variables and its columns correspond to levels of the other categorical variable.</p>
-</div>
-<div class="fragment">
 <p>Consider the two-way table below which shows species of bird and the type of feeder they were observed feeding from.</p>
-</div>
-<div class="fragment">
 <table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 17%">
@@ -1759,7 +1837,6 @@ a:visited {
 </tr>
 </tbody>
 </table>
-</div>
 </section>
 <section id="probability-review-1" class="slide level2">
 <h2>Probability Review</h2>
