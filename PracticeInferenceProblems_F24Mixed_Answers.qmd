@@ -188,7 +188,7 @@ A school surveys 500 students to see if study habits are associated with grade l
 
 A psychologist investigates the effect of caffeine on memory retention. In a sample of 30 students who consumed caffeine, the average recall score was 70% (SD = 8%). Construct a 99% confidence interval for the mean recall score for students who consumed caffeine.
 
-> bounds: ~0.4841 to ~0.9159
+> bounds: ~0.6623 to ~0.7377
 
 ### Scenario 21: Customer Satisfaction Survey
 
