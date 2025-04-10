@@ -251,10 +251,10 @@ $$\begin{array}{lcl} H_0 & : & \mu_1 = \mu_2 = \cdots = \mu_k~~\text{(All group 
 
 The main ideas behind ANOVA are somewhat simple...
 
-i) Ignore the groups and calculate the variability from the overall mean
-ii) Calculate the variability from the group means
+i) Ignore the groups and calculate the variability from the overall mean (*total variability*)
+ii) Calculate the variability from the group means (*within group variability*)
 iii) Calculate how much of the total variability is explained by differences between the group means ($\text{SS}_{\text{Total}} = \text{SS}_{\text{Between}} + \text{SS}_{\text{Within}}$)
-iv) Standardize the variability measures by turning them into averages
+iv) Standardize the variability measures by turning them into [near] averages
 v) Compare the average *between* group variability to the average *within* group variability
 
     + If the *between* and *within* group variability are similar, then there is no evidence that group means differ
