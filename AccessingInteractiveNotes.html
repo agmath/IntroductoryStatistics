@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MAT 241 Interactive Notes Installation and Access Guide</title>
+<title>OpenIntro Statistics Companion Notebooks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -45,7 +45,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MAT 241 Interactive Notes Installation and Access Guide</h1>
+<h1 class="title">OpenIntro Statistics Companion Notebooks</h1>
+<p class="subtitle lead">Installation and Access Guide</p>
 </div>
 
 
@@ -62,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>I’ve written a series of interactive workbooks which will serve as your notes for MAT 241. This guide provides instructions for how to access those notes. You will perform 3 or 4 steps depending on your operating system. The steps are listed below, but detailed instructions follow for both Windows and Mac OS systems.</p>
+<p>This guide provides instructions for how to access a collection of interactive notebooks that accompany the OpenIntro Statistics textbook. These notebooks deliver introductory statistics content along with instruction and support for computing in R. You will perform 3 or 4 steps depending on your operating system. The steps are listed below, but detailed instructions follow for both Windows and Mac OS systems.</p>
 <ol type="1">
 <li><strong>Install R:</strong> R is a computing language which has been optimized for use in statistics, data analytics, and data science.</li>
 <li><strong>Install RStudio:</strong> RStudio is a convenient way to interface with the R language. Think of R as “Spanish” and RStudio as Microsoft Word – you can write R in RStudio, just like you can write Spanish text in Microsoft Word.</li>
@@ -107,8 +108,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>You can hit the <code>Enter</code> or <code>Return</code> key on your keyboard to run the command. Red and black text will splash onto the <code>Console</code> while the required utilities are being installed. What for the install to finish – you’ll be presented with a message in the console that the install has finished and your prompt (<code>&gt;</code>) will return.</p></li>
 <li><p>After <code>devtools</code> has been installed, run the following command <code>remotes::install_github("agmath/AppliedStatsInteractive")</code></p>
 <ul>
-<li>After you hit <code>Enter</code> or <code>Return</code> and the command is run, you may be asked several times (three or four times) about updating existing packages. You can type 3 and hit <code>Enter</code> or <code>Return</code>, which is the option to update none of the existing packages.</li>
-<li>In between refusing the package updates, more black and red text will splash to the console. You’ll know that the install has completed when you get a message in the console stating so and your prompt (<code>&gt;</code>) has returned. This should take between 2 and 8 minutes, depending on the strength of your internet connection.</li>
+<li>After you hit <code>Enter</code> or <code>Return</code> and the command is run, you may be asked several times (three or four times) about updating existing packages. Choose 1 to update all of the recommended package (or choose 3 to update none, if you prefer) and hit <code>Enter</code> or <code>Return</code> to proceed with the installation.</li>
+<li>In between accepting or refusing the package updates, more black and red text will splash to the console. You’ll know that the installation has completed when you get a message in the console stating so and your prompt (<code>&gt;</code>) has returned. This should take between 2 and 8 minutes, depending on the strength of your internet connection.</li>
 </ul></li>
 <li><p>After the <code>AppliedStatsInteractive</code> package has finished downloading, run this final command <code>remotes::install_github("rundel/learnrhash")</code></p></li>
 </ul>
@@ -122,7 +123,6 @@ ul.task-list li input[type="checkbox"] {
 <li><p>You can now access the notes by clicking on the <strong>Tutorial</strong> tab in the top-right pane of RStudio. Locate the notes you would like to open and the click the <code>Start Tutorial ?</code> button.</p></li>
 </ul>
 <p>If you get a message asking to install a missing dependency called <code>learnrhash</code>, click cancel, go to the R console and run <code>remotes::install_github("rundel/learnrhash")</code>, and try the <code>Start Tutorial</code> button again after this install has completed.</p>
-<p>Please reach out to me with any questions you have. I’ll help you troubleshoot the installation process.</p>
 </section>
 
 </main>
