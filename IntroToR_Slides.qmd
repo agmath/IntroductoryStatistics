@@ -99,7 +99,7 @@ Within a Quarto Document, R code is run inside of a code chunk like the one belo
   
 + We run R code by holding `ctrl` and hitting `Enter` or `Return`
 
-+ We store items in variables using the arrow operator -- for example, by running `x <- 2` in a code chunk
++ We store items in variables using the arrow operator -- for example,<br/> by running `x <- 2` in a code chunk
 
   + We can print out the contents of an object/variable just by calling its name -- for example running `x` in a code chunk would print `2`
 
