@@ -1,5 +1,5 @@
 ---
-title: "Youth Behavior and Risk"
+title: "ANOVA with Palmer Penguins"
 author: "Me, Analyst"
 date: today
 date-format: medium
