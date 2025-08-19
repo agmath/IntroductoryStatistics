@@ -1,0 +1,315 @@
+---
+title: "MAT 241: Introduction and What to Expect (Hybrid)"
+author: Dr. Gilbert
+format: 
+  revealjs:
+    smaller: true
+date: today
+date-format: long
+theme: serif
+incremental: true
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(reticulate)
+
+theme_set(theme_bw(base_size = 20))
+```
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+
+wafflehouse <- read_delim("https://raw.githubusercontent.com/rmcelreath/rethinking/master/data/WaffleDivorce.csv", delim = ";")
+wafflehouse <- wafflehouse %>%
+  mutate(South = ifelse(South == 1, "Southern State", "Other State"))
+metal <- read_delim("https://raw.githubusercontent.com/rmcelreath/rethinking/master/data/metal_bands.csv", delim = ";")
+```
+
+## Playing Along
+
+Please play along...
+
+1. Open RStudio
+2. Create an empty Quarto Document in RStudio by navigating to `File -> New File -> Quarto Document...` using the menus.
+3. Choose to *Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.
+4. Navigate to [this Day 1 Activity notebook](https://github.com/agmath/IntroductoryStatistics/blob/main/Day1_DataExploration.qmd).
+5. Copy all of the lines in that document and paste them into your Quarto document, making sure that you are in the *Source* editor rather than the *Visual* editor.
+5. Play with that file as we work through these slides together.
+
+. . .
+
+If you don't have R/RStudio yet, [you can still play along here](https://agmath.github.io/WebRtutorials/MAT241_Intro.html), but you won't see the Quarto markdown and formatting items I mention.
+
+## What Are We Here For?
+
+. . .
+
+```{r}
+wafflehouse %>%
+  head() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"),
+                font_size = "18pt")
+```
+
+. . .
+
+We'll ask questions and use data to investigate their answers.
+
+## What Are We Here For?
+
+We'll ask questions and use data to investigate their answers.
+
+```{r}
+metal %>%
+  head() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"),
+                font_size = "18pt")
+```
+
+. . .
+
+We'll encounter two data sets today.
+
+1. We'll explore potential associations between WaffleHouse restaurants and divorce using the `wafflehouse` data from Richard McElreath's *Statistical Rethinking* text.
+2. We'll use the `metal` data set from the same text to examine potential associations between the number of heavy metal bands originating from a country and that country's overall happiness score.
+
+## Syllabus
+
+. . .
+
+Before we jump into working with the data, let's cover the usual beginning of semester course logistics.
+
+. . .
+
+**Major Highlights from the Syllabus**: I'll ask you to read the syllabus, but the most important items are on the following slides.
+
+## Instructor and Office Hours
+
+  + Instructor: Dr. Adam Gilbert
+  
+    + e-mail address: [a.gilbert1@snhu.edu](mailto:a.gilbert1@snhu.edu)
+    + Office: Robert Frost Hall, Room 311
+    + Office Hours (please visit!): 
+    
+      + Wednesdays 9:00am - 10:30am
+      + Thursdays 9:00am - 10:30am
+      + Fridays 1:00pm - 3:00pm
+
+## Required Resources
+
+First and foremost...everything is free!
+
+  + **Main Textbook:** We are following [*OpenIntro Statistics, (4th Edition)* by David Diez, Christopher Barr, and Mine &Ccedil;etinkaya-Rundel](https://www.openintro.org/book/os/)
+  + **Software:** We'll make use of the R computing language, RStudio, and and interactive notes package that I wrote. You've hopefully already installed all of these items, but [instructions for doing so are here](https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html).
+  + **Online Exams:** Due to the hybrid nature of this section, we'll have *some* of our exams on [MyOpenMath](https://www.myopenmath.com/)
+  
+    + The CourseID and Enrollment Key are available in the *Welcome!* announcement on BrightSpace.
+    + The MyOpenMath shell also contains some optional, non-credit homework assignments if you want additional practice
+
+## Grading Scheme
+
+  <center> 
+  Grade Item                     | Value
+  -------------------------------|-----------
+  Interactive Notebooks (~17)    | 30%
+  Exams (2)                      | 40%
+  Final Exam                     | 30%
+  </center>
+
+## Explanations of Grade Items
+
+<div style="font-size: 18pt">
+
++ **Interactive Notebooks:** Completing these on time is crucial, as they'll be the way you are exposed to material and practice with it.
+
+  + You should expect to have two of these to complete each week
+  + You'll generate a *hash code* at the end of each notebook and submit that hash code using a Google Form (see BrightSpace for the link)
++ **Exams:** We'll have two exams during the semester -- each one will have two parts.
+
+  + **Problems and Concepts Exam (75%):** Will look more like a traditional exam where you complete problems, but will occur on MyOpenMath (90-minute time limit, two attempts).
+  + **Practical Exam (25%):** Will present you with a real data set and ask you to perform a scripted analysis using R/RStudio and building a Quarto Document.
++ **Final Exam:** The final exam will also come in two parts.
+
+  + **No Tech, No Notes Concepts Exam (~67%):** Will take place during our class meeting in Week 16
+  + **Problems Exam on MyOpenMath (~33%):** Will be completed on MyOpenMath, like your previous exams (120-minute time limit, two attempts)
+
+</div>
+
+## Brightspace
+
++ Announcements
++ Gradebook
++ Go to [the webpage](https://agmath.github.io/StatsWithR_Hybrid.html) for everything else
+
+## Course Webpage
+
+I've built a [webpage to organize our course content](https://agmath.github.io/StatsWithR_Hybrid.html).
+
++ Syllabus
++ Tentative timeline
+  
+  + Weekly discussion topics and required interactive notebooks
+  + Optional supplementary discussion slides
+  + Assignment due date reminders
+
+## What's Class Like?
+
++ This particular section of MAT241 is operating under a hybrid format. 
+
+    + This means that we’ll have just one 75-minute class meeting per week (Tuesdays) and the vast majority of the learning and work for this course will be done outside of class time. 
+    + I’ll expect you to work diligently between class meetings, attend my student hours (office hours), and reach out on Slack (see BrightSpace for information on joining) when you have questions or need help. 
+    
+      + In a hybrid course, seeking help immediately is critical – please do not wait until the next class meeting to get your question answered. 
+
+    + Depending on your level of preparation, you should expect to spend 6 to 10 (or more) hours per week on this course outside of class time. 
+
++ If you would be more comfortable in a section which meets twice per week, there is one available this semester from 11:00am – 12:15pm in RF211 with Dr. Duryea.
+
+## What's Class Like?
+
+Because we are only meeting once per week, our class time
+together will be valuable. 
+
++ In general, I’ll plan for the first 45 minutes of each class meeting to be devoted to questions, review, and tangential topics driven by student interest. 
++ The final 30 minutes of class time will be devoted to previewing the material you’ll encounter as you work through the week’s notebooks.
+
+## A Note on AI Use
+
+. . .
+
+<div style="font-size: 18pt">
+
+The use of AI, such as chatGPT or copilot, in MAT241
+will be discussed in class, particularly prior to exams. 
+
++ While AI will not be completely prohibited, its use will generally be
+restricted to helping with broken code in R. 
++ The reason for taking this position is that MAT241 is a foundational course in which we are learning and applying concepts from applied statistics.
++ Relying on AI for statistical calculations and interpretations at this stage will rob you of the opportunity to understand and discover the intricacies involved in statistical analysis.
+
+</div>
+
+. . .
+
+<div style="font-size: 18pt">
+
+**Previewing Use of AI in MAT241:** AI use is permitted only for troubleshooting code you’ve written. 
+
++ In the case that AI is used, please plan to save and provide your transcript along with your submission. 
++ If AI use is suspected and a transcript is not provided on request, then an academic integrity inquiry will be submitted via the University’s formal channels and a formal investigation will determine the outcome.
+
+</div>
+
+## A Road Map to Our Semester
+
+We'll be discussing a lot of material in MAT 241. Here is a very generic road map of what we will discuss. Starting now.
+
+::::{.columns}
+
+:::{.column width=50%}
+
+<div style="font-size: 18pt">
+
++ Introduction to Data
++ Introduction to R
++ **Descriptive Statistics** (Exploratory Data Analysis, EDA)
+
+  + Numerical and tabular summary statistics
+  + Data visualization
+  + Interpretations and communications of EDA
+
++ Just Enough Probability
+
+  + Binomial Distribution
+  + Normal Distribution
+  
+</div>
+
+:::
+
+:::{.column width=50%}
+
+<div style="font-size: 18pt">
+
++ **Inferential Statistics**
+
+  + Confidence intervals for capturing a population parameter
+  + Hypothesis tests for testing claims about a population parameter
+
++ Contexts
+
+  + Single means or proportions
+  + Comparisons of means or proportions across two or more groups
+  + Associations between a numerical variable and one or more other variables numerical variables (linear regression)
+
+</div>
+
+:::
+
+::::
+
+## The WaffleHouse and Metal Data
+
+. . .
+
+Let's get out hands dirty...
+
++ Open RStudio back up and take a look at that Quarto Document
+
+. . .
+
+We'll overview the following items:
+
++ Quarto document structure
+
+    + The YAML header
+    + Code chunks
+    + Markdown/text cells
+    + The Source versus Visual editors
+
++ Rendering a Quarto document to an output file format
++ Using R to examine data, specifically to construct plots
+
+    + Again, I'm assuming no background, so our goal today is just to make small changes to existing plots -- hopefully becoming interested in what's possible
+
+## Closing
+
+1. Render your notebook and make sure that the sections we've updated look as you intended them to.
+
+    + Make any updates you like and re-render the notebook.
+
+2. We got a first taste of R today, and we'll continue to learn more. 
+
+3. Don't worry if you didn't completely understand all of the code from today's Quarto Document or if you feel like you couldn't write that code on your own -- we'll be starting from scratch!
+
+4. **Homework:** Complete and submit the `Topic 1` and `Topic 2` notebooks by 11:59PM on Friday, September 5. These notebooks will give you a first introduction to data and R, respectively.
+
+    + Be sure to see me immediately if you are having difficulty with setup.
