@@ -10,7 +10,7 @@
 <link href="IntroToR_Slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.43">
 
-  <meta name="dcterms.date" content="2025-08-17">
+  <meta name="dcterms.date" content="2025-08-18">
   <title>Intro to R with Austin Housing Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -398,7 +398,17 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">August 17, 2025</p>
+  <p class="date">August 18, 2025</p>
+</section>
+<section id="starter-file" class="slide level2">
+<h2>Starter File</h2>
+<ol type="1">
+<li class="fragment">Create an empty Quarto Document in RStudio by navigating to <code>File -&gt; New File -&gt; Quarto Document...</code> using the menus.</li>
+<li class="fragment">Choose to *Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.</li>
+<li class="fragment">Navigate to <a href="https://github.com/agmath/IntroductoryStatistics/blob/main/Days2to5_AustinHousingData.qmd">the starter notebook here</a>.</li>
+<li class="fragment">Copy all of the lines in that document and paste them into your Quarto document, making sure that you are in the <em>Source</em> editor rather than the <em>Visual</em> editor.</li>
+<li class="fragment">Add to that file as we work through these slides together.</li>
+</ol>
 </section>
 <section id="review-of-quarto" class="slide level2">
 <h2>Review of Quarto</h2>
@@ -511,7 +521,7 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3679e7e5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_917dc29e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -531,7 +541,7 @@
 <p><span class="math inline">\(\bigstar\)</span> What questions did we come up with?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_a90d38b7" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_64f657dc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -551,7 +561,7 @@
 <p><span class="math inline">\(\bigstar\)</span> Take a few minutes to write those questions into your <code>Day2to5_AustinHousingData.qmd</code> file. Render your notebook to make sure everything looks the way you intended. Try some markdown formatting to improve the structure and readability of your notebook.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_61ada5e0" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_6ce09fc4" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -564,7 +574,7 @@
 <p><span class="math inline">\(\bigstar\)</span> Work with the people next to you to decide which of your questions are just about your <em>sample data</em> and which of your questions are about the entire <em>population</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_e4868399" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_eb943f3f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -578,7 +588,7 @@
 <p><span class="math inline">\(\bigstar\)</span> Update your notebook to include two subsections – one with <em>sample</em>-level questions and the other with <em>population</em>-level questions. When finished, you should have two versions of every one of the questions you initially wrote down.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_554a3211" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_17b670b9" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -592,7 +602,7 @@
 <p><span class="math inline">\(\bigstar\)</span> What is the main difference in phrasing between <em>descriptive</em> (sample-level) questions and <em>inferential</em> (population-level) questions?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_e19bca7a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_27d324d4" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -605,7 +615,7 @@
 <p><span class="math inline">\(\bigstar\)</span> If we are going to use our available data to answer <em>inferential</em> (population-level) questions, then what assumption(s) are we making?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1d94938c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_709cc520" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -619,7 +629,7 @@
 <p><span class="math inline">\(\bigstar\)</span> Can both types of question (<em>descriptive</em> and <em>inferential</em>) be answered simply by calculating summary statistics from our sample data? Why or why not?</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1f8ba906" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_c8fef6fe" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -633,7 +643,7 @@
 <p><span class="math inline">\(\bigstar\)</span> Without using R code just yet, describe what you would need to do in order to answer each of your <em>descriptive</em> questions. Add those descriptions to your notebook.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4746218b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_f9ba07da" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
