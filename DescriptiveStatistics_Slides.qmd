@@ -6,8 +6,10 @@ format:
     fontsize: 20pt
 date: today
 date-format: long
-theme: sky
+theme: serif
 ---
+
+
 
 ```{css}
 code.sourceCode {
