@@ -57,7 +57,7 @@ Please play along...
 
 1. Open RStudio
 2. Create an empty Quarto Document in RStudio by navigating to `File -> New File -> Quarto Document...` using the menus.
-3. Choose to *Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.
+3. Choose to `Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.
 4. Navigate to [this Day 1 Activity notebook](https://github.com/agmath/IntroductoryStatistics/blob/main/Day1_DataExploration.qmd).
 5. Copy all of the lines in that document and paste them into your Quarto document, making sure that you are in the *Source* editor rather than the *Visual* editor.
 5. Play with that file as we work through these slides together.
