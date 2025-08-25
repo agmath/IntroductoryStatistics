@@ -128,7 +128,7 @@ Before we jump into working with the data, let's cover the usual beginning of se
 First and foremost...everything is free!
 
   + **Main Textbook:** We are following [*OpenIntro Statistics, (4th Edition)* by David Diez, Christopher Barr, and Mine &Ccedil;etinkaya-Rundel](https://www.openintro.org/book/os/)
-  + **Software:** We'll make use of the R computing language, RStudio, and and interactive notes package that I wrote. You've hopefully already installed all of these items, but [instructions for doing so are here](https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html).
+  + **Software:** We'll make use of the R computing language, RStudio, and an interactive notes package that I wrote. You've hopefully already installed all of these items, but [instructions for doing so are here](https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html).
   + **Online Exams:** Due to the hybrid nature of this section, we'll have *some* of our exams on [MyOpenMath](https://www.myopenmath.com/)
   
     + The CourseID and Enrollment Key are available in the *Welcome!* announcement on BrightSpace.
@@ -224,7 +224,7 @@ restricted to helping with broken code in R.
 **Previewing Use of AI in MAT241:** AI use is permitted only for troubleshooting code you’ve written. 
 
 + In the case that AI is used, please plan to save and provide your transcript along with your submission. 
-+ If AI use is suspected and a transcript is not provided on request, then an academic integrity inquiry will be submitted via the University’s formal channels and a formal investigation will determine the outcome.
++ If AI use is suspected and a transcript is not provided on request, then an academic integrity inquiry will be submitted via the University’s formal channels and an investigation will determine the outcome.
 
 </div>
 
