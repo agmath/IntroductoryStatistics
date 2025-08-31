@@ -280,7 +280,7 @@ We'll be discussing a lot of material in MAT 241. Here is a very generic road ma
 
 . . .
 
-Let's get out hands dirty...
+Let's get our hands dirty...
 
 + Open RStudio back up and take a look at that Quarto Document
 
