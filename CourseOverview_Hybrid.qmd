@@ -113,15 +113,34 @@ Before we jump into working with the data, let's cover the usual beginning of se
 
 ## Instructor and Office Hours
 
+:::{.nonincremental}
+
   + Instructor: Dr. Adam Gilbert
   
-    + e-mail address: [a.gilbert1@snhu.edu](mailto:a.gilbert1@snhu.edu)
+    + E-mail Address: [a.gilbert1@snhu.edu](mailto:a.gilbert1@snhu.edu)
     + Office: Robert Frost Hall, Room 311
-    + Office Hours (please visit!): 
+    + Drop-In Office Hours (please visit!): 
     
       + Tuesdays 11:00am - 12:30pm
       + Wednesdays 9:00am - 10:30am
       + Fridays 1:00pm - 3:00pm
+      
+:::
+      
+## Class Embedded Tutor
+
+:::{.nonincremental}
+
+  + Embedded Tutor: Audrey Saidel
+  
+    + E-mail Address: [audrey.saidel@snhu.edu](mailto:audrey.saidel@snhu.edu)
+    + Drop-in Location: Paul Hall, Room 104
+    + Drop-in Hours (Please Visit!): 
+    
+      + Mondays 1:00pm - 2:00pm
+      + Tuesdays 2:00pm - 6:00pm
+
+:::
 
 ## Required Resources
 
