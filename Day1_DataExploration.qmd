@@ -4,7 +4,7 @@ author: "Me, Analyst"
 date: today
 date-format: medium
 format: html
-theme: cerulean
+theme: flatly
 ---
 
 ```{r setup, include=FALSE, message = FALSE, warning = FALSE}
@@ -42,8 +42,9 @@ In McElreath's text, he looks at the relationship between divorce rates and numb
 ```{r}
 wafflehouse %>%
   ggplot() + 
-  geom_point(aes(x = WaffleHouses, y = Divorce)) + 
-  geom_text(aes(x = WaffleHouses, y = Divorce, label = Loc, color = South), 
+  geom_point(aes(x = WaffleHouses, y = Divorce),
+             color = "purple") + 
+  geom_text(aes(x = WaffleHouses, y = Divorce, label = Loc), 
             alpha = 0.75, hjust = 1.25, vjust = 1.25) + 
   labs(title = "Divorce Rate and Waffle House Count",
        x = "Waffle House Count",
@@ -51,14 +52,17 @@ wafflehouse %>%
        color = "Type of State")
 ```
 
-1. Create a new copy of the plot to reproduce McElreath's plot by replacing `x = WaffleHouses` with `x = WaffleHouses/Population`
+1. Use the code chunk below to copy the plot and change the `color` of the points in the plot to a color you prefer.
+2. Try changing the color of the points to indicate whether the state is in the `South` or not. (*Hint.* You'll need to change where you are setting the `color`)
+3. Change the `color` of the text to indicate whether or not the state is in the `South`.
+4. Reproduce McElreath's plot by replacing `x = WaffleHouses` with `x = WaffleHouses/Population`
 
 :::{.callout-note}
 `WaffleHouses` and `Population` are both columns in the `wafflehouse` data frame (table).
 :::
 
-2. Change the plot title and axis labels to more accurately describe your updated plot.
-3. Provide your interpretation of the resulting image -- what do you see?
+5. Change the plot title and axis labels to more accurately describe your updated plot.
+6. Provide your interpretation of the resulting image -- what do you see?
 
 ```{r}
 #Copy and Update the Plotting Code Here...
@@ -96,7 +100,14 @@ metal %>%
        y = "")
 ```
 
-The plot above isn't quite "fair" -- why not? Adjust the plot so that, rather than plotting pure metal band counts, you are plotting metal bands per capita. You can do this similarly to the way that we updated the Waffle House plot above. You'll benefit by changing the `y` value and `width` on the boxplot to somthing around -1000 and 1000, respectively. Adjust the title and axis labels as well.
+1. Play around with the colors in the plot. Explore the difference between `color` and `fill`. Change the axis labels or plot title.
+
+```{r}
+# Make changes to the plot here...
+
+```
+
+2. The plot above isn't quite "fair" -- why not? Adjust the plot so that, rather than plotting pure metal band counts, you are plotting metal bands per capita. You can do this similarly to the way that we updated the Waffle House plot above. You'll benefit by changing the `y` value and `width` on the boxplot to something around -1000 and 1000, respectively. Adjust the title and axis labels as well.
 
 ```{r}
 #Update the plot here!
@@ -114,7 +125,7 @@ metal %>%
        y = "Happiness Rating")
 ```
 
-Now try plotting the `Happiness` against the number of metal bands per capita in the code cell below. What do you notice?
+3. Now try plotting the `Happiness` against the number of metal bands per capita in the code cell below. What do you notice?
 
 ```{r}
 #Add your plot here!
