@@ -56,7 +56,7 @@ metal <- read_delim("https://raw.githubusercontent.com/rmcelreath/rethinking/mas
 Please play along...
 
 1. Open RStudio
-2. Create a new Project in a new folder, called `MAT241` by navigating to `File -> New Project`
+2. Create a new Project in a new folder, called `MAT241` by navigating to `File -> New Project` and choosing a *new directory*
 3. Create an empty Quarto Document in RStudio by navigating to `File -> New File -> Quarto Document...` using the menus.
 4. Choose to `Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.
 5. Navigate to [this Day 1 Activity notebook](https://github.com/agmath/IntroductoryStatistics/blob/main/Day1_DataExploration.qmd).
