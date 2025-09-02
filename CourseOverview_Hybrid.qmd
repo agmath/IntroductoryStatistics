@@ -139,7 +139,7 @@ Before we jump into working with the data, let's cover the usual beginning of se
     + Drop-in Hours (Please Visit!): 
     
       + Mondays 1:00pm - 2:00pm
-      + Tuesdays 2:00pm - 6:00pm
+      + Wednesdays 2:00pm - 6:00pm
 
 :::
 
