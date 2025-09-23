@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.43">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="MAT241 Class">
+
+<title>Practice Problems Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/clipboard/clipboard.min.js"></script>
+<script src="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/quarto-html/quarto.js"></script>
+<script src="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/quarto-html/popper.min.js"></script>
+<script src="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/quarto-html/anchor.min.js"></script>
+<link href="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="PracticeProbabilityProblems_F25Mixed_Answers_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#example-scenarios" id="toc-example-scenarios" class="nav-link active" data-scroll-target="#example-scenarios">Example Scenarios</a>
+  <ul class="collapse">
+  <li><a href="#scenario-1-smartphone-battery-life" id="toc-scenario-1-smartphone-battery-life" class="nav-link" data-scroll-target="#scenario-1-smartphone-battery-life">Scenario 1: Smartphone Battery Life</a></li>
+  <li><a href="#scenario-2-manufacturing-defects" id="toc-scenario-2-manufacturing-defects" class="nav-link" data-scroll-target="#scenario-2-manufacturing-defects">Scenario 2: Manufacturing Defects</a></li>
+  <li><a href="#scenario-3-coffee-shop-customers" id="toc-scenario-3-coffee-shop-customers" class="nav-link" data-scroll-target="#scenario-3-coffee-shop-customers">Scenario 3: Coffee Shop Customers</a></li>
+  <li><a href="#scenario-4-streaming-session-length" id="toc-scenario-4-streaming-session-length" class="nav-link" data-scroll-target="#scenario-4-streaming-session-length">Scenario 4: Streaming Session Length</a></li>
+  <li><a href="#scenario-5-esports-reaction-times" id="toc-scenario-5-esports-reaction-times" class="nav-link" data-scroll-target="#scenario-5-esports-reaction-times">Scenario 5: Esports Reaction Times</a></li>
+  <li><a href="#scenario-6-voter-participation" id="toc-scenario-6-voter-participation" class="nav-link" data-scroll-target="#scenario-6-voter-participation">Scenario 6: Voter Participation</a></li>
+  <li><a href="#scenario-7-apple-picking" id="toc-scenario-7-apple-picking" class="nav-link" data-scroll-target="#scenario-7-apple-picking">Scenario 7: Apple Picking</a></li>
+  <li><a href="#scenario-8-gamer-loot-drops" id="toc-scenario-8-gamer-loot-drops" class="nav-link" data-scroll-target="#scenario-8-gamer-loot-drops">Scenario 8: Gamer Loot Drops</a></li>
+  <li><a href="#scenario-9-trivia-night-team-scores" id="toc-scenario-9-trivia-night-team-scores" class="nav-link" data-scroll-target="#scenario-9-trivia-night-team-scores">Scenario 9: Trivia Night Team Scores</a></li>
+  <li><a href="#scenario-10-daily-steps" id="toc-scenario-10-daily-steps" class="nav-link" data-scroll-target="#scenario-10-daily-steps">Scenario 10: Daily Steps</a></li>
+  <li><a href="#scenario-11-spotify-playlist-length" id="toc-scenario-11-spotify-playlist-length" class="nav-link" data-scroll-target="#scenario-11-spotify-playlist-length">Scenario 11: Spotify Playlist Length</a></li>
+  <li><a href="#scenario-12-basketball-free-throws" id="toc-scenario-12-basketball-free-throws" class="nav-link" data-scroll-target="#scenario-12-basketball-free-throws">Scenario 12: Basketball Free Throws</a></li>
+  </ul></li>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers">Answers</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PracticeProbabilityProblems_F25Mixed_Answers.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Practice Problems Notebook</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>MAT241 Class </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div style="page-break-after: always;"></div>
+<p>In this notebook, we’ll work through several practice problems. The problems appear in no particular order, and each one is best addressed using a probability distribution/tool that we’ve encountered so far. As a reminder, we’ve seen</p>
+<ul>
+<li>Discrete, counting-based probability<br>
+</li>
+<li>The binomial distribution in the case where
+<ul>
+<li>We repeat the same experiment <span class="math inline">\(n\)</span> times (we run <span class="math inline">\(n\)</span> trials)</li>
+<li>Each trial has two possible outcomes (success or failure)</li>
+<li>The probability of success does not change from one trial to the next (independence)</li>
+</ul></li>
+<li>The Normal distribution for continuous variables which are, at least, <em>approximately</em> normally distributed</li>
+</ul>
+<p>We have the following useful functionality:</p>
+<ul>
+<li><p>If <span class="math inline">\(X\)</span> is the number of successes observed in a <em>binomial experiment</em> with <span class="math inline">\(n\)</span> trials and probability of success equal to <span class="math inline">\(p\)</span>, then</p>
+<ul>
+<li><span class="math inline">\(\mathbb{P}\overbrace{\left[X = k\right]}^{\text{Exactly } k \text{ successes}} = \texttt{dbinom(k, n, p)}\)</span></li>
+<li><span class="math inline">\(\mathbb{P}\overbrace{\left[X \leq k\right]}^{\text{At most } k \text{ successes}} = \texttt{pbinom(k, n, p)}\)</span></li>
+<li>The <em>expected number</em> of successes is <span class="math inline">\(\mathbb{E}\left[X\right] = np\)</span></li>
+<li>The <em>standard deviation</em> in number of successes is <span class="math inline">\(\displaystyle{s_X = \sqrt{np\left(1 - p\right)}}\)</span></li>
+</ul></li>
+<li><p>If <span class="math inline">\(X\)</span> is approximately normally distributed with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> (that is, if <span class="math inline">\(X\sim N\left(\mu,~\sigma\right)\)</span>), then</p>
+<ul>
+<li><span class="math inline">\(\mathbb{P}\left[X\leq k\right] = \texttt{pnorm(k, mean = }\mu\texttt{, sd = }\sigma\texttt{)}\)</span></li>
+<li>The cutoff value (quantile) <span class="math inline">\(q\)</span> such that the probability of observing a value at most <span class="math inline">\(q\)</span> is <span class="math inline">\(p\)</span> (that is, <span class="math inline">\(\mathbb{P}\left[X\leq q\right] = p\)</span>) is given by <span class="math inline">\(\texttt{qnorm(p, mean =}\mu\texttt{, sd = }\sigma\texttt{)}\)</span></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This document contains “answers” in the form of probabilities or quantiles so that you can check your work. Looking at the answers first may give away a partial strategy for solving the problem, so be sure that you only look at the answers to validate your work.</p>
+</div>
+</div>
+<section id="example-scenarios" class="level2">
+<h2 class="anchored" data-anchor-id="example-scenarios">Example Scenarios</h2>
+<section id="scenario-1-smartphone-battery-life" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-1-smartphone-battery-life">Scenario 1: Smartphone Battery Life</h3>
+<p>The lifespan of a certain smartphone battery is approximately normally distributed with a mean of 18 months and a standard deviation of 3 months.</p>
+<ol type="i">
+<li>What is the probability that a battery has a lifespan exceeding 2 years (24 months)?</li>
+<li>What is the probability that a battery has a lifespan between 16 months and 2 years?</li>
+<li>The manufacturer wants to put a warranty on their batteries, but they want to replace no more than 3% of batteries via warranty. What is the cutoff for the lifespan of these shortest lasting batteries?</li>
+</ol>
+</section>
+<section id="scenario-2-manufacturing-defects" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-2-manufacturing-defects">Scenario 2: Manufacturing Defects</h3>
+<p>A factory has a defect rate of 3% in the products it manufactures. A Quality Control Engineer indicates that defects seem to happen at random and are independent of one another. Inspectors randomly select 100 products.</p>
+<ol type="i">
+<li>What is the probability that exactly 5 products have defects?</li>
+<li>What is the probability that at most 5 products have defects?</li>
+<li>What is the probability that at least 5 products have defects?</li>
+<li>What is the probability that more than 5 but at most 10 products have defects?</li>
+<li>What is the <em>expected number</em> of products with defects out of the number inspected?</li>
+<li>What is the <em>standard deviation</em> in number of products with defects when inspecting 100 products?</li>
+<li>Should the inspectors be surprised if they observe 12 products with defects out of the 100 inspected?</li>
+</ol>
+</section>
+<section id="scenario-3-coffee-shop-customers" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-3-coffee-shop-customers">Scenario 3: Coffee Shop Customers</h3>
+<p>A new coffee shop estimates that each customer has a 65% chance of buying a pastry along with their drink. On a given morning, 40 customers visit the shop.</p>
+<ol type="i">
+<li>What is the probability that exactly 25 of them buy a pastry?</li>
+<li>What is the probability that fewer than 20 of them buy a pastry?</li>
+<li>What is the probability that at least 30 of them buy a pastry?</li>
+<li>What is the probability that at least 20 but no more than 30 buy a pastry?</li>
+</ol>
+</section>
+<section id="scenario-4-streaming-session-length" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-4-streaming-session-length">Scenario 4: Streaming Session Length</h3>
+<p>The length of time (in minutes) that a user spends on a streaming platform per session is approximately normally distributed with a mean of 42 minutes and a standard deviation of 12 minutes.</p>
+<ol type="i">
+<li>What is the probability that a user spends less than 30 minutes streaming?</li>
+<li>What is the probability that a user spends more than 60 minutes streaming?</li>
+<li>What is the probability that a user spends between 35 and 50 minutes streaming?</li>
+<li>What is the cutoff for the top 10% of longest streaming sessions?</li>
+</ol>
+</section>
+<section id="scenario-5-esports-reaction-times" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-5-esports-reaction-times">Scenario 5: Esports Reaction Times</h3>
+<p>Reaction times for professional esports players (in milliseconds) are approximately normally distributed with a mean of 250 ms and a standard deviation of 40 ms.</p>
+<ol type="i">
+<li>What proportion of players have reaction times faster than 200 ms?</li>
+<li>What proportion of players have reaction times slower than 300 ms?</li>
+<li>What proportion of players have reaction times between 230 ms and 280 ms?</li>
+<li>What is the cutoff for the fastest 5% of players?</li>
+</ol>
+</section>
+<section id="scenario-6-voter-participation" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-6-voter-participation">Scenario 6: Voter Participation</h3>
+<p>In a survey, you ask 200 randomly selected people whether they plan to vote in an upcoming election. Historically, 55% of people vote.</p>
+<ol type="i">
+<li>What is the probability that fewer than 85 people are planning on voting?</li>
+<li>What is the probability that at least 125 people are planning on voting?</li>
+<li>What is the probability that more than 85 but fewer than 125 people are planning on voting?</li>
+</ol>
+</section>
+<section id="scenario-7-apple-picking" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-7-apple-picking">Scenario 7: Apple Picking</h3>
+<p>The weight of apples grown in an orchard is approximately normally distributed with a mean of 150 grams and a standard deviation of 20 grams.</p>
+<ol type="i">
+<li>What is the probability that a randomly selected apple weighs less than 100 grams?</li>
+<li>What is the probability that a randomly selected apple weighs more that 175 grams?</li>
+<li>What is the probability that a randomly selected apple weighs between 160 and 195 grams?</li>
+<li>What is the cutoff for the lightest 5% of apples?</li>
+<li>What is the cutoff for the heaviest 1% of apples?</li>
+</ol>
+</section>
+<section id="scenario-8-gamer-loot-drops" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-8-gamer-loot-drops">Scenario 8: Gamer Loot Drops</h3>
+<p>In a certain video game, a rare loot drop occurs with a probability of 8% each time a chest is opened. A player opens 50 chests in a weekend.</p>
+<ol type="i">
+<li>What is the probability that they receive exactly 5 rare drops?</li>
+<li>What is the probability that they receive at least 8 rare drops?</li>
+<li>What is the probability that they receive no more than 3 rare drops?</li>
+<li>What is the <em>expected number</em> of rare drops?</li>
+<li>What is the <em>standard deviation</em> in number of loot drops?</li>
+</ol>
+</section>
+<section id="scenario-9-trivia-night-team-scores" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-9-trivia-night-team-scores">Scenario 9: Trivia Night Team Scores</h3>
+<p>Team scores at a weekly trivia night follow an approximately normal distribution with a mean of 72 points and a standard deviation of 10 points.</p>
+<ol type="i">
+<li>What proportion of teams score above 80 points?</li>
+<li>What proportion of teams score below 60 points?</li>
+<li>What proportion of teams score between 65 and 85 points?</li>
+<li>What is the cutoff score for the top 15% of teams?</li>
+</ol>
+</section>
+<section id="scenario-10-daily-steps" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-10-daily-steps">Scenario 10: Daily Steps</h3>
+<p>A student tracks their daily step count over a semester and finds it is approximately normally distributed with a mean of 8,200 steps and a standard deviation of 1,600 steps.</p>
+<ol type="i">
+<li>What is the probability that they walk fewer than 6,000 steps on a randomly selected day?</li>
+<li>What is the probability that they walk more than 10,000 steps?</li>
+<li>What is the probability that they walk between 7,500 and 9,000 steps?</li>
+<li>What step count represents the 90th percentile?</li>
+</ol>
+</section>
+<section id="scenario-11-spotify-playlist-length" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-11-spotify-playlist-length">Scenario 11: Spotify Playlist Length</h3>
+<p>The total length (in minutes) of user-created playlists on a music app is approximately normally distributed with a mean of 240 minutes and a standard deviation of 60 minutes.</p>
+<ol type="i">
+<li>What is the probability that a playlist is shorter than 180 minutes?</li>
+<li>What is the probability that a playlist is longer than 300 minutes?</li>
+<li>What is the probability that a playlist is between 200 and 260 minutes?</li>
+<li>What playlist length represents the top 20% longest playlists?</li>
+</ol>
+</section>
+<section id="scenario-12-basketball-free-throws" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-12-basketball-free-throws">Scenario 12: Basketball Free Throws</h3>
+<p>A basketball player makes free throws with a probability of 78%. In a game, they take 12 free throws.</p>
+<ol type="i">
+<li>What is the probability that they make exactly 10 free throws?</li>
+<li>What is the probability that they make all of their free throws?</li>
+<li>What is the probability that they make at least 8 free throws?</li>
+<li>What is the <em>expected number</em> of free throws they make?</li>
+<li>What is the <em>standard deviation</em> in the number of free throws they make?</li>
+<li>Should we be surprised if they make only 7 free throws?</li>
+</ol>
+</section>
+</section>
+<section id="answers" class="level2">
+<h2 class="anchored" data-anchor-id="answers">Answers</h2>
+<p>Answers are provided below. All probabilities are rounded to four decimal places. Any other values are rounded to two decimal places, if necessary.</p>
+<p><strong>Scenario 1: Smartphone Battery Life</strong></p>
+<ol type="i">
+<li>0.0228</li>
+<li>0.7248</li>
+<li>12.36 months</li>
+</ol>
+<p><strong>Scenario 2: Manufacturing Defects</strong></p>
+<ol type="i">
+<li>0.1013</li>
+<li>0.9192</li>
+<li>0.1821</li>
+<li>0.0806</li>
+<li>3</li>
+<li>1.71</li>
+<li>12 defects is unlikely because it is so many standard deviations above the expected outcome (we generally use two standard deviations as the cutoff)</li>
+</ol>
+<p><strong>Scenario 3: Coffee Shop Customers</strong></p>
+<ol type="i">
+<li>0.1226</li>
+<li>0.0173</li>
+<li>0.1215</li>
+<li>0.9183</li>
+</ol>
+<p><strong>Scenario 4: Streaming Session Length</strong></p>
+<ol type="i">
+<li>0.1587</li>
+<li>0.0668</li>
+<li>0.4677</li>
+<li>57.38 minutes</li>
+</ol>
+<p><strong>Scenario 5: Esports Reaction Times</strong></p>
+<ol type="i">
+<li>0.1056</li>
+<li>0.1056</li>
+<li>0.4648</li>
+<li>184.21 ms</li>
+</ol>
+<p><strong>Scenario 6: Voter Participation</strong></p>
+<ol type="i">
+<li>0.0002</li>
+<li>0.0191</li>
+<li>0.9806</li>
+</ol>
+<p><strong>Scenario 7: Apple Picking</strong></p>
+<ol type="i">
+<li>0.0062</li>
+<li>0.1056</li>
+<li>0.2963</li>
+<li>117.10 grams</li>
+<li>196.53 grams</li>
+</ol>
+<p><strong>Scenario 8: Gamer Loot Drops</strong></p>
+<ol type="i">
+<li>0.1629</li>
+<li>0.0438</li>
+<li>0.4253</li>
+<li>4 items</li>
+<li>1.92 items</li>
+</ol>
+<p><strong>Scenario 9: Trivia Night Team Scores</strong></p>
+<ol type="i">
+<li>0.2119</li>
+<li>0.1151</li>
+<li>0.6612</li>
+<li>82.36 points</li>
+</ol>
+<p><strong>Scenario 10: Daily Steps</strong></p>
+<ol type="i">
+<li>0.0846</li>
+<li>0.1303</li>
+<li>0.3606</li>
+<li>10250.48 steps</li>
+</ol>
+<p><strong>Scenario 11: Spotify Playslist Length</strong></p>
+<ol type="i">
+<li>0.1587</li>
+<li>0.1587</li>
+<li>0.3781</li>
+<li>290.50 minutes</li>
+</ol>
+<p><strong>Scenario 12: Basketball Free Throws</strong></p>
+<ol type="i">
+<li>0.2663</li>
+<li>0.0507</li>
+<li>0.8979</li>
+<li>9.36 baskets</li>
+<li>1.43 baskets</li>
+<li>No, 7 made is within two standard deviations of the expected value</li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
