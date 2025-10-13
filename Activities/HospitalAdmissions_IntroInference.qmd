@@ -17,7 +17,6 @@ In this activity, we'll examine data about hospital visits that result in admiss
 **Task 1:** Run the following code cell to load the `{tidyverse}` ecosystem of packages and read in our `hospital_visits` data.
 
 ```{r}
-#| include: false
 #| message: false
 #| warning: false
 
