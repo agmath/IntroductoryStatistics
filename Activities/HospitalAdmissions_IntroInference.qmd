@@ -1,0 +1,216 @@
+---
+title: "Introduction to Statistical Inference"
+subtitle: "Hospital Visits and Admissions"
+author: "Me, Analyst"
+date: today
+date-format: medium
+format: html
+theme: flatly
+---
+
+:::{.callout-note}
+## About This Activity
+
+In this activity, we'll examine data about hospital visits that result in admissions and patient refusals at a particular hospital. We'll treat the background data set as the entire population, and use sampling methods for estimating or making claims about patient admission rates.
+:::
+
+**Task 1:** Run the following code cell to load the `{tidyverse}` ecosystem of packages and read in our `hospital_visits` data.
+
+```{r}
+#| include: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+hospital_visits <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/refs/heads/master/data/IntroStats/hospital_admits.csv")
+
+ci_container <- tibble(
+  lower_bound = NA,
+  point_estimate = NA,
+  standard_error = NA,
+  upper_bound = NA
+)
+
+hospital_visits %>%
+  head()
+```
+
+**Task 2:** How many patient visits are included in the `hospital_visits` data set? What are the variables included?
+
+**Task 3:** Without looking at any of the data, conjecture and justify an admission rate. Why is it difficult to do this?
+
+**Task 4:** Run the code below to take a small sample of patient visits and calculate the admission rate for the hospital. Before you proceed, describe what each line of code is doing.
+
+```{r}
+#set.seed(241)
+sample_size <- 25
+
+my_sample <- hospital_visits %>%
+  sample_n(sample_size, replace = FALSE)
+
+my_sample %>%
+  count(admitted) %>%
+  mutate(proportion = n/sum(n))
+```
+
+**Task 5:** Revisit your conjectured admission rate from *Task 3*, do you have more, less, or the same level of confidence in your initial estimate? Why?
+
+**Task 6:** Did you get the same result as your neighbors? Discuss why this is the case. Uncomment the code `set.seed(241)` and revisit this question? What do you think `set.seed(241)` does?
+
+**Task 7:** What are some ways we could improve our estimate for the patient admission rate at this hospital? Are some methods better than others?
+
+**Task 8:** Run the code cell below to draw a sample and construct and plot the corresponding confidence interval for the proportion of patients admitted to the hospital.
+
+```{r}
+sample_size <- 25
+
+my_sample <- hospital_visits %>%
+  sample_n(sample_size, replace = FALSE)
+
+pe <- my_sample %>%
+  count(admitted) %>%
+  mutate(proportion = n/sum(n)) %>%
+  filter(admitted == "admitted") %>%
+  pull(proportion)
+
+se <- sqrt(pe*(1 - pe)/sample_size)
+
+lower_bound <- pe - 1.96*se
+upper_bound <- pe + 1.96*se
+
+my_results <- tibble(
+  lower_bound = lower_bound,
+  point_estimate = pe,
+  standard_error = se,
+  upper_bound = upper_bound
+)
+
+ci_container <- ci_container %>%
+  bind_rows(my_results) %>%
+  filter(!is.na(lower_bound)) %>%
+  mutate(sample_number = row_number())
+
+print(paste0("The confidence interval bounds are: ", lower_bound, " and ", upper_bound))
+
+ci_container %>%
+  ggplot() + 
+  geom_errorbarh(aes(xmin = lower_bound, xmax = upper_bound, y = sample_number)) + 
+  geom_point(aes(x = point_estimate, y = sample_number)) + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  scale_y_continuous(breaks = NULL) +
+  labs(
+    title = "A Confidence Interval(s) for Patient Admission Rate",
+    x = "Admission Rate",
+    y = ""
+  )
+
+```
+
+**Task 9:** Run the code cell above several times in order to see what happens. Describe the result.
+
+**Task 10:** What likely prohibits us from being able to build multiple confidence intervals like we did above in real applications?
+
+**Task 11:** Run the code cell below to investigate what is meant by an XX% confidence interval. We'll draw 100 random samples and then construct and plot those confidence intervals.
+
+```{r}
+sample_size <- 25
+num_samples <- 100
+confidence_level <- 0.95
+
+ci_container <- tibble(
+  lower_bound = NA,
+  point_estimate = NA,
+  standard_error = NA,
+  upper_bound = NA
+)
+
+for(i in 1:num_samples){
+  my_sample <- hospital_visits %>%
+  sample_n(sample_size, replace = FALSE)
+
+  pe <- my_sample %>%
+    count(admitted) %>%
+    mutate(proportion = n/sum(n)) %>%
+    filter(admitted == "admitted") %>%
+    pull(proportion)
+
+  se <- sqrt(pe*(1 - pe)/sample_size)
+
+  lower_bound <- pe - qnorm(1 - (1 - confidence_level)/2)*se
+  upper_bound <- pe + qnorm(1 - (1 - confidence_level)/2)*se
+
+  my_results <- tibble(
+    lower_bound = lower_bound,
+    point_estimate = pe,
+    standard_error = se,
+    upper_bound = upper_bound
+  )
+
+  ci_container <- ci_container %>%
+    bind_rows(my_results) %>%
+    filter(!is.na(lower_bound))
+}
+
+true_prop <- mean(hospital_visits$admitted == "admitted")
+
+ci_container <- ci_container %>%
+  mutate(
+    sample_id = row_number(),
+    true_proportion = mean(hospital_visits$admitted == "admitted"),
+    ci_flag = ifelse(between(true_proportion, lower_bound, upper_bound), "yes", "no"))
+
+ci_container %>%
+  ggplot() + 
+  geom_errorbarh(aes(xmin = lower_bound, xmax = upper_bound, 
+                     y = sample_id, color = ci_flag)) + 
+  geom_point(aes(x = point_estimate, y = sample_id,
+                 color = ci_flag)) + 
+  geom_vline(aes(xintercept = true_prop),
+             color = "purple", linetype = "dashed",
+             linewidth = 1.25) + 
+  coord_cartesian(xlim = c(0, 1)) + 
+  scale_y_continuous(breaks = NULL) +
+  scale_color_manual(values = c("yes" = "black", "no" = "red")) +
+  labs(
+    title = "Many Confidence Intervals for Patient Admission Rate",
+    x = "Admission Rate",
+    y = ""
+  ) + 
+  theme(legend.position = "bottom") +
+  labs(color = "Contains true proportion?")
+
+```
+
+**Task 12:** Knowing that we're going to obtain one confidence interval, not 100 of them, how should we interpret the interval we obtain?
+
+**Task 13:** How do the confidence intervals change when you alter the `confidence_level`? What about if you change the `sample_size`?
+
+**Task 14:** Suppose now that we focus only on patient visits where the primary complaint was flu-like symptoms. Should we use a confidence interval that we calculated above (for all patients) as a tool for capturing the proportion of influenza-prompted visits resulting in a hospital admission? Discuss why or why not.
+
+**Task 15:** Suppose the hospital claims that their true admission rate resulting from patients complaining of flue symptoms is over 0.20 (that is, more than 20% of patients who visit the hospital with complaints of flu symptoms are admitted). Is it possible to test the hospital's claim? Discuss how you might go about testing the claim. What kind of evidence would support this claim? What kind of evidence would contradict it?
+
+**Task 16:** The code cell below takes a random sample of patients complaining of flu symptoms only and calculates the proportion of these visits resulting in a hospital admission. How does your sample estimate compare to the hospital’s claim of 0.20? Would you say your result provides strong, weak, or no evidence against the claim? Would your conclusion necessarily be the same if you drew a different sample?
+
+```{r}
+sample_size <- 25
+visit_type <- "flu"
+
+my_event_sample <- hospital_visits %>%
+  filter(event == "flu") %>%
+  sample_n(sample_size, replace = FALSE)
+
+my_event_sample %>%
+  count(admitted) %>%
+  mutate(proportion = n/sum(n))
+```
+
+:::{.callout-tip}
+
+## What We’ve Learned
+
++ Confidence intervals estimate a plausible range of values for a population parameter.
++ Confidence levels describe long-run success rates of such intervals.
++ Sampling variability means different samples produce different estimates.
++ When someone makes a claim about a parameter, we can use data to evaluate whether that claim seems consistent with what we observe.
+:::
