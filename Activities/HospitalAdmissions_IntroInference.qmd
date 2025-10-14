@@ -59,7 +59,7 @@ my_sample %>%
 
 **Task 5:** Revisit your conjectured admission rate from *Task 3*, do you have more, less, or the same level of confidence in your initial estimate? Why?
 
-**Task 6:** Did you get the same result as your neighbors? Discuss why this is the case. Uncomment the code `set.seed(241)` and revisit this question? What do you think `set.seed(241)` does?
+**Task 6:** Did you get the same result as your neighbors? Discuss why this is the case. Uncomment the code `set.seed(241)` and revisit this question. What do you think `set.seed(241)` does?
 
 **Task 7:** What are some ways we could improve our estimate for the patient admission rate at this hospital? Are some methods better than others?
 
