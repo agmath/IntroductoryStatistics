@@ -4,8 +4,12 @@ subtitle: "Hospital Visits and Admissions"
 author: "Me, Analyst"
 date: today
 date-format: medium
-format: html
-theme: flatly
+format: 
+  html:
+    theme: flatly
+  pdf:
+    echo: false
+    eval: false
 ---
 
 :::{.callout-note}
