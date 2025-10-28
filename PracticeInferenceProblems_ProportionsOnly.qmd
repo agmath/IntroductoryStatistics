@@ -1,0 +1,55 @@
+---
+title: "More Proportions Practice Problems"
+author: "MAT241 Class"
+format: 
+  html:
+    theme: flatly
+    toc: true
+  pdf: 
+    toc: false
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(patchwork)
+library(latex2exp)
+library(kableExtra)
+library(nflfastR)
+```
+
+Here are some practice problems from our Textbook and MyOpenMath.
+
+## Introduction to Inference (MoM Week 5 HW)
+
+**Problem 1:** For each of the following situations, state whether the parameter of interest is a mean or a proportion. It may be helpful to examine whether individual responses are numerical or categorical.
+
++ In a survey, one hundred college students are asked how many hours per week they spend on the Internet.
++ In a survey, one hundred college students are asked: "What percentage of the time you spend on the Internet is part of your course work?"
++ In a survey, one hundred college students are asked whether or not they cited information from Wikipedia in their papers.
++ In a survey, one hundred college students are asked what percentage of their total weekly spending is on alcoholic beverages.
++ In a sample of one hundred recent college graduates, it is found that 85 percent expect to get a job within one year of their graduation date.
+
+**Problem 2:** A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on Twitter, and the standard error for this estimate was 2.4%. Conduct a hypothesis test at the $\alpha = 0.05$ level of significance to determine whether a majority of US adult Twitter users get at least some news on Twitter.
+
+**Problem 5:** A store randomly samples 603 shoppers over the course of a year and finds that 142 of them made their visit because of a coupon they'd received in the mail. Construct a 95% confidence interval for the fraction of all shoppers during the year whose visit was because of a coupon they'd received in the mail.
+
+{{< pagebreak >}}
+
+**Problem 6:** A tutoring company would like to understand if most students tend to improve their grades (or not) after they use the company's services. They sample 200 of the students who used their service in the past year and ask them if their grades have improved or declined from the previous year. Of the 200 sampled, 185 said that their grades had improved. Determine whether the data provides evidence to suggest that the companies tutoring services suggest that over 90% of customers report improved grades after using the tutoring services. Use the $\alpha = 0.1$ level of significance.
+
+**Problem 11:** A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on Twitter (Pew, 2013). The standard error for this estimate was 2.4%, and a normal distribution may be used to model the sample proportion. Construct a 99% confidence interval for the fraction of U.S. adult Twitter users who get some news on Twitter, and interpret the confidence interval in context.
+
+## Inference on One and Two Proportions (MoM Week 6 HW)
+
+**Problem 3:** Among a simple random sample of 331 American adults who do not have a four-year college degree and are not currently enrolled in school, 48% said they decided not to go to college because they could not afford school. Calculate a 90% confidence interval for the proportion of Americans who decide to not go to college because they cannot afford it, and interpret the interval in context.
+
+**Problem 4:** A 2010 Pew Research foundation poll indicates that among 1,099 college graduates, 33% watch The Daily Show. Meanwhile, 22% of the 1,110 people with a high school degree but no college degree in the poll watch The Daily Show. Construct a 95% confidence interval for $\left(p_{\text{college grad}} - p_{\text{HS or less}}\right)$, where p is the proportion of those who watch The Daily Show
+
+**Problem 5:** Researchers studying the link between prenatal vitamin use and autism surveyed the mothers of a random sample of children aged 24 - 60 months with autism and conducted another separate random sample for children with typical development. The table below shows the number of mothers in each group who did and did not use prenatal vitamins during the three months before pregnancy (periconceptional period). Conduct a hypotheses to test for independence of use of prenatal vitamins during the three months before pregnancy and autism. (Schmidt, 2011)
+
+$\hspace{1cm}$ | Autism | Typical Development | Total |
+|---|---|---|---|
+No vitamin | 111 | 70 | 181
+Vitamin | 143 | 159 | 302
+Total | 254 | 229 | 483
+
