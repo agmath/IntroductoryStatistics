@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.43">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="MAT241 Class">
+
+<title>Practice Problems Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="PracticeInferenceProblems_Initial_files/libs/clipboard/clipboard.min.js"></script>
+<script src="PracticeInferenceProblems_Initial_files/libs/quarto-html/quarto.js"></script>
+<script src="PracticeInferenceProblems_Initial_files/libs/quarto-html/popper.min.js"></script>
+<script src="PracticeInferenceProblems_Initial_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="PracticeInferenceProblems_Initial_files/libs/quarto-html/anchor.min.js"></script>
+<link href="PracticeInferenceProblems_Initial_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="PracticeInferenceProblems_Initial_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="PracticeInferenceProblems_Initial_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="PracticeInferenceProblems_Initial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="PracticeInferenceProblems_Initial_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="PracticeInferenceProblems_Initial_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="PracticeInferenceProblems_Initial_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-inference-mom-week-5-hw" id="toc-introduction-to-inference-mom-week-5-hw" class="nav-link active" data-scroll-target="#introduction-to-inference-mom-week-5-hw">Introduction to Inference (MoM Week 5 HW)</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-unsolved" id="toc-problem-1-unsolved" class="nav-link" data-scroll-target="#problem-1-unsolved">Problem 1 Unsolved</a></li>
+  <li><a href="#problem-2-unsolved" id="toc-problem-2-unsolved" class="nav-link" data-scroll-target="#problem-2-unsolved">Problem 2 Unsolved</a></li>
+  <li><a href="#problem-5-unsolved" id="toc-problem-5-unsolved" class="nav-link" data-scroll-target="#problem-5-unsolved">Problem 5 Unsolved</a></li>
+  <li><a href="#problem-6-unsolved" id="toc-problem-6-unsolved" class="nav-link" data-scroll-target="#problem-6-unsolved">Problem 6 Unsolved</a></li>
+  <li><a href="#problem-11-unsolved" id="toc-problem-11-unsolved" class="nav-link" data-scroll-target="#problem-11-unsolved">Problem 11 Unsolved</a></li>
+  </ul></li>
+  <li><a href="#inference-on-one-and-two-proportions-mom-week-6-hw" id="toc-inference-on-one-and-two-proportions-mom-week-6-hw" class="nav-link" data-scroll-target="#inference-on-one-and-two-proportions-mom-week-6-hw">Inference on One and Two Proportions (MoM Week 6 HW)</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-unsolved-1" id="toc-problem-1-unsolved-1" class="nav-link" data-scroll-target="#problem-1-unsolved-1">Problem 1 Unsolved</a></li>
+  <li><a href="#problem-3-unsolved" id="toc-problem-3-unsolved" class="nav-link" data-scroll-target="#problem-3-unsolved">Problem 3 Unsolved</a></li>
+  <li><a href="#problem-4-unsolved" id="toc-problem-4-unsolved" class="nav-link" data-scroll-target="#problem-4-unsolved">Problem 4 Unsolved</a></li>
+  <li><a href="#problem-5-unsolved-1" id="toc-problem-5-unsolved-1" class="nav-link" data-scroll-target="#problem-5-unsolved-1">Problem 5 Unsolved</a></li>
+  </ul></li>
+  <li><a href="#chi-square-goodness-of-fit-and-independence-multiple-proportions" id="toc-chi-square-goodness-of-fit-and-independence-multiple-proportions" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit-and-independence-multiple-proportions">Chi-Square Goodness of Fit and Independence (Multiple Proportions)</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-unsolved-2" id="toc-problem-1-unsolved-2" class="nav-link" data-scroll-target="#problem-1-unsolved-2">Problem 1 Unsolved</a></li>
+  <li><a href="#problem-2-unsolved-1" id="toc-problem-2-unsolved-1" class="nav-link" data-scroll-target="#problem-2-unsolved-1">Problem 2 Unsolved</a></li>
+  <li><a href="#problem-3-unsolved-1" id="toc-problem-3-unsolved-1" class="nav-link" data-scroll-target="#problem-3-unsolved-1">Problem 3 Unsolved</a></li>
+  <li><a href="#problem-4-unsolved-1" id="toc-problem-4-unsolved-1" class="nav-link" data-scroll-target="#problem-4-unsolved-1">Problem 4 Unsolved</a></li>
+  </ul></li>
+  <li><a href="#inference-on-one-and-two-means" id="toc-inference-on-one-and-two-means" class="nav-link" data-scroll-target="#inference-on-one-and-two-means">Inference on One and Two Means</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-unsolved-3" id="toc-problem-1-unsolved-3" class="nav-link" data-scroll-target="#problem-1-unsolved-3">Problem 1 Unsolved</a></li>
+  <li><a href="#problem-2-unsolved-2" id="toc-problem-2-unsolved-2" class="nav-link" data-scroll-target="#problem-2-unsolved-2">Problem 2 Unsolved</a></li>
+  <li><a href="#problem-3-unsolved-2" id="toc-problem-3-unsolved-2" class="nav-link" data-scroll-target="#problem-3-unsolved-2">Problem 3 Unsolved</a></li>
+  <li><a href="#problem-4-unsolved-2" id="toc-problem-4-unsolved-2" class="nav-link" data-scroll-target="#problem-4-unsolved-2">Problem 4 Unsolved</a></li>
+  </ul></li>
+  <li><a href="#sample-size-problems" id="toc-sample-size-problems" class="nav-link" data-scroll-target="#sample-size-problems">Sample Size Problems</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-unsolved-4" id="toc-problem-1-unsolved-4" class="nav-link" data-scroll-target="#problem-1-unsolved-4">Problem 1 Unsolved</a></li>
+  <li><a href="#problem-2-unsolved-3" id="toc-problem-2-unsolved-3" class="nav-link" data-scroll-target="#problem-2-unsolved-3">Problem 2 Unsolved</a></li>
+  </ul></li>
+  <li><a href="#comparing-many-means-with-analysis-of-variance-anova" id="toc-comparing-many-means-with-analysis-of-variance-anova" class="nav-link" data-scroll-target="#comparing-many-means-with-analysis-of-variance-anova">Comparing Many Means with Analysis of Variance (ANOVA)</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-unsolved-5" id="toc-problem-1-unsolved-5" class="nav-link" data-scroll-target="#problem-1-unsolved-5">Problem 1 Unsolved</a></li>
+  <li><a href="#problem-2-unsolved-4" id="toc-problem-2-unsolved-4" class="nav-link" data-scroll-target="#problem-2-unsolved-4">Problem 2 Unsolved</a></li>
+  <li><a href="#problem-3-unsolved-3" id="toc-problem-3-unsolved-3" class="nav-link" data-scroll-target="#problem-3-unsolved-3">Problem 3 Unsolved</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PracticeInferenceProblems_Initial.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Practice Problems Notebook</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>MAT241 Class </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this notebook, we’ll work through several practice problems from our Textbook and MyOpenMath.</p>
+<section id="introduction-to-inference-mom-week-5-hw" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-inference-mom-week-5-hw">Introduction to Inference (MoM Week 5 HW)</h2>
+<section id="problem-1-unsolved" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-unsolved">Problem 1 Unsolved</h3>
+<p><strong>Problem 1:</strong> For each of the following situations, state whether the parameter of interest is a mean or a proportion. It may be helpful to examine whether individual responses are numerical or categorical.</p>
+<ul>
+<li><p>In a survey, one hundred college students are asked how many hours per week they spend on the Internet.</p></li>
+<li><p>In a survey, one hundred college students are asked: “What percentage of the time you spend on the Internet is part of your course work?”</p></li>
+<li><p>In a survey, one hundred college students are asked whether or not they cited information from Wikipedia in their papers.</p></li>
+<li><p>In a survey, one hundred college students are asked what percentage of their total weekly spending is on alcoholic beverages.</p></li>
+<li><p>In a sample of one hundred recent college graduates, it is found that 85 percent expect to get a job within one year of their graduation date.</p></li>
+</ul>
+</section>
+<section id="problem-2-unsolved" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2-unsolved">Problem 2 Unsolved</h3>
+<p><strong>Problem 2:</strong> A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on Twitter, and the standard error for this estimate was 2.4%. Conduct a hypothesis test at the <span class="math inline">\(\alpha = 0.05\)</span> level of significance to determine whether a majority of US adult Twitter users get at least some news on Twitter.</p>
+</section>
+<section id="problem-5-unsolved" class="level3">
+<h3 class="anchored" data-anchor-id="problem-5-unsolved">Problem 5 Unsolved</h3>
+<p><strong>Problem 5:</strong> A store randomly samples 603 shoppers over the course of a year and finds that 142 of them made their visit because of a coupon they’d received in the mail. Construct a 95% confidence interval for the fraction of all shoppers during the year whose visit was because of a coupon they’d received in the mail.</p>
+</section>
+<section id="problem-6-unsolved" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6-unsolved">Problem 6 Unsolved</h3>
+<p><strong>Problem 6:</strong> A tutoring company would like to understand if most students tend to improve their grades (or not) after they use their services. They sample 200 of the students who used their service in the past year and ask them if their grades have improved or declined from the previous year. Of the 200 sampled, 185 said that their grades had improved. Determine whether the data provides evidence to suggest that the companies tutoring services suggest that over 90% of customers report improved grades after using the tutoring services. Use the <span class="math inline">\(\alpha = 0.1\)</span> level of significance.</p>
+</section>
+<section id="problem-11-unsolved" class="level3">
+<h3 class="anchored" data-anchor-id="problem-11-unsolved">Problem 11 Unsolved</h3>
+<p><strong>Problem 11:</strong> A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on Twitter (Pew, 2013). The standard error for this estimate was 2.4%, and a normal distribution may be used to model the sample proportion. Construct a 99% confidence interval for the fraction of U.S. adult Twitter users who get some news on Twitter, and interpret the confidence interval in context.</p>
+</section>
+</section>
+<section id="inference-on-one-and-two-proportions-mom-week-6-hw" class="level2">
+<h2 class="anchored" data-anchor-id="inference-on-one-and-two-proportions-mom-week-6-hw">Inference on One and Two Proportions (MoM Week 6 HW)</h2>
+<section id="problem-1-unsolved-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-unsolved-1">Problem 1 Unsolved</h3>
+<p><strong>Problem 1:</strong> About 77% of young adults think they can achieve the American dream. Determine if the following statements are true or false, and explain your reasoning.</p>
+<ul>
+<li><p>The distribution of sample proportions of young Americans who think they can achieve the American dream in samples of size 20 is left skewed.</p></li>
+<li><p>The distribution of sample proportions of young Americans who think they can achieve the American dream in random samples of size 40 is approximately normal since <span class="math inline">\(n \geq 30\)</span>.</p></li>
+<li><p>A random sample of 60 young Americans where 85% think they can achieve the American dream would be considered unusual.</p></li>
+<li><p>A random sample of 120 young Americans where 85% think they can achieve the American dream would be considered unusual.</p></li>
+</ul>
+</section>
+<section id="problem-3-unsolved" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3-unsolved">Problem 3 Unsolved</h3>
+<p><strong>Problem 3:</strong> Among a simple random sample of 331 American adults who do not have a four-year college degree and are not currently enrolled in school, 48% said they decided not to go to college because they could not afford school. Calculate a 90% confidence interval for the proportion of Americans who decide to not go to college because they cannot afford it, and interpret the interval in context.</p>
+</section>
+<section id="problem-4-unsolved" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4-unsolved">Problem 4 Unsolved</h3>
+<p><strong>Problem 4:</strong> A 2010 Pew Research foundation poll indicates that among 1,099 college graduates, 33% watch The Daily Show. Meanwhile, 22% of the 1,110 people with a high school degree but no college degree in the poll watch The Daily Show. Construct a 95% confidence interval for <span class="math inline">\(\left(p_{\text{college grad}} - p_{\text{HS or less}}\right)\)</span>, where p is the proportion of those who watch The Daily Show</p>
+</section>
+<section id="problem-5-unsolved-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-5-unsolved-1">Problem 5 Unsolved</h3>
+<p><strong>Problem 5:</strong> Researchers studying the link between prenatal vitamin use and autism surveyed the mothers of a random sample of children aged 24 - 60 months with autism and conducted another separate random sample for children with typical development. The table below shows the number of mothers in each group who did and did not use prenatal vitamins during the three months before pregnancy (periconceptional period). Conduct a hypotheses to test for independence of use of prenatal vitamins during the three months before pregnancy and autism. (Schmidt, 2011)</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\hspace{1cm}\)</span></th>
+<th>Autism</th>
+<th>Typical Development</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No vitamin</td>
+<td>111</td>
+<td>70</td>
+<td>181</td>
+</tr>
+<tr class="even">
+<td>Vitamin</td>
+<td>143</td>
+<td>159</td>
+<td>302</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>254</td>
+<td>229</td>
+<td>483</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="chi-square-goodness-of-fit-and-independence-multiple-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="chi-square-goodness-of-fit-and-independence-multiple-proportions">Chi-Square Goodness of Fit and Independence (Multiple Proportions)</h2>
+<section id="problem-1-unsolved-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-unsolved-2">Problem 1 Unsolved</h3>
+<p><strong>Problem 1 (Open Source Textbook):</strong> A professor using an open source introductory statistics book predicts that 20% of the students will purchase a hard copy of the book, 5% will print it out from the web, and 75% will read it online. At the end of the semester he asks his students to complete a survey where they indicate what format of the book they used. Of the 126 students, 19 said they bought a hard copy of the book, 9 said they printed it out from the web, and 98 said they read it online. Conduct a test to determine whether the professor’s predictions were inaccurate.</p>
+</section>
+<section id="problem-2-unsolved-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2-unsolved-1">Problem 2 Unsolved</h3>
+<p><strong>Problem 2 (Barking Deer):</strong> Microhabitat factors associated with forage and bed sites of barking deer in Hainan Island, China were examined. In this region woods make up 4.8% of the land, cultivated grass plot makes up 14.7%, and deciduous forests make up 39.6%. Of the 426 sites where the deer forage, 4 were categorized as woods, 16 as cultivated grassplot, and 61 as deciduous forests. The table below summarizes these data.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Woods</th>
+<th>Cultivated Grassplot</th>
+<th>Deciduous Forests</th>
+<th>Other</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>16</td>
+<td>61</td>
+<td>345</td>
+<td>426</td>
+</tr>
+</tbody>
+</table>
+<p>Conduct a test to determine whether barking deer prefer to forage in certain habitats over others.</p>
+</section>
+<section id="problem-3-unsolved-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3-unsolved-1">Problem 3 Unsolved</h3>
+<p><strong>Problem 3 (Full-Body Scan):</strong> The table below summarizes a data set we first encountered in Exercise 6.26 regarding views on full-body scans and political affiliation. The differences in each political group may be due to chance. Conduct a test to determine whether an individual’s party affiliation and their support of full-body scans are independent of one another. It may be useful to first add on an extra column for row totals before proceeding with the computations.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Republican</th>
+<th>Democrat</th>
+<th>Independent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Should</td>
+<td>264</td>
+<td>299</td>
+<td>351</td>
+</tr>
+<tr class="even">
+<td>Should Not</td>
+<td>38</td>
+<td>55</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td>Don’t Know / No Answer</td>
+<td>16</td>
+<td>15</td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td>318</td>
+<td>369</td>
+<td>450</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="problem-4-unsolved-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4-unsolved-1">Problem 4 Unsolved</h3>
+<p><strong>Problem 4 (Offshore Drilling):</strong> The table below summarizes a data set we first encountered in Exercise 6.23 that examines the responses of a random sample of college graduates and non-graduates on the topic of oil drilling. Complete a chi-square test for these data to check whether there is a statistically significant difference in responses from college graduates and non-graduates.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>College Grad</th>
+<th>Not College Grad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Support Offshore Drilling</td>
+<td>154</td>
+<td>132</td>
+</tr>
+<tr class="even">
+<td>Oppose Offshore Drilling</td>
+<td>180</td>
+<td>126</td>
+</tr>
+<tr class="odd">
+<td>Do not know</td>
+<td>104</td>
+<td>131</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td>438</td>
+<td>389</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inference-on-one-and-two-means" class="level2">
+<h2 class="anchored" data-anchor-id="inference-on-one-and-two-means">Inference on One and Two Means</h2>
+<section id="problem-1-unsolved-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-unsolved-3">Problem 1 Unsolved</h3>
+<p><strong>Problem 1 (Sleep Habits of New Yorkers):</strong> New York is known as “the city that never sleeps”. A random sample of 25 New Yorkers were asked how much sleep they get per night. Statistical summaries of these data are shown below. The point estimate suggests New Yorkers sleep less than 8 hours a night on average. Is the result statistically significant?</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(n\)</span></th>
+<th><span class="math inline">\(\bar{x}\)</span></th>
+<th><span class="math inline">\(s\)</span></th>
+<th><span class="math inline">\(\text{min}\)</span></th>
+<th><span class="math inline">\(\text{max}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>25</td>
+<td>7.73</td>
+<td>0.77</td>
+<td>6.17</td>
+<td>9.78</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="problem-2-unsolved-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2-unsolved-2">Problem 2 Unsolved</h3>
+<p><strong>Problem 2 (Diamond Pricing):</strong> Prices of diamonds are determined by what is known as the 4 Cs: cut, clarity, color, and carat weight. The prices of diamonds go up as the carat weight increases, but the increase is not smooth. For example, the difference between the size of a 0.99 carat diamond and a 1 carat diamond is undetectable to the naked human eye, but the price of a 1 carat diamond tends to be much higher than the price of a 0.99 diamond. In this question we use two random samples of diamonds, 0.99 carats and 1 carat, each sample of size 23, and compare the average prices of the diamonds. In order to be able to compare equivalent units, we first divide the price for each diamond by 100 times its weight in carats. That is, for a 0.99 carat diamond, we divide the price by 99. For a 1 carat diamond, we divide the price by 100. The distributions and some sample statistics are shown below.</p>
+<p>Conduct a hypothesis test to evaluate if there is a difference between the average standardized prices of 0.99 and 1 carat diamonds. Make sure to state your hypotheses clearly, check relevant conditions, and interpret your results in context of the data.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>0.99 carats</th>
+<th>1 carat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td>$44.51</td>
+<td>$56.81</td>
+</tr>
+<tr class="even">
+<td>SD</td>
+<td>$13.32</td>
+<td>$16.13</td>
+</tr>
+<tr class="odd">
+<td>n</td>
+<td>23</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="problem-3-unsolved-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3-unsolved-2">Problem 3 Unsolved</h3>
+<p><strong>Problem 3 (Fuel Efficiency of Cars):</strong> The table provides summary statistics on highway fuel economy of 52 cars. Use these statistics to calculate a 98% confidence interval for the difference between average highway mileage of manual and automatic cars, and interpret this interval in the context of the data.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Automatic Highway mpg</th>
+<th>Manual Highway mpg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td>22.92</td>
+<td>27.88</td>
+</tr>
+<tr class="even">
+<td>SD</td>
+<td>5.29</td>
+<td>5.01</td>
+</tr>
+<tr class="odd">
+<td>n</td>
+<td>26</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="problem-4-unsolved-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4-unsolved-2">Problem 4 Unsolved</h3>
+<p><strong>Problem 4 (Forest Management):</strong> Forest rangers wanted to better understand the rate of growth for younger trees in the park. They took measurements of a random sample of 50 young trees in 2009 and again measured those same trees in 2019. The data below summarize their measurements, where the heights are in feet:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>2009</th>
+<th>2019</th>
+<th>Differences</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td>12.0</td>
+<td>24.5</td>
+<td>12.5</td>
+</tr>
+<tr class="even">
+<td>s</td>
+<td>3.5</td>
+<td>9.5</td>
+<td>7.2</td>
+</tr>
+<tr class="odd">
+<td>n</td>
+<td>50</td>
+<td>50</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>Construct a 99% confidence interval for the average growth of (what had been) younger trees in the park over 2009-2019.</p>
+</section>
+</section>
+<section id="sample-size-problems" class="level2">
+<h2 class="anchored" data-anchor-id="sample-size-problems">Sample Size Problems</h2>
+<p>The following problems ask us to estimate a required sample size. As a reminder, when estimating sample sizes, we need to round <em>up</em> to the next whole number to ensure that the resulting sample size is large enough to achieve our desired level of confidence and our desired margin of error.</p>
+<section id="problem-1-unsolved-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-unsolved-4">Problem 1 Unsolved</h3>
+<p><strong>Problem 1 (Legalization of Marijuana):</strong> As discussed in Exercise 6.10, the General Social Survey reported a sample where about 61% of US residents thought marijuana should be made legal. If we wanted to limit the margin of error of a 95% confidence interval to 2%, about how many Americans would we need to survey?</p>
+</section>
+<section id="problem-2-unsolved-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2-unsolved-3">Problem 2 Unsolved</h3>
+<p><strong>Problem 2 (Spring Break Spending):</strong> A marketing research firm wants to estimate the average amount a student spends during the Spring break. They want to determine it to within $120 with 90% confidence. The first does some research which allows it to roughly say that Spring Break expenditure ranges from $100 to $1700 per student. They use the approximation <span class="math inline">\(\displaystyle{\frac{\text{range}}{4}}\)</span> for <span class="math inline">\(\sigma\)</span>. How many students should they sample?</p>
+</section>
+</section>
+<section id="comparing-many-means-with-analysis-of-variance-anova" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-many-means-with-analysis-of-variance-anova">Comparing Many Means with Analysis of Variance (ANOVA)</h2>
+<p>In this section, we explore the use of Analysis of Variance to compare multiple (more than two) group means.</p>
+<section id="problem-1-unsolved-5" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1-unsolved-5">Problem 1 Unsolved</h3>
+<p><strong>Problem 1 (Taylor Swift Songs):</strong> Take a look at the Taylor Albums data frame from the <code>{taylor}</code> R package. Compare one of the song metrics (<code>duration</code>, <code>danceability</code>, <code>speechiness</code>, <code>loudness</code>, etc.) across Taylor’s released albums.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(taylor)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>taylors_version <span class="ot">&lt;-</span> taylor_album_songs <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(album_name, <span class="st">"Taylor's Version"</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>taylors_version <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>lyrics) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-hover table-striped caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">album_name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">ep</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">album_release</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">track_number</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">track_name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">artist</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">featuring</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">bonus_track</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">promotional_release</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">single_release</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">track_release</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">danceability</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">energy</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">key</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">loudness</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mode</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">speechiness</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">acousticness</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">instrumentalness</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">liveness</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">valence</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">tempo</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">time_signature</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">duration_ms</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">explicit</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">key_name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">mode_name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">key_mode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fearless (Taylor's Version)</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Fearless (Taylor's Version)</td>
+<td style="text-align: left;">Taylor Swift</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.741</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">-4.963</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0282</td>
+<td style="text-align: right;">0.0122</td>
+<td style="text-align: right;">0e+00</td>
+<td style="text-align: right;">0.3330</td>
+<td style="text-align: right;">0.430</td>
+<td style="text-align: right;">100.118</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">241592</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">major</td>
+<td style="text-align: left;">F major</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fearless (Taylor's Version)</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Fifteen (Taylor's Version)</td>
+<td style="text-align: left;">Taylor Swift</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">0.559</td>
+<td style="text-align: right;">0.646</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">-4.610</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0272</td>
+<td style="text-align: right;">0.1160</td>
+<td style="text-align: right;">0e+00</td>
+<td style="text-align: right;">0.3200</td>
+<td style="text-align: right;">0.289</td>
+<td style="text-align: right;">95.466</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">294419</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">major</td>
+<td style="text-align: left;">G major</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fearless (Taylor's Version)</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Love Story (Taylor's Version)</td>
+<td style="text-align: left;">Taylor Swift</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">2021-02-12</td>
+<td style="text-align: left;">2021-02-12</td>
+<td style="text-align: right;">0.627</td>
+<td style="text-align: right;">0.792</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-4.311</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0310</td>
+<td style="text-align: right;">0.1300</td>
+<td style="text-align: right;">4e-06</td>
+<td style="text-align: right;">0.0845</td>
+<td style="text-align: right;">0.415</td>
+<td style="text-align: right;">119.054</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">235767</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">major</td>
+<td style="text-align: left;">D major</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fearless (Taylor's Version)</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Hey Stephen (Taylor's Version)</td>
+<td style="text-align: left;">Taylor Swift</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">0.788</td>
+<td style="text-align: right;">0.571</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">-6.135</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0296</td>
+<td style="text-align: right;">0.1060</td>
+<td style="text-align: right;">0e+00</td>
+<td style="text-align: right;">0.0934</td>
+<td style="text-align: right;">0.797</td>
+<td style="text-align: right;">115.990</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">254255</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">F#</td>
+<td style="text-align: left;">major</td>
+<td style="text-align: left;">F# major</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fearless (Taylor's Version)</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">White Horse (Taylor's Version)</td>
+<td style="text-align: left;">Taylor Swift</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">0.423</td>
+<td style="text-align: right;">0.517</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-7.377</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0486</td>
+<td style="text-align: right;">0.3690</td>
+<td style="text-align: right;">0e+00</td>
+<td style="text-align: right;">0.1770</td>
+<td style="text-align: right;">0.366</td>
+<td style="text-align: right;">185.262</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">234516</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">major</td>
+<td style="text-align: left;">C major</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fearless (Taylor's Version)</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">You Belong With Me (Taylor's Version)</td>
+<td style="text-align: left;">Taylor Swift</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">2021-04-09</td>
+<td style="text-align: right;">0.632</td>
+<td style="text-align: right;">0.773</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">-4.856</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0346</td>
+<td style="text-align: right;">0.0623</td>
+<td style="text-align: right;">0e+00</td>
+<td style="text-align: right;">0.0885</td>
+<td style="text-align: right;">0.474</td>
+<td style="text-align: right;">130.033</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">231124</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">F#</td>
+<td style="text-align: left;">major</td>
+<td style="text-align: left;">F# major</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="problem-2-unsolved-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2-unsolved-4">Problem 2 Unsolved</h3>
+<p><strong>Problem 2 (Penguin Physiology):</strong> Take a look at the <code>penguins</code> data frame from the <code>{palmerpenguins}</code> R package. Compare one of the body measurements (<code>body_mass_g</code>, <code>flipper_length_mm</code>, <code>bill_depth_mm</code>, etc.) across the different penguin species, islands, or observation years.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'palmerpenguins'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:datasets':
+
+    penguins, penguins_raw</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-hover table-striped caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">island</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_length_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">body_mass_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">sex</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.1</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">3750</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.5</td>
+<td style="text-align: right;">17.4</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">40.3</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">3250</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">36.7</td>
+<td style="text-align: right;">19.3</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">3450</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.3</td>
+<td style="text-align: right;">20.6</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">3650</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="problem-3-unsolved-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3-unsolved-3">Problem 3 Unsolved</h3>
+<p><strong>Problem 3 (NFL Rush Yards by Direction):</strong> Explore the <code>rush_21</code> data frame, containing data on running plays from the 2021 NFL season. Conduct a test to determine whether the average yards gained on a rushing play is associated with the direction (<em>left</em>, <em>middle</em>, <em>right</em>) of the running play.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Running this code may crash a free-tiered Posit Cloud workspace</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nflfastR)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>pbp_21 <span class="ot">&lt;-</span> <span class="fu">load_pbp</span>(<span class="dv">2021</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>rush_21 <span class="ot">&lt;-</span> pbp_21 <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(play_type <span class="sc">==</span> <span class="st">"run"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>rush_21 <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rusher, down, qtr, rushing_yards, run_location) <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

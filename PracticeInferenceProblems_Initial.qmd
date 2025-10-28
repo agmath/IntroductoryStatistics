@@ -1,9 +1,12 @@
 ---
 title: "Practice Problems Notebook"
 author: "MAT241 Class"
-format: html
-theme: flatly
-toc: true
+format: 
+  html:
+    theme: flatly
+    toc: true
+  pdf: 
+    toc: false
 ---
 
 ```{r setup, include = FALSE}
