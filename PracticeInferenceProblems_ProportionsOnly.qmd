@@ -29,11 +29,10 @@ Here are some practice problems from our Textbook and MyOpenMath.
 + In a survey, one hundred college students are asked what percentage of their total weekly spending is on alcoholic beverages.
 + In a sample of one hundred recent college graduates, it is found that 85 percent expect to get a job within one year of their graduation date.
 
+
 **Problem 2:** A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on Twitter, and the standard error for this estimate was 2.4%. Conduct a hypothesis test at the $\alpha = 0.05$ level of significance to determine whether a majority of US adult Twitter users get at least some news on Twitter.
 
 **Problem 5:** A store randomly samples 603 shoppers over the course of a year and finds that 142 of them made their visit because of a coupon they'd received in the mail. Construct a 95% confidence interval for the fraction of all shoppers during the year whose visit was because of a coupon they'd received in the mail.
-
-{{< pagebreak >}}
 
 **Problem 6:** A tutoring company would like to understand if most students tend to improve their grades (or not) after they use the company's services. They sample 200 of the students who used their service in the past year and ask them if their grades have improved or declined from the previous year. Of the 200 sampled, 185 said that their grades had improved. Determine whether the data provides evidence to suggest that the companies tutoring services suggest that over 90% of customers report improved grades after using the tutoring services. Use the $\alpha = 0.1$ level of significance.
 
