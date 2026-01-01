@@ -95,7 +95,7 @@ Univariate questions are questions about a single variable. Below are a couple e
 
 2. What is the average lot size in square feet?
 
-## Multivariable Questions
+### Multivariable Questions
 
 Multivariable / multivariate questions are questions involving at least two variables, but may include more! The more variables involved, the more difficult the question may be to answer, and the more data we may need in order to answer those questions with sufficient confidence. Below are two examples to get you started if you need help.
 
