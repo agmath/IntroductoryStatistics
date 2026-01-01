@@ -312,13 +312,26 @@ We'll overview the following items:
     
 ## Exit Ticket Task
 
+::::{.columns}
+
+:::{.column width="75%"}
+
 Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
 
 <br/>
 
 *Note.* Today's discussion is listed as `0. Introduction and What to Expect`
 
-<br/>
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
 
 **Task:** Tell me one interesting thing about you. Additionally, please share any questions, comments, or concerns you have as we embark on our MAT241 journey together. You should know that I'm looking forward to working with you and getting to know you!
 
