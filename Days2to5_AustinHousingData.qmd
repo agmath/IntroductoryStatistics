@@ -5,6 +5,7 @@ date: today
 date-format: medium
 format: html
 theme: cerulean
+toc: true
 ---
 
 ```{r setup, include=FALSE, message = FALSE, warning = FALSE}
@@ -43,6 +44,27 @@ Even after completing these notebooks, you won't be an expert in using R to anal
 
 We'll fill in a *data dictionary* here by using the knowledge we gain from the `Topic 1`  and `Topic 2`notebooks. 
 
+#### Numerical Variables
+
+Numerical variables are variables for which **here goes a description of how to tell whether a variable is numeric**. The following list contains our numerical variables and their descriptions.
+
++ `variable_one` - here's a description of our first numerical variable.
++ `variable_two` - here's a description of our second numerical variable.
+
+#### Categorical Variables
+
+Categorical variables are variables for which **here goes a description of how to tell whether a variable is categorical**. The following list contains our categorical variables and their descriptions.
+
++ `variable_one` - here's a description of our first categorical variable.
++ `variable_two` - here's a description of our second categorical variable.
+
+#### Unique Identifiers
+
+Unique identifiers are variables for which **here goes a description of how to tell whether a variable is a unique identifier**. The following list contains our unique identifiers and their descriptions.
+
++ `variable_one` - here's a description of our first categorical variable.
++ `variable_two` - here's a description of our second categorical variable.
+
 ### An Initial Exploration Through Summary Statistics
 
 Using the knowledge we gain from the `Topic 3` notebook, we'll compute some summary statistics so that we better understand our data.
@@ -56,3 +78,26 @@ We'll use skills from the `Topic 4` notebook here to gain real insights into the
 ## Summary
 
 We'll summarize the work we've done here.
+
+***
+
+## Appendix: Some Example Questions
+
+I have some example questions that I can share with you, but I'd rather have you and your teammates generate questions that you find genuinely interesting. 
+
+Some questions are sufficiently answered with a summary statistic while others require a plot to gain a full understanding. It is often the case that summary statistics paired with plots provide the insights you need.
+
+### Univariate Questions
+
+Univariate questions are questions about a single variable. Below are a couple examples if you need help getting started.
+
+1. Is the city variable in the data set always Austin? What other locations are there? How frequently do they appear?
+
+2. What is the average lot size in square feet?
+
+## Multivariable Questions
+
+Multivariable / multivariate questions are questions involving at least two variables, but may include more! The more variables involved, the more difficult the question may be to answer, and the more data we may need in order to answer those questions with sufficient confidence. Below are two examples to get you started if you need help.
+
+1. How does the average lot size change by location?
+2. Is there an association between average lot size in square feet and median number of students per teacher?
