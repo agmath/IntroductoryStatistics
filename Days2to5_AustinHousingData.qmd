@@ -62,8 +62,8 @@ Categorical variables are variables for which **here goes a description of how t
 
 Unique identifiers are variables for which **here goes a description of how to tell whether a variable is a unique identifier**. The following list contains our unique identifiers and their descriptions.
 
-+ `variable_one` - here's a description of our first categorical variable.
-+ `variable_two` - here's a description of our second categorical variable.
++ `variable_one` - here's a description of our first unique identifier.
++ `variable_two` - here's a description of our second unique identifier.
 
 ### An Initial Exploration Through Summary Statistics
 
