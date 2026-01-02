@@ -1773,6 +1773,38 @@ Complete the following examples, but be careful -- you'll need to decide whether
 + What is the probability of the temperature being between 75°F and 83°F?
 + What is the cutoff for the warmest 5% of days?
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `6. Normal Distribution`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+**Task:** The time in minutes it takes a city bus to complete a particular route during mid-day traffic is approximately normally distributed with a mean of 42 minutes and a standard deviation of 6 minutes. Discuss your approach to each of the following, identify your answers, and mention how you know those answers are reasonable.
+
+:::{.nonincremental}
+
+1. Estimate the probability that a randomly selected bus completes the route in between 43 and 48 minutes.
+2. Identify the cutoff for the longest 5% of route times.
+
+:::
+
 ## Next Time...
 
 <center><br/> Discrete Probability and Simulation Lab</center>
