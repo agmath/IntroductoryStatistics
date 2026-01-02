@@ -1,0 +1,257 @@
+---
+title: "MAT 241: Introduction to Data and Quarto"
+author: Dr. Gilbert
+format: 
+  revealjs:
+    smaller: true
+date: today
+date-format: long
+theme: serif
+incremental: true
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(reticulate)
+
+theme_set(theme_bw(base_size = 20))
+```
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+```
+
+## Playing Along
+
+Please play along...
+
+1. Open RStudio
+2. Ensure that you are in your MAT241 project by checking the top-right corner of your RStudio window (you should see your project name next to that translucent blue cube.)
+3. Create an empty Quarto Document in RStudio by navigating to `File -> New File -> Quarto Document...` using the menus.
+4. Choose to `Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.
+5. Navigate to [this Day 2 to 5 Activity notebook](https://github.com/agmath/IntroductoryStatistics/blob/main/Days2to5_AustinHousingData.qmd).
+6. Copy all of the lines in that document and paste them into your Quarto document, making sure that you are in the *Source* editor rather than the *Visual* editor.
+7. Save that file to a convenient location on your computer.
+8. Play with that file as we work through these slides together.
+
+## Working in Quarto
+
+<div style="font-size:17pt">
+
+:::{.fragment}
+
+Quarto documents allow you to mix narrative and data analysis all in one document, outputting multiple formats including HTML, Word Document, PDF, slides, and more.
+
+:::
+
+:::{.fragment}
+
+You'll be asked to work in Quarto for your two practical exams and we'll spend our first few class meetings in the Quarto environment as well.
+
+:::
+
+:::{.fragment}
+
+Quarto documents consist of the following components.
+
+:::
+
+1. The YAML header is at the top of the document, between "code fences" (`---`).
+
+    + You should feel free to make edits, but note that YAML is very picky. Please update the `author:` and [choose a different `theme:`](https://quarto.org/docs/output-formats/html-themes.html) if you'd like.
+
+2. Code chunks are opened and closed with triple back-ticks, followed by curly braces and the name of the language you are writing in (for our class, that will be `r`.
+
+    + In order to create a new code cell you should use the `+c` button and choose R as the option or you can use the keyboard shortcut `Option + Command + I` (mac) / `Ctrl + Alt  + I` (Windows).
+
+3. Text blocks permit you to write text freely, using markdown shortcuts and HTML to format your text. You may alternatively use the *Visual Editor* if you prefer a more familiar click-button interface.
+
+
+</div>
+
+## Running Code in Quarto
+
+<div style="font-size:17pt">
+
+:::{.fragment}
+
+As you are creating a Quarto document, it will be convenient to run your code and ensure that it works as expected.
+
+:::
+
++ With your cursor on a line inside of a code chunk, you can run that line of code by holding `command` (mac) or `ctrl` (Windows) and hitting the `Enter/Return` key. 
++ You can run an entire code chunk by using the green "play" button in the top-right corner of the code chunk.
+
+:::{.fragment}
+
+**Warnings:** Below are a couple of warnings to give you a heads-up on some common issues.
+
+:::
+
+1. You must have a blank line before and after the triple back-ticks opening and closing a code chunk.
+2. You can't "run" the lines with the triple back-ticks on them.
+3. Code flows like a river -- downstream code (code lower in your document) is only aware of code that exists and has been run upstream (earlier in your document).
+4. You can render your entire document, which includes running all the code in it, by using the blue *Render* arrow at the top of your editor.
+
+    + Rendering is not how you should typically run your code, but you should do it once in a while to ensure that your code flows as you intended.
+5. Coding is finicky -- you'll experience errors (often showing as red text in the console). That's natural, it happens to everyone, and I'm here to help!
+
+</div>
+
+## Rendering Your Notebook and Running Code
+
+:::{.fragment}
+
+We'll save writing and executing code for our next meeting, choosing to focus on text today.
+
+:::
+
+:::{.fragment}
+
+Before we do though, complete each of the following.
+
+:::
+
+1. Use the blue *Render* arrow to render your document to the HTML output. If it opens in a new window, use the settings gear icon and check that you'd like to *Preview in Viewer Pane* rather than *Preview in Window*. Render once again.
+2. Click on the *Environment* tab in the top-right pane of RStudio. Then, move your cursor to line 13 of the Quarto document and run each of the three lines in that code chunk.
+
+## Text Blocks in Quarto
+
+:::{.fragment}
+
+You have two choices regarding how your Quarto editor looks -- the *Source* editor or the *Visual* editor.
+
+:::
+
+:::{.fragment}
+
+These are toggled from the top-left corner of the editor window.
+
+:::
+
++ The source editor may be less comfortable at first, but using it will allow you to be much faster in the long-run. 
++ The visual editor provides a slightly more familiar interface with formatting buttons you can use rather than needing to remember markdown syntax.
+
+:::{.fragment}
+
+The choice of which to use is yours.
+
+:::
+
+## Goals for Today
+
+<div style="font-size:18pt">
+
+:::{.fragment}
+
+We'll use what you learned in the `Topic 1` notebook, providing an introduction to data and data types to classify variables from the Austin Zillow data set.
+
+:::
+
+
+:::{.fragment}
+
+Consider the following reminders:
+
+:::
+
++ ***Observations*** are the units from which data were recorded.
+
+  + Observations often appear as rows in tabular data frames.
+  
++ ***Variables*** are the characteristics being measured about each observation.
+
+  + Variables often appear as columns in tabular data frames.
+
++ Variables can be *numerical*, *categorical*, or *neither*. In this course, we'll refer to the latter category as *unique identifiers*.
+
+  + ***Numerical variables*** are variables for which measures like an average (ie. a mean) are meaningful.
+  + ***Categorical variables*** are variables which serve to group observations into categories.
+  + ***Unique identifiers*** are non-numeric variables with no grouping benefit.
+
+</div>
+
+## Tasks
+
+<div style="font-size:18pt">
+
+:::{.fragment}
+
+Navigate down to line `43` of the Quarto document. There, you'll not that we're going to fill in a *data dictionary* for the Zillow Dataset.
+
+:::
+
+:::{.fragment}
+
+Work with the people around you to address each of the following.
+
+:::
+
+1. Prior to the sub-heading on *numerical variables* add a sentence describing how many observations and how many variables are contained in the Austin Zillow data set. Include a short discussion about how you found this information.
+2. In the subsection on *numerical variables*, identify each of the numerical variables in the data set and update the bulleted list to include them. Talk with eachother about what surrounding text with a single asterisk, two asterisks, or backticks does.
+3. Similarly, update the bulleted list for the *categorical variables* and the *unique identifiers*.
+4. While you are working, discuss some interesting questions that you might be able to ask and answer using the data in the Austin Zillow data set.
+
+</div>
+
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `1. Intro to Data`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+**Task:** Provide at least one question you'd be interested in answering with our available Austin Zillow data.
+
+## Closing
+
+1. Render your notebook and make sure that the sections we've updated look as you intended them to.
+
+    + Make any updates you like and re-render the notebook.
+
+2. We got a first taste of writing in a Quarto document today, and we'll continue to learn more. 
+
+3. **Homework:** Complete and submit the `Topic 2` notebook by 11:59PM on Sunday, January 11. This notebook will give you a first introduction to using R.
+
+    + Be sure to see me immediately if you are having difficulty with setup.
