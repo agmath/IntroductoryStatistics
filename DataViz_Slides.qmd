@@ -14,7 +14,6 @@ incremental: true
 library(tidyverse)
 library(tidymodels)
 library(patchwork)
-library(countdown)
 
 options(kable_styling_bootstrap_options = c("hover", "striped"))
 
@@ -138,7 +137,7 @@ pwk + plot_annotation(
 
 ## Let's Do This! {.smaller}
 
-1. Open your MAT241 workspace in Posit Cloud and the `Day2to5_AustinHousingData.qmd` file that we've been working within
+1. Open your MAT241 workspace Quarto document that we've been working within
 2. Navigate to the `Visualizing the Austin Zillow Data` subsection
 3. Add the following questions to this data visualization section  
     + What is the average lot size?
@@ -147,12 +146,6 @@ pwk + plot_annotation(
     + Is there an association between number of bedrooms and price range?
 4. Identify the most appropriate visual type(s) to investigate the questions above 
 5. Identify and add some additional single- and multiple-variable questions to answer with plots
-
-. . .
-
-```{r}
-countdown(minutes = 3)
-```
   
 ## Structure of a `ggplot()`
 
@@ -245,38 +238,26 @@ data %>% #the data to be plotted
 
 </center>
 
-```{r}
-countdown(minutes = 5)
-```
+## Try It!
+
+<center>
+
+<br/> $\bigstar$ Use your knowledge of data visualization and `ggplot` to build basic plots to answer at least two of the questions you wrote out earlier. If you write broken code, troubleshoot with a neighbor, pull me over, or even post to Slack for help. See what you can do in a few minutes and then debrief together. <br/>
+<br/>
+
+Made a plot you are proud of? Post it and the code to the `# r-coding-questions` channel in Slack!
+</center>
 
 ## Try It!
 
 <center>
 
-<br/> $\bigstar$ Use your knowledge of data visualization and `ggplot` to build basic plots to answer at least two of the questions you wrote out earlier. If you write broken code, troubleshoot with a neighbor, pull me over, or even post to Slack for help. See what you can do in 7 minutes and then debrief together for an additional three. <br/>
+<br/> $\bigstar$ Use your knowledge of data visualization and `ggplot` to build basic plots to answer at least two of the questions you wrote out earlier. If you write broken code, troubleshoot with a neighbor, pull me over, or even post to Slack for help. We'll see what we can do in a few minutes and then debrief together. <br/>
 <br/>
 
-Made a plot you are proud of? Post it and the code to the `# r-questions` channel in Slack!
-</center>
-
-```{r}
-countdown(minutes = 7)
-```
-
-## Try It!
-
-<center>
-
-<br/> $\bigstar$ Use your knowledge of data visualization and `ggplot` to build basic plots to answer at least two of the questions you wrote out earlier. If you write broken code, troubleshoot with a neighbor, pull me over, or even post to Slack for help. We'll see what we can do in 7 minutes and then debrief together for an additional three. <br/>
-<br/>
-
-Made a plot you are proud of? Post it and the code to the `# r-questions` channel in Slack!
+Made a plot you are proud of? Post it and the code to the `# r-coding-questions` channel in Slack!
 
 </center>
-
-```{r}
-countdown(minutes = 3)
-```
 
 ## On Labels
 
@@ -301,10 +282,6 @@ countdown(minutes = 3)
 <br/> $\bigstar$ Now that you know about labeling options in the `labs()` layer, update your plots with meaningful labels
 
 </center>
-
-```{r}
-countdown(minutes = 5)
-```
   
 ## Organizing Plots with `{patchwork}`
 
@@ -326,10 +303,6 @@ countdown(minutes = 5)
 
 </center>
 
-```{r}
-countdown(minutes = 5)
-```
-
 ## Additional Practice
 
 1. Ask at several more questions that can be answered using data visualization 
@@ -344,6 +317,31 @@ countdown(minutes = 5)
     + Decide what you like better in this case
 
 3. Provide interpretations of the plots you are seeing
+
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `4. Data Visualization`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+**Task:** The content from the data visualization interactive notebook and this slide deck is difficult and coding heavy. You are not expected to be an expert. Do your best to describe what you might do to create a plot exploring whether an association exists between home type and the year the home was built. Discuss how the variables influence the appropriate plot type. You may also provide code or descriptions of layers using `ggplot()` terminology.
 
 ## Next Time...
 
