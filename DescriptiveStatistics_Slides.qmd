@@ -101,9 +101,21 @@ We'll be reminded of some summary statistics for numerical variables on the next
 
 ## Try It!
 
-$\bigstar$ Open our `Day2to5_AustinHousingData.qmd` file and find the answers to several of the questions we asked last time (posted to Slack). While our questions from last class were all about *averages* try using some of the other functions to gain deeper understanding of our numeric variables.
+$\bigstar$ Open the Austin Zillow Quarto document you've been working on and find the answers to several of the questions we asked about numerical variables last time.
 
-. . . 
+:::{.fragment}
+
+Try using more variety than just the `mean()` or `median()` functions.
+
+:::
+
+:::{.fragment}
+
+A list of additional questions is posted to Slack.
+
+:::
+
+:::{.fragment}
 
 **For Example:**
 
@@ -135,9 +147,13 @@ austin %>%
   kable_styling()
 ```
 
-. . . 
+:::
+
+:::{.fragment}
 
 While you are doing this, do "future you" a favor by keeping your notebook organized, each code chunk to one pipeline, and write descriptive text before each code chunk. 
+
+:::
 
 ## Warning: Missing Values are *Contagious*
 
@@ -532,6 +548,31 @@ $\bigstar$ Use `group_by()` and `summarize()` to answer some of our questions ab
 
 As you've done, continue to do "future you" a favor by keeping your notebook organized and narrated. 
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `3. Descriptive Statistics`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+**Task:** The variable measuring the number of bedrooms is one that we said we could treat as either numerical or categorical. It is also reasonable to expect that the number of bedrooms would vary by home type. Describe what you might do to use descriptive statistics to examine whether the number of bedrooms is associated with the home type.
+
 ## Summary
 
 + We can use `summarize()` to compute summary statistics
@@ -544,4 +585,4 @@ As you've done, continue to do "future you" a favor by keeping your notebook org
 
 **Next Time:** Data Visualization
 
-**Homework:** Complete the Topic 4 notebook and submit the hash code using the Google Form at least 30 minutes before the start of Thursday's class
+**Homework:** Complete the Topic 4 notebook and submit the hash code using the Google Form at least 30 minutes before the start of our next class meeting.
