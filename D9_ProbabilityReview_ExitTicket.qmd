@@ -1,0 +1,81 @@
+---
+title: "MAT 241: Probability Practice, I"
+subtitle: "Exit Ticket"
+author: Dr. Gilbert
+format: 
+  revealjs:
+    smaller: true
+date: today
+date-format: long
+theme: serif
+incremental: true
+---
+
+```{r global-options, include=FALSE}
+library(tidyverse)
+library(reticulate)
+
+theme_set(theme_bw(base_size = 20))
+```
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+```
+
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `8. Discrete Probability Lab / Probability Practice`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+**Task:** In a routine screening program, the fasting blood glucose level (mg/dL) of adults without diagnosed diabetes is assumed to be approximately normally distributed with mean 95 mg/dL and standard deviation 12 mg/dL.
+
+:::{.nonincremental}
+
+1. Estimate the probability that a randomly selected individual without diabetes has a fasting blood glucose level between 83 mg/dL and 107 mg/dL.
+2. In your own words, explain what it means to say that "fasting blood glucose levels are *approximately normally distributed*.
+3. Suppose that the true distribution is actually right-skewed, with a long upper-tail due to undiagnosed prediabetes or diabetes. How might this impact the probability you calculated in part 1? Is this problematic?
+
+:::
