@@ -43,12 +43,17 @@ a:visited {
 
 ```{r}
 library(tidyverse)
-library(countdown)
 
 austin <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/master/data/classification/austin_zillow_data.csv")
 ```
 
 ## Starter File
+
+:::{.fragment}
+
+Reopen RStudio and the Quarto document we worked on last class meeting. If you weren't here, follow the steps below to create a copy of the starter file.
+
+:::
 
 1. Create an empty Quarto Document in RStudio by navigating to `File -> New File -> Quarto Document...` using the menus.
 2. Choose to *Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.
@@ -129,7 +134,7 @@ Markdown formatting in this course is optional, but using markdown can make your
 
 Within a Quarto Document, R code is run inside of a code chunk like the one below:
 
-```{{r}}
+````{{r}}
 
 ````
 
@@ -137,7 +142,7 @@ Within a Quarto Document, R code is run inside of a code chunk like the one belo
 
   + We load libraries to enable specialized functionality -- for example, by running `library(tidyverse)` in a code chunk
   
-+ We run R code by holding `ctrl` and hitting `Enter` or `Return`
++ We run R code by holding `command` or `ctrl` and hitting `Enter` or `Return`
 
 + We store items in variables using the arrow operator -- for example,<br/> by running `x <- 2` in a code chunk
 
@@ -166,14 +171,26 @@ A *data dictionary* appears below:
 
 $\bigstar$ Work with the people next to you to come up with some questions which would be interesting to investigate with our Austin housing data.
 
-+ Start with some "easy" questions about single variables at a time
-+ Move to some questions about combinations of variables
++ **Univariate Questions:** Start with some "easy" questions about single variables at a time
++ **Multivariable Questions:** Move to some questions about combinations of variables 
 
 . . . 
 
-```{r}
-countdown(minutes = 5)
-```
+Skip to the appendix at the bottom of your Quarto document for some additional explanation and examples if you need help getting started.
+
+## In-Class Activity, Part I
+
+$\bigstar$ Work with the people next to you to come up with some questions which would be interesting to investigate with our Austin housing data.
+
+:::{.nonincremental}
+
++ **Univariate Questions:** Start with some "easy" questions about single variables at a time
++ **Multivariable Questions:** Move to some questions about combinations of variables 
+
+:::
+
+$\bigstar$ What questions did we come up with?
+
 
 ## In-Class Activity, Part I
 
@@ -188,28 +205,7 @@ $\bigstar$ Work with the people next to you to come up with some questions which
 
 $\bigstar$ What questions did we come up with?
 
-```{r}
-countdown(minutes = 7)
-```
-
-## In-Class Activity, Part I
-
-$\bigstar$ Work with the people next to you to come up with some questions which would be interesting to investigate with our Austin housing data.
-
-:::{.nonincremental}
-
-+ Start with some "easy" questions about single variables at a time
-+ Move to some questions about combinations of variables
-
-:::
-
-$\bigstar$ What questions did we come up with?
-
-$\bigstar$ Take a few minutes to write those questions into your `Day2to5_AustinHousingData.qmd` file. Render your notebook to make sure everything looks the way you intended. Try some markdown formatting to improve the structure and readability of your notebook.
-
-```{r}
-countdown(minutes = 10)
-```
+$\bigstar$ Take a few minutes to write those questions into your Quarto document. Render your notebook to make sure everything looks the way you intended. Try some markdown formatting to improve the structure and readability of your notebook.
 
 ## In-Class Activity, Part II
 
@@ -217,19 +213,12 @@ countdown(minutes = 10)
 
 $\bigstar$ Work with the people next to you to decide which of your questions are just about your *sample data* and which of your questions are about the entire *population*.
 
-```{r}
-countdown(minutes = 2)
-```
 
 ## In-Class Activity, Part II
 
 $\bigstar$ Work with the people next to you to decide which of your questions are just about your *sample data* and which of your questions are about the entire *population*.
 
 $\bigstar$ Update your notebook to include two subsections -- one with *sample*-level questions and the other with *population*-level questions. When finished, you should have two versions of every one of the questions you initially wrote down.
-
-```{r}
-countdown(minutes = 5)
-```
 
 ## In-Class Activity, Part II
 
@@ -239,29 +228,17 @@ $\bigstar$ Update your notebook to include two subsections -- one with *sample*-
 
 $\bigstar$ What is the main difference in phrasing between *descriptive* (sample-level) questions and *inferential* (population-level) questions?
 
-```{r}
-countdown(minutes = 1)
-```
-
 ## In-Class Activity, Part III
 
 . . .
 
 $\bigstar$ If we are going to use our available data to answer *inferential* (population-level) questions, then what assumption(s) are we making?
 
-```{r}
-countdown(minutes = 1)
-```
-
 ## In-Class Activity, Part III
 
 $\bigstar$ If we are going to use our available data to answer *inferential* (population-level) questions, then what assumption(s) are we making?
 
 $\bigstar$ Can both types of question (*descriptive* and *inferential*) be answered simply by calculating summary statistics from our sample data? Why or why not?
-
-```{r}
-countdown(minutes = 1)
-```
 
 ## In-Class Activity, Part III
 
@@ -271,9 +248,30 @@ $\bigstar$ Can both types of question (*descriptive* and *inferential*) be answe
 
 $\bigstar$ Without using R code just yet, describe what you would need to do in order to answer each of your *descriptive* questions. Add those descriptions to your notebook.
 
-```{r}
-countdown(minutes = 5)
-```
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `2. Intro to R`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+**Task:** Describe the question you and your neighbors generated which you find most interesting. What would you need to do in order to answer that question?
 
 ## Closing
 
@@ -281,10 +279,6 @@ countdown(minutes = 5)
 
     + Make any updates you like and re-render the notebook.
 
-1. We didn't *really* use any R today, but we'll pick up where we left off next time and actually use R to answer the *descriptive* questions we've posed.
+2. We didn't *really* use any R today, but we'll pick up where we left off next time and actually use R to answer the *descriptive* questions we've posed.
 
-1. **Homework:** Complete and submit the `Topic 3` notebook at least 30 minutes before Monday's class meeting. That notebook will give you many of the tools we'll need for Monday.
-
-. . . 
-
-**Question:** Moving forward, should we continue using slide decks like this one?
+3. **Homework:** Complete and submit the `Topic 3` notebook at least 30 minutes before our next class meeting. That notebook will give you some of the foundational tools we'll need to answer the questions you asked today.
