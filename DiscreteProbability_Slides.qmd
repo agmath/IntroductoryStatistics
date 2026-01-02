@@ -642,6 +642,31 @@ ii. What is the probability that fewer than 20 of the seeds grow?
 iii. What is the probability that at least 17 and no more than 21 of the seeds grow?
 iv. What is the probability that more than 20 of the seeds grow?
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `1. Intro to Data`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+**Task:** Describe your approach and answers to the following questions. A package delivery company experiences delays randomly with probability 1.5%. That is, there is a 1.5% chance that a randomly selected package is delayed. A random sample of 500 package deliveries from the company is examined. What is the probability that 15 or more are delayed? What does this suggest?
+
 ## Summary
 
 + **Binomial Experiments** involve a fixed number of independent trials ($n$), two possible outcomes for each trial, and a constant probability of "*success*" ($p$).
