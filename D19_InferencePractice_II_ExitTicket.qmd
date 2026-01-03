@@ -1,5 +1,5 @@
 ---
-title: "MAT 241: Probability Practice, I"
+title: "MAT 241: Probability Practice, II"
 subtitle: "Exit Ticket"
 author: Dr. Gilbert
 format: 
