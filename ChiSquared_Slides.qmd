@@ -1739,7 +1739,7 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 <br/>
 
-*Note.* Today's discussion is listed as `12. Categorical Inference Lab`
+*Note.* Today's discussion is listed as `13. Chi-Square Goodness of Fit and Independence`
 
 
 :::
