@@ -711,6 +711,37 @@ The estimated model form is
 
 There are lots of inferences we can draw from this model -- for example, holding all other predictors constant, each additional fireplace is associated with a higher selling price by about \$12,580.46
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `19. ANOVA and Linear Regression`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+<div style="font-size:18pt">
+
+**Task:** At what point must you utilize an ANOVA test instead of a $t$-test to address a statistical inference question about population means? At what point must you use linear regression rather than a $t$-test or ANOVA to address a statistical inference question about a relationship between variables? Be explicit about what plays the role of the response (outcome) variable and what plays the role(s) of the explanatory variables.
+
+Provide an example scenario for each from a context other than the real estate one we examined today.
+
+</div>
+
 ## Summary and Closing
 
 . . . 
