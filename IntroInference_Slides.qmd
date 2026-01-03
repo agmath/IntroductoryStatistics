@@ -2469,7 +2469,7 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 **Task:** A large bottling facility fills juice bottles that are advertised as containing 20 ounces of juice. Individual bottle fill amounts vary, and the fill amounts are moderately right-skewed, with a population mean of 20 oz and a population standard deviation of 0.5 oz.
 
-On a particular day, a quality control team randomly samples 47 bottles and records the average fill amount.
+A quality control team randomly samples 47 bottles and records the average fill amount.
 
 :::{.nonincremental}
 
