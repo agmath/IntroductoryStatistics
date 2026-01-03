@@ -345,6 +345,6 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 3. Don't worry if you didn't completely understand all of the code from today's Quarto Document or if you feel like you couldn't write that code on your own -- we'll be starting from scratch!
 
-4. **Homework:** Complete and submit the `Topic 1` notebook by 11:59PM on Wednesday, January 7. These notebooks will give you a first introduction to data and R, respectively.
+4. **Homework:** Complete and submit the `Topic 1` notebook at least 30 minutes before our next class meeting. These notebooks will give you a first introduction to data and R, respectively.
 
     + Be sure to see me immediately if you are having difficulty with setup.
