@@ -1,0 +1,75 @@
+---
+title: "Activity: Inference with Raw Data"
+author: "MAT241 Class"
+format: 
+  html:
+    theme: flatly
+  pdf: default
+toc: true
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(kableExtra)
+library(nflfastR)
+library(taylor)
+library(palmerpenguins)
+```
+
+:::{.callout-note}
+
+## Notebook Purpose
+
+In this notebook, we'll have an option to investigate inferential questions with raw data. We'll propose our own questions and choose to focus on data that we find interesting.
+
+:::
+
+:::{.callout-important}
+
+## Available Data Sets
+
+There are lots of freely accessible data sets out there. You just need to know where to find them. For this activity, I've selected just a few so that we don't get bogged down in identifying data.
+
++ Taylor Swift Songs
++ NFL Play By Play Data
++ Penguin Anatomy and Physiology Data
+
+:::
+
+### Taylor Swift
+
+```{r}
+taylor_album_songs %>%
+  select(-lyrics) %>%
+  head() %>%
+  kable()
+```
+
+### NFL Play By Play
+
+```{r}
+pbp_2324 <- load_pbp(2023:2024)
+
+set.seed(2324)
+pbp_2324_samp <- pbp_2324 %>%
+  filter(play_type %in% c("pass", "run")) %>%
+  sample_n(size = 5e3)
+
+pbp_2324_samp %>%
+  select(-desc, -weather, -nfl_api_id) %>%
+  head() %>%
+  kable()
+```
+
+
+### Penguin Anatomy and Physiology
+
+```{r}
+penguins %>%
+  head() %>%
+  kable()
+```
+
+
+
+
