@@ -1837,6 +1837,34 @@ ggplot() +
 
 **Scenario:** A politician claims that a minority of the public supports a new environmental policy. A random sample of 627 people finds that 54% of them support the policy. At the 10% significance level, can you reject the politician's claim?
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `11. Proportions and Comparisons of Proportions`
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+<div style="font-size:17pt">
+
+**Task:** Describe when to use a confidence interval and when to use a hypothesis test instead.
+
+</div>
+
 ## Next Time...
 
 <center><br/> Practicing with Inference</center>
