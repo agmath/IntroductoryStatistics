@@ -223,3 +223,31 @@ inference(y = mpg, x = environment,
 
 Let's work through more examples from our [list of practice scenarios](https://agmath.github.io/IntroductoryStatistics/PracticeInferenceProblems_F24Mixed.html)
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `18. Software Output / Numerical Inference Lab`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+<div style="font-size:18pt">
+
+**Task:** A 95% confidence interval was built for the difference in average home heating costs for homes using oil and homes using natural gas. The interval was constructed for $\mu_{\text{oil}} - \mu_{\text{gas}}$ and resulted in the bounds -\$117.43 and \$213.87. Interpret the results of the interval in context and describe the implications for individuals deciding on a home heating method conversion.
+
+</div>
