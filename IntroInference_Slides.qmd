@@ -2443,6 +2443,44 @@ A 7.32% chance of observing a result as bad as they observed means that such an 
 
 [^6]: **Answer:** ~1.1%
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `10. The Sampling Distribution`
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+<div style="font-size:17pt">
+
+**Task:** A large bottling facility fills juice bottles that are advertised as containing 20 ounces of juice. Individual bottle fill amounts vary, and the fill amounts are moderately right-skewed, with a population mean of 20 oz and a population standard deviation of 0.5 oz.
+
+On a particular day, a quality control team randomly samples 47 bottles and records the average fill amount.
+
+:::{.nonincremental}
+
+1. Why shouldn't we use a normal distribution as a model to estimate the probability that a single randomly selected bottle is filled to less than 19.9 oz?
+2. Describe the appropriate distribution, to use in estimating the probability that the sample mean fill amount (of the 47 bottles) is less than 19.9 oz.
+3. Calculate the probability that the average fill amount of a random sample of 47 bottles is less than 19.9 oz.
+
+:::
+
+</div>
+
 ## Summary and Next Time... {.smaller}
 
 + The sampling distribution is a theoretical distribution of sample statistics (ie. sample means or sample proportions) coming from samples of a common size
