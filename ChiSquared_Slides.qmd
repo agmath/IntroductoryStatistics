@@ -1729,6 +1729,42 @@ Conduct a test at the 1% level of significance to determine whether this data pr
 
 Does the sample provide evidence against their projections?
 
+## Exit Ticket Task
+
+::::{.columns}
+
+:::{.column width="75%"}
+
+Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAIpQLSfIWcNqYsUKdDgYIQurZWop78vcMnq4J5xWIeCVc2QC7fuyHA/viewform?usp=sharing&ouid=105915137780027700641), answer the questions, and complete the *task* below.
+
+<br/>
+
+*Note.* Today's discussion is listed as `12. Categorical Inference Lab`
+
+
+:::
+
+:::{.column width="25%"}
+
+![](MAT241_ExitTicket_QR.png)
+
+:::
+
+::::
+
+<div style="font-size:18pt">
+
+**Task:** A public health researcher wants to check whether the distribution of blood types among patients at a community clinic matches the known distribution of the general population (45% O, 40% A, 10% B, 5% AB). In a random sample of 200 clinic patients there were 78 type O, 92 type A, 22 type B, and 8 type AB.
+
+:::{.nonincremental}
+
+1. What are the hypotheses to test the researcher's question of interest?
+2. Carry out the test and determine the conclusion.
+
+:::
+
+</div>
+
 ## Next Time...
 
 <center><br/> Inference on Numerical Variables</center>
