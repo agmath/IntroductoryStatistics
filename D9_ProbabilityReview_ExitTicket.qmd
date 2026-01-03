@@ -70,6 +70,8 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 ::::
 
+<div style="font-size:17pt">
+
 **Task:** In a routine screening program, the fasting blood glucose level (mg/dL) of adults without diagnosed diabetes is assumed to be approximately normally distributed with mean 95 mg/dL and standard deviation 12 mg/dL.
 
 :::{.nonincremental}
@@ -79,3 +81,6 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 3. Suppose that the true distribution is actually right-skewed, with a long upper-tail due to undiagnosed prediabetes or diabetes. How might this impact the probability you calculated in part 1? Is this problematic?
 
 :::
+
+</div>
+
