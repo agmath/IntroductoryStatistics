@@ -150,7 +150,7 @@ First and foremost...everything is free!
   + **Software:** We'll make use of the R computing language, RStudio, and an interactive notes package that I wrote. You've hopefully already installed all of these items, but [instructions for doing so are here](https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html).
   + **Optional MyOpenMath Supplements:** I wrote a course shell for use with the OpenIntro Statistics testbook at [MyOpenMath](https://www.myopenmath.com/). This course shell includes optional (ungraded) practice assignments and practice exams.
   
-    + The CourseID and Enrollment Key are available in the *Welcome!* announcement on BrightSpace.
+    + The CourseID and Enrollment Key are available on BrightSpace, under the *Important Class Items* section of our table of contents.
 
 ## Grading Scheme
 
@@ -169,7 +169,7 @@ First and foremost...everything is free!
 
 + **Interactive Notebooks:** Completing these on time is crucial, as they'll be the way you are exposed to material and practice with it.
 
-  + You should expect to have two of these to complete each week
+  + You should expect to have one due prior to nearly every class meeting.
   + You'll generate a *hash code* at the end of each notebook and submit that hash code using a Google Form (see BrightSpace for the link)
 + **Exams:** We'll have two exams during the semester -- each one will have three parts.
 
@@ -256,7 +256,7 @@ We'll be discussing a lot of material in MAT 241. Here is a very generic road ma
   + Data visualization
   + Interpretations and communications of EDA
 
-+ Just Enough Probability
++ Just Enough **Probability**
 
   + Binomial Distribution
   + Normal Distribution
