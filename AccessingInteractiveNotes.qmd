@@ -47,16 +47,14 @@ For Mac users, be sure to drag the RStudio orb icon across to your Applications 
 
 Search your computer for the RStudio application you just installed, and open it. When you first open RStudio you should be presented with a window that has three panes -- the long pane on the left should be titled `Console`. This is a place for you to run R code.
 
-+ Click into the console next to the prompt (`>`) and type the following command: `install.packages("devtools")`
++ Click into the console next to the prompt (`>`) and type the following command: `install.packages("remotes")`
 
   + If you are asked to *install in a personal library*, you can do so -- this will make the package available only to you and no other user profiles on your computer.
 + You can hit the `Enter` or `Return` key on your keyboard to run the command. Red and black text will splash onto the `Console` while the required utilities are being installed. What for the install to finish -- you'll be presented with a message in the console that the install has finished and your prompt (`>`) will return.
-+ After `devtools` has been installed, run the following command `remotes::install_github("agmath/AppliedStatsInteractive")`
++ After `remotes` has been installed, run the following command `remotes::install_github("agmath/AppliedStatsInteractive")`
   
   + After you hit `Enter` or `Return` and the command is run, you may be asked several times (three or four times) about updating existing packages. Choose 1 to update all of the recommended package (or choose 3 to update none, if you prefer) and hit `Enter` or `Return` to proceed with the installation.
   + In between accepting or refusing the package updates, more black and red text will splash to the console. You'll know that the installation has completed when you get a message in the console stating so and your prompt (`>`) has returned. This should take between 2 and 8 minutes, depending on the strength of your internet connection.
-  
-+ After the `AppliedStatsInteractive` package has finished downloading, run this final command `remotes::install_github("rundel/learnrhash")`
 
 ***  
 
@@ -68,4 +66,4 @@ Now that you have `R`, `RStudio`, and the `AppliedStatsInteractive` package inst
 
 + You can now access the notes by clicking on the **Tutorial** tab in the top-right pane of RStudio. Locate the notes you would like to open and the click the `Start Tutorial ?` button.
 
-If you get a message asking to install a missing dependency called `learnrhash`, click cancel, go to the R console and run `remotes::install_github("rundel/learnrhash")`, and try the `Start Tutorial` button again after this install has completed.
+If you get a message asking to install a missing dependency called `learnrhash` or `ggmosaic`, click cancel, go to the R console and run `remotes::install_github("rundel/learnrhash")` or `remotes::install_github("haleyjeppson/ggmosaic")` depending on the dependency that is missing, and try the `Start Tutorial` button again after this install has completed.
