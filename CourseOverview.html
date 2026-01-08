@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.43">
 
   <meta name="author" content="Dr.&nbsp;Gilbert">
-  <meta name="dcterms.date" content="2026-01-04">
+  <meta name="dcterms.date" content="2026-01-08">
   <title>MAT 241: Introduction and What to Expect</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -339,7 +339,7 @@ Dr.&nbsp;Gilbert
 </div>
 </div>
 
-  <p class="date">January 4, 2026</p>
+  <p class="date">January 8, 2026</p>
 </section>
 <section class="slide level2">
 
@@ -362,22 +362,6 @@ a:visited {
   color: purple;
 }
 </style>
-</div>
-</section>
-<section id="playing-along" class="slide level2">
-<h2>Playing Along</h2>
-<p>Please play along…</p>
-<ol type="1">
-<li class="fragment">Open RStudio</li>
-<li class="fragment">Create a new Project in a new folder, called <code>MAT241</code> by navigating to <code>File -&gt; New Project</code> and choosing a <em>new directory</em></li>
-<li class="fragment">Create an empty Quarto Document in RStudio by navigating to <code>File -&gt; New File -&gt; Quarto Document...</code> using the menus.</li>
-<li class="fragment">Choose to <code>Create Empty Document</code> and then remove the minimal YAML header to start with a truly empty document.</li>
-<li class="fragment">Navigate to <a href="https://github.com/agmath/IntroductoryStatistics/blob/main/Day1_DataExploration.qmd">this Day 1 Activity notebook</a>.</li>
-<li class="fragment">Copy all of the lines in that document and paste them into your Quarto document, making sure that you are in the <em>Source</em> editor rather than the <em>Visual</em> editor.</li>
-<li class="fragment">Play with that file as we work through these slides together.</li>
-</ol>
-<div class="fragment">
-<p>If you don’t have R/RStudio yet, <a href="https://agmath.github.io/WebRtutorials/MAT241_Intro.html">you can still play along here</a>, but you won’t see the Quarto markdown and formatting items I mention.</p>
 </div>
 </section>
 <section id="what-are-we-here-for" class="slide level2">
@@ -562,19 +546,9 @@ a:visited {
 
 </div>
 </div>
-<div class="fragment">
-<p>We’ll encounter two data sets today.</p>
-<ol type="1">
-<li class="fragment">We’ll explore potential associations between WaffleHouse restaurants and divorce using the <code>wafflehouse</code> data from Richard McElreath’s <em>Statistical Rethinking</em> text.</li>
-<li class="fragment">We’ll use the <code>metal</code> data set from the same text to examine potential associations between the number of heavy metal bands originating from a country and that country’s overall happiness score.</li>
-</ol>
-</div>
 </section>
 <section id="syllabus" class="slide level2">
 <h2>Syllabus</h2>
-<div class="fragment">
-<p>Before we jump into working with the data, let’s cover the usual beginning of semester course logistics.</p>
-</div>
 <div class="fragment">
 <p><strong>Major Highlights from the Syllabus</strong>: I’ll ask you to read the syllabus, but the most important items are on the following slides.</p>
 </div>
@@ -779,30 +753,23 @@ a:visited {
 </div>
 </div>
 </section>
-<section id="the-wafflehouse-and-metal-data" class="slide level2">
-<h2>The WaffleHouse and Metal Data</h2>
+<section id="software-setup" class="slide level2">
+<h2>Software Setup</h2>
+<div style="font-size:18pt">
 <div class="fragment">
-<p>Let’s get our hands dirty…</p>
-<ul>
-<li class="fragment">Open RStudio back up and take a look at that Quarto Document</li>
-</ul>
+<p>It’s important to get the software set up for this course so that we can hit the ground running. In most cases, this is pretty seamless, but there are always a few instances where the setup requires troubleshooting.</p>
 </div>
 <div class="fragment">
-<p>We’ll overview the following items:</p>
-<ul>
-<li class="fragment"><p>Quarto document structure</p>
-<ul>
-<li class="fragment">The YAML header</li>
-<li class="fragment">Code chunks</li>
-<li class="fragment">Markdown/text cells</li>
-<li class="fragment">The Source versus Visual editors</li>
-</ul></li>
-<li class="fragment"><p>Rendering a Quarto document to an output file format</p></li>
-<li class="fragment"><p>Using R to examine data, specifically to construct plots</p>
-<ul>
-<li class="fragment">Again, I’m assuming no background, so our goal today is just to make small changes to existing plots – hopefully becoming interested in what’s possible</li>
-</ul></li>
-</ul>
+<p>If worst comes to worst, you will be able to use Posit Cloud to complete all of the work for this course. I have a pre-built workspace that you can copy. The downside is that your access time is limited to 25 hours per month.</p>
+</div>
+<div class="fragment">
+<p>We’ll use this time to get interactive notebooks up and running. This is a three-step process, <a href="https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html">documented with links here</a>. A general description of the steps appears below. I’ll skip to the Exit Ticket slide so that people with complete setups can finish that and take back some of their time.</p>
+</div>
+<ol type="1">
+<li class="fragment">Download and install the R computing language</li>
+<li class="fragment">Download and install RStudio</li>
+<li class="fragment">Install the R package containing the interactive notes for our course.</li>
+</ol>
 </div>
 </section>
 <section id="exit-ticket-task" class="slide level2">

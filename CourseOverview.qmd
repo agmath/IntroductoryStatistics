@@ -19,7 +19,7 @@ theme_set(theme_bw(base_size = 20))
 
 ```{python}
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 ```
 
 ```{css}
@@ -51,22 +51,6 @@ wafflehouse <- wafflehouse %>%
 metal <- read_delim("https://raw.githubusercontent.com/rmcelreath/rethinking/master/data/metal_bands.csv", delim = ";")
 ```
 
-## Playing Along
-
-Please play along...
-
-1. Open RStudio
-2. Create a new Project in a new folder, called `MAT241` by navigating to `File -> New Project` and choosing a *new directory*
-3. Create an empty Quarto Document in RStudio by navigating to `File -> New File -> Quarto Document...` using the menus.
-4. Choose to `Create Empty Document` and then remove the minimal YAML header to start with a truly empty document.
-5. Navigate to [this Day 1 Activity notebook](https://github.com/agmath/IntroductoryStatistics/blob/main/Day1_DataExploration.qmd).
-6. Copy all of the lines in that document and paste them into your Quarto document, making sure that you are in the *Source* editor rather than the *Visual* editor.
-7. Play with that file as we work through these slides together.
-
-. . .
-
-If you don't have R/RStudio yet, [you can still play along here](https://agmath.github.io/WebRtutorials/MAT241_Intro.html), but you won't see the Quarto markdown and formatting items I mention.
-
 ## What Are We Here For?
 
 . . .
@@ -95,18 +79,7 @@ metal %>%
                 font_size = "18pt")
 ```
 
-. . .
-
-We'll encounter two data sets today.
-
-1. We'll explore potential associations between WaffleHouse restaurants and divorce using the `wafflehouse` data from Richard McElreath's *Statistical Rethinking* text.
-2. We'll use the `metal` data set from the same text to examine potential associations between the number of heavy metal bands originating from a country and that country's overall happiness score.
-
 ## Syllabus
-
-. . .
-
-Before we jump into working with the data, let's cover the usual beginning of semester course logistics.
 
 . . .
 
@@ -286,29 +259,34 @@ We'll be discussing a lot of material in MAT 241. Here is a very generic road ma
 
 ::::
 
-## The WaffleHouse and Metal Data
+## Software Setup
 
-. . .
+<div style="font-size:18pt">
 
-Let's get our hands dirty...
+:::{.fragment}
 
-+ Open RStudio back up and take a look at that Quarto Document
+It's important to get the software set up for this course so that we can hit the ground running. In most cases, this is pretty seamless, but there are always a few instances where the setup requires troubleshooting.
 
-. . .
+:::
 
-We'll overview the following items:
+:::{.fragment}
 
-+ Quarto document structure
+If worst comes to worst, you will be able to use Posit Cloud to complete all of the work for this course. I have a pre-built workspace that you can copy. The downside is that your access time is limited to 25 hours per month.
 
-    + The YAML header
-    + Code chunks
-    + Markdown/text cells
-    + The Source versus Visual editors
+:::
 
-+ Rendering a Quarto document to an output file format
-+ Using R to examine data, specifically to construct plots
+:::{.fragment}
 
-    + Again, I'm assuming no background, so our goal today is just to make small changes to existing plots -- hopefully becoming interested in what's possible
+We'll use this time to get interactive notebooks up and running. This is a three-step process, [documented with links here](https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html). A general description of the steps appears below. I'll skip to the Exit Ticket slide so that people with complete setups can finish that and take back some of their time.
+
+:::
+
+1. Download and install the R computing language
+2. Download and install RStudio
+3. Install the R package containing the interactive notes for our course.
+
+</div>
+
     
 ## Exit Ticket Task
 
