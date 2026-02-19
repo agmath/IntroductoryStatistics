@@ -476,7 +476,17 @@ Let's revisit those `r num_samps` random samples of `r new_obs` individuals.
 
 . . .
 
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
 ```{r}
+#| fig-height: 7
+
 toy_data %>%
   ggplot() + 
   # geom_vline(xintercept = pop_prop, 
@@ -494,15 +504,34 @@ toy_data %>%
   )
 ```
 
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
 ## Sampling Variation and Sampling Error
 
 Let's revisit those `r num_samps` random samples of `r new_obs` individuals.
 
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
 ```{r}
+#| fig-height: 7
+
 toy_data %>%
   ggplot() + 
   geom_vline(xintercept = pop_prop, 
-             linetype = "dashed") + 
+             linetype = "dashed",
+             color = "blue") + 
   geom_point(aes(x = samp_prop, 
                  y = sample)) +
   # geom_point(aes(x = samp_prop_norm,
@@ -516,19 +545,38 @@ toy_data %>%
   )
 ```
 
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
+
 . . . 
 
-That black dashed line is at the underlying population proportion (`r pop_prop`)
+That blue dashed line is at the underlying population proportion (`r pop_prop`)
 
 ## Sampling Variation and Sampling Error
 
 Let's revisit those `r num_samps` random samples of `r new_obs` individuals.
 
+::::{.columns}
+
+:::{.column width="20%"}
+
+:::
+
+:::{.column width="60%"}
+
 ```{r}
+#| fig-height: 7
+
 toy_data %>%
   ggplot() + 
   geom_vline(xintercept = pop_prop, 
-             linetype = "dashed") + 
+             linetype = "dashed",
+             color = "blue") + 
   geom_point(aes(x = samp_prop, 
                  y = sample)) +
   # geom_point(aes(x = samp_prop_norm,
@@ -543,6 +591,14 @@ toy_data %>%
     y = "Sample Number"
   )
 ```
+
+:::
+
+:::{.column width="20%"}
+
+:::
+
+::::
 
 . . . 
 
