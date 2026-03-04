@@ -1903,7 +1903,7 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 <br/>
 
-*Note.* Today's discussion is listed as `11. Proportions and Comparisons of Proportions`
+*Note.* Today's discussion is listed as `10. Introduction to Inference`
 
 :::
 

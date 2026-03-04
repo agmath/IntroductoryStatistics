@@ -1,5 +1,5 @@
 ---
-title: "MAT 241: Probability Practice, I"
+title: "MAT 241: Inference on Raw Categorical Data"
 subtitle: "Exit Ticket"
 author: Dr. Gilbert
 format: 
@@ -57,7 +57,7 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 <br/>
 
-*Note.* Today's discussion is listed as `12. Categorical Inference Practice`
+*Note.* Today's discussion is listed as `12. Categorical Inference Lab`
 
 
 :::
@@ -72,7 +72,7 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 <div style="font-size:18pt">
 
-**Task:** A study is being done to determine whether legalizing recreational marijuana has majority public support in the state of New Hampshire. In a random sample of 450 residents, 247 said they were in favor. Construct a 90% confidence interval for the true proportion of New Hampshire residents in favor of legalization and interpret the results.
+**Task:** Describe what the `inference()` function must be doing if `type` is set to `ci`.
 
 </div>
 
