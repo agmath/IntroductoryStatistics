@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.43">
 
   <meta name="author" content="Dr.&nbsp;Gilbert">
-  <meta name="dcterms.date" content="2026-01-03">
+  <meta name="dcterms.date" content="2026-03-26">
   <title>Reading Output from Statistical Software</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -402,7 +402,7 @@ Dr.&nbsp;Gilbert
 </div>
 </div>
 
-  <p class="date">January 3, 2026</p>
+  <p class="date">March 26, 2026</p>
 </section>
 <section class="slide level2">
 
@@ -445,6 +445,7 @@ a:visited {
 </section>
 <section id="scenario-i-average-highway-fuel-economy" class="slide level2">
 <h2>Scenario I: Average Highway Fuel Economy</h2>
+<div style="font-size:18pt">
 <div class="fragment">
 <p><strong>Scenario:</strong> Researchers are interested in understanding the fuel efficiency of cars on the highway. To investigate, they collect data on the highway gas mileage (in miles per gallon) of a random sample of 234 cars. The researchers want to determine whether the average highway gas mileage for all cars exceeds 22.5 mpg. They conduct a test at the <span class="math inline">\(\alpha = 0.10\)</span> level of significance and the results appear below. Write the hypotheses for the test and determine the results of the test in the context of the scenario.</p>
 </div>
@@ -477,10 +478,14 @@ p_value = 0.0082</code></pre>
 <div class="fragment">
 <p>Using the <code>inference()</code> function requires the <code>{statsr}</code> package to be loaded – which you can do by running <code>library(statsr)</code></p>
 </div>
+</div>
 </section>
 <section id="scenario-ii-comparing-transmission-types" class="slide level2">
 <h2>Scenario II: Comparing Transmission Types</h2>
+<div style="font-size:18pt">
+<div class="fragment">
 <p><strong>Scenario:</strong> The researchers from the previous scenario would like to determine whether the proportion front-wheel drive vehicles which have manual transmissions differs from the proportion of rear-wheel drive vehicles having a manual transmission. They use their random sample of 234 cars and conduct this test at the <span class="math inline">\(\alpha = 0.05\)</span> level of significance. The results of the test appear below. Write the hypotheses for the test and state the conclusion in the context of the scenario.</p>
+</div>
 <div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -510,6 +515,7 @@ p_value = 0.5347</code></pre>
 <span id="cb4-5"><a href=""></a>          <span class="at">success =</span> <span class="st">"manual"</span>,</span>
 <span id="cb4-6"><a href=""></a>          <span class="at">show_eda_plot =</span> <span class="cn">FALSE</span>, </span>
 <span id="cb4-7"><a href=""></a>          <span class="at">show_inf_plot =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </section>

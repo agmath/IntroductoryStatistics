@@ -63,25 +63,35 @@ After completing several examples, we'll return to our long list of practice sce
 
 ## Scenario I: Average Highway Fuel Economy
 
-. . .
+<div style="font-size:18pt">
+
+:::{.fragment}
 
 **Scenario:** Researchers are interested in understanding the fuel efficiency of cars on the highway. To investigate, they collect data on the highway gas mileage (in miles per gallon) of a random sample of 234 cars. The researchers want to determine whether the average highway gas mileage for all cars exceeds 22.5 mpg. They conduct a test at the $\alpha = 0.10$ level of significance and the results appear below. Write the hypotheses for the test and determine the results of the test in the context of the scenario.
 
-. . . 
+:::
+
+:::{.fragment}
 
 ```{r}
 inference(y = hwy, data = mpg, type = "ht", statistic = "mean", method = "theoretical", null = 22.5, alternative = "greater", show_eda_plot = FALSE, show_inf_plot = FALSE)
 ```
 
-. . . 
+:::
+
+:::{.fragment}
 
 FYI...
 
-. . .
+:::
+
+:::{.fragment}
 
 ...the code to run this inference is
 
-. . .
+:::
+
+:::{.fragment}
 
 ```{r}
 #| echo: true
@@ -93,15 +103,27 @@ inference(y = hwy, data = mpg, type = "ht",
           show_eda_plot = FALSE, show_inf_plot = FALSE)
 ```
 
-. . . 
+:::
+
+:::{.fragment}
 
 Using the `inference()` function requires the `{statsr}` package to be loaded -- which you can do by running `library(statsr)`
 
+:::
+
+</div>
+
 ## Scenario II: Comparing Transmission Types
+
+<div style="font-size:18pt">
+
+:::{.fragment}
 
 **Scenario:** The researchers from the previous scenario would like to determine whether the proportion front-wheel drive vehicles which have manual transmissions differs from the proportion of rear-wheel drive vehicles having a manual transmission. They use their random sample of 234 cars and conduct this test at the $\alpha = 0.05$ level of significance. The results of the test appear below. Write the hypotheses for the test and state the conclusion in the context of the scenario.
 
-. . .
+:::
+
+:::{.fragment}
 
 ```{r}
 drive_trans <- mpg %>%
@@ -118,15 +140,21 @@ inference(y = trans, x = drv, data = drive_trans,
           show_inf_plot = FALSE)
 ```
 
-. . . 
+:::
+
+:::{.fragment}
 
 FYI...
 
-. . .
+:::
+
+:::{.fragment}
 
 ...after a bit of data manipulation, the code to run this inference is
 
-. . .
+:::
+
+:::{.fragment}
 
 ```{r}
 #| echo: true
@@ -140,6 +168,10 @@ inference(y = trans, x = drv, data = drive_trans,
           show_eda_plot = FALSE, 
           show_inf_plot = FALSE)
 ```
+
+:::
+
+</div>
 
 ## Scenario III: City Gas Mileage for Four-Wheel Drive Vehicles
 
