@@ -469,7 +469,7 @@ Due to the random fluctuations in observed values of $y$ and $x$, a straight lin
 **Multiple Linear Regression:** We can extend the relationship above, accommodating multiple independent and numeric predictor variables$^{**}$, by the equation $\mathbb{E}\left[y\right] = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k$
 
 + $\beta_0$ is the **intercept** -- the *expected* value of $y$ when $x_i = 0$ for all $i$
-+ $\beta_1$ is the **slope** -- the *expected* change in $y$ corresponding to a unit increase in $x_i$, holding all other $x_j$ constant
++ $\beta_i$ is the **slope** -- the *expected* change in $y$ corresponding to a unit increase in $x_i$, holding all other $x_j$ constant
 
 ## Completed Example: Simple Linear Regression
 
