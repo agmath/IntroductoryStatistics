@@ -1,6 +1,5 @@
 ---
-title: "More Proportions Practice Problems"
-author: "MAT241 Class"
+title: "More Inference on Proportions Practice Problems"
 format: 
   html:
     theme: flatly
