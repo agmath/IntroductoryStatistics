@@ -2034,7 +2034,12 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 <div style="font-size:18pt">
 
-**Task:** A hospital is evaluating whether a new early-discharge protocol has reduced the average length of stay for patients admitted with uncomplicated pneumonia. Historically, the average length of stay for these patients was 4.8 days. After implementing the new protocol, a random sample of 36 patients had an average length of stay of 4.3 days with a standard deviation of 1.2 days. Describe the steps required to construct a confidence interval for the average length of stay under this new protocol.
+**Task:** Task:A hospital is evaluating whether a new early-discharge protocol has reduced the average length of stay for patients admitted with uncomplicated pneumonia. Historically, the average length of stay for these patients was 4.8 days. After implementing the new protocol, a random sample of 36 patients had an average length of stay of 4.3 days with a sample standard deviation of 1.2 days. Two clinicians each construct a 95% confidence interval for the true mean length of stay under the new protocol. Whose is correct and what, if anything, does their interval suggest?
+
+a) Payton uses a critical value of $z^* = 1.96$ and gets an interval of $\left(3.908, 4.692\right)$.
+b) Charlie uses a critical value of $t^* = 2.03$ and gets an interval of $\left(3.894, 4.706$\right)$.
+
+
 
 </div>
 
