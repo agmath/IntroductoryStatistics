@@ -1917,7 +1917,7 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 <div style="font-size:17pt">
 
-**Task:** Describe when to use a confidence interval and when to use a hypothesis test instead.
+**Task:** A researcher wants to know whether a new fertilizer increases average crop yield, and by how much, compared to the standard fertilizer. Would a confidence interval or a hypothesis test better answer their question? Justify your answer, and describe what information the other approach would fail to provide.
 
 </div>
 
