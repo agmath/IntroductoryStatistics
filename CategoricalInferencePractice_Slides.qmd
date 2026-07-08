@@ -1356,7 +1356,8 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 <div style="font-size:18pt">
 
-**Task:** A study is being done to determine whether legalizing recreational marijuana has majority public support in the state of New Hampshire. In a random sample of 450 residents, 247 said they were in favor. Construct a 90% confidence interval for the true proportion of New Hampshire residents in favor of legalization and interpret the results.
+**Task:** A study is being done to determine whether legalizing recreational marijuana has majority public support in the state of New Hampshire. In a random sample of 450 residents, 247 said they were in favor. Verify that the bounds for a 90% confidence interval for the true proportion of New Hampshire residents in favor of legalization are about 0.5102 and 0.5876. Interpret those bounds in the context of the scenario. What does your interval imply?
+
 
 </div>
 
