@@ -1,6 +1,6 @@
 ---
 title: "Practice Problems Notebook"
-author: "MAT241 Class"
+author: "MAT240 Class"
 format: 
   html: default
   pdf:
