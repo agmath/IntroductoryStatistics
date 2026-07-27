@@ -1,0 +1,51 @@
+---
+title: "MAT241 Software Installation" 
+subtitle: "Guide for Installing R and RStudio"
+format: html
+theme: flatly
+---
+
+```{r global-options, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+```
+
+This guide provides instructions for how to install two pieces of software that we'll regularly use in our MAT241 course. The first, the R computing language, is a programming language that we'll use for statistical analyses in our course. Don't worry...I'm assuming that you've never written a line of code in your life, and we won't be doing any real heavy coding in this course, anyway. The second is RStudio, an interface where we'll write and execute R code. 
+
+The basic steps are listed below, but detailed instructions follow for both Windows and Mac OS systems.
+
+1. **Install R:** R is a computing language which has been optimized for use in statistics, data analytics, and data science.
+2. **Install RStudio:** RStudio is a convenient way to interface with the R language. Think of R as "Spanish" and RStudio as Microsoft Word -- you can write R in RStudio, just like you can write Spanish text in Microsoft Word.
+
+## 1. Installing R
+
+Installing R is quite simple. Navigate to [CRAN (the Comprehensive R Archive Network)](https://cran.r-project.org/){target="_blank"} and choose the link corresponding to your operating system. Follow the instructions below corresponding to your operating system below. 
+
+**Windows:** 
+
++ Click the link titled **<span style = "color:blue">Install R for the first time</span>**.
++ Click the link to download the installer for the most recent version of R. The link will be in a grey box containing something like <span style = "color:blue">Download R 4.6.1 for Windows</span>.
+
+  + As of the time of writing, the current version is `R 4.6.1`.
+  
++ Once the download completes, run the installer -- keep all of the default options.
+
+**macOS:**
+
++ After clicking the link for the Mac OS operating system, look for the link corresponding to the most recent R version. It will be the top entry under the *Latest Release* heading. At the time of writing, the most recent version is <span style = "color:blue">R-4.6.1.pkg</span>. 
++ *Note.* There are two versions -- one for Apple processors (M1, M2, etc.) and the other for older Intel processors -- the version for Apple Silicon will be the appropriate version for nearly everyone. 
+    + If you'd like to check which processor you have, click the apple icon in the top-left corner of your screen and choose *About This Mac*. The first item listed is your chip.
+
++ Click the appropriate download link and follow the installation instructions, keeping all of the defaults set. 
++ If you encounter an error because you downlaoded the installer for the wrong processor. Just click on the link for the other version and follow the installation instructions, keeping the default settings.
+
+## 2. Installing RStudio
+
++ To install RStudio, click [this link](https://posit.co/download/rstudio-desktop/){target="_blank"}. 
++ Underneath the **RStudio IDE** heading, choose the download link corresponding to your operating system.
++ Once the download has finished, run the installer -- keep all of the default options.
+
+:::{.calllout.note}
+For Mac users, be sure to drag the RStudio orb icon across to your Applications folder when prompted.
+:::
+
+
