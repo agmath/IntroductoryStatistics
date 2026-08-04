@@ -70,9 +70,11 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 ::::
 
-<div style="font-size:18pt">
+<div style="font-size:16pt">
 
-**Task:** Describe the major differences between conducting inference on comparisons between two population parameters (ie. between two population means or two population proportions). Your response should address any procedural differences (is the "big picture" step-by-step process different?) and mechanical differences (what, if any, calculations must be handled differently?). You should also address differences in interpretations of results, particularly what a confidence interval or $p$-value refers to in each case.
+**Task:** A regional airline wants to know if a new online check-in system has changed the average time passengers spend at the check-in counter. Before the system was introduced, staff timed a random sample of 32 passengers and found a mean check-in time of 6.4 minutes with a standard deviation of 1.8 minutes. After introducing the system, staff timed a new random sample of 28 passengers and found a mean check-in time of 5.1 minutes with a standard deviation of 1.5 minutes. At the 5% significance level, does this sample provide evidence that the new system has reduced the average check-in time?
+
+Identify which inferential procedure is appropriate here (one-sample or two-sample; mean or proportion; confidence interval or hypothesis test) and justify your choice. Then carry out the procedure.
 
 </div>
 
