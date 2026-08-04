@@ -1759,7 +1759,8 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 :::{.nonincremental}
 
 1. What are the hypotheses to test the researcher's question of interest?
-2. Carry out the test and determine the conclusion.
+2. Verify that the test statistic for the test is $4$ and the $p$-value is approximately $0.261$.
+3. Use the $p$-value to determine the appropriate conclusion for the test. Be sure to provide your interpretation in the context of the scenario.
 
 :::
 
