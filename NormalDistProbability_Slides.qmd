@@ -208,11 +208,11 @@ mu3 <- -7
 
 ggplot() + 
   geom_point(aes(x = x1, y = dnorm(x1, mean = mu1, sd = 1)),
-             color = "purple") + 
+             color = "purple", lwd = 1.25) + 
   geom_point(aes(x = x1, y = dnorm(x1, mean = mu2, sd = 1)),
-             color = "darkgreen") + 
+             color = "darkgreen", lwd = 1.25) + 
   geom_point(aes(x = x1, y = dnorm(x1, mean = mu3, sd = 1)),
-             color = "orange") + 
+             color = "orange", lwd = 1.25) + 
   labs(
     subtitle = "Normal Distributions with Different Means",
     x = "x",
@@ -260,11 +260,11 @@ sd3 <- 5
 
 ggplot() + 
   geom_point(aes(x = x1, y = dnorm(x1, mean = 0, sd = sd1)),
-             color = "purple") + 
+             color = "purple", lwd = 1.25) + 
   geom_point(aes(x = x1, y = dnorm(x1, mean = 0, sd = sd2)),
-             color = "darkgreen") + 
+             color = "darkgreen", lwd = 1.25) + 
   geom_point(aes(x = x1, y = dnorm(x1, mean = 0, sd = sd3)),
-             color = "orange") + 
+             color = "orange", lwd = 1.25) + 
   labs(
     subtitle = "Normals with Different Standard Deviations",
     x = "x",
