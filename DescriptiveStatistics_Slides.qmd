@@ -571,7 +571,7 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 ::::
 
-**Task:** The variable measuring the number of bedrooms is one that we said we could treat as either numerical or categorical. It is also reasonable to expect that the number of bedrooms would vary by home type. Describe what you might do to use descriptive statistics to examine whether the number of bedrooms is associated with the home type.
+**Task:** The variable measuring the number of bedrooms is one that we said we could treat as either numerical or categorical. It is also reasonable to expect that the number of bedrooms would vary by home type. Describe what descriptive statistics you might investigate to examine whether the number of bedrooms is associated with the home type.
 
 ## Summary
 

@@ -341,7 +341,9 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 ::::
 
-**Task:** The content from the data visualization interactive notebook and this slide deck is difficult and coding heavy. You are not expected to be an expert. Do your best to describe what you might do to create a plot exploring whether an association exists between home type and the year the home was built. Discuss how the variables influence the appropriate plot type. You may also provide code or descriptions of layers using `ggplot()` terminology.
+**Task:** Do your best to describe what you might do to create a plot exploring whether an association exists between home type and the year the home was built. Discuss how the variables influence the appropriate plot type. You may also provide code or descriptions of layers using `ggplot()` terminology.
+
+**Note.** The content from the data visualization interactive notebook and this slide deck is difficult and coding heavy. You are not expected to be an expert. 
 
 ## Next Time...
 

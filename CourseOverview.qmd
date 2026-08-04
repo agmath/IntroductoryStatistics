@@ -4,6 +4,7 @@ author: Dr. Gilbert
 format: 
   revealjs:
     smaller: true
+    axe: true
 date: today
 date-format: long
 theme: serif
@@ -101,6 +102,8 @@ metal %>%
       
 :::
       
+<!--
+
 ## Class Embedded Tutor
 
 :::{.nonincremental}
@@ -115,13 +118,15 @@ metal %>%
 
 :::
 
+-->
+
 ## Required Resources
 
 First and foremost...everything is free!
 
   + **Main Textbook:** We are following [*OpenIntro Statistics, (4th Edition)* by David Diez, Christopher Barr, and Mine &Ccedil;etinkaya-Rundel](https://www.openintro.org/book/os/)
-  + **Software:** We'll make use of the R computing language, RStudio, and an interactive notes package that I wrote. You've hopefully already installed all of these items, but [instructions for doing so are here](https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html).
-  + **Optional MyOpenMath Supplements:** I wrote a course shell for use with the OpenIntro Statistics testbook at [MyOpenMath](https://www.myopenmath.com/). This course shell includes optional (ungraded) practice assignments and practice exams.
+  + **Software:** We'll make use of the R computing language and RStudio. You've hopefully already installed all of these items, but [instructions for doing so are here](https://agmath.github.io/IntroductoryStatistics/InstallingSoftware.html).
+  + **Optional MyOpenMath Supplements:** I wrote a course shell for use with the OpenIntro Statistics textbook at [MyOpenMath](https://www.myopenmath.com/). This course shell includes optional (ungraded) practice assignments and practice exams.
   
     + The CourseID and Enrollment Key are available on BrightSpace, under the *Important Class Items* section of our table of contents.
 
@@ -130,9 +135,9 @@ First and foremost...everything is free!
   <center> 
   Grade Item                     | Value
   -------------------------------|-----------
-  Participation                  | 10%
-  Interactive Notebooks (~17)    | 20%
-  Exams (2)                      | 50%
+  Participation/Exit Tickets     | 10%
+  Interactive Notebooks (~17)    | 30%
+  Exams (2)                      | 40%
   Final Exam (two parts)         | 20%
   </center>
 
@@ -143,11 +148,11 @@ First and foremost...everything is free!
 + **Interactive Notebooks:** Completing these on time is crucial, as they'll be the way you are exposed to material and practice with it.
 
   + You should expect to have one due prior to nearly every class meeting.
-  + You'll generate a *hash code* at the end of each notebook and submit that hash code using a Google Form (see BrightSpace for the link)
+  + You'll generate *hash codes* at the end of each notebook and submit that hash code using a Google Form (see BrightSpace for the link)
 + **Exams:** We'll have two exams during the semester -- each one will have three parts.
 
   + **Group Exam (Practice):** First meeting of exam week, random groups, can count for up to 10% of exam score but cannot hurt you.
-  + **Individual Exam (75% 0r 65%):** Similar to the group exam, but you're on your own this time.  
+  + **Individual Exam (75% or 65%):** Similar to the group exam, but you're on your own this time.  
   + **Practical Exam (25%):** You'll work with a real data set and perform a scripted analysis using R/RStudio and building a Quarto Document.
 + **Final Exam:** The final exam will also come in two parts.
 
@@ -193,8 +198,7 @@ I've built a [webpage to organize our course content](https://agmath.github.io/S
 
 The use of AI, such as chatGPT or copilot, in MAT241 will be discussed in class, particularly prior to exams. 
 
-+ While AI will not be completely prohibited, its use will generally be
-restricted to helping with broken code in R. 
++ While AI will not be completely prohibited, its use will generally be restricted to helping with broken code in R. 
 + The reason for taking this position is that MAT241 is a foundational course in which we are learning and applying concepts from applied statistics.
 + Relying on AI for statistical calculations and interpretations at this stage will rob you of the opportunity to understand and discover the intricacies involved in statistical analysis.
 
@@ -277,13 +281,12 @@ If worst comes to worst, you will be able to use Posit Cloud to complete all of 
 
 :::{.fragment}
 
-We'll use this time to get interactive notebooks up and running. This is a three-step process, [documented with links here](https://agmath.github.io/IntroductoryStatistics/AccessingInteractiveNotes.html). A general description of the steps appears below. I'll skip to the Exit Ticket slide so that people with complete setups can finish that and take back some of their time.
+We'll use this time to get your software up and running. This is a two-step process, [documented with links here](https://agmath.github.io/IntroductoryStatistics/InstallingSoftware.html). A general description of the steps appears below. I'll skip to the Exit Ticket slide so that people with complete setups can finish that and take back some of their time.
 
 :::
 
 1. Download and install the R computing language
 2. Download and install RStudio
-3. Install the R package containing the interactive notes for our course.
 
 </div>
 
