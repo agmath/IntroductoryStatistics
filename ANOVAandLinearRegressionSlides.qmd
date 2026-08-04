@@ -262,9 +262,13 @@ v) Compare the average *between* group variability to the average *within* group
 
 ## Mechanics of ANOVA
 
-. . . 
+<div style="font-size:17pt">
 
-Here are the main steps in an ANOVA test
+:::{.fragment}
+
+Here are the main steps in an ANOVA test.
+
+:::
 
 i) Calculate the overall mean ($\bar{x}$) of all the observed data, ignoring the groups.
 ii) Compute the **total sum of squares** ($\text{SS}_{\text{Total}}$) to measure the overall variability in the data: $\text{SS}_\text{Total} = \sum (x - \bar{x})^2$
@@ -275,7 +279,11 @@ v) Compute the mean squares:
     + **Mean Square Within** ($\text{MS}_{\text{Within}} = \text{SS}_{\text{Within}} / \left(\text{num_observations} - \text{num_groups}\right)$)
 vi) The **F-statistic** is the ratio of these mean squares:  $\displaystyle{F = \frac{\text{MS}_\text{Between}}{\text{MS}_\text{Within}}}$
 
+</div>
+
 ## Mechanics of ANOVA
+
+<div style="font-size:17pt">
 
 Here are the main steps in an ANOVA test
 
@@ -292,9 +300,12 @@ vi) The **F-statistic** is the ratio of these mean squares:  $\displaystyle{F = 
 vii) Calculate the $p$-value using the $F$ distribution with `df1` as "one less than the number of groups" ($k - 1$) and `df2` as "the number of observations minus the number of groups" ($n - k$)
 viii) Interpret the results of the test as usual (and in context)
 
-. . . 
+:::{.fragment}
 
-**In Practice:** The full ANOVA test will be run using software and we'll just need to interpret the results
+**In Practice:** The full ANOVA test will be run using software and we'll just need to interpret the results.
+
+:::
+</div>
 
 ## Completed Example: Home Sales by Neighborhood
 
