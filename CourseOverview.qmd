@@ -102,23 +102,19 @@ metal %>%
       
 :::
       
-<!--
-
 ## Class Embedded Tutor
 
 :::{.nonincremental}
 
-  + Embedded Tutor: Brent Zukowski
+  + Embedded Tutor: Audrey Saidel
   
-    + E-mail Address: [brent.zukowski@snhu.edu](mailto:brent.zukowski@snhu.edu)
+    + E-mail Address: [audrey.saidel@snhu.edu](mailto:audrey.saidel@snhu.edu)
     + Drop-in Location: TBD
     + Drop-in Hours (Please Visit!): 
     
       + TBD
 
 :::
-
--->
 
 ## Required Resources
 
