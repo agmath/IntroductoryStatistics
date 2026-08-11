@@ -261,7 +261,7 @@ We'll be discussing a lot of material in MAT 241. Here is a very generic road ma
 
 ## Software Setup
 
-<div style="font-size:18pt">
+<div style="font-size:17pt">
 
 :::{.fragment}
 
@@ -277,12 +277,21 @@ If worst comes to worst, you will be able to use Posit Cloud to complete all of 
 
 :::{.fragment}
 
-We'll use this time to get your software up and running. This is a two-step process, [documented with links here](https://agmath.github.io/IntroductoryStatistics/InstallingSoftware.html). A general description of the steps appears below. I'll skip to the Exit Ticket slide so that people with complete setups can finish that and take back some of their time.
+We'll use this time to get your software up and running. This is a two-step process, [documented with links here](https://agmath.github.io/IntroductoryStatistics/InstallingSoftware.html). A general description of the steps appears below.
 
 :::
 
 1. Download and install the R computing language
 2. Download and install RStudio
+
+:::{.fragment}
+
+For those of you already set up, [follow this link](https://agmath.github.io/WebRtutorials/MAT241_Intro.html) and start playing with R in your web browser. See if you can do the following:
+
+1. Read the data by running the code chunk below the **Let's get started!** heading.
+2. Skip over the `Wafflehouse` section and see if you can change the fill color in the metal bands and happiness plot to your favorite color!
+3. Change the plot labels.
+:::
 
 </div>
 
