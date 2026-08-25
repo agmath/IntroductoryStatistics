@@ -40,8 +40,9 @@ Installing R is quite simple. Navigate to [CRAN (the Comprehensive R Archive Net
 
 ## 2. Installing RStudio
 
-+ To install RStudio, click [this link](https://posit.co/download/rstudio-desktop/){target="_blank"}. 
-+ Underneath the **RStudio IDE** heading, choose the download link corresponding to your operating system.
++ To install RStudio, click [this link](https://posit.co/downloads){target="_blank"}. 
++ Choose to *Download RStudio* (not RStudio Server).
++ Choose the version corresponding to your operating system.
 + Once the download has finished, run the installer -- keep all of the default options.
 
 :::{.calllout.note}
