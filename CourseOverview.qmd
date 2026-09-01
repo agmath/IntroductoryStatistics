@@ -96,9 +96,9 @@ metal %>%
     + Office: Robert Frost Hall, Room 311
     + Drop-In Office Hours (please visit!): 
     
-      + Wednesdays 1:00pm - 2:00pm
-      + Thursdays 9:00am - 11:00am
-      + Fridays 9:00am - 11:00am
+      + Mondays 9:00am - 10:30am
+      + Thursdays 9:00am - 10:30am
+      + Fridays 11:00am - 1:00pm
       
 :::
       
