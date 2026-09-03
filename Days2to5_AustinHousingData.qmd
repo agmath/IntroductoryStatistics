@@ -14,6 +14,16 @@ library(tidyverse)
 library(kableExtra)
 
 austin <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/master/data/classification/austin_zillow_data.csv")
+
+####Alternative Data sets
+##Youth Risk Behavior Surveillance Survey
+#yrbss <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/refs/heads/master/data/IntroStats/yrbss.csv")
+
+##NFL Play-by-Play
+#nfl_pbp <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/refs/heads/master/data/IntroStats/nfl_pbp.csv")
+
+##Food Delivery
+#delivery <- read_csv("https://raw.githubusercontent.com/agmath/agmath.github.io/refs/heads/master/data/IntroStats/food_delivery.csv")
 ```
 
 ### Overview
