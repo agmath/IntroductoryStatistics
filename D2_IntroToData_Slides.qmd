@@ -252,6 +252,6 @@ Navigate to [our MAT241 Exit Ticket Form](https://docs.google.com/forms/d/e/1FAI
 
 2. We got a first taste of writing in a Quarto document today, and we'll continue to learn more. 
 
-3. **Homework:** Complete and submit the `Topic 2` notebook by 11:59PM on Sunday, January 11. This notebook will give you a first introduction to using R.
+3. **Homework:** Complete and submit the `Topic 2` notebook at least 30 minutes before our next class meeting. This notebook will give you a first introduction to using R.
 
     + Be sure to see me immediately if you are having difficulty with setup.
