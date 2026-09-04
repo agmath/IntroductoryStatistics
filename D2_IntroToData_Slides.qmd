@@ -202,7 +202,7 @@ Consider the following reminders:
 
 :::{.fragment}
 
-Navigate down to line `43` of the Quarto document. There, you'll not that we're going to fill in a *data dictionary* for the Zillow Dataset.
+Navigate down to line `55` of the Quarto document. There, you'll note that we're going to fill in a *data dictionary* for the Zillow Dataset (or your preferred alternative).
 
 :::
 
