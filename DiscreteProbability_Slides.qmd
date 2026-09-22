@@ -20,6 +20,25 @@ options(kable_styling_bootstrap_options = c("hover", "striped"))
 theme_set(theme_bw(base_size = 20))
 ```
 
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+a {
+  color: purple;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: purple;
+}
+```
+
 ## The Highlights
 
 + Computing with R: Warmup Problems
@@ -509,7 +528,7 @@ $$X~\text{(successes)}:~\color{black}{~\boxed{~\color{red}{\boxed{~0,~1,~2,~\cdo
 
 ::::{.columns}
 
-:::{.column width="35%"}
+:::{.column width="40%"}
 
 ```{r}
 #| echo: true
@@ -520,7 +539,7 @@ $$X~\text{(successes)}:~\color{black}{~\boxed{~\color{red}{\boxed{~0,~1,~2,~\cdo
 
 :::
 
-:::{.column width="65%"}
+:::{.column width="60%"}
 
 We'll use this strategy of starting with a probability that is "*too big*" and removing the probability of the events we don't want, often.
 
